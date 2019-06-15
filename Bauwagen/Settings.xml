@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Database>
+  <Adress>localhost</Adress>
+  <ListenerPort>1522</ListenerPort>
+  <Schema>Bauwagen</Schema>
+</Database>
