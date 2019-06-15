@@ -135,6 +135,7 @@
             this.CmD_Buchen.TabIndex = 5;
             this.CmD_Buchen.Text = "Buchen";
             this.CmD_Buchen.UseVisualStyleBackColor = true;
+            this.CmD_Buchen.Click += new System.EventHandler(this.CmD_Buchen_Click_1);
             // 
             // label1
             // 

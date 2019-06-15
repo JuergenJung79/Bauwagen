@@ -349,5 +349,9 @@ namespace Bauwagen
             return null;
         }
 
+        private void CmD_Buchen_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Das ist ein Test");
+        }
     }
 }
