@@ -101,7 +101,7 @@ namespace Bauwagen
             sQuery += "    locked,\n";
             sQuery += "    bad_logon,\n";
             sQuery += "    lock_date,\n";
-            sQuery += "    budget\n";
+            sQuery += "    nvl(budget,0)\n";
             sQuery += "FROM " + Frm_Haupt.sSchema + ".personen\n";
 
             if (sName != "")

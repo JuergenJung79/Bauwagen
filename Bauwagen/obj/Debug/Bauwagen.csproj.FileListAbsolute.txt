@@ -46,3 +46,8 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Prope
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.GenerateResource.cache
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CoreCompileInputs.cache
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.manifest
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Bauwagen.application
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe.manifest
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.TrustInfo.xml

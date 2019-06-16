@@ -182,6 +182,35 @@ namespace Bauwagen
             if (frm_login.ShowDialog() == DialogResult.OK)
             {
                 EnableGüter();
+
+                OracleConnection oConnection = new OracleConnection();
+                OracleCommand oCommandSelect = new OracleCommand();
+                OracleDataReader drReader;
+
+                using (oConnection)
+                {
+                    try
+                    {
+                        oConnection.ConnectionString = sDSN;
+                        oConnection.Open();
+
+                        oCommandSelect.Connection = oConnection;
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text);
+                        drReader = oCommandSelect.ExecuteReader();
+
+                        while (drReader.Read())
+                        {
+                            LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                        }
+                        drReader.Close();
+
+                        oConnection.Clone();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "buttonNamen_Clicked");
+                    }
+                }
             }
             else
             {
@@ -243,6 +272,7 @@ namespace Bauwagen
                     if (bFound == false)
                     {
                         DataGridViewRow row = (DataGridViewRow)DgV_Warenkorb.Rows[0].Clone();
+                        row.Height = 45;
                         row.Cells[0].Value = sItem;
                         row.Cells[1].Value = 1;
                         row.Cells[2].Value = nPreis;
@@ -281,6 +311,8 @@ namespace Bauwagen
             DisableGüter();
 
             LbL_Summe.Text = "0,00 €";
+            LbL_Budget.Text = "0,00 €";
+
             DgV_Warenkorb.Rows.Clear();
         }
 
