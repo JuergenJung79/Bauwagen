@@ -40,6 +40,8 @@
             this.CmD_Buchen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LbL_Summe = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.LbL_Budget = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,13 +159,35 @@
             this.LbL_Summe.Text = "LbL_Summe";
             this.LbL_Summe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label2.Location = new System.Drawing.Point(578, 437);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 24);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Verfügbares Budget:";
+            // 
+            // LbL_Budget
+            // 
+            this.LbL_Budget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.LbL_Budget.Location = new System.Drawing.Point(767, 437);
+            this.LbL_Budget.Name = "LbL_Budget";
+            this.LbL_Budget.Size = new System.Drawing.Size(141, 24);
+            this.LbL_Budget.TabIndex = 7;
+            this.LbL_Budget.Text = "LbL_Budget";
+            this.LbL_Budget.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Frm_Haupt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1216, 628);
+            this.Controls.Add(this.LbL_Budget);
             this.Controls.Add(this.LbL_Summe);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DgV_Warenkorb);
             this.Controls.Add(this.CmD_Buchen);
@@ -193,6 +217,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Summe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LbL_Summe;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LbL_Budget;
     }
 }
 

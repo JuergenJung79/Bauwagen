@@ -16,6 +16,7 @@ namespace Bauwagen
     {
         public static string sDSN = "";
         public static string sSchema = "";
+        public static string sSchemaPassword = "";
         public static string sDatabase = "";
         public static string sListenerPort = "";
 
@@ -34,14 +35,18 @@ namespace Bauwagen
 
             XmlNode nodeSchema = doc.SelectSingleNode("/Database/Schema");
             sSchema = nodeSchema.FirstChild.Value;
+            XmlNode nodeSchemaPassword = doc.SelectSingleNode("/Database/SchemaPassword");
+            sSchemaPassword = nodeSchemaPassword.FirstChild.Value;
             XmlNode nodeDatabase = doc.SelectSingleNode("/Database/Adress");
             sDatabase = nodeDatabase.FirstChild.Value;
             XmlNode nodeListener = doc.SelectSingleNode("/Database/ListenerPort");
             sListenerPort = nodeListener.FirstChild.Value;
 
-            sDSN = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=" + sDatabase + ")(PORT=" + sListenerPort + ")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id="+ sSchema + "; Password=bauwagen;";
+            string sTemp = Cls_Procedure.XorEncrypt(sSchemaPassword, Bauwagen.Properties.Settings.Default.Key);
+            sDSN = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=" + sDatabase + ")(PORT=" + sListenerPort + ")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id="+ sSchema + "; Password="+ sTemp + ";";
 
             LbL_Summe.Text = "0,00 €";
+            LbL_Budget.Text = "0,00 €";
 
             CreateButtons();
         }
