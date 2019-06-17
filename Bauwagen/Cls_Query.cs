@@ -78,6 +78,23 @@ namespace Bauwagen
 
             return sQuery;
         }
+
+        public static string CreateTableHistory()
+        {
+            string sQuery = "";
+
+            sQuery = "CREATE TABLE HISTORY\n";
+            sQuery += "(\n";
+            sQuery += "  ID_USER NUMBER NOT NULL\n";
+            sQuery += ", BESCHREIBUNG VARCHAR2(100)\n";
+            sQuery += ", ANZAHL NUMBER\n";
+            sQuery += ", EINZEL_PREIS NUMBER\n";
+            sQuery += ", SUMME NUMBER\n";
+            sQuery += ")\n";
+
+
+            return sQuery;
+        }
         #endregion
 
         public static string GetMaxAnderID()
@@ -153,11 +170,13 @@ namespace Bauwagen
 
             if (bLock == false)
             {
-                sQuery += "bad_logon = 0\n";
+                sQuery += "bad_logon = 0,\n";
+                sQuery += "last_logon = SYSDATE\n";
             }
             else if (bLock == true)
             {
-                sQuery += "bad_logon = bad_logon + 1\n";
+                sQuery += "bad_logon = bad_logon + 1,\n";
+                sQuery += "last_logon = SYSDATE\n";
             }
 
             sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";

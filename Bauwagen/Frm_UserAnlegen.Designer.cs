@@ -107,6 +107,7 @@
             this.Controls.Add(this.TxT_Name);
             this.Controls.Add(this.label1);
             this.Name = "Frm_UserAnlegen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Benutzer anlegen";
             this.Load += new System.EventHandler(this.Frm_UserAnlegen_Load);
             this.ResumeLayout(false);

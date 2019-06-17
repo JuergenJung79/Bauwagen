@@ -23,6 +23,8 @@ namespace Bauwagen
         public static int nAnzahlAnwender = 0;
         public static int nAnzahlGüter = 0;
 
+        public static bool bLoad = true;
+
         public Frm_Haupt()
         {
             InitializeComponent();
@@ -47,8 +49,11 @@ namespace Bauwagen
 
             LbL_Summe.Text = "0,00 €";
             LbL_Budget.Text = "0,00 €";
+            LbL_Verfügbar.Text = "0,00 €";
 
             CreateButtons();
+
+            bLoad = false;
         }
 
         private void CreateButtons()
@@ -185,7 +190,10 @@ namespace Bauwagen
 
                 OracleConnection oConnection = new OracleConnection();
                 OracleCommand oCommandSelect = new OracleCommand();
+                OracleCommand oCommandUpdate = new OracleCommand();
                 OracleDataReader drReader;
+
+                int nResult = 0;
 
                 using (oConnection)
                 {
@@ -195,6 +203,8 @@ namespace Bauwagen
                         oConnection.Open();
 
                         oCommandSelect.Connection = oConnection;
+                        oCommandUpdate.Connection = oConnection;
+
                         oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text);
                         drReader = oCommandSelect.ExecuteReader();
 
@@ -312,8 +322,16 @@ namespace Bauwagen
 
             LbL_Summe.Text = "0,00 €";
             LbL_Budget.Text = "0,00 €";
+            LbL_Verfügbar.Text = "0,00 €";
 
             DgV_Warenkorb.Rows.Clear();
+        }
+
+        private void CmD_LöschenWarenkorb_Click(object sender, EventArgs e)
+        {
+            DgV_Warenkorb.Rows.Clear();
+
+            LbL_Summe.Text = "0,00 €";
         }
 
         private void CmD_Buchen_Click(object sender, EventArgs e)
@@ -333,6 +351,16 @@ namespace Bauwagen
             }
         }
 
+        private void LbL_Summe_TextChanged(object sender, EventArgs e)
+        {
+            CalculatVerfügbar();
+        }
+
+        private void LbL_Budget_TextChanged(object sender, EventArgs e)
+        {
+            CalculatVerfügbar();
+        }
+
         private void EnableGüter()
         {
             for (int i = 0; i < nAnzahlAnwender; i++)
@@ -347,6 +375,7 @@ namespace Bauwagen
 
             CmD_Buchen.Enabled = true;
             CmD_Logout.Enabled = true;
+            CmD_LöschenWarenkorb.Enabled = true;
         }
 
         private void DisableGüter()
@@ -366,6 +395,7 @@ namespace Bauwagen
 
             CmD_Buchen.Enabled = false;
             CmD_Logout.Enabled = false;
+            CmD_LöschenWarenkorb.Enabled = false;
         }
 
         Control GetAnwenderControlByName(string Name)
@@ -386,9 +416,25 @@ namespace Bauwagen
             return null;
         }
 
-        private void CmD_Buchen_Click_1(object sender, EventArgs e)
+        private void CalculatVerfügbar()
         {
-            MessageBox.Show("Das ist ein Test");
+            if (bLoad == false)
+            {
+                double nBudget = 0;
+                double nWarenkorb = 0;
+                double nVerfügbar = 0;
+
+                string sBudget = LbL_Budget.Text.Trim().Substring(0, LbL_Budget.Text.Trim().Length - 2);
+                string sWarenkorb = LbL_Summe.Text.Trim().Substring(0, LbL_Summe.Text.Trim().Length - 2);
+
+                nBudget = Convert.ToDouble(sBudget);
+                nWarenkorb = Convert.ToDouble(sWarenkorb);
+
+                nVerfügbar = nBudget - nWarenkorb;
+
+                LbL_Verfügbar.Text = String.Format("{0:0.00}", nVerfügbar) + " €";
+            }
         }
+
     }
 }

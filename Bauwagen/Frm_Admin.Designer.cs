@@ -30,6 +30,7 @@
         {
             this.CmD_CreateTables = new System.Windows.Forms.Button();
             this.CmD_CreateUser = new System.Windows.Forms.Button();
+            this.CmD_Geldaufladen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
@@ -53,14 +54,27 @@
             this.CmD_CreateUser.UseVisualStyleBackColor = true;
             this.CmD_CreateUser.Click += new System.EventHandler(this.CmD_CreateUser_Click);
             // 
+            // CmD_Geldaufladen
+            // 
+            this.CmD_Geldaufladen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Geldaufladen.Location = new System.Drawing.Point(12, 101);
+            this.CmD_Geldaufladen.Name = "CmD_Geldaufladen";
+            this.CmD_Geldaufladen.Size = new System.Drawing.Size(111, 60);
+            this.CmD_Geldaufladen.TabIndex = 1;
+            this.CmD_Geldaufladen.Text = "Geld aufladen";
+            this.CmD_Geldaufladen.UseVisualStyleBackColor = true;
+            this.CmD_Geldaufladen.Click += new System.EventHandler(this.CmD_Geldaufladen_Click);
+            // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 234);
+            this.Controls.Add(this.CmD_Geldaufladen);
             this.Controls.Add(this.CmD_CreateUser);
             this.Controls.Add(this.CmD_CreateTables);
             this.Name = "Frm_Admin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administration";
             this.ResumeLayout(false);
 
@@ -70,5 +84,6 @@
 
         private System.Windows.Forms.Button CmD_CreateTables;
         private System.Windows.Forms.Button CmD_CreateUser;
+        private System.Windows.Forms.Button CmD_Geldaufladen;
     }
 }

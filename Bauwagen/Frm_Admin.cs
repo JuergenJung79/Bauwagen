@@ -82,6 +82,14 @@ namespace Bauwagen
                     }
                     catch { }
 
+                    //Tabelle History erstellen
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.CreateTableHistory();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+
                     oConnection.Close();
                 }
             }
@@ -91,6 +99,12 @@ namespace Bauwagen
         {
             Frm_UserAnlegen frm_useranlegen = new Frm_UserAnlegen();
             frm_useranlegen.ShowDialog();
+        }
+
+        private void CmD_Geldaufladen_Click(object sender, EventArgs e)
+        {
+            Frm_Aufladen frm_aufladen = new Frm_Aufladen();
+            frm_aufladen.ShowDialog();
         }
     }
 }

@@ -51,3 +51,4 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Bauwagen.appli
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe.manifest
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.TrustInfo.xml
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Aufladen.resources

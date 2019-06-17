@@ -93,6 +93,12 @@
   <ItemGroup>
     <Compile Include="Cls_Procedure.cs" />
     <Compile Include="Cls_Query.cs" />
+    <Compile Include="Frm_Aufladen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Aufladen.Designer.cs">
+      <DependentUpon>Frm_Aufladen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frm_Aufladen.resx">
+      <DependentUpon>Frm_Aufladen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </EmbeddedResource>
