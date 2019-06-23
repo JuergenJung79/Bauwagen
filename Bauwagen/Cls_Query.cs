@@ -31,6 +31,7 @@ namespace Bauwagen
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    bad_logon    NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    lock_date    DATE,\n";
+            sQuery += "    kredit       NUMBER,\n";
             sQuery += "    budget       NUMBER)\n";
 
             return sQuery;
@@ -90,8 +91,22 @@ namespace Bauwagen
             sQuery += ", ANZAHL NUMBER\n";
             sQuery += ", EINZEL_PREIS NUMBER\n";
             sQuery += ", SUMME NUMBER\n";
+            sQuery += ", DATUM_UHR DATE DEFAULT SYSDATE NOT NULL\n";
             sQuery += ")\n";
 
+            return sQuery;
+        }
+
+        public static string CreateTableAufladungen()
+        {
+            string sQuery = "";
+
+            sQuery = "CREATE TABLE AUFLADUNG\n";
+            sQuery += "(\n";
+            sQuery += "  ID_USER NUMBER NOT NULL\n";
+            sQuery += ", DATUM_UHR DATE DEFAULT SYSDATE NOT NULL\n";
+            sQuery += ", BETRAG NUMBER NOT NULL\n";
+            sQuery += ")\n";
 
             return sQuery;
         }
@@ -118,7 +133,8 @@ namespace Bauwagen
             sQuery += "    locked,\n";
             sQuery += "    bad_logon,\n";
             sQuery += "    lock_date,\n";
-            sQuery += "    nvl(budget,0)\n";
+            sQuery += "    nvl(budget,0),\n";
+            sQuery += "    nvl(kredit,0)\n";
             sQuery += "FROM " + Frm_Haupt.sSchema + ".personen\n";
 
             if (sName != "")
@@ -179,6 +195,34 @@ namespace Bauwagen
                 sQuery += "last_logon = SYSDATE\n";
             }
 
+            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+
+            return sQuery;
+        }
+
+        public static string InsertHistory(string sName, string sItem, string sAnzahl, string sEinzelpreis, string sSumme)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".history\n";
+            sQuery += "(id_user, beschreibung, anzahl, einzel_preis, summe, datum_uhr)\n";
+            sQuery += "VALUES\n";
+            sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname||' '||name = '" + sName + "'),\n";
+            sQuery += "'" + sItem + "',\n";
+            sQuery += sAnzahl + ",\n";
+            sQuery += sEinzelpreis.Replace(",", ".") + ",\n";
+            sQuery += sSumme.Replace(",", ".") + ",\n";
+            sQuery += "SYSDATE)\n";
+
+            return sQuery;
+        }
+
+        public static string UpdateUserBudget(string sName, string sDelta)
+        {
+            string sQuery = "";
+
+            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
+            sQuery += "    budget = budget - " + sDelta.Replace(",", ".") + "\n";
             sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
 
             return sQuery;

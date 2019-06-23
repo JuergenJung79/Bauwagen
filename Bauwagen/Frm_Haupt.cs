@@ -50,6 +50,7 @@ namespace Bauwagen
             LbL_Summe.Text = "0,00 €";
             LbL_Budget.Text = "0,00 €";
             LbL_Verfügbar.Text = "0,00 €";
+            LbL_Kredit.Text = "0,00 €";
 
             CreateButtons();
 
@@ -211,8 +212,11 @@ namespace Bauwagen
                         while (drReader.Read())
                         {
                             LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                            LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
                         }
                         drReader.Close();
+
+                        LbL_User.Text = angeklickterButton.Text.Trim();
 
                         oConnection.Clone();
                     }
@@ -242,10 +246,12 @@ namespace Bauwagen
             int nIndex = 0;
 
             bool bFound = false;
+            bool bKreditOK = false;
 
             double nPreis = 0;
             double nSumme = 0;
             double nWarenkorbSumme = 0;
+            double nVerfügbar = 0;
 
             angeklickterButton.Enabled = false;
 
@@ -277,33 +283,47 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
-                    DgV_Warenkorb.AllowUserToAddRows = true;
+                    string sBudget = LbL_Budget.Text.Trim().Substring(0, LbL_Budget.Text.Trim().Length - 2);
+                    string sKredit = LbL_Kredit.Text.Trim().Substring(0, LbL_Budget.Text.Trim().Length - 2);
+                    string sWarenkorb = LbL_Summe.Text.Trim().Substring(0, LbL_Summe.Text.Trim().Length - 2);
 
-                    if (bFound == false)
+                    nVerfügbar = (Convert.ToDouble(sBudget) + Convert.ToDouble(sKredit)) - Convert.ToDouble(sWarenkorb) - nPreis;
+                    if (nVerfügbar >= 0) { bKreditOK = true; } else { bKreditOK = false; }
+
+                    if (bKreditOK == true)
                     {
-                        DataGridViewRow row = (DataGridViewRow)DgV_Warenkorb.Rows[0].Clone();
-                        row.Height = 45;
-                        row.Cells[0].Value = sItem;
-                        row.Cells[1].Value = 1;
-                        row.Cells[2].Value = nPreis;
-                        row.Cells[3].Value = nPreis;
-                        DgV_Warenkorb.Rows.Add(row);
+                        DgV_Warenkorb.AllowUserToAddRows = true;
+
+                        if (bFound == false)
+                        {
+                            DataGridViewRow row = (DataGridViewRow)DgV_Warenkorb.Rows[0].Clone();
+                            row.Height = 45;
+                            row.Cells[0].Value = sItem;
+                            row.Cells[1].Value = 1;
+                            row.Cells[2].Value = nPreis;
+                            row.Cells[3].Value = nPreis;
+                            DgV_Warenkorb.Rows.Add(row);
+                        }
+                        else
+                        {
+                            DgV_Warenkorb.Rows[nIndex].Cells[1].Value = nAnzahl;
+                            DgV_Warenkorb.Rows[nIndex].Cells[2].Value = nPreis;
+                            DgV_Warenkorb.Rows[nIndex].Cells[3].Value = nSumme;
+                        }
+
+                        for (int i = 0; i < DgV_Warenkorb.Rows.Count; i++)
+                        {
+                            nWarenkorbSumme += Convert.ToDouble(DgV_Warenkorb.Rows[i].Cells[3].Value);
+                        }
+
+                        LbL_Summe.Text = String.Format("{0:0.00}", nWarenkorbSumme) + " €";
+
+                        DgV_Warenkorb.AllowUserToAddRows = false;
                     }
                     else
                     {
-                        DgV_Warenkorb.Rows[nIndex].Cells[1].Value = nAnzahl;
-                        DgV_Warenkorb.Rows[nIndex].Cells[2].Value = nPreis;
-                        DgV_Warenkorb.Rows[nIndex].Cells[3].Value = nSumme;
+                        MessageBox.Show("Verfügbarer Kreditrahmen reicht nicht aus, bitte Konto auffüllen", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    for (int i = 0; i < DgV_Warenkorb.Rows.Count; i++)
-                    {
-                        nWarenkorbSumme += Convert.ToDouble(DgV_Warenkorb.Rows[i].Cells[3].Value);
-                    }
-
-                    LbL_Summe.Text = String.Format("{0:0.00}", nWarenkorbSumme) + " €";
-
-                    DgV_Warenkorb.AllowUserToAddRows = false;
 
                     oConnection.Close();
                 }
@@ -323,6 +343,8 @@ namespace Bauwagen
             LbL_Summe.Text = "0,00 €";
             LbL_Budget.Text = "0,00 €";
             LbL_Verfügbar.Text = "0,00 €";
+            LbL_Kredit.Text = "0,00 €";
+            LbL_User.Text = "";
 
             DgV_Warenkorb.Rows.Clear();
         }
@@ -336,7 +358,69 @@ namespace Bauwagen
 
         private void CmD_Buchen_Click(object sender, EventArgs e)
         {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommandUpdate = new OracleCommand();
+            OracleCommand oCommandSelect = new OracleCommand();
+            OracleDataReader drReader;
+            int nResult = 0;
 
+            string sUser = "";
+            string sItem = "";
+            string sAnzahl = "";
+            string sEinzelpreis = "";
+            string sSumme = "";
+
+            using (oConnection)
+            {
+                try
+                {
+                    oConnection.ConnectionString = sDSN;
+                    oConnection.Open();
+
+                    oCommandUpdate.Connection = oConnection;
+                    oCommandSelect.Connection = oConnection;
+
+                    for (int i = 0; i < DgV_Warenkorb.Rows.Count; i++)
+                    {
+                        sUser = LbL_User.Text.Trim();
+                        sItem = DgV_Warenkorb.Rows[i].Cells[0].Value.ToString().Trim();
+                        sAnzahl = DgV_Warenkorb.Rows[i].Cells[1].Value.ToString().Trim();
+                        sEinzelpreis = DgV_Warenkorb.Rows[i].Cells[2].Value.ToString().Trim();
+                        sSumme = DgV_Warenkorb.Rows[i].Cells[3].Value.ToString().Trim();
+
+                        oCommandUpdate.CommandText = Cls_Query.InsertHistory(sUser, sItem, sAnzahl, sEinzelpreis, sSumme);
+                        nResult = oCommandUpdate.ExecuteNonQuery();
+
+                        if (nResult > 0)
+                        {
+                            nResult = 0;
+                            oCommandUpdate.CommandText = Cls_Query.UpdateUserBudget(sUser, sSumme);
+                            nResult = oCommandUpdate.ExecuteNonQuery();
+                        }
+                    }
+
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser);
+                    drReader = oCommandSelect.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                        LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
+                    }
+                    drReader.Close();
+
+                    DgV_Warenkorb.Rows.Clear();
+
+                    LbL_Summe.Text = "0,00 €";
+                    LbL_Verfügbar.Text = "0,00 €";
+
+                    oConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "CmD_Buchen_Click");
+                }
+            }
         }
 
         private void CmD_Systemsteuerung_Click(object sender, EventArgs e)
