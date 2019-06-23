@@ -90,6 +90,14 @@ namespace Bauwagen
                     }
                     catch { }
 
+                    //Tabelle Aufladungen erstellen
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.CreateTableAufladungen();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+
                     oConnection.Close();
                 }
             }
