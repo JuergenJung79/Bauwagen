@@ -222,10 +222,36 @@ namespace Bauwagen
             string sQuery = "";
 
             sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
-            sQuery += "    budget = budget - " + sDelta.Replace(",", ".") + "\n";
+            sQuery += "    budget = nvl(budget,0) - " + sDelta.Replace(",", ".") + "\n";
             sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
 
             return sQuery;
         }
+
+        public static string InsertAufladung(string sName, string sBetrag)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".aufladung\n";
+            sQuery += "(id_user, datum_uhr, betrag)\n";
+            sQuery += "VALUES\n";
+            sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname||' '||name = '" + sName + "'),\n";
+            sQuery += "SYSDATE,\n";
+            sQuery += sBetrag.Replace(",", ".") + ")\n";
+
+            return sQuery;
+        }
+
+        public static string UpdateUserAufladung(string sName, string sDelta)
+        {
+            string sQuery = "";
+
+            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
+            sQuery += "    budget = nvl(budget,0) + " + sDelta.Replace(",", ".") + "\n";
+            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+
+            return sQuery;
+        }
+
     }
 }
