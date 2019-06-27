@@ -59,7 +59,6 @@ H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\bin\Debug\Bauwagen.applicat
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\bin\Debug\Bauwagen.pdb
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\bin\Debug\Oracle.ManagedDataAccess.dll
-H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Aufladen.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Login.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Admin.resources
@@ -74,3 +73,6 @@ H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.applicat
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_ChangePassword.resources
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources

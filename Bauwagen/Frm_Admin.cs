@@ -114,5 +114,11 @@ namespace Bauwagen
             Frm_Aufladen frm_aufladen = new Frm_Aufladen();
             frm_aufladen.ShowDialog();
         }
+
+        private void CmD_GüterBearbeiten_Click(object sender, EventArgs e)
+        {
+            Frm_GüterHinzufügen frm_güterhinzufügen = new Frm_GüterHinzufügen();
+            frm_güterhinzufügen.ShowDialog();
+        }
     }
 }

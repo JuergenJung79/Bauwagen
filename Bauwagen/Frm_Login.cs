@@ -69,6 +69,8 @@ namespace Bauwagen
 
                 string sPassword = "";
 
+                bool bChangePW = false;
+
                 using (oConnection)
                 {
                     oConnection.ConnectionString = Frm_Haupt.sDSN;
@@ -83,19 +85,40 @@ namespace Bauwagen
                     while (drReader.Read())
                     {
                         sPassword = Cls_Procedure.XorEncrypt(drReader.GetValue(3).ToString().Trim(), Bauwagen.Properties.Settings.Default.Key);
+
+                        if (drReader.GetValue(10).ToString().Trim() == "1") { bChangePW = true; } else { bChangePW = false; }
                     }
                     drReader.Close();
 
-                    if (sPassword == TxT_Password.Text)
+                    if (sPassword == TxT_Password.Text && bChangePW == false)
                     {
-                        oCommandUpdate.CommandText = Cls_Query.UpdateBadLogonAnwender(LbL_Username.Text.Trim(), false);
+                        oCommandUpdate.CommandText = Cls_Query.UpdateBadLogonAnwender(LbL_Username.Text.Trim(), false, "");
                         nResult = oCommandUpdate.ExecuteNonQuery();
                         this.DialogResult = DialogResult.OK;
+                    }
+                    if (sPassword == TxT_Password.Text && bChangePW == true)
+                    {
+                        MessageBox.Show("Passwort muss geändert werden", "Info");
+                        Frm_ChangePassword frm_ChangePassword = new Frm_ChangePassword();
+                        frm_ChangePassword.LbL_Username.Text = LbL_Username.Text.Trim();
+
+                        if (frm_ChangePassword.ShowDialog() == DialogResult.OK)
+                        {
+                            oCommandUpdate.CommandText = Cls_Query.UpdateBadLogonAnwender(LbL_Username.Text.Trim(), false, "");
+                            nResult = oCommandUpdate.ExecuteNonQuery();
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            oCommandUpdate.CommandText = Cls_Query.UpdateBadLogonAnwender(LbL_Username.Text.Trim(), true, "");
+                            nResult = oCommandUpdate.ExecuteNonQuery();
+                            this.DialogResult = DialogResult.Abort;
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Password falsch!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        oCommandUpdate.CommandText = Cls_Query.UpdateBadLogonAnwender(LbL_Username.Text.Trim(), true);
+                        oCommandUpdate.CommandText = Cls_Query.UpdateBadLogonAnwender(LbL_Username.Text.Trim(), true, "");
                         nResult = oCommandUpdate.ExecuteNonQuery();
                         this.DialogResult = DialogResult.Abort;
                     }

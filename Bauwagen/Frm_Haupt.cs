@@ -432,6 +432,13 @@ namespace Bauwagen
             if (frm_login.ShowDialog() == DialogResult.OK)
             {
                 frm_admin.ShowDialog();
+
+                for (int i = nAnzahlAnwender-1; i >= 0; i--)
+                {
+                    GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                    GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Dispose();
+                }
+                CreateButtons();
             }
         }
 
