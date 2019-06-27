@@ -32,6 +32,7 @@ namespace Bauwagen
             sQuery += "    bad_logon    NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    lock_date    DATE,\n";
             sQuery += "    kredit       NUMBER,\n";
+            sQuery += "    change_pw    NUMBER DEFAULT 0,\n";
             sQuery += "    budget       NUMBER)\n";
 
             return sQuery;
@@ -134,7 +135,8 @@ namespace Bauwagen
             sQuery += "    bad_logon,\n";
             sQuery += "    lock_date,\n";
             sQuery += "    nvl(budget,0),\n";
-            sQuery += "    nvl(kredit,0)\n";
+            sQuery += "    nvl(kredit,0),\n";
+            sQuery += "    nvl(change_pw,1)\n";
             sQuery += "FROM " + Frm_Haupt.sSchema + ".personen\n";
 
             if (sName != "")
@@ -142,6 +144,74 @@ namespace Bauwagen
                 sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
                 sQuery += "    AND nvl(bad_logon,0) <= 5\n";
             }
+
+            return sQuery;
+        }
+
+        public static string UpdateBadLogonAnwender(string sName, bool bLock, string sPassword)
+        {
+            string sQuery = "";
+
+            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
+
+            if (sPassword != "")
+            {
+                sQuery += "password = '" + sPassword + "',\n";
+                sQuery += "change_pw = 0,\n";
+            }
+
+            if (bLock == false)
+            {
+                sQuery += "bad_logon = 0,\n";
+                sQuery += "last_logon = SYSDATE\n";
+            }
+            else if (bLock == true)
+            {
+                sQuery += "bad_logon = bad_logon + 1,\n";
+                sQuery += "last_logon = SYSDATE\n";
+            }
+
+            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+
+            return sQuery;
+        }
+
+        public static string UpdateUserBudget(string sName, string sDelta)
+        {
+            string sQuery = "";
+
+            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
+            sQuery += "    budget = nvl(budget,0) - " + sDelta.Replace(",", ".") + "\n";
+            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+
+            return sQuery;
+        }
+
+        public static string InsertUser(string sName, string sVorname, string sPassword, string sBudget, string sKredit)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
+            sQuery += "(id, vorname, name, password, budget, kredit, change_pw)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(seq_user_id.nextval,\n";
+            sQuery += "'" + sVorname + "',\n";
+            sQuery += "'" + sName + "',\n";
+            sQuery += "'" + sPassword + "',\n";
+            sQuery += sBudget.Replace(",", ".") + ",\n";
+            sQuery += sKredit.Replace(",", ".") + ",\n";
+            sQuery += "1)\n";
+
+            return sQuery;
+        }
+
+        public static string UpdateUserAufladung(string sName, string sDelta)
+        {
+            string sQuery = "";
+
+            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
+            sQuery += "    budget = nvl(budget,0) + " + sDelta.Replace(",", ".") + "\n";
+            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
 
             return sQuery;
         }
@@ -178,28 +248,6 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string UpdateBadLogonAnwender(string sName, bool bLock)
-        {
-            string sQuery = "";
-
-            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
-
-            if (bLock == false)
-            {
-                sQuery += "bad_logon = 0,\n";
-                sQuery += "last_logon = SYSDATE\n";
-            }
-            else if (bLock == true)
-            {
-                sQuery += "bad_logon = bad_logon + 1,\n";
-                sQuery += "last_logon = SYSDATE\n";
-            }
-
-            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
-
-            return sQuery;
-        }
-
         public static string InsertHistory(string sName, string sItem, string sAnzahl, string sEinzelpreis, string sSumme)
         {
             string sQuery = "";
@@ -217,17 +265,6 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string UpdateUserBudget(string sName, string sDelta)
-        {
-            string sQuery = "";
-
-            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
-            sQuery += "    budget = nvl(budget,0) - " + sDelta.Replace(",", ".") + "\n";
-            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
-
-            return sQuery;
-        }
-
         public static string InsertAufladung(string sName, string sBetrag)
         {
             string sQuery = "";
@@ -238,17 +275,6 @@ namespace Bauwagen
             sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname||' '||name = '" + sName + "'),\n";
             sQuery += "SYSDATE,\n";
             sQuery += sBetrag.Replace(",", ".") + ")\n";
-
-            return sQuery;
-        }
-
-        public static string UpdateUserAufladung(string sName, string sDelta)
-        {
-            string sQuery = "";
-
-            sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
-            sQuery += "    budget = nvl(budget,0) + " + sDelta.Replace(",", ".") + "\n";
-            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
 
             return sQuery;
         }
