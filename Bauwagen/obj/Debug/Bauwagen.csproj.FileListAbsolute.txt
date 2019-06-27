@@ -75,3 +75,4 @@ H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_ChangePassword.resources
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources

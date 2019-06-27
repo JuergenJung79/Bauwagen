@@ -105,6 +105,12 @@
     <Compile Include="Frm_ChangePassword.Designer.cs">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_GüterHinzufügen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_GüterHinzufügen.Designer.cs">
+      <DependentUpon>Frm_GüterHinzufügen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_ChangePassword.resx">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_GüterHinzufügen.resx">
+      <DependentUpon>Frm_GüterHinzufügen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
