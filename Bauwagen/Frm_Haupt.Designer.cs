@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CmD_Systemsteuerung = new System.Windows.Forms.Button();
             this.FlW_Anwender = new System.Windows.Forms.FlowLayoutPanel();
             this.FlW_Verbrauchsgüter = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,6 +49,9 @@
             this.LbL_Budget = new System.Windows.Forms.Label();
             this.LbL_Verfügbar = new System.Windows.Forms.Label();
             this.CmD_LöschenWarenkorb = new System.Windows.Forms.Button();
+            this.LbL_Kredit = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.LbL_User = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,14 +98,14 @@
             // 
             this.DgV_Warenkorb.AllowUserToAddRows = false;
             this.DgV_Warenkorb.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgV_Warenkorb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgV_Warenkorb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgV_Warenkorb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgV_Warenkorb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Gütername,
@@ -117,8 +120,8 @@
             // 
             // Gütername
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gütername.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gütername.DefaultCellStyle = dataGridViewCellStyle2;
             this.Gütername.HeaderText = "Name";
             this.Gütername.Name = "Gütername";
             this.Gütername.ReadOnly = true;
@@ -126,16 +129,16 @@
             // 
             // Anzahl
             // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle3;
             this.Anzahl.HeaderText = "Anzahl";
             this.Anzahl.Name = "Anzahl";
             this.Anzahl.ReadOnly = true;
             // 
             // Preis
             // 
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.Preis.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.Preis.DefaultCellStyle = dataGridViewCellStyle4;
             this.Preis.HeaderText = "Preis";
             this.Preis.Name = "Preis";
             this.Preis.ReadOnly = true;
@@ -143,8 +146,8 @@
             // 
             // Summe
             // 
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.Summe.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.Summe.DefaultCellStyle = dataGridViewCellStyle5;
             this.Summe.HeaderText = "Summe";
             this.Summe.Name = "Summe";
             this.Summe.ReadOnly = true;
@@ -207,7 +210,7 @@
             // LbL_Verfügbar
             // 
             this.LbL_Verfügbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.LbL_Verfügbar.Location = new System.Drawing.Point(767, 477);
+            this.LbL_Verfügbar.Location = new System.Drawing.Point(767, 517);
             this.LbL_Verfügbar.Name = "LbL_Verfügbar";
             this.LbL_Verfügbar.Size = new System.Drawing.Size(141, 24);
             this.LbL_Verfügbar.TabIndex = 7;
@@ -226,15 +229,51 @@
             this.CmD_LöschenWarenkorb.UseVisualStyleBackColor = true;
             this.CmD_LöschenWarenkorb.Click += new System.EventHandler(this.CmD_LöschenWarenkorb_Click);
             // 
+            // LbL_Kredit
+            // 
+            this.LbL_Kredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.LbL_Kredit.ForeColor = System.Drawing.Color.Gray;
+            this.LbL_Kredit.Location = new System.Drawing.Point(767, 477);
+            this.LbL_Kredit.Name = "LbL_Kredit";
+            this.LbL_Kredit.Size = new System.Drawing.Size(141, 24);
+            this.LbL_Kredit.TabIndex = 7;
+            this.LbL_Kredit.Text = "LbL_Kredit";
+            this.LbL_Kredit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LbL_Kredit.TextChanged += new System.EventHandler(this.LbL_Budget_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(593, 477);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 24);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Verfügbarer Kredit:";
+            // 
+            // LbL_User
+            // 
+            this.LbL_User.AutoSize = true;
+            this.LbL_User.Location = new System.Drawing.Point(784, 564);
+            this.LbL_User.Name = "LbL_User";
+            this.LbL_User.Size = new System.Drawing.Size(53, 13);
+            this.LbL_User.TabIndex = 8;
+            this.LbL_User.Text = "LbL_User";
+            this.LbL_User.Visible = false;
+            // 
             // Frm_Haupt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1216, 628);
+            this.Controls.Add(this.LbL_User);
             this.Controls.Add(this.LbL_Verfügbar);
+            this.Controls.Add(this.LbL_Kredit);
             this.Controls.Add(this.LbL_Budget);
             this.Controls.Add(this.LbL_Summe);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DgV_Warenkorb);
@@ -271,6 +310,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Summe;
         private System.Windows.Forms.Label LbL_Verfügbar;
         private System.Windows.Forms.Button CmD_LöschenWarenkorb;
+        private System.Windows.Forms.Label LbL_Kredit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LbL_User;
     }
 }
 
