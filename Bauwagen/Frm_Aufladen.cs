@@ -131,5 +131,54 @@ namespace Bauwagen
             LbL_Aufladung.Text = String.Format("{0:0.00}", nAufladung) + " €";
         }
 
+        private void CmD_Aufladen_Click(object sender, EventArgs e)
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommandUpdate = new OracleCommand();
+            int nResult = 0;
+
+            string sUser = "";
+            string sBetrag = "";
+
+            if (CmB_User.Text != "")
+            {
+                using (oConnection)
+                {
+                    try
+                    {
+                        oConnection.ConnectionString = Frm_Haupt.sDSN;
+                        oConnection.Open();
+
+                        sUser = CmB_User.Text.Trim();
+                        sBetrag = LbL_Aufladung.Text.Trim().Replace("€"," ").Trim();
+
+                        oCommandUpdate.Connection = oConnection;
+                        oCommandUpdate.CommandText = Cls_Query.InsertAufladung(sUser, sBetrag);
+                        nResult = oCommandUpdate.ExecuteNonQuery();
+
+                        if (nResult > 0)
+                        {
+                            nResult = 0;
+                            oCommandUpdate.CommandText = Cls_Query.UpdateUserAufladung(sUser, sBetrag);
+                            nResult = oCommandUpdate.ExecuteNonQuery();
+                        }
+
+                        LbL_Aufladung.Text = "0,00 €";
+                        MessageBox.Show("Aufladung erfolgreich", "Info");
+
+                        oConnection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "CmD_Aufladen_Click");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Es ist kein Anwender ausgewählt", "Fehler");
+            }
+        }
+
     }
 }

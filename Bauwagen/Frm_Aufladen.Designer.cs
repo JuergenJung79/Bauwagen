@@ -71,6 +71,7 @@
             this.CmD_Aufladen.TabIndex = 2;
             this.CmD_Aufladen.Text = "Aufladen";
             this.CmD_Aufladen.UseVisualStyleBackColor = true;
+            this.CmD_Aufladen.Click += new System.EventHandler(this.CmD_Aufladen_Click);
             // 
             // CmD_Zwei
             // 

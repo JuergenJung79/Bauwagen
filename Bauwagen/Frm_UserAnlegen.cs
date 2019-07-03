@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Bauwagen
 {
@@ -32,7 +33,36 @@ namespace Bauwagen
 
         private void CmD_Create_Click(object sender, EventArgs e)
         {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommandInsert = new OracleCommand();
 
+            int nResult = 0;
+
+            string sPassword = Cls_Procedure.XorEncrypt(TxT_Password.Text.Trim(), Bauwagen.Properties.Settings.Default.Key);
+
+
+            using (oConnection)
+            {
+                try
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommandInsert.Connection = oConnection;
+                    oCommandInsert.CommandText = Cls_Query.InsertUser(TxT_Name.Text.Trim(), TxT_Vorname.Text.Trim(), sPassword,
+                        TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim());
+                    nResult = oCommandInsert.ExecuteNonQuery();
+
+                    MessageBox.Show("User erfolgreich angelegt", "Info");
+                    oConnection.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "CmD_Create_Click");
+                }
+            }
+
+            this.Close();
         }
 
     }
