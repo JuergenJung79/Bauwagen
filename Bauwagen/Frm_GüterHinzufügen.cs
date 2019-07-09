@@ -13,6 +13,9 @@ namespace Bauwagen
 {
     public partial class Frm_GüterHinzufügen : Form
     {
+        internal static bool bLoad = true;
+        internal static bool bDataExists = false;
+
         public Frm_GüterHinzufügen()
         {
             InitializeComponent();
@@ -21,6 +24,24 @@ namespace Bauwagen
         private void Frm_GüterHinzufügen_Load(object sender, EventArgs e)
         {
             GetGüter();
+            bLoad = false;
+        }
+
+        private void CmD_Save_Click(object sender, EventArgs e)
+        {
+            SaveData();
+        }
+
+        private void CmB_Güter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (bLoad == false)
+            {
+                TxT_Preis.Text = "";
+                ChK_Aktiv.Checked = true;
+                bDataExists = false;
+
+                LoadData();
+            }
         }
 
         private void GetGüter()
@@ -56,6 +77,46 @@ namespace Bauwagen
                 {
                     MessageBox.Show(ex.Message, "GetGüter");
                 }
+            }
+        }
+
+        private void SaveData()
+        {
+
+        }
+
+        private void LoadData()
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+            OracleDataReader drReader;
+
+            try
+            {
+                using (oConnection)
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetGüterDaten(CmB_Güter.Text.Trim());
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        TxT_Preis.Text = drReader.GetValue(1).ToString().Trim();
+
+                        if (drReader.GetValue(5).ToString().Trim() == "1") { ChK_Aktiv.Checked = false; } else { ChK_Aktiv.Checked = true; }
+                        bDataExists = true;
+                    }
+                    drReader.Close();
+
+                    oConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "LoadData");
             }
         }
 

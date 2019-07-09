@@ -33,6 +33,7 @@ namespace Bauwagen
             sQuery += "    lock_date    DATE,\n";
             sQuery += "    kredit       NUMBER,\n";
             sQuery += "    change_pw    NUMBER DEFAULT 0,\n";
+            sQuery += "    token_id     VARCHAR2(100),\n";
             sQuery += "    budget       NUMBER)\n";
 
             return sQuery;
@@ -187,12 +188,12 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string InsertUser(string sName, string sVorname, string sPassword, string sBudget, string sKredit)
+        public static string InsertUser(string sName, string sVorname, string sPassword, string sBudget, string sKredit, string sTokenID, string sChangePW)
         {
             string sQuery = "";
 
             sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
-            sQuery += "(id, vorname, name, password, budget, kredit, change_pw)\n";
+            sQuery += "(id, vorname, name, password, budget, kredit, token_id, change_pw)\n";
             sQuery += "VALUES\n";
             sQuery += "(seq_user_id.nextval,\n";
             sQuery += "'" + sVorname + "',\n";
@@ -200,7 +201,8 @@ namespace Bauwagen
             sQuery += "'" + sPassword + "',\n";
             sQuery += sBudget.Replace(",", ".") + ",\n";
             sQuery += sKredit.Replace(",", ".") + ",\n";
-            sQuery += "1)\n";
+            sQuery += "'" + sTokenID + "',\n";
+            sQuery += sChangePW + ")\n";
 
             return sQuery;
         }

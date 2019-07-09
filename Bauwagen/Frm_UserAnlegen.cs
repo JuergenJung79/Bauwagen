@@ -39,7 +39,9 @@ namespace Bauwagen
             int nResult = 0;
 
             string sPassword = Cls_Procedure.XorEncrypt(TxT_Password.Text.Trim(), Bauwagen.Properties.Settings.Default.Key);
+            string sChangePW = "";
 
+            if (ChK_ChangePW.Checked) { sChangePW = "1"; } else { sChangePW = "0"; }
 
             using (oConnection)
             {
@@ -50,7 +52,7 @@ namespace Bauwagen
 
                     oCommandInsert.Connection = oConnection;
                     oCommandInsert.CommandText = Cls_Query.InsertUser(TxT_Name.Text.Trim(), TxT_Vorname.Text.Trim(), sPassword,
-                        TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim());
+                        TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim(), TxT_TokenID.Text.Trim(), sChangePW);
                     nResult = oCommandInsert.ExecuteNonQuery();
 
                     MessageBox.Show("User erfolgreich angelegt", "Info");

@@ -40,6 +40,9 @@
             this.TxT_Budget = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TxT_Kredit = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TxT_TokenID = new System.Windows.Forms.TextBox();
+            this.ChK_ChangePW = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -155,14 +158,49 @@
             this.TxT_Kredit.Size = new System.Drawing.Size(199, 31);
             this.TxT_Kredit.TabIndex = 5;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(56, 272);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 25);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Token";
+            // 
+            // TxT_TokenID
+            // 
+            this.TxT_TokenID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxT_TokenID.Location = new System.Drawing.Point(134, 269);
+            this.TxT_TokenID.Name = "TxT_TokenID";
+            this.TxT_TokenID.PasswordChar = '*';
+            this.TxT_TokenID.Size = new System.Drawing.Size(199, 31);
+            this.TxT_TokenID.TabIndex = 5;
+            // 
+            // ChK_ChangePW
+            // 
+            this.ChK_ChangePW.AutoSize = true;
+            this.ChK_ChangePW.Checked = true;
+            this.ChK_ChangePW.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ChK_ChangePW.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChK_ChangePW.Location = new System.Drawing.Point(392, 173);
+            this.ChK_ChangePW.Name = "ChK_ChangePW";
+            this.ChK_ChangePW.Size = new System.Drawing.Size(204, 29);
+            this.ChK_ChangePW.TabIndex = 22;
+            this.ChK_ChangePW.Text = "Passwort ändern?";
+            this.ChK_ChangePW.UseVisualStyleBackColor = true;
+            // 
             // Frm_UserAnlegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(546, 267);
+            this.ClientSize = new System.Drawing.Size(603, 323);
+            this.Controls.Add(this.ChK_ChangePW);
             this.Controls.Add(this.CmD_Close);
             this.Controls.Add(this.CmD_Create);
+            this.Controls.Add(this.TxT_TokenID);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.TxT_Kredit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TxT_Budget);
@@ -196,5 +234,8 @@
         private System.Windows.Forms.TextBox TxT_Budget;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxT_Kredit;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TxT_TokenID;
+        private System.Windows.Forms.CheckBox ChK_ChangePW;
     }
 }
