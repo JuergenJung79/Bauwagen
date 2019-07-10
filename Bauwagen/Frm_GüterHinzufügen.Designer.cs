@@ -44,6 +44,7 @@
             this.CmB_Güter.Size = new System.Drawing.Size(345, 33);
             this.CmB_Güter.TabIndex = 1;
             this.CmB_Güter.SelectedIndexChanged += new System.EventHandler(this.CmB_Güter_SelectedIndexChanged);
+            this.CmB_Güter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CmB_Güter_KeyDown);
             // 
             // CmD_Save
             // 

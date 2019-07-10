@@ -250,6 +250,34 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string SaveGüterDaten(bool bInsert, bool bUpdate, string sBeschreibung, string sPreis, string sLocked)
+        {
+            string sQuery = "";
+
+            if (bInsert == true && bUpdate == false)
+            {
+                sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".gueter\n";
+                sQuery += "(beschreibung, preis, locked, gueltig_von, last_Update)\n";
+                sQuery += "VALUES\n";
+                sQuery += "('" + sBeschreibung + "',\n";
+                sQuery += sPreis + ",\n";
+                sQuery += sLocked + ",\n";
+                sQuery += "SYSDATE,\n";
+                sQuery += "SYSDATE)\n";
+            }
+            else if (bInsert == false && bUpdate == true)
+            {
+                sQuery = "UPDATE " + Frm_Haupt.sSchema + ".gueter SET\n";
+                sQuery += "    preis = " + sPreis + ",\n";
+                sQuery += "    locked = " + sLocked + ",\n";
+                sQuery += "    last_update = SYSDATE\n";
+                sQuery += "WHERE beschreibung = '" + sBeschreibung + "'\n";
+            }
+
+
+            return sQuery;
+        }
+
         public static string InsertHistory(string sName, string sItem, string sAnzahl, string sEinzelpreis, string sSumme)
         {
             string sQuery = "";

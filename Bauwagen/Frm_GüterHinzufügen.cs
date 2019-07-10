@@ -44,6 +44,18 @@ namespace Bauwagen
             }
         }
 
+        private void CmB_Güter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TxT_Preis.Text = "";
+                ChK_Aktiv.Checked = true;
+                bDataExists = false;
+
+                LoadData();
+            }
+        }
+
         private void GetGüter()
         {
             OracleConnection oConnection = new OracleConnection();
@@ -82,7 +94,47 @@ namespace Bauwagen
 
         private void SaveData()
         {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
 
+            int nResult = 0;
+
+            bool bInsert = false;
+            bool bUpdate = false;
+
+            string sLocked = "0";
+
+            if (bDataExists == true)
+            {
+                bUpdate = true;
+                bInsert = false;
+            }
+            else
+            {
+                bUpdate = false;
+                bInsert = true;
+            }
+
+            if (ChK_Aktiv.Checked == true) { sLocked = "0"; } else { sLocked = "1"; }
+
+            try
+            {
+                using (oConnection)
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.SaveGüterDaten(bInsert, bUpdate, CmB_Güter.Text.Trim(), TxT_Preis.Text.Trim().Replace(",", "."), sLocked);
+                    nResult = oCommand.ExecuteNonQuery();
+
+                    oConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "LoadData");
+            }
         }
 
         private void LoadData()
