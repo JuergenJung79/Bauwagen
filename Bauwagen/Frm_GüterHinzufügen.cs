@@ -56,11 +56,6 @@ namespace Bauwagen
             }
         }
 
-        private void CmB_Güter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void GetGüter()
         {
             OracleConnection oConnection = new OracleConnection();

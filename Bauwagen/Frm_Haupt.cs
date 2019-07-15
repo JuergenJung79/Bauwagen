@@ -93,7 +93,7 @@ namespace Bauwagen
 
                 System.Windows.Forms.Button[] ButtonNamen = new System.Windows.Forms.Button[nAnzahlButtonsNamen];
 
-                oCommand.CommandText = Cls_Query.GetAnwenderDaten("");
+                oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false);
                 drReader = oCommand.ExecuteReader();
 
                 while (drReader.Read())
@@ -206,7 +206,7 @@ namespace Bauwagen
                         oCommandSelect.Connection = oConnection;
                         oCommandUpdate.Connection = oConnection;
 
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text, false);
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -399,7 +399,7 @@ namespace Bauwagen
                         }
                     }
 
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser);
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
                     drReader = oCommandSelect.ExecuteReader();
 
                     while (drReader.Read())
@@ -421,6 +421,14 @@ namespace Bauwagen
                     MessageBox.Show(ex.Message, "CmD_Buchen_Click");
                 }
             }
+
+            DisableGüter();
+
+            LbL_Summe.Text = "0,00 €";
+            LbL_Budget.Text = "0,00 €";
+            LbL_Verfügbar.Text = "0,00 €";
+            LbL_Kredit.Text = "0,00 €";
+            LbL_User.Text = "";
         }
 
         private void CmD_Systemsteuerung_Click(object sender, EventArgs e)

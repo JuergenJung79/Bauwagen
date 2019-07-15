@@ -123,7 +123,7 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string GetAnwenderDaten(string sName)
+        public static string GetAnwenderDaten(string sName, bool bAdmin)
         {
             string sQuery = "";
 
@@ -137,13 +137,18 @@ namespace Bauwagen
             sQuery += "    lock_date,\n";
             sQuery += "    nvl(budget,0),\n";
             sQuery += "    nvl(kredit,0),\n";
-            sQuery += "    nvl(change_pw,1)\n";
+            sQuery += "    nvl(change_pw,1),\n";
+            sQuery += "    token_id\n";
             sQuery += "FROM " + Frm_Haupt.sSchema + ".personen\n";
 
             if (sName != "")
             {
                 sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
-                sQuery += "    AND nvl(bad_logon,0) <= 5\n";
+
+                if (bAdmin == false)
+                {
+                    sQuery += "    AND nvl(bad_logon,0) <= 5\n";
+                }
             }
 
             return sQuery;
@@ -188,21 +193,39 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string InsertUser(string sName, string sVorname, string sPassword, string sBudget, string sKredit, string sTokenID, string sChangePW)
+        public static string InsertUser(bool bUpdate, string sName, string sVorname, string sPassword, string sBudget, string sKredit, string sTokenID, 
+            string sChangePW, string sAktiv)
         {
             string sQuery = "";
 
-            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
-            sQuery += "(id, vorname, name, password, budget, kredit, token_id, change_pw)\n";
-            sQuery += "VALUES\n";
-            sQuery += "(seq_user_id.nextval,\n";
-            sQuery += "'" + sVorname + "',\n";
-            sQuery += "'" + sName + "',\n";
-            sQuery += "'" + sPassword + "',\n";
-            sQuery += sBudget.Replace(",", ".") + ",\n";
-            sQuery += sKredit.Replace(",", ".") + ",\n";
-            sQuery += "'" + sTokenID + "',\n";
-            sQuery += sChangePW + ")\n";
+            if (sAktiv == "0") { sAktiv = "10"; } else { sAktiv = "0"; }
+
+            if (bUpdate == false)
+            {
+                sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
+                sQuery += "(id, vorname, name, password, budget, kredit, token_id, change_pw, bad_logon)\n";
+                sQuery += "VALUES\n";
+                sQuery += "(seq_user_id.nextval,\n";
+                sQuery += "'" + sVorname + "',\n";
+                sQuery += "'" + sName + "',\n";
+                sQuery += "'" + sPassword + "',\n";
+                sQuery += sBudget.Replace(",", ".") + ",\n";
+                sQuery += sKredit.Replace(",", ".") + ",\n";
+                sQuery += "'" + sTokenID + "',\n";
+                sQuery += sChangePW + ",\n";
+                sQuery += sAktiv + ")\n";
+            }
+            else
+            {
+                sQuery += "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
+                sQuery += "    password = '" + sPassword + "',\n";
+                sQuery += "    budget = " + sBudget.Replace(",", ".") + ",\n";
+                sQuery += "    kredit = " + sKredit.Replace(",", ".") + ",\n";
+                sQuery += "    change_pw = " + sChangePW + ",\n";
+                sQuery += "    token_id = '" + sTokenID + "',\n";
+                sQuery += "    bad_logon = " + sAktiv + "\n";
+                sQuery += "WHERE vorname||' '||name = '" + sName + " " + sVorname + "'\n";
+            }
 
             return sQuery;
         }

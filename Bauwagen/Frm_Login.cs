@@ -79,7 +79,7 @@ namespace Bauwagen
                     oCommandSelect.Connection = oConnection;
                     oCommandUpdate.Connection = oConnection;
 
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(LbL_Username.Text.Trim());
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(LbL_Username.Text.Trim(), false);
                     drReader = oCommandSelect.ExecuteReader();
 
                     while (drReader.Read())
@@ -96,7 +96,7 @@ namespace Bauwagen
                         nResult = oCommandUpdate.ExecuteNonQuery();
                         this.DialogResult = DialogResult.OK;
                     }
-                    if (sPassword == TxT_Password.Text && bChangePW == true)
+                    else if (sPassword == TxT_Password.Text && bChangePW == true)
                     {
                         MessageBox.Show("Passwort muss geändert werden", "Info");
                         Frm_ChangePassword frm_ChangePassword = new Frm_ChangePassword();

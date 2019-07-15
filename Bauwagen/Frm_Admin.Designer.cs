@@ -51,7 +51,7 @@
             this.CmD_CreateUser.Name = "CmD_CreateUser";
             this.CmD_CreateUser.Size = new System.Drawing.Size(130, 60);
             this.CmD_CreateUser.TabIndex = 1;
-            this.CmD_CreateUser.Text = "User anlegen";
+            this.CmD_CreateUser.Text = "User bearbeiten";
             this.CmD_CreateUser.UseVisualStyleBackColor = true;
             this.CmD_CreateUser.Click += new System.EventHandler(this.CmD_CreateUser_Click);
             // 

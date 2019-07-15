@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.TxT_TokenID = new System.Windows.Forms.TextBox();
             this.ChK_ChangePW = new System.Windows.Forms.CheckBox();
+            this.CmB_User = new System.Windows.Forms.ComboBox();
+            this.ChK_Aktiv = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -190,12 +192,37 @@
             this.ChK_ChangePW.Text = "Passwort ändern?";
             this.ChK_ChangePW.UseVisualStyleBackColor = true;
             // 
+            // CmB_User
+            // 
+            this.CmB_User.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmB_User.FormattingEnabled = true;
+            this.CmB_User.Location = new System.Drawing.Point(556, 21);
+            this.CmB_User.Name = "CmB_User";
+            this.CmB_User.Size = new System.Drawing.Size(277, 33);
+            this.CmB_User.TabIndex = 23;
+            this.CmB_User.SelectedIndexChanged += new System.EventHandler(this.CmB_User_SelectedIndexChanged);
+            // 
+            // ChK_Aktiv
+            // 
+            this.ChK_Aktiv.AutoSize = true;
+            this.ChK_Aktiv.Checked = true;
+            this.ChK_Aktiv.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ChK_Aktiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChK_Aktiv.Location = new System.Drawing.Point(392, 208);
+            this.ChK_Aktiv.Name = "ChK_Aktiv";
+            this.ChK_Aktiv.Size = new System.Drawing.Size(88, 29);
+            this.ChK_Aktiv.TabIndex = 22;
+            this.ChK_Aktiv.Text = "aktiv?";
+            this.ChK_Aktiv.UseVisualStyleBackColor = true;
+            // 
             // Frm_UserAnlegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(603, 323);
+            this.ClientSize = new System.Drawing.Size(845, 323);
+            this.Controls.Add(this.CmB_User);
+            this.Controls.Add(this.ChK_Aktiv);
             this.Controls.Add(this.ChK_ChangePW);
             this.Controls.Add(this.CmD_Close);
             this.Controls.Add(this.CmD_Create);
@@ -237,5 +264,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxT_TokenID;
         private System.Windows.Forms.CheckBox ChK_ChangePW;
+        private System.Windows.Forms.ComboBox CmB_User;
+        private System.Windows.Forms.CheckBox ChK_Aktiv;
     }
 }
