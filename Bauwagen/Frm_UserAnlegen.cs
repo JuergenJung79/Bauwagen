@@ -191,8 +191,7 @@ namespace Bauwagen
                     MessageBox.Show(ex.Message, "CmD_Create_Click");
                 }
             }
-
-            this.Close();
         }
+
     }
 }

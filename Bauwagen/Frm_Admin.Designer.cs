@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 234);
+            this.ClientSize = new System.Drawing.Size(485, 234);
             this.Controls.Add(this.CmD_Geldaufladen);
             this.Controls.Add(this.CmD_GüterBearbeiten);
             this.Controls.Add(this.CmD_CreateUser);
