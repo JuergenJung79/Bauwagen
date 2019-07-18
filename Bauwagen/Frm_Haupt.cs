@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace Bauwagen
         public static string sSchemaPassword = "";
         public static string sDatabase = "";
         public static string sListenerPort = "";
+        public static string sBackupPfad = "";
+        public static string sRestorePfad = "";
 
         public static int nAnzahlAnwender = 0;
         public static int nAnzahlGüter = 0;
@@ -55,14 +58,21 @@ namespace Bauwagen
             XmlDocument doc = new XmlDocument();
             doc.Load("Settings.xml");
 
-            XmlNode nodeSchema = doc.SelectSingleNode("/Database/Schema");
+            XmlNode nodeSchema = doc.SelectSingleNode("/Bauwagen/Database/Schema");
             sSchema = nodeSchema.FirstChild.Value;
-            XmlNode nodeSchemaPassword = doc.SelectSingleNode("/Database/SchemaPassword");
+            XmlNode nodeSchemaPassword = doc.SelectSingleNode("/Bauwagen/Database/SchemaPassword");
             sSchemaPassword = nodeSchemaPassword.FirstChild.Value;
-            XmlNode nodeDatabase = doc.SelectSingleNode("/Database/Adress");
+            XmlNode nodeDatabase = doc.SelectSingleNode("/Bauwagen/Database/Adress");
             sDatabase = nodeDatabase.FirstChild.Value;
-            XmlNode nodeListener = doc.SelectSingleNode("/Database/ListenerPort");
+            XmlNode nodeListener = doc.SelectSingleNode("/Bauwagen/Database/ListenerPort");
             sListenerPort = nodeListener.FirstChild.Value;
+            XmlNode nodeBackupPfad = doc.SelectSingleNode("/Bauwagen/Database/BackupPfad");
+            sBackupPfad = nodeBackupPfad.FirstChild.Value;
+            XmlNode nodeRestorePfad = doc.SelectSingleNode("/Bauwagen/Database/RestorePfad");
+            sRestorePfad = nodeRestorePfad.FirstChild.Value;
+
+            if (!Directory.Exists(sBackupPfad)) { Directory.CreateDirectory(sBackupPfad); }
+            if (!Directory.Exists(sRestorePfad)) { Directory.CreateDirectory(sRestorePfad); }
 
             string sTemp = Cls_Procedure.XorEncrypt(sSchemaPassword, Bauwagen.Properties.Settings.Default.Key);
             sDSN = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=" + sDatabase + ")(PORT=" + sListenerPort + ")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id="+ sSchema + "; Password="+ sTemp + ";";

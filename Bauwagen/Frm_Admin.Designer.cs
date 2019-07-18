@@ -36,6 +36,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxT_Unverschlüsselt = new System.Windows.Forms.TextBox();
             this.TxT_Verschlüsselt = new System.Windows.Forms.TextBox();
+            this.CmD_Backup = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBar3 = new System.Windows.Forms.ProgressBar();
+            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.CmD_Restore = new System.Windows.Forms.Button();
+            this.progressBar5 = new System.Windows.Forms.ProgressBar();
+            this.progressBar6 = new System.Windows.Forms.ProgressBar();
+            this.progressBar7 = new System.Windows.Forms.ProgressBar();
+            this.progressBar8 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
@@ -119,15 +129,102 @@
             this.TxT_Verschlüsselt.Size = new System.Drawing.Size(239, 31);
             this.TxT_Verschlüsselt.TabIndex = 4;
             // 
+            // CmD_Backup
+            // 
+            this.CmD_Backup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Backup.Location = new System.Drawing.Point(560, 38);
+            this.CmD_Backup.Name = "CmD_Backup";
+            this.CmD_Backup.Size = new System.Drawing.Size(130, 60);
+            this.CmD_Backup.TabIndex = 1;
+            this.CmD_Backup.Text = "Backup";
+            this.CmD_Backup.UseVisualStyleBackColor = true;
+            this.CmD_Backup.Click += new System.EventHandler(this.CmD_Backup_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(712, 12);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(238, 23);
+            this.progressBar1.TabIndex = 5;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(712, 41);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(238, 23);
+            this.progressBar2.TabIndex = 5;
+            // 
+            // progressBar3
+            // 
+            this.progressBar3.Location = new System.Drawing.Point(712, 70);
+            this.progressBar3.Name = "progressBar3";
+            this.progressBar3.Size = new System.Drawing.Size(238, 23);
+            this.progressBar3.TabIndex = 5;
+            // 
+            // progressBar4
+            // 
+            this.progressBar4.Location = new System.Drawing.Point(712, 99);
+            this.progressBar4.Name = "progressBar4";
+            this.progressBar4.Size = new System.Drawing.Size(238, 23);
+            this.progressBar4.TabIndex = 5;
+            // 
+            // CmD_Restore
+            // 
+            this.CmD_Restore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Restore.Location = new System.Drawing.Point(560, 191);
+            this.CmD_Restore.Name = "CmD_Restore";
+            this.CmD_Restore.Size = new System.Drawing.Size(130, 60);
+            this.CmD_Restore.TabIndex = 1;
+            this.CmD_Restore.Text = "Restore";
+            this.CmD_Restore.UseVisualStyleBackColor = true;
+            // 
+            // progressBar5
+            // 
+            this.progressBar5.Location = new System.Drawing.Point(712, 168);
+            this.progressBar5.Name = "progressBar5";
+            this.progressBar5.Size = new System.Drawing.Size(238, 23);
+            this.progressBar5.TabIndex = 5;
+            // 
+            // progressBar6
+            // 
+            this.progressBar6.Location = new System.Drawing.Point(712, 197);
+            this.progressBar6.Name = "progressBar6";
+            this.progressBar6.Size = new System.Drawing.Size(238, 23);
+            this.progressBar6.TabIndex = 5;
+            // 
+            // progressBar7
+            // 
+            this.progressBar7.Location = new System.Drawing.Point(712, 226);
+            this.progressBar7.Name = "progressBar7";
+            this.progressBar7.Size = new System.Drawing.Size(238, 23);
+            this.progressBar7.TabIndex = 5;
+            // 
+            // progressBar8
+            // 
+            this.progressBar8.Location = new System.Drawing.Point(712, 255);
+            this.progressBar8.Name = "progressBar8";
+            this.progressBar8.Size = new System.Drawing.Size(238, 23);
+            this.progressBar8.TabIndex = 5;
+            // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 234);
+            this.ClientSize = new System.Drawing.Size(962, 290);
+            this.Controls.Add(this.progressBar8);
+            this.Controls.Add(this.progressBar4);
+            this.Controls.Add(this.progressBar7);
+            this.Controls.Add(this.progressBar3);
+            this.Controls.Add(this.progressBar6);
+            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.progressBar5);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.TxT_Verschlüsselt);
             this.Controls.Add(this.TxT_Unverschlüsselt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.CmD_Restore);
+            this.Controls.Add(this.CmD_Backup);
             this.Controls.Add(this.CmD_Geldaufladen);
             this.Controls.Add(this.CmD_GüterBearbeiten);
             this.Controls.Add(this.CmD_CreateUser);
@@ -150,5 +247,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxT_Unverschlüsselt;
         private System.Windows.Forms.TextBox TxT_Verschlüsselt;
+        private System.Windows.Forms.Button CmD_Backup;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar progressBar3;
+        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.Button CmD_Restore;
+        private System.Windows.Forms.ProgressBar progressBar5;
+        private System.Windows.Forms.ProgressBar progressBar6;
+        private System.Windows.Forms.ProgressBar progressBar7;
+        private System.Windows.Forms.ProgressBar progressBar8;
     }
 }

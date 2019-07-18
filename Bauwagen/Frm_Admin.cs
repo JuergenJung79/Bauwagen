@@ -127,5 +127,12 @@ namespace Bauwagen
 
             TxT_Verschlüsselt.Text = sAdminPassword;
         }
+
+        private void CmD_Backup_Click(object sender, EventArgs e)
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+
+        }
     }
 }

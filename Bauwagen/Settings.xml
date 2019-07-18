@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Database>
-  <Adress>192.168.10.1</Adress>
-  <ListenerPort>1522</ListenerPort>
-  <Schema>Bauwagen</Schema>
-  <SchemaPassword>놉놊놞놜놊놌놎놅</SchemaPassword>
-</Database>
+<Bauwagen>
+  <Database>
+    <Adress>192.168.10.1</Adress>
+    <ListenerPort>1522</ListenerPort>
+    <Schema>Bauwagen</Schema>
+    <SchemaPassword>놉놊놞놜놊놌놎놅</SchemaPassword>
+    <BackupPfad>C:\Bauwagen\Backup</BackupPfad>
+    <RestorePfad>C:\Bauwagen\Restore</RestorePfad>
+  </Database>
+</Bauwagen>
