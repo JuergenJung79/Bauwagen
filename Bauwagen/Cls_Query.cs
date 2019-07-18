@@ -25,7 +25,7 @@ namespace Bauwagen
             sQuery = "CREATE TABLE personen (\n";
             sQuery += "    id           NUMBER PRIMARY KEY,\n";
             sQuery += "    vorname      VARCHAR2(50) NOT NULL,\n";
-            sQuery += "    name         VARCHAR2(50) NOT NULL,\n";
+            sQuery += "    name         VARCHAR2(50),\n";
             sQuery += "    password     VARCHAR2(50) NOT NULL,\n";
             sQuery += "    last_logon   DATE DEFAULT SYSDATE NOT NULL ,\n";
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
@@ -143,13 +143,15 @@ namespace Bauwagen
 
             if (sName != "")
             {
-                sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+                sQuery += "WHERE vorname||' '||nvl(name,'') = '" + sName + "'\n";
 
                 if (bAdmin == false)
                 {
                     sQuery += "    AND nvl(bad_logon,0) <= 5\n";
                 }
             }
+
+            sQuery += "ORDER BY name||' '||vorname\n";
 
             return sQuery;
         }

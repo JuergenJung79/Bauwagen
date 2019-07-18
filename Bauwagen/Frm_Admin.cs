@@ -25,7 +25,7 @@ namespace Bauwagen
 
             int nResult = 0;
 
-            if (MessageBox.Show("Tabellen werden neu erstellt sind sie sicher?", "Info", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("ACHTUNG!!\n\nTabellen werden neu erstellt und vorhande Daten gelöscht! Wirklich durchführen?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 using (oConnection)
                 {

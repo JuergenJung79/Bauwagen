@@ -40,7 +40,11 @@ namespace Bauwagen
                     case Keys.Control | Keys.S:
                         MessageBox.Show("Strg+S gedrückt");
                         break;
-                        //usw.
+                    //usw.
+
+                    case Keys.Enter:
+                        MessageBox.Show("");
+                        break;
                 }
             }
             return false;
