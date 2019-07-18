@@ -12,7 +12,7 @@ using System.Xml;
 
 namespace Bauwagen
 {
-    public partial class Frm_Haupt : Form
+    public partial class Frm_Haupt : Form, IMessageFilter
     {
         public static string sDSN = "";
         public static string sSchema = "";
@@ -27,7 +27,23 @@ namespace Bauwagen
 
         public Frm_Haupt()
         {
+            Application.AddMessageFilter(this);
             InitializeComponent();
+        }
+
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == 0x100)
+            {
+                switch ((Keys)m.WParam | (Keys)Control.ModifierKeys)
+                {
+                    case Keys.Control | Keys.S:
+                        MessageBox.Show("Strg+S gedrückt");
+                        break;
+                        //usw.
+                }
+            }
+            return false;
         }
 
         private void Frm_Haupt_Load(object sender, EventArgs e)
