@@ -93,8 +93,7 @@ namespace Bauwagen
                         {
                             string sPassword = Cls_Procedure.XorEncrypt(drReader.GetValue(3).ToString().Trim(), Bauwagen.Properties.Settings.Default.Key);
 
-                            TxT_Name.Text = drReader.GetValue(1).ToString().Trim();
-                            TxT_Vorname.Text = drReader.GetValue(2).ToString().Trim();
+                            TxT_Vorname.Text = drReader.GetValue(1).ToString().Trim();
 
                             TxT_Password.Text = sPassword;
 
@@ -120,7 +119,6 @@ namespace Bauwagen
 
         private void ClearData()
         {
-            TxT_Name.Text = "";
             TxT_Vorname.Text = "";
 
             TxT_Password.Text = "";
@@ -170,7 +168,7 @@ namespace Bauwagen
                     oCommandInsert.Connection = oConnection;
                     oCommandSelect.Connection = oConnection;
 
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(TxT_Name.Text.Trim() + " " + TxT_Vorname.Text.Trim(), true);
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(TxT_Vorname.Text.Trim(), true);
                     drReader = oCommandSelect.ExecuteReader();
 
                     while (drReader.Read())
@@ -179,7 +177,7 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
-                    oCommandInsert.CommandText = Cls_Query.InsertUser(bUpdate, TxT_Name.Text.Trim(), TxT_Vorname.Text.Trim(), sPassword,
+                    oCommandInsert.CommandText = Cls_Query.InsertUser(bUpdate, TxT_Vorname.Text.Trim(), sPassword,
                         TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim(), TxT_TokenID.Text.Trim(), sChangePW, sAktiv);
                     nResult = oCommandInsert.ExecuteNonQuery();
 

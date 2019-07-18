@@ -128,7 +128,7 @@ namespace Bauwagen
 
                     ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
                     ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
-                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + " " + drReader.GetValue(2).ToString().Trim();
+                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim();
                     ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
                     ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
                     ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
@@ -226,7 +226,7 @@ namespace Bauwagen
                         oCommandSelect.Connection = oConnection;
                         oCommandUpdate.Connection = oConnection;
 
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text, false);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text.Trim(), false);
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -465,6 +465,11 @@ namespace Bauwagen
                 {
                     GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Visible = false;
                     GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Dispose();
+                }
+                for (int i = nAnzahlGüter - 1; i >= 0; i--)
+                {
+                    GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                    GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Dispose();
                 }
                 CreateButtons();
             }

@@ -120,5 +120,12 @@ namespace Bauwagen
             Frm_GüterHinzufügen frm_güterhinzufügen = new Frm_GüterHinzufügen();
             frm_güterhinzufügen.ShowDialog();
         }
+
+        private void TxT_Unverschlüsselt_TextChanged(object sender, EventArgs e)
+        {
+            string sAdminPassword = Cls_Procedure.XorEncrypt(TxT_Unverschlüsselt.Text.Trim(), Bauwagen.Properties.Settings.Default.Key);
+
+            TxT_Verschlüsselt.Text = sAdminPassword;
+        }
     }
 }

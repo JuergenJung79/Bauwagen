@@ -25,7 +25,6 @@ namespace Bauwagen
             sQuery = "CREATE TABLE personen (\n";
             sQuery += "    id           NUMBER PRIMARY KEY,\n";
             sQuery += "    vorname      VARCHAR2(50) NOT NULL,\n";
-            sQuery += "    name         VARCHAR2(50),\n";
             sQuery += "    password     VARCHAR2(50) NOT NULL,\n";
             sQuery += "    last_logon   DATE DEFAULT SYSDATE NOT NULL ,\n";
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
@@ -34,7 +33,12 @@ namespace Bauwagen
             sQuery += "    kredit       NUMBER,\n";
             sQuery += "    change_pw    NUMBER DEFAULT 0,\n";
             sQuery += "    token_id     VARCHAR2(100),\n";
-            sQuery += "    budget       NUMBER)\n";
+            sQuery += "    budget       NUMBER,\n";
+            sQuery += "  CONSTRAINT PK_VORNAME PRIMARY KEY\n";
+            sQuery += "    (\n";
+            sQuery += "      vorname\n";
+            sQuery += "    )\n";
+            sQuery += "    ENABLE )\n";
 
             return sQuery;
         }
@@ -129,7 +133,7 @@ namespace Bauwagen
 
             sQuery = "SELECT id,\n";
             sQuery += "    vorname,\n";
-            sQuery += "    name,\n";
+            sQuery += "    NULL AS reserve,\n";
             sQuery += "    password,\n";
             sQuery += "    last_logon,\n";
             sQuery += "    locked,\n";
@@ -143,7 +147,7 @@ namespace Bauwagen
 
             if (sName != "")
             {
-                sQuery += "WHERE vorname||' '||nvl(name,'') = '" + sName + "'\n";
+                sQuery += "WHERE vorname = '" + sName + "'\n";
 
                 if (bAdmin == false)
                 {
@@ -151,7 +155,7 @@ namespace Bauwagen
                 }
             }
 
-            sQuery += "ORDER BY name||' '||vorname\n";
+            sQuery += "ORDER BY vorname\n";
 
             return sQuery;
         }
@@ -179,7 +183,7 @@ namespace Bauwagen
                 sQuery += "last_logon = SYSDATE\n";
             }
 
-            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+            sQuery += "WHERE vorname = '" + sName + "'\n";
 
             return sQuery;
         }
@@ -190,12 +194,12 @@ namespace Bauwagen
 
             sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
             sQuery += "    budget = nvl(budget,0) - " + sDelta.Replace(",", ".") + "\n";
-            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+            sQuery += "WHERE vorname = '" + sName + "'\n";
 
             return sQuery;
         }
 
-        public static string InsertUser(bool bUpdate, string sName, string sVorname, string sPassword, string sBudget, string sKredit, string sTokenID, 
+        public static string InsertUser(bool bUpdate, string sVorname, string sPassword, string sBudget, string sKredit, string sTokenID, 
             string sChangePW, string sAktiv)
         {
             string sQuery = "";
@@ -205,11 +209,10 @@ namespace Bauwagen
             if (bUpdate == false)
             {
                 sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
-                sQuery += "(id, vorname, name, password, budget, kredit, token_id, change_pw, bad_logon)\n";
+                sQuery += "(id, vorname, password, budget, kredit, token_id, change_pw, bad_logon)\n";
                 sQuery += "VALUES\n";
                 sQuery += "(seq_user_id.nextval,\n";
                 sQuery += "'" + sVorname + "',\n";
-                sQuery += "'" + sName + "',\n";
                 sQuery += "'" + sPassword + "',\n";
                 sQuery += sBudget.Replace(",", ".") + ",\n";
                 sQuery += sKredit.Replace(",", ".") + ",\n";
@@ -226,7 +229,7 @@ namespace Bauwagen
                 sQuery += "    change_pw = " + sChangePW + ",\n";
                 sQuery += "    token_id = '" + sTokenID + "',\n";
                 sQuery += "    bad_logon = " + sAktiv + "\n";
-                sQuery += "WHERE vorname||' '||name = '" + sName + " " + sVorname + "'\n";
+                sQuery += "WHERE vorname = '" + sVorname + "'\n";
             }
 
             return sQuery;
@@ -238,7 +241,7 @@ namespace Bauwagen
 
             sQuery = "UPDATE " + Frm_Haupt.sSchema + ".personen SET\n";
             sQuery += "    budget = nvl(budget,0) + " + sDelta.Replace(",", ".") + "\n";
-            sQuery += "WHERE vorname||' '||name = '" + sName + "'\n";
+            sQuery += "WHERE vorname = '" + sName + "'\n";
 
             return sQuery;
         }
@@ -310,7 +313,7 @@ namespace Bauwagen
             sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".history\n";
             sQuery += "(id_user, beschreibung, anzahl, einzel_preis, summe, datum_uhr)\n";
             sQuery += "VALUES\n";
-            sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname||' '||name = '" + sName + "'),\n";
+            sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
             sQuery += "'" + sItem + "',\n";
             sQuery += sAnzahl + ",\n";
             sQuery += sEinzelpreis.Replace(",", ".") + ",\n";
@@ -327,7 +330,7 @@ namespace Bauwagen
             sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".aufladung\n";
             sQuery += "(id_user, datum_uhr, betrag)\n";
             sQuery += "VALUES\n";
-            sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname||' '||name = '" + sName + "'),\n";
+            sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
             sQuery += "SYSDATE,\n";
             sQuery += sBetrag.Replace(",", ".") + ")\n";
 
