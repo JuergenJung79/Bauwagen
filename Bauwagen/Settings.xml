@@ -5,7 +5,7 @@
     <ListenerPort>1522</ListenerPort>
     <Schema>Bauwagen</Schema>
     <SchemaPassword>놉놊놞놜놊놌놎놅</SchemaPassword>
-    <BackupPfad>C:\Bauwagen\Backup</BackupPfad>
-    <RestorePfad>C:\Bauwagen\Restore</RestorePfad>
+    <BackupPfad>C:\Bauwagen\Backup\</BackupPfad>
+    <RestorePfad>C:\Bauwagen\Restore\</RestorePfad>
   </Database>
 </Bauwagen>

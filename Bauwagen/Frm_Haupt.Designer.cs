@@ -58,7 +58,7 @@
             // CmD_Systemsteuerung
             // 
             this.CmD_Systemsteuerung.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Systemsteuerung.Location = new System.Drawing.Point(308, 580);
+            this.CmD_Systemsteuerung.Location = new System.Drawing.Point(321, 580);
             this.CmD_Systemsteuerung.Name = "CmD_Systemsteuerung";
             this.CmD_Systemsteuerung.Size = new System.Drawing.Size(175, 39);
             this.CmD_Systemsteuerung.TabIndex = 1;
@@ -71,7 +71,7 @@
             this.FlW_Anwender.AutoScroll = true;
             this.FlW_Anwender.Location = new System.Drawing.Point(12, 12);
             this.FlW_Anwender.Name = "FlW_Anwender";
-            this.FlW_Anwender.Size = new System.Drawing.Size(290, 607);
+            this.FlW_Anwender.Size = new System.Drawing.Size(303, 607);
             this.FlW_Anwender.TabIndex = 3;
             // 
             // FlW_Verbrauchsgüter
@@ -79,7 +79,7 @@
             this.FlW_Verbrauchsgüter.AutoScroll = true;
             this.FlW_Verbrauchsgüter.Location = new System.Drawing.Point(914, 12);
             this.FlW_Verbrauchsgüter.Name = "FlW_Verbrauchsgüter";
-            this.FlW_Verbrauchsgüter.Size = new System.Drawing.Size(290, 607);
+            this.FlW_Verbrauchsgüter.Size = new System.Drawing.Size(303, 607);
             this.FlW_Verbrauchsgüter.TabIndex = 4;
             // 
             // CmD_Logout
@@ -112,10 +112,10 @@
             this.Anzahl,
             this.Preis,
             this.Summe});
-            this.DgV_Warenkorb.Location = new System.Drawing.Point(308, 12);
+            this.DgV_Warenkorb.Location = new System.Drawing.Point(321, 12);
             this.DgV_Warenkorb.Name = "DgV_Warenkorb";
             this.DgV_Warenkorb.ReadOnly = true;
-            this.DgV_Warenkorb.Size = new System.Drawing.Size(600, 360);
+            this.DgV_Warenkorb.Size = new System.Drawing.Size(587, 360);
             this.DgV_Warenkorb.TabIndex = 6;
             // 
             // Gütername
@@ -221,7 +221,7 @@
             // 
             this.CmD_LöschenWarenkorb.Enabled = false;
             this.CmD_LöschenWarenkorb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_LöschenWarenkorb.Location = new System.Drawing.Point(308, 378);
+            this.CmD_LöschenWarenkorb.Location = new System.Drawing.Point(321, 378);
             this.CmD_LöschenWarenkorb.Name = "CmD_LöschenWarenkorb";
             this.CmD_LöschenWarenkorb.Size = new System.Drawing.Size(175, 66);
             this.CmD_LöschenWarenkorb.TabIndex = 5;
@@ -267,7 +267,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1216, 628);
+            this.ClientSize = new System.Drawing.Size(1229, 628);
             this.Controls.Add(this.LbL_User);
             this.Controls.Add(this.LbL_Verfügbar);
             this.Controls.Add(this.LbL_Kredit);

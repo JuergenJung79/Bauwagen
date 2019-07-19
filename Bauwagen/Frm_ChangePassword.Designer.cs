@@ -121,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(400, 188);
             this.Controls.Add(this.CmD_Cancel);
             this.Controls.Add(this.CmD_OK);
@@ -131,6 +132,7 @@
             this.Controls.Add(this.TxT_Password_1);
             this.Controls.Add(this.label2);
             this.Name = "Frm_ChangePassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_ChangePassword";
             this.ResumeLayout(false);
             this.PerformLayout();

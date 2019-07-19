@@ -37,8 +37,8 @@
             this.TxT_Unverschlüsselt = new System.Windows.Forms.TextBox();
             this.TxT_Verschlüsselt = new System.Windows.Forms.TextBox();
             this.CmD_Backup = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_Personen = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_Güter = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.progressBar4 = new System.Windows.Forms.ProgressBar();
             this.CmD_Restore = new System.Windows.Forms.Button();
@@ -140,19 +140,19 @@
             this.CmD_Backup.UseVisualStyleBackColor = true;
             this.CmD_Backup.Click += new System.EventHandler(this.CmD_Backup_Click);
             // 
-            // progressBar1
+            // PgB_Backup_Personen
             // 
-            this.progressBar1.Location = new System.Drawing.Point(712, 12);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(238, 23);
-            this.progressBar1.TabIndex = 5;
+            this.PgB_Backup_Personen.Location = new System.Drawing.Point(712, 12);
+            this.PgB_Backup_Personen.Name = "PgB_Backup_Personen";
+            this.PgB_Backup_Personen.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Personen.TabIndex = 5;
             // 
-            // progressBar2
+            // PgB_Backup_Güter
             // 
-            this.progressBar2.Location = new System.Drawing.Point(712, 41);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(238, 23);
-            this.progressBar2.TabIndex = 5;
+            this.PgB_Backup_Güter.Location = new System.Drawing.Point(712, 41);
+            this.PgB_Backup_Güter.Name = "PgB_Backup_Güter";
+            this.PgB_Backup_Güter.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Güter.TabIndex = 5;
             // 
             // progressBar3
             // 
@@ -216,9 +216,9 @@
             this.Controls.Add(this.progressBar7);
             this.Controls.Add(this.progressBar3);
             this.Controls.Add(this.progressBar6);
-            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.PgB_Backup_Güter);
             this.Controls.Add(this.progressBar5);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.PgB_Backup_Personen);
             this.Controls.Add(this.TxT_Verschlüsselt);
             this.Controls.Add(this.TxT_Unverschlüsselt);
             this.Controls.Add(this.label2);
@@ -232,6 +232,7 @@
             this.Name = "Frm_Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administration";
+            this.Load += new System.EventHandler(this.Frm_Admin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,8 +249,8 @@
         private System.Windows.Forms.TextBox TxT_Unverschlüsselt;
         private System.Windows.Forms.TextBox TxT_Verschlüsselt;
         private System.Windows.Forms.Button CmD_Backup;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Personen;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Güter;
         private System.Windows.Forms.ProgressBar progressBar3;
         private System.Windows.Forms.ProgressBar progressBar4;
         private System.Windows.Forms.Button CmD_Restore;

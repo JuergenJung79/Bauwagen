@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -132,6 +133,112 @@ namespace Bauwagen
         {
             OracleConnection oConnection = new OracleConnection();
             OracleCommand oCommand = new OracleCommand();
+            OracleDataReader drReader;
+
+            int nCounter = 0;
+
+            StringBuilder sb = new StringBuilder();
+            StreamWriter swPersonen = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Personen.csv");
+            StreamWriter swGüter = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2,'0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Güter.csv");
+
+            PgB_Backup_Personen.Value = 0;
+
+            try
+            {
+                using (oConnection)
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+
+                    #region Backup Datenbank Personen
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true);
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        nCounter++;
+                    }
+                    drReader.Close();
+
+                    PgB_Backup_Personen.Maximum = nCounter;
+                    nCounter = 0;
+
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        for (int i = 0; i < drReader.FieldCount; i++)
+                        {
+                            string value = drReader[i].ToString();
+                            if (value.Contains(","))
+                                value = value.Replace(",",".");
+
+                            sb.Append(value.Replace(Environment.NewLine, " ") + ";");
+                        }
+
+                        sb.Length--; // Remove the last comma
+                        sb.AppendLine();
+
+                        PgB_Backup_Personen.Value = nCounter + 1;
+                        nCounter++;
+                    }
+                    drReader.Close();
+                    swPersonen.Write(sb.ToString());
+                    swPersonen.Close();
+                    sb.Clear();
+
+                    nCounter = 0;
+                    #endregion
+
+                    #region Backup Datenbank Personen
+                    oCommand.CommandText = Cls_Query.GetGüterDaten("");
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        nCounter++;
+                    }
+                    drReader.Close();
+
+                    PgB_Backup_Güter.Maximum = nCounter;
+                    nCounter = 0;
+
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        for (int i = 0; i < drReader.FieldCount; i++)
+                        {
+                            string value = drReader[i].ToString();
+                            if (value.Contains(","))
+                                value = value.Replace(",", ".");
+
+                            sb.Append(value.Replace(Environment.NewLine, " ") + ";");
+                        }
+
+                        sb.Length--; // Remove the last comma
+                        sb.AppendLine();
+
+                        PgB_Backup_Güter.Value = nCounter + 1;
+                        nCounter++;
+                    }
+                    drReader.Close();
+                    swGüter.Write(sb.ToString());
+                    swGüter.Close();
+                    sb.Clear();
+
+                    nCounter = 0;
+                    #endregion
+
+                    oConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "CmD_Backup_Click");
+            }
+        }
+
+        private void Frm_Admin_Load(object sender, EventArgs e)
+        {
 
         }
     }

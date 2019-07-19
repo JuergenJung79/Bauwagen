@@ -44,10 +44,6 @@ namespace Bauwagen
                         MessageBox.Show("Strg+S gedrückt");
                         break;
                     //usw.
-
-                    case Keys.Enter:
-                        MessageBox.Show("");
-                        break;
                 }
             }
             return false;
@@ -131,14 +127,14 @@ namespace Bauwagen
                     ButtonNamen[a] = new Button();
 
                     ButtonNamen[a].Height = 70;
-                    ButtonNamen[a].Width = 120;
+                    ButtonNamen[a].Width = 140;
 
                     nLocationY = (5 + ButtonNamen[a].Height) * (a - nOffset) + nOffsetY;
                     nLocationX = (12 + ButtonNamen[a].Width) * nSpalte + nOffsetX;
 
                     ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
                     ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
-                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim();
+                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
                     ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
                     ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
                     ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
@@ -178,14 +174,14 @@ namespace Bauwagen
                     ButtonGüter[b] = new Button();
 
                     ButtonGüter[b].Height = 70;
-                    ButtonGüter[b].Width = 120;
+                    ButtonGüter[b].Width = 140;
 
                     nLocationY = (5 + ButtonGüter[b].Height) * (b - nOffset) + nOffsetY;
                     nLocationX = (12 + ButtonGüter[b].Width) * nSpalte + nOffsetX;
 
                     ButtonGüter[b].Location = new Point(nLocationX, nLocationY);
                     ButtonGüter[b].Name = "CmD_Gueter_" + b.ToString().PadLeft(2, '0'); ;
-                    ButtonGüter[b].Text = drReader.GetValue(0).ToString().Trim();
+                    ButtonGüter[b].Text = drReader.GetValue(0).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(1))) + " €";
                     ButtonGüter[b].Tag = drReader.GetValue(0).ToString().Trim();
                     ButtonGüter[b].Font = new Font("Microsoft Sans Serif", 14.25f);
                     ButtonGüter[b].Click += new EventHandler(buttonGüter_Clicked);
@@ -210,10 +206,14 @@ namespace Bauwagen
         {
             Button angeklickterButton = (Button)sender;
 
+            string sName = angeklickterButton.Text.Trim();
+            int nPositionReturn = sName.IndexOf("\n", 0);
+            sName = sName.Substring(0, nPositionReturn);
+
             Frm_Login frm_login = new Frm_Login();
 
             frm_login.LbL_Status.Text = "user";
-            frm_login.LbL_Username.Text = angeklickterButton.Text;
+            frm_login.LbL_Username.Text = sName;
 
             if (frm_login.ShowDialog() == DialogResult.OK)
             {
@@ -236,7 +236,7 @@ namespace Bauwagen
                         oCommandSelect.Connection = oConnection;
                         oCommandUpdate.Connection = oConnection;
 
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text.Trim(), false);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sName, false);
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -274,6 +274,7 @@ namespace Bauwagen
 
             int nAnzahl = 0;
             int nIndex = 0;
+            int nPositionReturn = sItem.IndexOf("\n", 0);
 
             bool bFound = false;
             bool bKreditOK = false;
@@ -284,6 +285,8 @@ namespace Bauwagen
             double nVerfügbar = 0;
 
             angeklickterButton.Enabled = false;
+
+            sItem = sItem.Substring(0, nPositionReturn);
 
             using (oConnection)
             {
