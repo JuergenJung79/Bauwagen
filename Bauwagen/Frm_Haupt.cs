@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,15 @@ using System.Xml;
 
 namespace Bauwagen
 {
-    public partial class Frm_Haupt : Form
+    public partial class Frm_Haupt : Form, IMessageFilter
     {
         public static string sDSN = "";
         public static string sSchema = "";
         public static string sSchemaPassword = "";
         public static string sDatabase = "";
         public static string sListenerPort = "";
+        public static string sBackupPfad = "";
+        public static string sRestorePfad = "";
 
         public static int nAnzahlAnwender = 0;
         public static int nAnzahlGüter = 0;
@@ -27,7 +30,27 @@ namespace Bauwagen
 
         public Frm_Haupt()
         {
+            Application.AddMessageFilter(this);
             InitializeComponent();
+        }
+
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == 0x100)
+            {
+                switch ((Keys)m.WParam | (Keys)Control.ModifierKeys)
+                {
+                    case Keys.Control | Keys.S:
+                        MessageBox.Show("Strg+S gedrückt");
+                        break;
+                    //usw.
+
+                    case Keys.Enter:
+                        MessageBox.Show("");
+                        break;
+                }
+            }
+            return false;
         }
 
         private void Frm_Haupt_Load(object sender, EventArgs e)
@@ -35,14 +58,21 @@ namespace Bauwagen
             XmlDocument doc = new XmlDocument();
             doc.Load("Settings.xml");
 
-            XmlNode nodeSchema = doc.SelectSingleNode("/Database/Schema");
+            XmlNode nodeSchema = doc.SelectSingleNode("/Bauwagen/Database/Schema");
             sSchema = nodeSchema.FirstChild.Value;
-            XmlNode nodeSchemaPassword = doc.SelectSingleNode("/Database/SchemaPassword");
+            XmlNode nodeSchemaPassword = doc.SelectSingleNode("/Bauwagen/Database/SchemaPassword");
             sSchemaPassword = nodeSchemaPassword.FirstChild.Value;
-            XmlNode nodeDatabase = doc.SelectSingleNode("/Database/Adress");
+            XmlNode nodeDatabase = doc.SelectSingleNode("/Bauwagen/Database/Adress");
             sDatabase = nodeDatabase.FirstChild.Value;
-            XmlNode nodeListener = doc.SelectSingleNode("/Database/ListenerPort");
+            XmlNode nodeListener = doc.SelectSingleNode("/Bauwagen/Database/ListenerPort");
             sListenerPort = nodeListener.FirstChild.Value;
+            XmlNode nodeBackupPfad = doc.SelectSingleNode("/Bauwagen/Database/BackupPfad");
+            sBackupPfad = nodeBackupPfad.FirstChild.Value;
+            XmlNode nodeRestorePfad = doc.SelectSingleNode("/Bauwagen/Database/RestorePfad");
+            sRestorePfad = nodeRestorePfad.FirstChild.Value;
+
+            if (!Directory.Exists(sBackupPfad)) { Directory.CreateDirectory(sBackupPfad); }
+            if (!Directory.Exists(sRestorePfad)) { Directory.CreateDirectory(sRestorePfad); }
 
             string sTemp = Cls_Procedure.XorEncrypt(sSchemaPassword, Bauwagen.Properties.Settings.Default.Key);
             sDSN = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=" + sDatabase + ")(PORT=" + sListenerPort + ")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id="+ sSchema + "; Password="+ sTemp + ";";
@@ -93,7 +123,7 @@ namespace Bauwagen
 
                 System.Windows.Forms.Button[] ButtonNamen = new System.Windows.Forms.Button[nAnzahlButtonsNamen];
 
-                oCommand.CommandText = Cls_Query.GetAnwenderDaten("");
+                oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false);
                 drReader = oCommand.ExecuteReader();
 
                 while (drReader.Read())
@@ -108,7 +138,7 @@ namespace Bauwagen
 
                     ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
                     ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
-                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + " " + drReader.GetValue(2).ToString().Trim();
+                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim();
                     ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
                     ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
                     ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
@@ -206,7 +236,7 @@ namespace Bauwagen
                         oCommandSelect.Connection = oConnection;
                         oCommandUpdate.Connection = oConnection;
 
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(angeklickterButton.Text.Trim(), false);
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -399,7 +429,7 @@ namespace Bauwagen
                         }
                     }
 
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser);
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
                     drReader = oCommandSelect.ExecuteReader();
 
                     while (drReader.Read())
@@ -421,6 +451,14 @@ namespace Bauwagen
                     MessageBox.Show(ex.Message, "CmD_Buchen_Click");
                 }
             }
+
+            DisableGüter();
+
+            LbL_Summe.Text = "0,00 €";
+            LbL_Budget.Text = "0,00 €";
+            LbL_Verfügbar.Text = "0,00 €";
+            LbL_Kredit.Text = "0,00 €";
+            LbL_User.Text = "";
         }
 
         private void CmD_Systemsteuerung_Click(object sender, EventArgs e)
@@ -437,6 +475,11 @@ namespace Bauwagen
                 {
                     GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Visible = false;
                     GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Dispose();
+                }
+                for (int i = nAnzahlGüter - 1; i >= 0; i--)
+                {
+                    GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                    GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Dispose();
                 }
                 CreateButtons();
             }

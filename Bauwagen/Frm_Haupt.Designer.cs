@@ -190,11 +190,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label2.Location = new System.Drawing.Point(578, 437);
+            this.label2.Location = new System.Drawing.Point(555, 437);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 24);
+            this.label2.Size = new System.Drawing.Size(206, 24);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Verfügbares Budget:";
+            this.label2.Text = "Verfügbares Guthaben:";
             // 
             // LbL_Budget
             // 

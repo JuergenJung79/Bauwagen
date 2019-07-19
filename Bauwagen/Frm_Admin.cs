@@ -25,7 +25,7 @@ namespace Bauwagen
 
             int nResult = 0;
 
-            if (MessageBox.Show("Tabellen werden neu erstellt sind sie sicher?", "Info", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("ACHTUNG!!\n\nTabellen werden neu erstellt und vorhande Daten gelöscht! Wirklich durchführen?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 using (oConnection)
                 {
@@ -119,6 +119,20 @@ namespace Bauwagen
         {
             Frm_GüterHinzufügen frm_güterhinzufügen = new Frm_GüterHinzufügen();
             frm_güterhinzufügen.ShowDialog();
+        }
+
+        private void TxT_Unverschlüsselt_TextChanged(object sender, EventArgs e)
+        {
+            string sAdminPassword = Cls_Procedure.XorEncrypt(TxT_Unverschlüsselt.Text.Trim(), Bauwagen.Properties.Settings.Default.Key);
+
+            TxT_Verschlüsselt.Text = sAdminPassword;
+        }
+
+        private void CmD_Backup_Click(object sender, EventArgs e)
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+
         }
     }
 }
