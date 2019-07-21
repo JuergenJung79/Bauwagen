@@ -42,10 +42,12 @@
             this.PgB_Backup_Aufladung = new System.Windows.Forms.ProgressBar();
             this.PgB_Backup_History = new System.Windows.Forms.ProgressBar();
             this.CmD_Restore = new System.Windows.Forms.Button();
-            this.progressBar5 = new System.Windows.Forms.ProgressBar();
-            this.progressBar6 = new System.Windows.Forms.ProgressBar();
-            this.progressBar7 = new System.Windows.Forms.ProgressBar();
-            this.progressBar8 = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Personen = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Güter = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Aufladung = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_History = new System.Windows.Forms.ProgressBar();
+            this.CmB_DatumBackup = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
@@ -132,7 +134,7 @@
             // CmD_Backup
             // 
             this.CmD_Backup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Backup.Location = new System.Drawing.Point(560, 38);
+            this.CmD_Backup.Location = new System.Drawing.Point(560, 12);
             this.CmD_Backup.Name = "CmD_Backup";
             this.CmD_Backup.Size = new System.Drawing.Size(130, 60);
             this.CmD_Backup.TabIndex = 1;
@@ -171,53 +173,75 @@
             // CmD_Restore
             // 
             this.CmD_Restore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Restore.Location = new System.Drawing.Point(560, 191);
+            this.CmD_Restore.Location = new System.Drawing.Point(560, 168);
             this.CmD_Restore.Name = "CmD_Restore";
             this.CmD_Restore.Size = new System.Drawing.Size(130, 60);
             this.CmD_Restore.TabIndex = 1;
             this.CmD_Restore.Text = "Restore";
             this.CmD_Restore.UseVisualStyleBackColor = true;
+            this.CmD_Restore.Click += new System.EventHandler(this.CmD_Restore_Click);
             // 
-            // progressBar5
+            // PgB_Restore_Personen
             // 
-            this.progressBar5.Location = new System.Drawing.Point(712, 168);
-            this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(238, 23);
-            this.progressBar5.TabIndex = 5;
+            this.PgB_Restore_Personen.Location = new System.Drawing.Point(712, 168);
+            this.PgB_Restore_Personen.Name = "PgB_Restore_Personen";
+            this.PgB_Restore_Personen.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Personen.TabIndex = 5;
             // 
-            // progressBar6
+            // PgB_Restore_Güter
             // 
-            this.progressBar6.Location = new System.Drawing.Point(712, 197);
-            this.progressBar6.Name = "progressBar6";
-            this.progressBar6.Size = new System.Drawing.Size(238, 23);
-            this.progressBar6.TabIndex = 5;
+            this.PgB_Restore_Güter.Location = new System.Drawing.Point(712, 197);
+            this.PgB_Restore_Güter.Name = "PgB_Restore_Güter";
+            this.PgB_Restore_Güter.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Güter.TabIndex = 5;
             // 
-            // progressBar7
+            // PgB_Restore_Aufladung
             // 
-            this.progressBar7.Location = new System.Drawing.Point(712, 226);
-            this.progressBar7.Name = "progressBar7";
-            this.progressBar7.Size = new System.Drawing.Size(238, 23);
-            this.progressBar7.TabIndex = 5;
+            this.PgB_Restore_Aufladung.Location = new System.Drawing.Point(712, 226);
+            this.PgB_Restore_Aufladung.Name = "PgB_Restore_Aufladung";
+            this.PgB_Restore_Aufladung.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Aufladung.TabIndex = 5;
             // 
-            // progressBar8
+            // PgB_Restore_History
             // 
-            this.progressBar8.Location = new System.Drawing.Point(712, 255);
-            this.progressBar8.Name = "progressBar8";
-            this.progressBar8.Size = new System.Drawing.Size(238, 23);
-            this.progressBar8.TabIndex = 5;
+            this.PgB_Restore_History.Location = new System.Drawing.Point(712, 255);
+            this.PgB_Restore_History.Name = "PgB_Restore_History";
+            this.PgB_Restore_History.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_History.TabIndex = 5;
+            // 
+            // CmB_DatumBackup
+            // 
+            this.CmB_DatumBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmB_DatumBackup.FormattingEnabled = true;
+            this.CmB_DatumBackup.Location = new System.Drawing.Point(560, 234);
+            this.CmB_DatumBackup.Name = "CmB_DatumBackup";
+            this.CmB_DatumBackup.Size = new System.Drawing.Size(130, 33);
+            this.CmB_DatumBackup.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(402, 238);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 25);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Restoredatum:";
             // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 290);
-            this.Controls.Add(this.progressBar8);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.CmB_DatumBackup);
+            this.Controls.Add(this.PgB_Restore_History);
             this.Controls.Add(this.PgB_Backup_History);
-            this.Controls.Add(this.progressBar7);
+            this.Controls.Add(this.PgB_Restore_Aufladung);
             this.Controls.Add(this.PgB_Backup_Aufladung);
-            this.Controls.Add(this.progressBar6);
+            this.Controls.Add(this.PgB_Restore_Güter);
             this.Controls.Add(this.PgB_Backup_Güter);
-            this.Controls.Add(this.progressBar5);
+            this.Controls.Add(this.PgB_Restore_Personen);
             this.Controls.Add(this.PgB_Backup_Personen);
             this.Controls.Add(this.TxT_Verschlüsselt);
             this.Controls.Add(this.TxT_Unverschlüsselt);
@@ -254,9 +278,11 @@
         private System.Windows.Forms.ProgressBar PgB_Backup_Aufladung;
         private System.Windows.Forms.ProgressBar PgB_Backup_History;
         private System.Windows.Forms.Button CmD_Restore;
-        private System.Windows.Forms.ProgressBar progressBar5;
-        private System.Windows.Forms.ProgressBar progressBar6;
-        private System.Windows.Forms.ProgressBar progressBar7;
-        private System.Windows.Forms.ProgressBar progressBar8;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Personen;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Güter;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Aufladung;
+        private System.Windows.Forms.ProgressBar PgB_Restore_History;
+        private System.Windows.Forms.ComboBox CmB_DatumBackup;
+        private System.Windows.Forms.Label label3;
     }
 }

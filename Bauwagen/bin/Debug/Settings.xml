@@ -6,6 +6,6 @@
     <Schema>Bauwagen</Schema>
     <SchemaPassword>놉놊놞놜놊놌놎놅</SchemaPassword>
     <BackupPfad>C:\Bauwagen\Backup\</BackupPfad>
-    <RestorePfad>C:\Bauwagen\Restore\</RestorePfad>
+    <RestorePfad>C:\Bauwagen\Backup\</RestorePfad>
   </Database>
 </Bauwagen>

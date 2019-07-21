@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
+using System.Data.OleDb;
 
 namespace Bauwagen
 {
@@ -311,11 +312,79 @@ namespace Bauwagen
             {
                 MessageBox.Show(ex.Message, "CmD_Backup_Click");
             }
+
+            GetRestoreDaten();
         }
 
         private void Frm_Admin_Load(object sender, EventArgs e)
         {
+            GetRestoreDaten();
+        }
+
+        private void GetRestoreDaten()
+        {
+            System.IO.DirectoryInfo ParentDirectory = new System.IO.DirectoryInfo(Frm_Haupt.sRestorePfad);
+
+            string sTempString = "";
+            string sFile = "";
+
+            CmB_DatumBackup.Items.Clear();
+
+            foreach(System.IO.FileInfo f in ParentDirectory.GetFiles())
+            {
+                sFile = f.Name.Substring(0, f.Name.IndexOf("_", f.Name.IndexOf("_", f.Name.IndexOf("_", 0) + 1) + 1));
+
+                if (sTempString != sFile)
+                {
+                    CmB_DatumBackup.Items.Add(sFile);
+                }
+
+                sTempString = sFile;
+            }
+        }
+
+        private void CmD_Restore_Click(object sender, EventArgs e)
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+            OracleDataReader drReader;
+
+            int nCounter = 0;
+
+            DataTable dtPersonen = GetTableFromCSV(Frm_Haupt.sRestorePfad);
 
         }
+
+        private DataTable GetTableFromCSV(string sPfad)
+        {
+            if (!File.Exists(sPfad))
+            {
+                throw new FileNotFoundException(@"Die CSV-Datei existiert nicht!", sPfad);
+            }
+
+            string sCsv = File.ReadAllText(sPfad, Encoding.Default);
+            string sTmp = "Tmp.csv";
+
+            sCsv = sCsv.Replace(";", ",");
+            File.WriteAllText(sTmp, sCsv, Encoding.Default);
+
+            DataTable dataTable = new DataTable();
+            OleDbConnectionStringBuilder b = new OleDbConnectionStringBuilder();
+            b.Provider = "Microsoft.Jet.OLEDB.4.0";
+            b.DataSource = Directory.GetParent(sPfad).FullName;
+            b["Extended Properties"] = "Text;";
+
+            OleDbConnection con = new OleDbConnection(b.ToString());
+            OleDbDataAdapter da = new OleDbDataAdapter(string.Format("select * from [{0}]", sTmp), con);
+            da.Fill(dataTable);
+
+            if (File.Exists(sTmp))
+            {
+                File.Delete(sTmp);
+            }
+
+            return dataTable;
+        }
+
     }
 }
