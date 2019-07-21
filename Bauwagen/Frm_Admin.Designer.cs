@@ -39,8 +39,8 @@
             this.CmD_Backup = new System.Windows.Forms.Button();
             this.PgB_Backup_Personen = new System.Windows.Forms.ProgressBar();
             this.PgB_Backup_Güter = new System.Windows.Forms.ProgressBar();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_Aufladung = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_History = new System.Windows.Forms.ProgressBar();
             this.CmD_Restore = new System.Windows.Forms.Button();
             this.progressBar5 = new System.Windows.Forms.ProgressBar();
             this.progressBar6 = new System.Windows.Forms.ProgressBar();
@@ -154,19 +154,19 @@
             this.PgB_Backup_Güter.Size = new System.Drawing.Size(238, 23);
             this.PgB_Backup_Güter.TabIndex = 5;
             // 
-            // progressBar3
+            // PgB_Backup_Aufladung
             // 
-            this.progressBar3.Location = new System.Drawing.Point(712, 70);
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(238, 23);
-            this.progressBar3.TabIndex = 5;
+            this.PgB_Backup_Aufladung.Location = new System.Drawing.Point(712, 70);
+            this.PgB_Backup_Aufladung.Name = "PgB_Backup_Aufladung";
+            this.PgB_Backup_Aufladung.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Aufladung.TabIndex = 5;
             // 
-            // progressBar4
+            // PgB_Backup_History
             // 
-            this.progressBar4.Location = new System.Drawing.Point(712, 99);
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(238, 23);
-            this.progressBar4.TabIndex = 5;
+            this.PgB_Backup_History.Location = new System.Drawing.Point(712, 99);
+            this.PgB_Backup_History.Name = "PgB_Backup_History";
+            this.PgB_Backup_History.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_History.TabIndex = 5;
             // 
             // CmD_Restore
             // 
@@ -212,9 +212,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 290);
             this.Controls.Add(this.progressBar8);
-            this.Controls.Add(this.progressBar4);
+            this.Controls.Add(this.PgB_Backup_History);
             this.Controls.Add(this.progressBar7);
-            this.Controls.Add(this.progressBar3);
+            this.Controls.Add(this.PgB_Backup_Aufladung);
             this.Controls.Add(this.progressBar6);
             this.Controls.Add(this.PgB_Backup_Güter);
             this.Controls.Add(this.progressBar5);
@@ -251,8 +251,8 @@
         private System.Windows.Forms.Button CmD_Backup;
         private System.Windows.Forms.ProgressBar PgB_Backup_Personen;
         private System.Windows.Forms.ProgressBar PgB_Backup_Güter;
-        private System.Windows.Forms.ProgressBar progressBar3;
-        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Aufladung;
+        private System.Windows.Forms.ProgressBar PgB_Backup_History;
         private System.Windows.Forms.Button CmD_Restore;
         private System.Windows.Forms.ProgressBar progressBar5;
         private System.Windows.Forms.ProgressBar progressBar6;

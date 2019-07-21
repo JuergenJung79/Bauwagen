@@ -35,50 +35,12 @@ namespace Bauwagen
 
                     oCommand.Connection = oConnection;
 
-                    //Tabelle Personen löschen
+                    //Tabelle Aufladungen erstellen
                     try
                     {
-                        oCommand.CommandText = Cls_Query.DropTableNamen();
+                        oCommand.CommandText = Cls_Query.DropTableAufladungen();
                         nResult = oCommand.ExecuteNonQuery();
-                    }
-                    catch { }
-
-                    //Tabelle Personen erstellen
-                    try
-                    {
-                        oCommand.CommandText = Cls_Query.CreateTableNamen();
-                        nResult = oCommand.ExecuteNonQuery();
-                    }
-                    catch { }
-
-                    //Sequence Personen löschen
-                    try
-                    {
-                        oCommand.CommandText = Cls_Query.DropSequenceUserID();
-                        nResult = oCommand.ExecuteNonQuery();
-                    }
-                    catch { }
-
-                    //Sequence Personen erstellen
-                    try
-                    {
-                        oCommand.CommandText = Cls_Query.CreateSequenceUserID();
-                        nResult = oCommand.ExecuteNonQuery();
-                    }
-                    catch { }
-
-                    //Tabelle Verbrauch löschen
-                    try
-                    {
-                        oCommand.CommandText = Cls_Query.DropTableGüterdaten();
-                        nResult = oCommand.ExecuteNonQuery();
-                    }
-                    catch { }
-
-                    //Tabelle Verbrauch erstellen
-                    try
-                    {
-                        oCommand.CommandText = Cls_Query.CreateTableGüter();
+                        oCommand.CommandText = Cls_Query.CreateTableAufladungen();
                         nResult = oCommand.ExecuteNonQuery();
                     }
                     catch { }
@@ -86,15 +48,51 @@ namespace Bauwagen
                     //Tabelle History erstellen
                     try
                     {
+                        oCommand.CommandText = Cls_Query.DropTableHistorydaten();
+                        nResult = oCommand.ExecuteNonQuery();
                         oCommand.CommandText = Cls_Query.CreateTableHistory();
                         nResult = oCommand.ExecuteNonQuery();
                     }
                     catch { }
 
-                    //Tabelle Aufladungen erstellen
+                    //Tabelle Verbrauch erstellen
                     try
                     {
-                        oCommand.CommandText = Cls_Query.CreateTableAufladungen();
+                        oCommand.CommandText = Cls_Query.DropTableGüterdaten();
+                        nResult = oCommand.ExecuteNonQuery();
+                        oCommand.CommandText = Cls_Query.CreateTableGüter();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+
+                    //Tabelle Personen erstellen
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.DropTableNamen();
+                        nResult = oCommand.ExecuteNonQuery();
+                        oCommand.CommandText = Cls_Query.CreateTableNamen();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+
+                    //Sequence Personen erstellen
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.DropSequenceUserID();
+                        nResult = oCommand.ExecuteNonQuery();
+                        oCommand.CommandText = Cls_Query.CreateSequenceUserID();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                   
+                    //Constraints erstellen
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.AddUniqueConstraintPersonen();
+                        nResult = oCommand.ExecuteNonQuery();
+                        oCommand.CommandText = Cls_Query.AddForeignKeyAufladungen();
+                        nResult = oCommand.ExecuteNonQuery();
+                        oCommand.CommandText = Cls_Query.AddForeignKeyHistory();
                         nResult = oCommand.ExecuteNonQuery();
                     }
                     catch { }
@@ -140,6 +138,8 @@ namespace Bauwagen
             StringBuilder sb = new StringBuilder();
             StreamWriter swPersonen = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Personen.csv");
             StreamWriter swGüter = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2,'0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Güter.csv");
+            StreamWriter swAufladung = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Aufladung.csv");
+            StreamWriter swHistory = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_History.csv");
 
             PgB_Backup_Personen.Value = 0;
 
@@ -223,6 +223,82 @@ namespace Bauwagen
                     drReader.Close();
                     swGüter.Write(sb.ToString());
                     swGüter.Close();
+                    sb.Clear();
+
+                    nCounter = 0;
+                    #endregion
+
+                    #region Backup Datenbank Aufladung
+                    oCommand.CommandText = Cls_Query.GetAufladungDaten("", "", "");
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        nCounter++;
+                    }
+                    drReader.Close();
+
+                    PgB_Backup_Aufladung.Maximum = nCounter;
+                    nCounter = 0;
+
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        for (int i = 0; i < drReader.FieldCount; i++)
+                        {
+                            string value = drReader[i].ToString();
+                            if (value.Contains(","))
+                                value = value.Replace(",", ".");
+
+                            sb.Append(value.Replace(Environment.NewLine, " ") + ";");
+                        }
+
+                        sb.Length--; // Remove the last comma
+                        sb.AppendLine();
+
+                        PgB_Backup_Aufladung.Value = nCounter + 1;
+                        nCounter++;
+                    }
+                    drReader.Close();
+                    swAufladung.Write(sb.ToString());
+                    swAufladung.Close();
+                    sb.Clear();
+
+                    nCounter = 0;
+                    #endregion
+
+                    #region Backup Datenbank History
+                    oCommand.CommandText = Cls_Query.GetHistoryDaten("", "", "");
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        nCounter++;
+                    }
+                    drReader.Close();
+
+                    PgB_Backup_History.Maximum = nCounter;
+                    nCounter = 0;
+
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        for (int i = 0; i < drReader.FieldCount; i++)
+                        {
+                            string value = drReader[i].ToString();
+                            if (value.Contains(","))
+                                value = value.Replace(",", ".");
+
+                            sb.Append(value.Replace(Environment.NewLine, " ") + ";");
+                        }
+
+                        sb.Length--; // Remove the last comma
+                        sb.AppendLine();
+
+                        PgB_Backup_History.Value = nCounter + 1;
+                        nCounter++;
+                    }
+                    drReader.Close();
+                    swHistory.Write(sb.ToString());
+                    swHistory.Close();
                     sb.Clear();
 
                     nCounter = 0;

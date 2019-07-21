@@ -181,7 +181,7 @@ namespace Bauwagen
                         TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim(), TxT_TokenID.Text.Trim(), sChangePW, sAktiv);
                     nResult = oCommandInsert.ExecuteNonQuery();
 
-                    MessageBox.Show("User erfolgreich angelegt", "Info");
+                    MessageBox.Show("Erfolgreich gespeichert", "Info");
                     oConnection.Close();
                 }
                 catch (Exception ex)

@@ -28,6 +28,8 @@ namespace Bauwagen
 
         public static bool bLoad = true;
 
+        public string sButtonClicked = "";
+
         public Frm_Haupt()
         {
             Application.AddMessageFilter(this);
@@ -246,7 +248,9 @@ namespace Bauwagen
                         }
                         drReader.Close();
 
-                        LbL_User.Text = angeklickterButton.Text.Trim();
+                        sButtonClicked = angeklickterButton.Name;
+
+                        LbL_User.Text = sName;
 
                         oConnection.Clone();
                     }
@@ -441,6 +445,8 @@ namespace Bauwagen
                         LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
                     }
                     drReader.Close();
+
+                    //sButtonClicked Budget eintragen!!!!
 
                     DgV_Warenkorb.Rows.Clear();
 

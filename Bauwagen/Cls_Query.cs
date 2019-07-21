@@ -23,22 +23,36 @@ namespace Bauwagen
             string sQuery = "";
 
             sQuery = "CREATE TABLE personen (\n";
-            sQuery += "    id           NUMBER PRIMARY KEY,\n";
+            sQuery += "    id           NUMBER,\n";
             sQuery += "    vorname      VARCHAR2(50) NOT NULL,\n";
             sQuery += "    password     VARCHAR2(50) NOT NULL,\n";
             sQuery += "    last_logon   DATE DEFAULT SYSDATE NOT NULL ,\n";
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    bad_logon    NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    lock_date    DATE,\n";
+            sQuery += "    budget       NUMBER,\n";
             sQuery += "    kredit       NUMBER,\n";
             sQuery += "    change_pw    NUMBER DEFAULT 0,\n";
             sQuery += "    token_id     VARCHAR2(100),\n";
-            sQuery += "    budget       NUMBER,\n";
             sQuery += "  CONSTRAINT PK_VORNAME PRIMARY KEY\n";
             sQuery += "    (\n";
-            sQuery += "      vorname\n";
+            sQuery += "      id\n";
             sQuery += "    )\n";
             sQuery += "    ENABLE )\n";
+
+            return sQuery;
+        }
+
+        public static string AddUniqueConstraintPersonen()
+        {
+            string sQuery = "";
+
+            sQuery = "ALTER TABLE personen\n";
+            sQuery += "ADD CONSTRAINT UK_ID UNIQUE\n";
+            sQuery += "(\n";
+            sQuery += "    vorname\n";
+            sQuery += ")\n";
+            sQuery += "ENABLE\n";
 
             return sQuery;
         }
@@ -81,7 +95,21 @@ namespace Bauwagen
             sQuery += "    gueltig_bis  DATE,\n";
             sQuery += "    last_update  DATE DEFAULT SYSDATE NOT NULL ,\n";
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
-            sQuery += "    lock_date    DATE)\n";
+            sQuery += "    lock_date    DATE,\n";
+            sQuery += "  CONSTRAINT PK_BESCHREIBUNG PRIMARY KEY\n";
+            sQuery += "    (\n";
+            sQuery += "      beschreibung\n";
+            sQuery += "    )\n";
+            sQuery += "    ENABLE )\n";
+
+            return sQuery;
+        }
+
+        public static string DropTableHistorydaten()
+        {
+            string sQuery = "";
+
+            sQuery = "DROP TABLE history\n";
 
             return sQuery;
         }
@@ -103,6 +131,33 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string AddForeignKeyHistory()
+        {
+            string sQuery = "";
+
+            sQuery = "ALTER TABLE HISTORY\n";
+            sQuery += "ADD CONSTRAINT FK_BESCHREIBUNG FOREIGN KEY\n";
+            sQuery += "(\n";
+            sQuery += "    BESCHREIBUNG\n";
+            sQuery += ")\n";
+            sQuery += "REFERENCES GUETER\n";
+            sQuery += "(\n";
+            sQuery += "    BESCHREIBUNG\n";
+            sQuery += ")\n";
+            sQuery += "ENABLE\n";
+
+            return sQuery;
+        }
+
+        public static string DropTableAufladungen()
+        {
+            string sQuery = "";
+
+            sQuery = "DROP TABLE aufladung\n";
+
+            return sQuery;
+        }
+
         public static string CreateTableAufladungen()
         {
             string sQuery = "";
@@ -113,6 +168,24 @@ namespace Bauwagen
             sQuery += ", DATUM_UHR DATE DEFAULT SYSDATE NOT NULL\n";
             sQuery += ", BETRAG NUMBER NOT NULL\n";
             sQuery += ")\n";
+
+            return sQuery;
+        }
+
+        public static string AddForeignKeyAufladungen()
+        {
+            string sQuery = "";
+
+            sQuery = "ALTER TABLE AUFLADUNG\n";
+            sQuery += "ADD CONSTRAINT FK_USER FOREIGN KEY\n";
+            sQuery += "(\n";
+            sQuery += "    ID_USER\n";
+            sQuery += ")\n";
+            sQuery += "REFERENCES PERSONEN\n";
+            sQuery += "(\n";
+            sQuery += "    ID\n";
+            sQuery += ")\n";
+            sQuery += "ENABLE\n";
 
             return sQuery;
         }
@@ -333,6 +406,55 @@ namespace Bauwagen
             sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
             sQuery += "SYSDATE,\n";
             sQuery += sBetrag.Replace(",", ".") + ")\n";
+
+            return sQuery;
+        }
+
+        public static string GetAufladungDaten(string sName, string sDatumStart, string sDatumEnde)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT id_user,\n";
+            sQuery += "    datum_uhr,\n";
+            sQuery += "    betrag\n";
+            sQuery += "FROM " + Frm_Haupt.sSchema + ".aufladung\n";
+            sQuery += "WHERE 1=1\n";
+
+            if (sName != "")
+            {
+                sQuery += "    AND id_user = (SELECT id " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
+            }
+
+            if (sDatumStart != "" && sDatumEnde != "")
+            {
+                sQuery += "    AND datum_uhr BETWEEN to_date('" + sDatumStart + "','dd.mm.yyyy') AND  to_date('" + sDatumEnde + "','dd.mm.yyyy')\n";
+            }
+
+            return sQuery;
+        }
+
+        public static string GetHistoryDaten(string sName, string sDatumStart, string sDatumEnde)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT id_user,\n";
+            sQuery += "    beschreibung,\n";
+            sQuery += "    anzahl,\n";
+            sQuery += "    einzel_preis,\n";
+            sQuery += "    summe,\n";
+            sQuery += "    datum_uhr\n";
+            sQuery += "FROM " + Frm_Haupt.sSchema + ".history\n";
+            sQuery += "WHERE 1=1\n";
+
+            if (sName != "")
+            {
+                sQuery += "    AND id_user = (SELECT id " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
+            }
+
+            if (sDatumStart != "" && sDatumEnde != "")
+            {
+                sQuery += "    AND datum_uhr BETWEEN to_date('" + sDatumStart + "','dd.mm.yyyy') AND  to_date('" + sDatumEnde + "','dd.mm.yyyy')\n";
+            }
 
             return sQuery;
         }
