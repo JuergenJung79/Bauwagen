@@ -447,6 +447,7 @@ namespace Bauwagen
                     drReader.Close();
 
                     //sButtonClicked Budget eintragen!!!!
+                    GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
 
                     DgV_Warenkorb.Rows.Clear();
 
