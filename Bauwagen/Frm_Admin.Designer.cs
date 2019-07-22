@@ -48,13 +48,14 @@
             this.PgB_Restore_History = new System.Windows.Forms.ProgressBar();
             this.CmB_DatumBackup = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.CmD_Info = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
             // 
-            this.CmD_CreateTables.Location = new System.Drawing.Point(12, 197);
+            this.CmD_CreateTables.Location = new System.Drawing.Point(12, 255);
             this.CmD_CreateTables.Name = "CmD_CreateTables";
-            this.CmD_CreateTables.Size = new System.Drawing.Size(130, 25);
+            this.CmD_CreateTables.Size = new System.Drawing.Size(111, 25);
             this.CmD_CreateTables.TabIndex = 0;
             this.CmD_CreateTables.TabStop = false;
             this.CmD_CreateTables.Text = "Tabellen erstellen";
@@ -98,7 +99,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(161, 114);
+            this.label1.Location = new System.Drawing.Point(31, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 2;
@@ -108,7 +109,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(144, 151);
+            this.label2.Location = new System.Drawing.Point(14, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 25);
             this.label2.TabIndex = 3;
@@ -117,7 +118,7 @@
             // TxT_Unverschlüsselt
             // 
             this.TxT_Unverschlüsselt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxT_Unverschlüsselt.Location = new System.Drawing.Point(232, 111);
+            this.TxT_Unverschlüsselt.Location = new System.Drawing.Point(102, 157);
             this.TxT_Unverschlüsselt.Name = "TxT_Unverschlüsselt";
             this.TxT_Unverschlüsselt.Size = new System.Drawing.Size(239, 31);
             this.TxT_Unverschlüsselt.TabIndex = 4;
@@ -126,7 +127,7 @@
             // TxT_Verschlüsselt
             // 
             this.TxT_Verschlüsselt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxT_Verschlüsselt.Location = new System.Drawing.Point(232, 148);
+            this.TxT_Verschlüsselt.Location = new System.Drawing.Point(102, 194);
             this.TxT_Verschlüsselt.Name = "TxT_Verschlüsselt";
             this.TxT_Verschlüsselt.Size = new System.Drawing.Size(239, 31);
             this.TxT_Verschlüsselt.TabIndex = 4;
@@ -228,11 +229,23 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Restoredatum:";
             // 
+            // CmD_Info
+            // 
+            this.CmD_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Info.Location = new System.Drawing.Point(405, 168);
+            this.CmD_Info.Name = "CmD_Info";
+            this.CmD_Info.Size = new System.Drawing.Size(66, 44);
+            this.CmD_Info.TabIndex = 10;
+            this.CmD_Info.Text = "Info";
+            this.CmD_Info.UseVisualStyleBackColor = true;
+            this.CmD_Info.Click += new System.EventHandler(this.CmD_Info_Click);
+            // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 290);
+            this.Controls.Add(this.CmD_Info);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CmB_DatumBackup);
             this.Controls.Add(this.PgB_Restore_History);
@@ -284,5 +297,6 @@
         private System.Windows.Forms.ProgressBar PgB_Restore_History;
         private System.Windows.Forms.ComboBox CmB_DatumBackup;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button CmD_Info;
     }
 }

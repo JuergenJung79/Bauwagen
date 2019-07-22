@@ -22,6 +22,11 @@ namespace Bauwagen
 
         private void CmD_CreateTables_Click(object sender, EventArgs e)
         {
+            RecreateTables();
+        }
+
+        private void RecreateTables()
+        {
             OracleConnection oConnection = new OracleConnection();
             OracleCommand oCommand = new OracleCommand();
 
@@ -81,11 +86,11 @@ namespace Bauwagen
                     {
                         oCommand.CommandText = Cls_Query.DropSequenceUserID();
                         nResult = oCommand.ExecuteNonQuery();
-                        oCommand.CommandText = Cls_Query.CreateSequenceUserID();
+                        oCommand.CommandText = Cls_Query.CreateSequenceUserID("1");
                         nResult = oCommand.ExecuteNonQuery();
                     }
                     catch { }
-                   
+
                     //Constraints erstellen
                     try
                     {
@@ -327,16 +332,19 @@ namespace Bauwagen
 
             string sTempString = "";
             string sFile = "";
+            string sText = "";
 
             CmB_DatumBackup.Items.Clear();
 
             foreach(System.IO.FileInfo f in ParentDirectory.GetFiles())
             {
-                sFile = f.Name.Substring(0, f.Name.IndexOf("_", f.Name.IndexOf("_", f.Name.IndexOf("_", 0) + 1) + 1));
+                sFile = f.Name.Substring(0, 10);
 
                 if (sTempString != sFile)
                 {
-                    CmB_DatumBackup.Items.Add(sFile);
+                    sText = sFile.Substring(8, 2) + "." + sFile.Substring(5, 2) + "." + sFile.Substring(0, 4);
+
+                    CmB_DatumBackup.Items.Add(sText);
                 }
 
                 sTempString = sFile;
@@ -346,13 +354,46 @@ namespace Bauwagen
         private void CmD_Restore_Click(object sender, EventArgs e)
         {
             OracleConnection oConnection = new OracleConnection();
-            OracleCommand oCommand = new OracleCommand();
+            OracleCommand oCommandSelect = new OracleCommand();
+            OracleCommand oCommandExecute = new OracleCommand();
             OracleDataReader drReader;
 
             int nCounter = 0;
+            int nResult = 0;
 
-            DataTable dtPersonen = GetTableFromCSV(Frm_Haupt.sRestorePfad);
+            string sFileDatum = CmB_DatumBackup.Text.Substring(6, 4) + "_" + CmB_DatumBackup.Text.Substring(3, 2) + CmB_DatumBackup.Text.Substring(0, 2);
 
+            try
+            {
+                DataTable dtPersonen = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv");
+                DataTable dtGueter = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Güter.csv");
+                DataTable dtAufadung = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv");
+                DataTable dtHistory = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv");
+
+                RecreateTables();
+
+                using (oConnection)
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommandSelect.Connection = oConnection;
+                    oCommandExecute.Connection = oConnection;
+
+                    /* Sequence neu erstellen mit neuer max ID
+                    oCommandExecute.CommandText = Cls_Query.DropSequenceUserID();
+                    nResult = oCommandExecute.ExecuteNonQuery();
+                    oCommandExecute.CommandText = Cls_Query.CreateSequenceUserID("1");
+                    nResult = oCommandExecute.ExecuteNonQuery();
+                    */
+
+                    oConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "CmD_Restore_Click");
+            }
         }
 
         private DataTable GetTableFromCSV(string sPfad)
@@ -386,5 +427,10 @@ namespace Bauwagen
             return dataTable;
         }
 
+        private void CmD_Info_Click(object sender, EventArgs e)
+        {
+            Frm_AboutBox frm_aboutbox = new Frm_AboutBox();
+            frm_aboutbox.ShowDialog();
+        }
     }
 }

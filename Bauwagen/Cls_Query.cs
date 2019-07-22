@@ -66,11 +66,11 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string CreateSequenceUserID()
+        public static string CreateSequenceUserID(string sStartWith)
         {
             string sQuery = "";
 
-            sQuery = "CREATE SEQUENCE SEQ_USER_ID INCREMENT BY 1 START WITH 1 NOCACHE\n";
+            sQuery = "CREATE SEQUENCE SEQ_USER_ID INCREMENT BY 1 START WITH " + sStartWith + " NOCACHE\n";
 
             return sQuery;
         }
