@@ -27,6 +27,7 @@ namespace Bauwagen
         public static int nAnzahlGüter = 0;
 
         public static bool bLoad = true;
+        public static bool bBlockRefresh = false;
 
         public string sButtonClicked = "";
 
@@ -207,6 +208,8 @@ namespace Bauwagen
 
         private void buttonNamen_Clicked(object sender, EventArgs e)
         {
+            bBlockRefresh = true;
+
             Button angeklickterButton = (Button)sender;
 
             string sName = angeklickterButton.Text.Trim();
@@ -264,6 +267,8 @@ namespace Bauwagen
             else
             {
                 DisableGüter();
+
+                bBlockRefresh = false;
             }
         }
 
@@ -385,6 +390,8 @@ namespace Bauwagen
             LbL_User.Text = "";
 
             DgV_Warenkorb.Rows.Clear();
+
+            bBlockRefresh = false;
         }
 
         private void CmD_LöschenWarenkorb_Click(object sender, EventArgs e)
@@ -469,6 +476,8 @@ namespace Bauwagen
             LbL_Verfügbar.Text = "0,00 €";
             LbL_Kredit.Text = "0,00 €";
             LbL_User.Text = "";
+
+            bBlockRefresh = false;
         }
 
         private void CmD_Systemsteuerung_Click(object sender, EventArgs e)
@@ -588,5 +597,28 @@ namespace Bauwagen
 
             TmR_Backup.Enabled = true;
         }
+
+        private void TmR_Refresh_Tick(object sender, EventArgs e)
+        {
+            TmR_Refresh.Enabled = false;
+
+            if (bBlockRefresh == false)
+            {
+                for (int i = nAnzahlAnwender - 1; i >= 0; i--)
+                {
+                    GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                    GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Dispose();
+                }
+                for (int i = nAnzahlGüter - 1; i >= 0; i--)
+                {
+                    GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                    GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Dispose();
+                }
+                CreateButtons();
+            }
+
+            TmR_Refresh.Enabled = true;
+        }
+
     }
 }
