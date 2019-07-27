@@ -82,6 +82,7 @@ namespace Bauwagen
 
             CreateButtons();
 
+            Cls_Procedure.BackupData();
             bLoad = false;
         }
 
@@ -579,5 +580,13 @@ namespace Bauwagen
             }
         }
 
+        private void TmR_Backup_Tick(object sender, EventArgs e)
+        {
+            TmR_Backup.Enabled = false;
+
+            Cls_Procedure.BackupData();
+
+            TmR_Backup.Enabled = true;
+        }
     }
 }

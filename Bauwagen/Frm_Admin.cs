@@ -135,6 +135,12 @@ namespace Bauwagen
 
         private void CmD_Backup_Click(object sender, EventArgs e)
         {
+            BackupData(true);
+            GetRestoreDaten();
+        }
+
+        public void BackupData(bool bVisu)
+        {
             OracleConnection oConnection = new OracleConnection();
             OracleCommand oCommand = new OracleCommand();
             OracleDataReader drReader;
@@ -143,11 +149,11 @@ namespace Bauwagen
 
             StringBuilder sb = new StringBuilder();
             StreamWriter swPersonen = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Personen.csv");
-            StreamWriter swGüter = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2,'0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Güter.csv");
+            StreamWriter swGüter = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Güter.csv");
             StreamWriter swAufladung = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Aufladung.csv");
             StreamWriter swHistory = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_History.csv");
 
-            PgB_Backup_Personen.Value = 0;
+            if (bVisu == true) { PgB_Backup_Personen.Value = 0; }
 
             try
             {
@@ -167,7 +173,11 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
-                    PgB_Backup_Personen.Maximum = nCounter;
+                    if (bVisu == true)
+                    {
+                        PgB_Backup_Personen.Maximum = nCounter;
+                    }
+
                     nCounter = 0;
 
                     drReader = oCommand.ExecuteReader();
@@ -177,7 +187,7 @@ namespace Bauwagen
                         {
                             string value = drReader[i].ToString();
                             if (value.Contains(","))
-                                value = value.Replace(",",".");
+                                value = value.Replace(",", ".");
 
                             sb.Append(value.Replace(Environment.NewLine, " ") + ";");
                         }
@@ -185,7 +195,10 @@ namespace Bauwagen
                         sb.Length--; // Remove the last comma
                         sb.AppendLine();
 
-                        PgB_Backup_Personen.Value = nCounter + 1;
+                        if (bVisu == true)
+                        {
+                            PgB_Backup_Personen.Value = nCounter + 1;
+                        }
                         nCounter++;
                     }
                     drReader.Close();
@@ -205,7 +218,10 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
-                    PgB_Backup_Güter.Maximum = nCounter;
+                    if (bVisu == true)
+                    {
+                        PgB_Backup_Güter.Maximum = nCounter;
+                    }
                     nCounter = 0;
 
                     drReader = oCommand.ExecuteReader();
@@ -223,7 +239,10 @@ namespace Bauwagen
                         sb.Length--; // Remove the last comma
                         sb.AppendLine();
 
-                        PgB_Backup_Güter.Value = nCounter + 1;
+                        if (bVisu == true)
+                        {
+                            PgB_Backup_Güter.Value = nCounter + 1;
+                        }
                         nCounter++;
                     }
                     drReader.Close();
@@ -243,7 +262,10 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
-                    PgB_Backup_Aufladung.Maximum = nCounter;
+                    if (bVisu == true)
+                    {
+                        PgB_Backup_Aufladung.Maximum = nCounter;
+                    }
                     nCounter = 0;
 
                     drReader = oCommand.ExecuteReader();
@@ -261,7 +283,10 @@ namespace Bauwagen
                         sb.Length--; // Remove the last comma
                         sb.AppendLine();
 
-                        PgB_Backup_Aufladung.Value = nCounter + 1;
+                        if (bVisu == true)
+                        {
+                            PgB_Backup_Aufladung.Value = nCounter + 1;
+                        }
                         nCounter++;
                     }
                     drReader.Close();
@@ -281,7 +306,10 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
-                    PgB_Backup_History.Maximum = nCounter;
+                    if (bVisu == true)
+                    {
+                        PgB_Backup_History.Maximum = nCounter;
+                    }
                     nCounter = 0;
 
                     drReader = oCommand.ExecuteReader();
@@ -299,7 +327,10 @@ namespace Bauwagen
                         sb.Length--; // Remove the last comma
                         sb.AppendLine();
 
-                        PgB_Backup_History.Value = nCounter + 1;
+                        if (bVisu == true)
+                        {
+                            PgB_Backup_History.Value = nCounter + 1;
+                        }
                         nCounter++;
                     }
                     drReader.Close();
@@ -317,8 +348,6 @@ namespace Bauwagen
             {
                 MessageBox.Show(ex.Message, "CmD_Backup_Click");
             }
-
-            GetRestoreDaten();
         }
 
         private void Frm_Admin_Load(object sender, EventArgs e)
