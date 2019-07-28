@@ -308,6 +308,48 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string InsertUserRestore(string sVorname, string sPassword, string sLastlogon, string sLocked, string sBadLogon, string sLockDate, string sBudget,
+            string sKredit, string sChangePassword, string sTokenID)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
+            sQuery += "(id, vorname, password, last_logon, locked, bad_logon, lock_date, budget, kredit, change_pw, token_id)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(seq_user_id.nextval,\n";
+            sQuery += "'" + sVorname + "',\n";
+            sQuery += "'" + sPassword + "',\n";
+
+            if (sLastlogon != "")
+            {
+                sQuery += "to_date('" + sLastlogon + "','dd.mm.yyyy hh24:mi:ss'),\n";
+            }
+            else
+            {
+                sQuery += "NULL,\n";
+            }
+
+            sQuery += sLocked + ",\n";
+            sQuery += sBadLogon + ",\n";
+
+            if (sLockDate != "")
+            {
+                sQuery += "to_date('" + sLockDate + "','dd.mm.yyyy hh24:mi:ss'),\n";
+            }
+            else
+            {
+                sQuery += "NULL,\n";
+            }
+
+            sQuery += sBudget + ",\n";
+            sQuery += sKredit + ",\n";
+            sQuery += sChangePassword + ",\n";
+            sQuery += "'" + sTokenID + "'\n";
+            sQuery += ")\n";
+
+            return sQuery;
+        }
+
         public static string UpdateUserAufladung(string sName, string sDelta)
         {
             string sQuery = "";

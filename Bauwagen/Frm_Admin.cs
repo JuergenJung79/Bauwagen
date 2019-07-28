@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using System.Data.OleDb;
+using System.Globalization;
 
 namespace Bauwagen
 {
@@ -387,19 +388,19 @@ namespace Bauwagen
             OracleCommand oCommandExecute = new OracleCommand();
             OracleDataReader drReader;
 
-            int nCounter = 0;
+            int nCounter = 1;
             int nResult = 0;
 
-            string sFileDatum = CmB_DatumBackup.Text.Substring(6, 4) + "_" + CmB_DatumBackup.Text.Substring(3, 2) + CmB_DatumBackup.Text.Substring(0, 2);
+            string sFileDatum = CmB_DatumBackup.Text.Substring(6, 4) + "_" + CmB_DatumBackup.Text.Substring(3, 2) + "_" + CmB_DatumBackup.Text.Substring(0, 2);
 
             try
             {
-                DataTable dtPersonen = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv");
-                DataTable dtGueter = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Güter.csv");
-                DataTable dtAufadung = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv");
-                DataTable dtHistory = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv");
+                DataTable dtPersonen = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv", false);
+                DataTable dtGueter = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Güter.csv", false);
+                DataTable dtAufadung = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv", false);
+                DataTable dtHistory = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv", false);
 
-                RecreateTables();
+                //RecreateTables();
 
                 using (oConnection)
                 {
@@ -408,6 +409,28 @@ namespace Bauwagen
 
                     oCommandSelect.Connection = oConnection;
                     oCommandExecute.Connection = oConnection;
+
+                    PgB_Restore_Personen.Value = 0;
+
+                    PgB_Restore_Personen.Maximum = dtPersonen.Rows.Count;
+
+                    #region Restore der Tabelle Personen
+                    if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv"))
+                    {
+                        string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv");
+                        string[][] parts = new string[lines.Length][];
+
+                        for (int i = 0; i < lines.Length; i++)
+                        {
+                            parts[i] = lines[i].Split(';');
+                            oCommandExecute.CommandText = Cls_Query.InsertUserRestore(parts[i][1], parts[i][3], parts[i][4], parts[i][5],
+                                parts[i][6], parts[i][7], parts[i][8], parts[i][9], parts[i][10], parts[i][11]);
+                        }
+
+                        PgB_Restore_Personen.Value = nCounter;
+                        nCounter++;
+                    }
+                    #endregion
 
                     /* Sequence neu erstellen mit neuer max ID
                     oCommandExecute.CommandText = Cls_Query.DropSequenceUserID();
@@ -425,35 +448,26 @@ namespace Bauwagen
             }
         }
 
-        private DataTable GetTableFromCSV(string sPfad)
+        static DataTable GetTableFromCSV(string path, bool isFirstRowHeader)
         {
-            if (!File.Exists(sPfad))
+            string header = isFirstRowHeader ? "Yes" : "No";
+
+            string pathOnly = Path.GetDirectoryName(path);
+            string fileName = Path.GetFileName(path);
+
+            string sql = @"SELECT * FROM [" + fileName + "]";
+
+            using (OleDbConnection connection = new OleDbConnection(
+                      @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathOnly +
+                      ";Extended Properties=\"Text;HDR=" + header + "\""))
+            using (OleDbCommand command = new OleDbCommand(sql, connection))
+            using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
             {
-                throw new FileNotFoundException(@"Die CSV-Datei existiert nicht!", sPfad);
+                DataTable dataTable = new DataTable();
+                dataTable.Locale = CultureInfo.CurrentCulture;
+                adapter.Fill(dataTable);
+                return dataTable;
             }
-
-            string sCsv = File.ReadAllText(sPfad, Encoding.Default);
-            string sTmp = "Tmp.csv";
-
-            sCsv = sCsv.Replace(";", ",");
-            File.WriteAllText(sTmp, sCsv, Encoding.Default);
-
-            DataTable dataTable = new DataTable();
-            OleDbConnectionStringBuilder b = new OleDbConnectionStringBuilder();
-            b.Provider = "Microsoft.Jet.OLEDB.4.0";
-            b.DataSource = Directory.GetParent(sPfad).FullName;
-            b["Extended Properties"] = "Text;";
-
-            OleDbConnection con = new OleDbConnection(b.ToString());
-            OleDbDataAdapter da = new OleDbDataAdapter(string.Format("select * from [{0}]", sTmp), con);
-            da.Fill(dataTable);
-
-            if (File.Exists(sTmp))
-            {
-                File.Delete(sTmp);
-            }
-
-            return dataTable;
         }
 
         private void CmD_Info_Click(object sender, EventArgs e)
