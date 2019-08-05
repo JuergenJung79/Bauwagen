@@ -400,7 +400,7 @@ namespace Bauwagen
                 DataTable dtAufadung = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv", false);
                 DataTable dtHistory = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv", false);
 
-                //RecreateTables();
+                RecreateTables();
 
                 using (oConnection)
                 {
@@ -411,33 +411,133 @@ namespace Bauwagen
                     oCommandExecute.Connection = oConnection;
 
                     PgB_Restore_Personen.Value = 0;
+                    PgB_Restore_Güter.Value = 0;
+                    PgB_Restore_Aufladung.Value = 0;
+                    PgB_Restore_History.Value = 0;
 
-                    PgB_Restore_Personen.Maximum = dtPersonen.Rows.Count;
+                    try { PgB_Restore_Personen.Maximum = dtPersonen.Rows.Count; } catch { }
+                    try
+                    {
+                        PgB_Restore_Güter.Maximum = dtGueter.Rows.Count;
+                    }
+                    catch { }
+                    try
+                    {
+                        PgB_Restore_Aufladung.Maximum = dtAufadung.Rows.Count;
+                    }
+                    catch { }
+                    try
+                    {
+                        PgB_Restore_History.Maximum = dtHistory.Rows.Count;
+                    }
+                    catch { }
 
                     #region Restore der Tabelle Personen
-                    if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv"))
+                    nCounter = 1;
+                    try
                     {
-                        string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv");
-                        string[][] parts = new string[lines.Length][];
-
-                        for (int i = 0; i < lines.Length; i++)
+                        if (dtPersonen.Rows.Count > 0)
                         {
-                            parts[i] = lines[i].Split(';');
-                            oCommandExecute.CommandText = Cls_Query.InsertUserRestore(parts[i][1], parts[i][3], parts[i][4], parts[i][5],
-                                parts[i][6], parts[i][7], parts[i][8], parts[i][9], parts[i][10], parts[i][11]);
-                        }
+                            if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv"))
+                            {
+                                string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_Personen.csv");
+                                string[][] parts = new string[lines.Length][];
 
-                        PgB_Restore_Personen.Value = nCounter;
-                        nCounter++;
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    parts[i] = lines[i].Split(';');
+                                    oCommandExecute.CommandText = Cls_Query.InsertUserRestore(parts[i][1], parts[i][3], parts[i][4], parts[i][5],
+                                        parts[i][6], parts[i][7], parts[i][8], parts[i][9], parts[i][10], parts[i][11]);
+                                    nResult = oCommandExecute.ExecuteNonQuery();
+
+                                    PgB_Restore_Personen.Value = nCounter;
+                                    nCounter++;
+                                }
+                            }
+                        }
                     }
+                    catch { }
                     #endregion
 
-                    /* Sequence neu erstellen mit neuer max ID
-                    oCommandExecute.CommandText = Cls_Query.DropSequenceUserID();
-                    nResult = oCommandExecute.ExecuteNonQuery();
-                    oCommandExecute.CommandText = Cls_Query.CreateSequenceUserID("1");
-                    nResult = oCommandExecute.ExecuteNonQuery();
-                    */
+                    #region Restore der Tabelle Güter
+                    nCounter = 1;
+                    try
+                    {
+                        if (dtGueter.Rows.Count > 0)
+                        {
+                            if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_Güter.csv"))
+                            {
+                                string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_Güter.csv");
+                                string[][] parts = new string[lines.Length][];
+
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    parts[i] = lines[i].Split(';');
+                                    oCommandExecute.CommandText = Cls_Query.InsertGüterRestore(parts[i][0], parts[i][1], parts[i][2], parts[i][3],
+                                        parts[i][4], parts[i][5], parts[i][6]);
+                                    nResult = oCommandExecute.ExecuteNonQuery();
+
+                                    PgB_Restore_Güter.Value = nCounter;
+                                    nCounter++;
+                                }
+                            }
+                        }
+                    }
+                    catch { }
+                    #endregion
+
+                    #region Restore der Tabelle Aufladungen
+                    nCounter = 1;
+                    try
+                    {
+                        if (dtAufadung.Rows.Count > 0)
+                        {
+                            if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv"))
+                            {
+                                string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv");
+                                string[][] parts = new string[lines.Length][];
+
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    parts[i] = lines[i].Split(';');
+                                    oCommandExecute.CommandText = Cls_Query.InsertAufladungenRestore(parts[i][0], parts[i][1], parts[i][2]);
+                                    nResult = oCommandExecute.ExecuteNonQuery();
+
+                                    PgB_Restore_Aufladung.Value = nCounter;
+                                    nCounter++;
+                                }
+                            }
+                        }
+                    }
+                    catch { }
+                    #endregion
+
+                    #region Restore der Tabelle History
+                    nCounter = 1;
+                    try
+                    {
+                        if (dtHistory.Rows.Count > 0)
+                        {
+                            if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv"))
+                            {
+                                string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv");
+                                string[][] parts = new string[lines.Length][];
+
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    parts[i] = lines[i].Split(';');
+                                    oCommandExecute.CommandText = Cls_Query.InsertHistoryRestore(parts[i][0], parts[i][1], parts[i][2], parts[i][3],
+                                        parts[i][4], parts[i][5]);
+                                    nResult = oCommandExecute.ExecuteNonQuery();
+
+                                    PgB_Restore_History.Value = nCounter;
+                                    nCounter++;
+                                }
+                            }
+                        }
+                    }
+                    catch { }
+                    #endregion
 
                     oConnection.Close();
                 }
@@ -463,10 +563,17 @@ namespace Bauwagen
             using (OleDbCommand command = new OleDbCommand(sql, connection))
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
             {
-                DataTable dataTable = new DataTable();
-                dataTable.Locale = CultureInfo.CurrentCulture;
-                adapter.Fill(dataTable);
-                return dataTable;
+                try
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable.Locale = CultureInfo.CurrentCulture;
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 

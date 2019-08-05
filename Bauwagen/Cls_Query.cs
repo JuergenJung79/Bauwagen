@@ -421,6 +421,26 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string InsertGüterRestore(string sBeschreibung, string sPreis, string sGueltig_von, string sGueltig_bis, string sLast_Update,
+            string sLocked, string sLock_Date)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".gueter\n";
+            sQuery += "(beschreibung, preis, gueltig_von, gueltig_bis, last_update, locked, lock_date)\n";
+            sQuery += "VALUES\n";
+            sQuery += "('" + sBeschreibung + "',\n";
+            sQuery += sPreis + ",\n";
+
+            if (sGueltig_von != "") { sQuery += "to_date('" + sGueltig_von + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            if (sGueltig_bis != "") { sQuery += "to_date('" + sGueltig_bis + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            if (sLast_Update != "") { sQuery += "to_date('" + sLast_Update + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            sQuery += sLocked + ",\n";
+            if (sLock_Date != "") { sQuery += "to_date('" + sLock_Date + "','dd.mm.yyyy hh24:mi:ss'))\n"; } else { sQuery += "NULL)\n"; }
+
+            return sQuery;
+        }
+
         public static string InsertHistory(string sName, string sItem, string sAnzahl, string sEinzelpreis, string sSumme)
         {
             string sQuery = "";
@@ -434,6 +454,49 @@ namespace Bauwagen
             sQuery += sEinzelpreis.Replace(",", ".") + ",\n";
             sQuery += sSumme.Replace(",", ".") + ",\n";
             sQuery += "SYSDATE)\n";
+
+            return sQuery;
+        }
+
+        public static string InsertHistoryRestore(string sIDUser, string sBeschreibung, string sAnzahl, string sEinzelPreis, string sSumme, string sDatumUhr)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".history\n";
+            sQuery += "(id_user, beschreibung, anzahl, einzel_preis, summe, datum_uhr)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(" + sIDUser + ",\n";
+            sQuery += "'" + sBeschreibung + "',\n";
+            sQuery += sAnzahl + ",\n";
+            sQuery += sEinzelPreis + ",\n";
+            sQuery += sSumme + ",\n";
+            if (sDatumUhr != "") { sQuery += "to_date('" + sDatumUhr + "','dd.mm.yyyy hh24:mi:ss'))\n"; } else { sQuery += "NULL)\n"; }
+
+            return sQuery;
+        }
+
+        public static string GetHistoryDaten(string sName, string sDatumStart, string sDatumEnde)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT id_user,\n";
+            sQuery += "    beschreibung,\n";
+            sQuery += "    anzahl,\n";
+            sQuery += "    einzel_preis,\n";
+            sQuery += "    summe,\n";
+            sQuery += "    datum_uhr\n";
+            sQuery += "FROM " + Frm_Haupt.sSchema + ".history\n";
+            sQuery += "WHERE 1=1\n";
+
+            if (sName != "")
+            {
+                sQuery += "    AND id_user = (SELECT id " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
+            }
+
+            if (sDatumStart != "" && sDatumEnde != "")
+            {
+                sQuery += "    AND datum_uhr BETWEEN to_date('" + sDatumStart + "','dd.mm.yyyy') AND  to_date('" + sDatumEnde + "','dd.mm.yyyy')\n";
+            }
 
             return sQuery;
         }
@@ -452,6 +515,20 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string InsertAufladungenRestore(string sIDUser, string sDatumUhr, string sBetrag)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".aufladung\n";
+            sQuery += "(id_user, datum_uhr, betrag)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(" + sIDUser + ",\n";
+            if (sDatumUhr != "") { sQuery += "to_date('" + sDatumUhr + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            sQuery += sBetrag + ")\n";
+
+            return sQuery;
+        }
+
         public static string GetAufladungDaten(string sName, string sDatumStart, string sDatumEnde)
         {
             string sQuery = "";
@@ -460,32 +537,6 @@ namespace Bauwagen
             sQuery += "    datum_uhr,\n";
             sQuery += "    betrag\n";
             sQuery += "FROM " + Frm_Haupt.sSchema + ".aufladung\n";
-            sQuery += "WHERE 1=1\n";
-
-            if (sName != "")
-            {
-                sQuery += "    AND id_user = (SELECT id " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
-            }
-
-            if (sDatumStart != "" && sDatumEnde != "")
-            {
-                sQuery += "    AND datum_uhr BETWEEN to_date('" + sDatumStart + "','dd.mm.yyyy') AND  to_date('" + sDatumEnde + "','dd.mm.yyyy')\n";
-            }
-
-            return sQuery;
-        }
-
-        public static string GetHistoryDaten(string sName, string sDatumStart, string sDatumEnde)
-        {
-            string sQuery = "";
-
-            sQuery = "SELECT id_user,\n";
-            sQuery += "    beschreibung,\n";
-            sQuery += "    anzahl,\n";
-            sQuery += "    einzel_preis,\n";
-            sQuery += "    summe,\n";
-            sQuery += "    datum_uhr\n";
-            sQuery += "FROM " + Frm_Haupt.sSchema + ".history\n";
             sQuery += "WHERE 1=1\n";
 
             if (sName != "")
