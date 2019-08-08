@@ -105,104 +105,111 @@ namespace Bauwagen
             int nAnzahlButtonsNamen = 0;
             int nAnzahlButtonsGüter = 0;
 
-            using (oConnection)
+            try
             {
-                oConnection.ConnectionString = sDSN;
-                oConnection.Open();
-
-                #region Buttons für User erstellen
-                oCommand.Connection = oConnection;
-                oCommand.CommandText = Cls_Query.GetMaxAnderID();
-                drReader = oCommand.ExecuteReader();
-
-                while (drReader.Read())
+                using (oConnection)
                 {
-                    nAnzahlButtonsNamen = Convert.ToInt32(drReader.GetValue(0));
+                    oConnection.ConnectionString = sDSN;
+                    oConnection.Open();
+
+                    #region Buttons für User erstellen
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetMaxAnderID();
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        nAnzahlButtonsNamen = Convert.ToInt32(drReader.GetValue(0));
+                    }
+                    drReader.Close();
+
+                    System.Windows.Forms.Button[] ButtonNamen = new System.Windows.Forms.Button[nAnzahlButtonsNamen];
+
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false);
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        ButtonNamen[a] = new Button();
+
+                        ButtonNamen[a].Height = 70;
+                        ButtonNamen[a].Width = 140;
+
+                        nLocationY = (5 + ButtonNamen[a].Height) * (a - nOffset) + nOffsetY;
+                        nLocationX = (12 + ButtonNamen[a].Width) * nSpalte + nOffsetX;
+
+                        ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
+                        ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
+                        ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                        ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
+                        ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
+                        ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
+
+                        FlW_Anwender.Controls.Add(ButtonNamen[a]);
+
+                        if (Convert.ToInt32(drReader.GetValue(5)) == 1 | Convert.ToInt32(drReader.GetValue(6)) > 5) { ButtonNamen[a].Enabled = false; }
+
+                        if (nLocationY > 550) { nOffset = a + 1; nSpalte += 1; }
+                        a++;
+                    }
+
+                    nAnzahlAnwender = a;
+                    #endregion
+
+                    #region Buttons für Verbrauchsgüter erstellen
+                    nSpalte = 6;
+                    nOffset = 0;
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetMaxGüterID();
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        nAnzahlButtonsGüter = Convert.ToInt32(drReader.GetValue(0));
+                    }
+                    drReader.Close();
+
+                    System.Windows.Forms.Button[] ButtonGüter = new System.Windows.Forms.Button[nAnzahlButtonsGüter];
+
+                    oCommand.CommandText = Cls_Query.GetGüterDaten("");
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        ButtonGüter[b] = new Button();
+
+                        ButtonGüter[b].Height = 70;
+                        ButtonGüter[b].Width = 140;
+
+                        nLocationY = (5 + ButtonGüter[b].Height) * (b - nOffset) + nOffsetY;
+                        nLocationX = (12 + ButtonGüter[b].Width) * nSpalte + nOffsetX;
+
+                        ButtonGüter[b].Location = new Point(nLocationX, nLocationY);
+                        ButtonGüter[b].Name = "CmD_Gueter_" + b.ToString().PadLeft(2, '0'); ;
+                        ButtonGüter[b].Text = drReader.GetValue(0).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(1))) + " €";
+                        ButtonGüter[b].Tag = drReader.GetValue(0).ToString().Trim();
+                        ButtonGüter[b].Font = new Font("Microsoft Sans Serif", 14.25f);
+                        ButtonGüter[b].Click += new EventHandler(buttonGüter_Clicked);
+
+                        FlW_Verbrauchsgüter.Controls.Add(ButtonGüter[b]);
+
+                        ButtonGüter[b].Enabled = false;
+
+                        if (nLocationY > 550) { nOffset = b + 1; nSpalte += 1; }
+
+                        b++;
+                    }
+
+                    nAnzahlGüter = b;
+                    #endregion
+
+                    oConnection.Close();
                 }
-                drReader.Close();
-
-                System.Windows.Forms.Button[] ButtonNamen = new System.Windows.Forms.Button[nAnzahlButtonsNamen];
-
-                oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false);
-                drReader = oCommand.ExecuteReader();
-
-                while (drReader.Read())
-                {
-                    ButtonNamen[a] = new Button();
-
-                    ButtonNamen[a].Height = 70;
-                    ButtonNamen[a].Width = 140;
-
-                    nLocationY = (5 + ButtonNamen[a].Height) * (a - nOffset) + nOffsetY;
-                    nLocationX = (12 + ButtonNamen[a].Width) * nSpalte + nOffsetX;
-
-                    ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
-                    ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
-                    ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
-                    ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
-                    ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
-                    ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
-
-                    FlW_Anwender.Controls.Add(ButtonNamen[a]);
-
-                    if (Convert.ToInt32(drReader.GetValue(5)) == 1 | Convert.ToInt32(drReader.GetValue(6)) > 5) { ButtonNamen[a].Enabled = false; }
-
-                    if (nLocationY > 550) { nOffset = a + 1; nSpalte += 1; }
-                    a++;
-                }
-
-                nAnzahlAnwender = a;
-                #endregion
-
-                #region Buttons für Verbrauchsgüter erstellen
-                nSpalte = 6;
-                nOffset = 0;
-
-                oCommand.Connection = oConnection;
-                oCommand.CommandText = Cls_Query.GetMaxGüterID();
-                drReader = oCommand.ExecuteReader();
-
-                while (drReader.Read())
-                {
-                    nAnzahlButtonsGüter = Convert.ToInt32(drReader.GetValue(0));
-                }
-                drReader.Close();
-
-                System.Windows.Forms.Button[] ButtonGüter = new System.Windows.Forms.Button[nAnzahlButtonsGüter];
-
-                oCommand.CommandText = Cls_Query.GetGüterDaten("");
-                drReader = oCommand.ExecuteReader();
-
-                while (drReader.Read())
-                {
-                    ButtonGüter[b] = new Button();
-
-                    ButtonGüter[b].Height = 70;
-                    ButtonGüter[b].Width = 140;
-
-                    nLocationY = (5 + ButtonGüter[b].Height) * (b - nOffset) + nOffsetY;
-                    nLocationX = (12 + ButtonGüter[b].Width) * nSpalte + nOffsetX;
-
-                    ButtonGüter[b].Location = new Point(nLocationX, nLocationY);
-                    ButtonGüter[b].Name = "CmD_Gueter_" + b.ToString().PadLeft(2, '0'); ;
-                    ButtonGüter[b].Text = drReader.GetValue(0).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(1))) + " €";
-                    ButtonGüter[b].Tag = drReader.GetValue(0).ToString().Trim();
-                    ButtonGüter[b].Font = new Font("Microsoft Sans Serif", 14.25f);
-                    ButtonGüter[b].Click += new EventHandler(buttonGüter_Clicked);
-
-                    FlW_Verbrauchsgüter.Controls.Add(ButtonGüter[b]);
-
-                    ButtonGüter[b].Enabled = false;
-
-                    if (nLocationY > 550) { nOffset = b + 1; nSpalte += 1; }
-
-                    b++;
-                }
-
-                nAnzahlGüter = b;
-                #endregion
-
-                oConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "CreateButtons");
             }
         }
 

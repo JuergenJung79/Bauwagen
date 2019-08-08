@@ -47,6 +47,10 @@ namespace Bauwagen
                     {
                         oCommand.CommandText = Cls_Query.DropTableAufladungen();
                         nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
                         oCommand.CommandText = Cls_Query.CreateTableAufladungen();
                         nResult = oCommand.ExecuteNonQuery();
                     }
@@ -57,6 +61,10 @@ namespace Bauwagen
                     {
                         oCommand.CommandText = Cls_Query.DropTableHistorydaten();
                         nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
                         oCommand.CommandText = Cls_Query.CreateTableHistory();
                         nResult = oCommand.ExecuteNonQuery();
                     }
@@ -67,6 +75,10 @@ namespace Bauwagen
                     {
                         oCommand.CommandText = Cls_Query.DropTableGüterdaten();
                         nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
                         oCommand.CommandText = Cls_Query.CreateTableGüter();
                         nResult = oCommand.ExecuteNonQuery();
                     }
@@ -77,6 +89,10 @@ namespace Bauwagen
                     {
                         oCommand.CommandText = Cls_Query.DropTableNamen();
                         nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
                         oCommand.CommandText = Cls_Query.CreateTableNamen();
                         nResult = oCommand.ExecuteNonQuery();
                     }
@@ -87,6 +103,10 @@ namespace Bauwagen
                     {
                         oCommand.CommandText = Cls_Query.DropSequenceUserID();
                         nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
                         oCommand.CommandText = Cls_Query.CreateSequenceUserID("1");
                         nResult = oCommand.ExecuteNonQuery();
                     }
@@ -581,6 +601,12 @@ namespace Bauwagen
         {
             Frm_AboutBox frm_aboutbox = new Frm_AboutBox();
             frm_aboutbox.ShowDialog();
+        }
+
+        private void CmD_Dashboard_Click(object sender, EventArgs e)
+        {
+            Frm_Dashboard frm_dashboard = new Frm_Dashboard();
+            frm_dashboard.ShowDialog();
         }
     }
 }
