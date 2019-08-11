@@ -361,6 +361,40 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string GetUserDashboardHistory(string sName)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT sum(a.summe),\n";
+            sQuery += "    trunc(a.datum_uhr),\n";
+            //sQuery += "    b.vorname,\n";
+            sQuery += "    'Verbrauch'\n";
+            sQuery += "FROM history a\n";
+            sQuery += "JOIN personen b\n";
+            sQuery += "    ON a.id_user = b.id\n";
+
+            if (sName != "") { sQuery += "WHERE b.vorname = '" + sName + "'\n"; }
+
+            sQuery += "GROUP BY trunc(a.datum_uhr),\n";
+            sQuery += "    b.vorname\n";
+            sQuery += "UNION\n";
+            sQuery += "SELECT sum(a.betrag),\n";
+            sQuery += "    trunc(a.datum_uhr),\n";
+            //sQuery += "    b.vorname,\n";
+            sQuery += "    'Aufladung'\n";
+            sQuery += "FROM aufladung a\n";
+            sQuery += "JOIN personen b\n";
+            sQuery += "    ON a.id_user = b.id\n";
+
+            if (sName != "") { sQuery += "WHERE b.vorname = '" + sName + "'\n"; }
+
+            sQuery += "GROUP BY trunc(a.datum_uhr),\n";
+            sQuery += "    b.vorname\n";
+
+            return sQuery;
+
+        }
+
         public static string GetMaxGüterID()
         {
             string sQuery = "";

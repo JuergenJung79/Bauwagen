@@ -39,6 +39,8 @@ namespace Bauwagen
 
         private void ClearData()
         {
+            ChT_Verbrauch.Series[0].Points.Clear();
+            ChT_Verbrauch.Series[1].Points.Clear();
 
         }
 
@@ -87,6 +89,23 @@ namespace Bauwagen
                 {
                     oConnection.ConnectionString = Frm_Haupt.sDSN;
                     oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetUserDashboardHistory(CmB_Name.Text.Trim());
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        if (drReader.GetValue(2).ToString().Trim() == "Verbrauch")
+                        {
+                            ChT_Verbrauch.Series[0].Points.AddXY(Convert.ToDateTime(drReader.GetValue(1)), Convert.ToDouble(drReader.GetValue(0)));
+                        }
+                        else if (drReader.GetValue(2).ToString().Trim() == "Aufladung")
+                        {
+
+                        }
+                    }
+                    drReader.Close();
 
                     oConnection.Close();
                 }

@@ -31,11 +31,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.CmB_Name = new System.Windows.Forms.ComboBox();
             this.ChT_Verbrauch = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CmB_Name = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChT_Verbrauch)).BeginInit();
@@ -61,16 +62,6 @@
             this.tabPage1.Text = "Allgemein";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // CmB_Name
-            // 
-            this.CmB_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmB_Name.FormattingEnabled = true;
-            this.CmB_Name.Location = new System.Drawing.Point(12, 12);
-            this.CmB_Name.Name = "CmB_Name";
-            this.CmB_Name.Size = new System.Drawing.Size(267, 28);
-            this.CmB_Name.TabIndex = 1;
-            this.CmB_Name.SelectedIndexChanged += new System.EventHandler(this.CmB_Name_SelectedIndexChanged);
-            // 
             // ChT_Verbrauch
             // 
             chartArea1.Name = "ChartArea1";
@@ -84,13 +75,27 @@
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Ausgaben";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Aufladungen";
             this.ChT_Verbrauch.Series.Add(series1);
+            this.ChT_Verbrauch.Series.Add(series2);
             this.ChT_Verbrauch.Size = new System.Drawing.Size(964, 290);
             this.ChT_Verbrauch.TabIndex = 0;
             this.ChT_Verbrauch.Text = "Verbrauch";
             title1.Name = "Verbrauch";
             title1.Text = "Verbrauch";
             this.ChT_Verbrauch.Titles.Add(title1);
+            // 
+            // CmB_Name
+            // 
+            this.CmB_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmB_Name.FormattingEnabled = true;
+            this.CmB_Name.Location = new System.Drawing.Point(12, 12);
+            this.CmB_Name.Name = "CmB_Name";
+            this.CmB_Name.Size = new System.Drawing.Size(267, 28);
+            this.CmB_Name.TabIndex = 1;
+            this.CmB_Name.SelectedIndexChanged += new System.EventHandler(this.CmB_Name_SelectedIndexChanged);
             // 
             // Frm_Dashboard
             // 
