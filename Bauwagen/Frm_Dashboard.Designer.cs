@@ -64,6 +64,8 @@
             // 
             // ChT_Verbrauch
             // 
+            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
             chartArea1.Name = "ChartArea1";
             this.ChT_Verbrauch.ChartAreas.Add(chartArea1);
             legend1.Alignment = System.Drawing.StringAlignment.Center;
@@ -80,11 +82,12 @@
             series2.Name = "Aufladungen";
             this.ChT_Verbrauch.Series.Add(series1);
             this.ChT_Verbrauch.Series.Add(series2);
-            this.ChT_Verbrauch.Size = new System.Drawing.Size(964, 290);
+            this.ChT_Verbrauch.Size = new System.Drawing.Size(964, 613);
             this.ChT_Verbrauch.TabIndex = 0;
             this.ChT_Verbrauch.Text = "Verbrauch";
-            title1.Name = "Verbrauch";
-            title1.Text = "Verbrauch";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Übersicht Buchungen";
+            title1.Text = "Übersicht Buchungen";
             this.ChT_Verbrauch.Titles.Add(title1);
             // 
             // CmB_Name

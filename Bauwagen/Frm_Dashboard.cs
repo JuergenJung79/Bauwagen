@@ -25,6 +25,8 @@ namespace Bauwagen
             ClearData();
             LoadUserKomplett();
             bLoad = false;
+
+            LoadUser();
         }
 
         private void CmB_Name_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,7 +104,7 @@ namespace Bauwagen
                         }
                         else if (drReader.GetValue(2).ToString().Trim() == "Aufladung")
                         {
-
+                            ChT_Verbrauch.Series[1].Points.AddXY(Convert.ToDateTime(drReader.GetValue(1)), Convert.ToDouble(drReader.GetValue(0)));
                         }
                     }
                     drReader.Close();
