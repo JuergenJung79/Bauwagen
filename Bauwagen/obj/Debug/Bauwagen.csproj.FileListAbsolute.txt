@@ -78,3 +78,5 @@ H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Chan
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_ChangePassword.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources

@@ -69,7 +69,7 @@
             this.CmD_Create.Location = new System.Drawing.Point(392, 21);
             this.CmD_Create.Name = "CmD_Create";
             this.CmD_Create.Size = new System.Drawing.Size(123, 53);
-            this.CmD_Create.TabIndex = 20;
+            this.CmD_Create.TabIndex = 9;
             this.CmD_Create.Text = "Speichern";
             this.CmD_Create.UseVisualStyleBackColor = true;
             this.CmD_Create.Click += new System.EventHandler(this.CmD_Create_Click);
@@ -80,7 +80,7 @@
             this.CmD_Close.Location = new System.Drawing.Point(392, 80);
             this.CmD_Close.Name = "CmD_Close";
             this.CmD_Close.Size = new System.Drawing.Size(123, 53);
-            this.CmD_Close.TabIndex = 21;
+            this.CmD_Close.TabIndex = 10;
             this.CmD_Close.Text = "abbrechen";
             this.CmD_Close.UseVisualStyleBackColor = true;
             this.CmD_Close.Click += new System.EventHandler(this.CmD_Close_Click);
@@ -157,7 +157,7 @@
             this.TxT_TokenID.Name = "TxT_TokenID";
             this.TxT_TokenID.PasswordChar = '*';
             this.TxT_TokenID.Size = new System.Drawing.Size(199, 31);
-            this.TxT_TokenID.TabIndex = 5;
+            this.TxT_TokenID.TabIndex = 6;
             // 
             // ChK_ChangePW
             // 
@@ -168,7 +168,7 @@
             this.ChK_ChangePW.Location = new System.Drawing.Point(392, 173);
             this.ChK_ChangePW.Name = "ChK_ChangePW";
             this.ChK_ChangePW.Size = new System.Drawing.Size(204, 29);
-            this.ChK_ChangePW.TabIndex = 22;
+            this.ChK_ChangePW.TabIndex = 7;
             this.ChK_ChangePW.Text = "Passwort ändern?";
             this.ChK_ChangePW.UseVisualStyleBackColor = true;
             // 
@@ -179,7 +179,8 @@
             this.CmB_User.Location = new System.Drawing.Point(556, 21);
             this.CmB_User.Name = "CmB_User";
             this.CmB_User.Size = new System.Drawing.Size(277, 33);
-            this.CmB_User.TabIndex = 23;
+            this.CmB_User.TabIndex = 999;
+            this.CmB_User.TabStop = false;
             this.CmB_User.SelectedIndexChanged += new System.EventHandler(this.CmB_User_SelectedIndexChanged);
             // 
             // ChK_Aktiv
@@ -191,7 +192,7 @@
             this.ChK_Aktiv.Location = new System.Drawing.Point(392, 208);
             this.ChK_Aktiv.Name = "ChK_Aktiv";
             this.ChK_Aktiv.Size = new System.Drawing.Size(88, 29);
-            this.ChK_Aktiv.TabIndex = 22;
+            this.ChK_Aktiv.TabIndex = 8;
             this.ChK_Aktiv.Text = "aktiv?";
             this.ChK_Aktiv.UseVisualStyleBackColor = true;
             // 

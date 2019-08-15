@@ -52,7 +52,7 @@
             this.CmD_Save.Location = new System.Drawing.Point(691, 12);
             this.CmD_Save.Name = "CmD_Save";
             this.CmD_Save.Size = new System.Drawing.Size(121, 60);
-            this.CmD_Save.TabIndex = 3;
+            this.CmD_Save.TabIndex = 4;
             this.CmD_Save.Text = "Speichern";
             this.CmD_Save.UseVisualStyleBackColor = true;
             this.CmD_Save.Click += new System.EventHandler(this.CmD_Save_Click);
@@ -76,7 +76,7 @@
             this.ChK_Aktiv.Location = new System.Drawing.Point(590, 29);
             this.ChK_Aktiv.Name = "ChK_Aktiv";
             this.ChK_Aktiv.Size = new System.Drawing.Size(76, 29);
-            this.ChK_Aktiv.TabIndex = 23;
+            this.ChK_Aktiv.TabIndex = 3;
             this.ChK_Aktiv.Text = "aktiv";
             this.ChK_Aktiv.UseVisualStyleBackColor = true;
             // 
@@ -86,7 +86,7 @@
             this.TxT_Preis.Location = new System.Drawing.Point(458, 27);
             this.TxT_Preis.Name = "TxT_Preis";
             this.TxT_Preis.Size = new System.Drawing.Size(100, 31);
-            this.TxT_Preis.TabIndex = 24;
+            this.TxT_Preis.TabIndex = 2;
             // 
             // Frm_GüterHinzufügen
             // 

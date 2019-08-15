@@ -128,6 +128,7 @@ namespace Bauwagen
                     oCommand.CommandText = Cls_Query.SaveGüterDaten(bInsert, bUpdate, CmB_Güter.Text.Trim(), TxT_Preis.Text.Trim().Replace(",", "."), sLocked);
                     nResult = oCommand.ExecuteNonQuery();
 
+                    MessageBox.Show("Erfolgreich gespeichert", "Info");
                     oConnection.Close();
                 }
             }

@@ -23,22 +23,36 @@ namespace Bauwagen
             string sQuery = "";
 
             sQuery = "CREATE TABLE personen (\n";
-            sQuery += "    id           NUMBER PRIMARY KEY,\n";
+            sQuery += "    id           NUMBER,\n";
             sQuery += "    vorname      VARCHAR2(50) NOT NULL,\n";
             sQuery += "    password     VARCHAR2(50) NOT NULL,\n";
             sQuery += "    last_logon   DATE DEFAULT SYSDATE NOT NULL ,\n";
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    bad_logon    NUMBER DEFAULT 0 NOT NULL ,\n";
             sQuery += "    lock_date    DATE,\n";
+            sQuery += "    budget       NUMBER,\n";
             sQuery += "    kredit       NUMBER,\n";
             sQuery += "    change_pw    NUMBER DEFAULT 0,\n";
             sQuery += "    token_id     VARCHAR2(100),\n";
-            sQuery += "    budget       NUMBER,\n";
             sQuery += "  CONSTRAINT PK_VORNAME PRIMARY KEY\n";
             sQuery += "    (\n";
-            sQuery += "      vorname\n";
+            sQuery += "      id\n";
             sQuery += "    )\n";
             sQuery += "    ENABLE )\n";
+
+            return sQuery;
+        }
+
+        public static string AddUniqueConstraintPersonen()
+        {
+            string sQuery = "";
+
+            sQuery = "ALTER TABLE personen\n";
+            sQuery += "ADD CONSTRAINT UK_ID UNIQUE\n";
+            sQuery += "(\n";
+            sQuery += "    vorname\n";
+            sQuery += ")\n";
+            sQuery += "ENABLE\n";
 
             return sQuery;
         }
@@ -52,11 +66,11 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string CreateSequenceUserID()
+        public static string CreateSequenceUserID(string sStartWith)
         {
             string sQuery = "";
 
-            sQuery = "CREATE SEQUENCE SEQ_USER_ID INCREMENT BY 1 START WITH 1 NOCACHE\n";
+            sQuery = "CREATE SEQUENCE SEQ_USER_ID INCREMENT BY 1 START WITH " + sStartWith + " NOCACHE\n";
 
             return sQuery;
         }
@@ -81,7 +95,21 @@ namespace Bauwagen
             sQuery += "    gueltig_bis  DATE,\n";
             sQuery += "    last_update  DATE DEFAULT SYSDATE NOT NULL ,\n";
             sQuery += "    locked       NUMBER DEFAULT 0 NOT NULL ,\n";
-            sQuery += "    lock_date    DATE)\n";
+            sQuery += "    lock_date    DATE,\n";
+            sQuery += "  CONSTRAINT PK_BESCHREIBUNG PRIMARY KEY\n";
+            sQuery += "    (\n";
+            sQuery += "      beschreibung\n";
+            sQuery += "    )\n";
+            sQuery += "    ENABLE )\n";
+
+            return sQuery;
+        }
+
+        public static string DropTableHistorydaten()
+        {
+            string sQuery = "";
+
+            sQuery = "DROP TABLE history\n";
 
             return sQuery;
         }
@@ -103,6 +131,33 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string AddForeignKeyHistory()
+        {
+            string sQuery = "";
+
+            sQuery = "ALTER TABLE HISTORY\n";
+            sQuery += "ADD CONSTRAINT FK_BESCHREIBUNG FOREIGN KEY\n";
+            sQuery += "(\n";
+            sQuery += "    BESCHREIBUNG\n";
+            sQuery += ")\n";
+            sQuery += "REFERENCES GUETER\n";
+            sQuery += "(\n";
+            sQuery += "    BESCHREIBUNG\n";
+            sQuery += ")\n";
+            sQuery += "ENABLE\n";
+
+            return sQuery;
+        }
+
+        public static string DropTableAufladungen()
+        {
+            string sQuery = "";
+
+            sQuery = "DROP TABLE aufladung\n";
+
+            return sQuery;
+        }
+
         public static string CreateTableAufladungen()
         {
             string sQuery = "";
@@ -113,6 +168,24 @@ namespace Bauwagen
             sQuery += ", DATUM_UHR DATE DEFAULT SYSDATE NOT NULL\n";
             sQuery += ", BETRAG NUMBER NOT NULL\n";
             sQuery += ")\n";
+
+            return sQuery;
+        }
+
+        public static string AddForeignKeyAufladungen()
+        {
+            string sQuery = "";
+
+            sQuery = "ALTER TABLE AUFLADUNG\n";
+            sQuery += "ADD CONSTRAINT FK_USER FOREIGN KEY\n";
+            sQuery += "(\n";
+            sQuery += "    ID_USER\n";
+            sQuery += ")\n";
+            sQuery += "REFERENCES PERSONEN\n";
+            sQuery += "(\n";
+            sQuery += "    ID\n";
+            sQuery += ")\n";
+            sQuery += "ENABLE\n";
 
             return sQuery;
         }
@@ -235,6 +308,48 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string InsertUserRestore(string sVorname, string sPassword, string sLastlogon, string sLocked, string sBadLogon, string sLockDate, string sBudget,
+            string sKredit, string sChangePassword, string sTokenID)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
+            sQuery += "(id, vorname, password, last_logon, locked, bad_logon, lock_date, budget, kredit, change_pw, token_id)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(seq_user_id.nextval,\n";
+            sQuery += "'" + sVorname + "',\n";
+            sQuery += "'" + sPassword + "',\n";
+
+            if (sLastlogon != "")
+            {
+                sQuery += "to_date('" + sLastlogon + "','dd.mm.yyyy hh24:mi:ss'),\n";
+            }
+            else
+            {
+                sQuery += "NULL,\n";
+            }
+
+            sQuery += sLocked + ",\n";
+            sQuery += sBadLogon + ",\n";
+
+            if (sLockDate != "")
+            {
+                sQuery += "to_date('" + sLockDate + "','dd.mm.yyyy hh24:mi:ss'),\n";
+            }
+            else
+            {
+                sQuery += "NULL,\n";
+            }
+
+            sQuery += sBudget + ",\n";
+            sQuery += sKredit + ",\n";
+            sQuery += sChangePassword + ",\n";
+            sQuery += "'" + sTokenID + "'\n";
+            sQuery += ")\n";
+
+            return sQuery;
+        }
+
         public static string UpdateUserAufladung(string sName, string sDelta)
         {
             string sQuery = "";
@@ -244,6 +359,40 @@ namespace Bauwagen
             sQuery += "WHERE vorname = '" + sName + "'\n";
 
             return sQuery;
+        }
+
+        public static string GetUserDashboardHistory(string sName)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT sum(a.summe),\n";
+            sQuery += "    trunc(a.datum_uhr),\n";
+            //sQuery += "    b.vorname,\n";
+            sQuery += "    'Verbrauch'\n";
+            sQuery += "FROM history a\n";
+            sQuery += "JOIN personen b\n";
+            sQuery += "    ON a.id_user = b.id\n";
+
+            if (sName != "") { sQuery += "WHERE b.vorname = '" + sName + "'\n"; }
+
+            sQuery += "GROUP BY trunc(a.datum_uhr),\n";
+            sQuery += "    b.vorname\n";
+            sQuery += "UNION\n";
+            sQuery += "SELECT sum(a.betrag),\n";
+            sQuery += "    trunc(a.datum_uhr),\n";
+            //sQuery += "    b.vorname,\n";
+            sQuery += "    'Aufladung'\n";
+            sQuery += "FROM aufladung a\n";
+            sQuery += "JOIN personen b\n";
+            sQuery += "    ON a.id_user = b.id\n";
+
+            if (sName != "") { sQuery += "WHERE b.vorname = '" + sName + "'\n"; }
+
+            sQuery += "GROUP BY trunc(a.datum_uhr),\n";
+            sQuery += "    b.vorname\n";
+
+            return sQuery;
+
         }
 
         public static string GetMaxGüterID()
@@ -306,6 +455,26 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string InsertGüterRestore(string sBeschreibung, string sPreis, string sGueltig_von, string sGueltig_bis, string sLast_Update,
+            string sLocked, string sLock_Date)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".gueter\n";
+            sQuery += "(beschreibung, preis, gueltig_von, gueltig_bis, last_update, locked, lock_date)\n";
+            sQuery += "VALUES\n";
+            sQuery += "('" + sBeschreibung + "',\n";
+            sQuery += sPreis + ",\n";
+
+            if (sGueltig_von != "") { sQuery += "to_date('" + sGueltig_von + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            if (sGueltig_bis != "") { sQuery += "to_date('" + sGueltig_bis + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            if (sLast_Update != "") { sQuery += "to_date('" + sLast_Update + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            sQuery += sLocked + ",\n";
+            if (sLock_Date != "") { sQuery += "to_date('" + sLock_Date + "','dd.mm.yyyy hh24:mi:ss'))\n"; } else { sQuery += "NULL)\n"; }
+
+            return sQuery;
+        }
+
         public static string InsertHistory(string sName, string sItem, string sAnzahl, string sEinzelpreis, string sSumme)
         {
             string sQuery = "";
@@ -323,6 +492,49 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string InsertHistoryRestore(string sIDUser, string sBeschreibung, string sAnzahl, string sEinzelPreis, string sSumme, string sDatumUhr)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".history\n";
+            sQuery += "(id_user, beschreibung, anzahl, einzel_preis, summe, datum_uhr)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(" + sIDUser + ",\n";
+            sQuery += "'" + sBeschreibung + "',\n";
+            sQuery += sAnzahl + ",\n";
+            sQuery += sEinzelPreis + ",\n";
+            sQuery += sSumme + ",\n";
+            if (sDatumUhr != "") { sQuery += "to_date('" + sDatumUhr + "','dd.mm.yyyy hh24:mi:ss'))\n"; } else { sQuery += "NULL)\n"; }
+
+            return sQuery;
+        }
+
+        public static string GetHistoryDaten(string sName, string sDatumStart, string sDatumEnde)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT id_user,\n";
+            sQuery += "    beschreibung,\n";
+            sQuery += "    anzahl,\n";
+            sQuery += "    einzel_preis,\n";
+            sQuery += "    summe,\n";
+            sQuery += "    datum_uhr\n";
+            sQuery += "FROM " + Frm_Haupt.sSchema + ".history\n";
+            sQuery += "WHERE 1=1\n";
+
+            if (sName != "")
+            {
+                sQuery += "    AND id_user = (SELECT id " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
+            }
+
+            if (sDatumStart != "" && sDatumEnde != "")
+            {
+                sQuery += "    AND datum_uhr BETWEEN to_date('" + sDatumStart + "','dd.mm.yyyy') AND  to_date('" + sDatumEnde + "','dd.mm.yyyy')\n";
+            }
+
+            return sQuery;
+        }
+
         public static string InsertAufladung(string sName, string sBetrag)
         {
             string sQuery = "";
@@ -333,6 +545,43 @@ namespace Bauwagen
             sQuery += "((SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
             sQuery += "SYSDATE,\n";
             sQuery += sBetrag.Replace(",", ".") + ")\n";
+
+            return sQuery;
+        }
+
+        public static string InsertAufladungenRestore(string sIDUser, string sDatumUhr, string sBetrag)
+        {
+            string sQuery = "";
+
+            sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".aufladung\n";
+            sQuery += "(id_user, datum_uhr, betrag)\n";
+            sQuery += "VALUES\n";
+            sQuery += "(" + sIDUser + ",\n";
+            if (sDatumUhr != "") { sQuery += "to_date('" + sDatumUhr + "','dd.mm.yyyy hh24:mi:ss'),\n"; } else { sQuery += "NULL,\n"; }
+            sQuery += sBetrag + ")\n";
+
+            return sQuery;
+        }
+
+        public static string GetAufladungDaten(string sName, string sDatumStart, string sDatumEnde)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT id_user,\n";
+            sQuery += "    datum_uhr,\n";
+            sQuery += "    betrag\n";
+            sQuery += "FROM " + Frm_Haupt.sSchema + ".aufladung\n";
+            sQuery += "WHERE 1=1\n";
+
+            if (sName != "")
+            {
+                sQuery += "    AND id_user = (SELECT id " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "'),\n";
+            }
+
+            if (sDatumStart != "" && sDatumEnde != "")
+            {
+                sQuery += "    AND datum_uhr BETWEEN to_date('" + sDatumStart + "','dd.mm.yyyy') AND  to_date('" + sDatumEnde + "','dd.mm.yyyy')\n";
+            }
 
             return sQuery;
         }

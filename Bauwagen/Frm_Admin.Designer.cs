@@ -37,22 +37,26 @@
             this.TxT_Unverschlüsselt = new System.Windows.Forms.TextBox();
             this.TxT_Verschlüsselt = new System.Windows.Forms.TextBox();
             this.CmD_Backup = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_Personen = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_Güter = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_Aufladung = new System.Windows.Forms.ProgressBar();
+            this.PgB_Backup_History = new System.Windows.Forms.ProgressBar();
             this.CmD_Restore = new System.Windows.Forms.Button();
-            this.progressBar5 = new System.Windows.Forms.ProgressBar();
-            this.progressBar6 = new System.Windows.Forms.ProgressBar();
-            this.progressBar7 = new System.Windows.Forms.ProgressBar();
-            this.progressBar8 = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Personen = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Güter = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Aufladung = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_History = new System.Windows.Forms.ProgressBar();
+            this.CmB_DatumBackup = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CmD_Info = new System.Windows.Forms.Button();
+            this.CmD_Dashboard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
             // 
-            this.CmD_CreateTables.Location = new System.Drawing.Point(12, 197);
+            this.CmD_CreateTables.Location = new System.Drawing.Point(12, 255);
             this.CmD_CreateTables.Name = "CmD_CreateTables";
-            this.CmD_CreateTables.Size = new System.Drawing.Size(130, 25);
+            this.CmD_CreateTables.Size = new System.Drawing.Size(111, 25);
             this.CmD_CreateTables.TabIndex = 0;
             this.CmD_CreateTables.TabStop = false;
             this.CmD_CreateTables.Text = "Tabellen erstellen";
@@ -73,7 +77,7 @@
             // CmD_Geldaufladen
             // 
             this.CmD_Geldaufladen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Geldaufladen.Location = new System.Drawing.Point(341, 12);
+            this.CmD_Geldaufladen.Location = new System.Drawing.Point(284, 12);
             this.CmD_Geldaufladen.Name = "CmD_Geldaufladen";
             this.CmD_Geldaufladen.Size = new System.Drawing.Size(130, 60);
             this.CmD_Geldaufladen.TabIndex = 1;
@@ -84,7 +88,7 @@
             // CmD_GüterBearbeiten
             // 
             this.CmD_GüterBearbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_GüterBearbeiten.Location = new System.Drawing.Point(175, 12);
+            this.CmD_GüterBearbeiten.Location = new System.Drawing.Point(148, 12);
             this.CmD_GüterBearbeiten.Name = "CmD_GüterBearbeiten";
             this.CmD_GüterBearbeiten.Size = new System.Drawing.Size(130, 60);
             this.CmD_GüterBearbeiten.TabIndex = 1;
@@ -96,7 +100,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(161, 114);
+            this.label1.Location = new System.Drawing.Point(77, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 2;
@@ -106,7 +110,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(144, 151);
+            this.label2.Location = new System.Drawing.Point(60, 200);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 25);
             this.label2.TabIndex = 3;
@@ -115,7 +119,7 @@
             // TxT_Unverschlüsselt
             // 
             this.TxT_Unverschlüsselt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxT_Unverschlüsselt.Location = new System.Drawing.Point(232, 111);
+            this.TxT_Unverschlüsselt.Location = new System.Drawing.Point(148, 160);
             this.TxT_Unverschlüsselt.Name = "TxT_Unverschlüsselt";
             this.TxT_Unverschlüsselt.Size = new System.Drawing.Size(239, 31);
             this.TxT_Unverschlüsselt.TabIndex = 4;
@@ -124,7 +128,7 @@
             // TxT_Verschlüsselt
             // 
             this.TxT_Verschlüsselt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxT_Verschlüsselt.Location = new System.Drawing.Point(232, 148);
+            this.TxT_Verschlüsselt.Location = new System.Drawing.Point(148, 197);
             this.TxT_Verschlüsselt.Name = "TxT_Verschlüsselt";
             this.TxT_Verschlüsselt.Size = new System.Drawing.Size(239, 31);
             this.TxT_Verschlüsselt.TabIndex = 4;
@@ -132,7 +136,7 @@
             // CmD_Backup
             // 
             this.CmD_Backup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Backup.Location = new System.Drawing.Point(560, 38);
+            this.CmD_Backup.Location = new System.Drawing.Point(560, 12);
             this.CmD_Backup.Name = "CmD_Backup";
             this.CmD_Backup.Size = new System.Drawing.Size(130, 60);
             this.CmD_Backup.TabIndex = 1;
@@ -140,85 +144,131 @@
             this.CmD_Backup.UseVisualStyleBackColor = true;
             this.CmD_Backup.Click += new System.EventHandler(this.CmD_Backup_Click);
             // 
-            // progressBar1
+            // PgB_Backup_Personen
             // 
-            this.progressBar1.Location = new System.Drawing.Point(712, 12);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(238, 23);
-            this.progressBar1.TabIndex = 5;
+            this.PgB_Backup_Personen.Location = new System.Drawing.Point(712, 12);
+            this.PgB_Backup_Personen.Name = "PgB_Backup_Personen";
+            this.PgB_Backup_Personen.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Personen.TabIndex = 5;
             // 
-            // progressBar2
+            // PgB_Backup_Güter
             // 
-            this.progressBar2.Location = new System.Drawing.Point(712, 41);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(238, 23);
-            this.progressBar2.TabIndex = 5;
+            this.PgB_Backup_Güter.Location = new System.Drawing.Point(712, 41);
+            this.PgB_Backup_Güter.Name = "PgB_Backup_Güter";
+            this.PgB_Backup_Güter.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Güter.TabIndex = 5;
             // 
-            // progressBar3
+            // PgB_Backup_Aufladung
             // 
-            this.progressBar3.Location = new System.Drawing.Point(712, 70);
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(238, 23);
-            this.progressBar3.TabIndex = 5;
+            this.PgB_Backup_Aufladung.Location = new System.Drawing.Point(712, 70);
+            this.PgB_Backup_Aufladung.Name = "PgB_Backup_Aufladung";
+            this.PgB_Backup_Aufladung.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Aufladung.TabIndex = 5;
             // 
-            // progressBar4
+            // PgB_Backup_History
             // 
-            this.progressBar4.Location = new System.Drawing.Point(712, 99);
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(238, 23);
-            this.progressBar4.TabIndex = 5;
+            this.PgB_Backup_History.Location = new System.Drawing.Point(712, 99);
+            this.PgB_Backup_History.Name = "PgB_Backup_History";
+            this.PgB_Backup_History.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_History.TabIndex = 5;
             // 
             // CmD_Restore
             // 
             this.CmD_Restore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Restore.Location = new System.Drawing.Point(560, 191);
+            this.CmD_Restore.Location = new System.Drawing.Point(560, 168);
             this.CmD_Restore.Name = "CmD_Restore";
             this.CmD_Restore.Size = new System.Drawing.Size(130, 60);
             this.CmD_Restore.TabIndex = 1;
             this.CmD_Restore.Text = "Restore";
             this.CmD_Restore.UseVisualStyleBackColor = true;
+            this.CmD_Restore.Click += new System.EventHandler(this.CmD_Restore_Click);
             // 
-            // progressBar5
+            // PgB_Restore_Personen
             // 
-            this.progressBar5.Location = new System.Drawing.Point(712, 168);
-            this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(238, 23);
-            this.progressBar5.TabIndex = 5;
+            this.PgB_Restore_Personen.Location = new System.Drawing.Point(712, 168);
+            this.PgB_Restore_Personen.Name = "PgB_Restore_Personen";
+            this.PgB_Restore_Personen.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Personen.TabIndex = 5;
             // 
-            // progressBar6
+            // PgB_Restore_Güter
             // 
-            this.progressBar6.Location = new System.Drawing.Point(712, 197);
-            this.progressBar6.Name = "progressBar6";
-            this.progressBar6.Size = new System.Drawing.Size(238, 23);
-            this.progressBar6.TabIndex = 5;
+            this.PgB_Restore_Güter.Location = new System.Drawing.Point(712, 197);
+            this.PgB_Restore_Güter.Name = "PgB_Restore_Güter";
+            this.PgB_Restore_Güter.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Güter.TabIndex = 5;
             // 
-            // progressBar7
+            // PgB_Restore_Aufladung
             // 
-            this.progressBar7.Location = new System.Drawing.Point(712, 226);
-            this.progressBar7.Name = "progressBar7";
-            this.progressBar7.Size = new System.Drawing.Size(238, 23);
-            this.progressBar7.TabIndex = 5;
+            this.PgB_Restore_Aufladung.Location = new System.Drawing.Point(712, 226);
+            this.PgB_Restore_Aufladung.Name = "PgB_Restore_Aufladung";
+            this.PgB_Restore_Aufladung.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Aufladung.TabIndex = 5;
             // 
-            // progressBar8
+            // PgB_Restore_History
             // 
-            this.progressBar8.Location = new System.Drawing.Point(712, 255);
-            this.progressBar8.Name = "progressBar8";
-            this.progressBar8.Size = new System.Drawing.Size(238, 23);
-            this.progressBar8.TabIndex = 5;
+            this.PgB_Restore_History.Location = new System.Drawing.Point(712, 255);
+            this.PgB_Restore_History.Name = "PgB_Restore_History";
+            this.PgB_Restore_History.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_History.TabIndex = 5;
+            // 
+            // CmB_DatumBackup
+            // 
+            this.CmB_DatumBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmB_DatumBackup.FormattingEnabled = true;
+            this.CmB_DatumBackup.Location = new System.Drawing.Point(560, 234);
+            this.CmB_DatumBackup.Name = "CmB_DatumBackup";
+            this.CmB_DatumBackup.Size = new System.Drawing.Size(130, 33);
+            this.CmB_DatumBackup.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(402, 238);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 25);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Restoredatum:";
+            // 
+            // CmD_Info
+            // 
+            this.CmD_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Info.Location = new System.Drawing.Point(393, 160);
+            this.CmD_Info.Name = "CmD_Info";
+            this.CmD_Info.Size = new System.Drawing.Size(66, 68);
+            this.CmD_Info.TabIndex = 10;
+            this.CmD_Info.Text = "Info";
+            this.CmD_Info.UseVisualStyleBackColor = true;
+            this.CmD_Info.Click += new System.EventHandler(this.CmD_Info_Click);
+            // 
+            // CmD_Dashboard
+            // 
+            this.CmD_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Dashboard.Location = new System.Drawing.Point(12, 78);
+            this.CmD_Dashboard.Name = "CmD_Dashboard";
+            this.CmD_Dashboard.Size = new System.Drawing.Size(130, 68);
+            this.CmD_Dashboard.TabIndex = 10;
+            this.CmD_Dashboard.Text = "Dashboard";
+            this.CmD_Dashboard.UseVisualStyleBackColor = true;
+            this.CmD_Dashboard.Click += new System.EventHandler(this.CmD_Dashboard_Click);
             // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 290);
-            this.Controls.Add(this.progressBar8);
-            this.Controls.Add(this.progressBar4);
-            this.Controls.Add(this.progressBar7);
-            this.Controls.Add(this.progressBar3);
-            this.Controls.Add(this.progressBar6);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar5);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.CmD_Dashboard);
+            this.Controls.Add(this.CmD_Info);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.CmB_DatumBackup);
+            this.Controls.Add(this.PgB_Restore_History);
+            this.Controls.Add(this.PgB_Backup_History);
+            this.Controls.Add(this.PgB_Restore_Aufladung);
+            this.Controls.Add(this.PgB_Backup_Aufladung);
+            this.Controls.Add(this.PgB_Restore_Güter);
+            this.Controls.Add(this.PgB_Backup_Güter);
+            this.Controls.Add(this.PgB_Restore_Personen);
+            this.Controls.Add(this.PgB_Backup_Personen);
             this.Controls.Add(this.TxT_Verschlüsselt);
             this.Controls.Add(this.TxT_Unverschlüsselt);
             this.Controls.Add(this.label2);
@@ -232,6 +282,7 @@
             this.Name = "Frm_Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administration";
+            this.Load += new System.EventHandler(this.Frm_Admin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,14 +299,18 @@
         private System.Windows.Forms.TextBox TxT_Unverschlüsselt;
         private System.Windows.Forms.TextBox TxT_Verschlüsselt;
         private System.Windows.Forms.Button CmD_Backup;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.ProgressBar progressBar3;
-        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Personen;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Güter;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Aufladung;
+        private System.Windows.Forms.ProgressBar PgB_Backup_History;
         private System.Windows.Forms.Button CmD_Restore;
-        private System.Windows.Forms.ProgressBar progressBar5;
-        private System.Windows.Forms.ProgressBar progressBar6;
-        private System.Windows.Forms.ProgressBar progressBar7;
-        private System.Windows.Forms.ProgressBar progressBar8;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Personen;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Güter;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Aufladung;
+        private System.Windows.Forms.ProgressBar PgB_Restore_History;
+        private System.Windows.Forms.ComboBox CmB_DatumBackup;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button CmD_Info;
+        private System.Windows.Forms.Button CmD_Dashboard;
     }
 }

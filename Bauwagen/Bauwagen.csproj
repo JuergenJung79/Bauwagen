@@ -80,6 +80,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -91,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_AboutBox.Designer.cs">
+      <DependentUpon>Frm_AboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cls_Procedure.cs" />
     <Compile Include="Cls_Query.cs" />
     <Compile Include="Frm_Aufladen.cs">
@@ -104,6 +111,12 @@
     </Compile>
     <Compile Include="Frm_ChangePassword.Designer.cs">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Dashboard.Designer.cs">
+      <DependentUpon>Frm_Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_GüterHinzufügen.cs">
       <SubType>Form</SubType>
@@ -137,11 +150,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frm_AboutBox.resx">
+      <DependentUpon>Frm_AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Aufladen.resx">
       <DependentUpon>Frm_Aufladen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_ChangePassword.resx">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Dashboard.resx">
+      <DependentUpon>Frm_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_GüterHinzufügen.resx">
       <DependentUpon>Frm_GüterHinzufügen.cs</DependentUpon>
