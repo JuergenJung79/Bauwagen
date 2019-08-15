@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ChT_Verbrauch = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CmB_Name = new System.Windows.Forms.ComboBox();
+            this.DtP_DatumVon = new System.Windows.Forms.DateTimePicker();
+            this.DtP_DatumBis = new System.Windows.Forms.DateTimePicker();
+            this.ChK_DatumsFilter = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChT_Verbrauch)).BeginInit();
@@ -64,31 +67,31 @@
             // 
             // ChT_Verbrauch
             // 
-            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea1.Name = "ChartArea1";
-            this.ChT_Verbrauch.ChartAreas.Add(chartArea1);
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.ChT_Verbrauch.Legends.Add(legend1);
+            chartArea4.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea4.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea4.Name = "ChartArea1";
+            this.ChT_Verbrauch.ChartAreas.Add(chartArea4);
+            legend4.Alignment = System.Drawing.StringAlignment.Center;
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend4.Name = "Legend1";
+            this.ChT_Verbrauch.Legends.Add(legend4);
             this.ChT_Verbrauch.Location = new System.Drawing.Point(6, 6);
             this.ChT_Verbrauch.Name = "ChT_Verbrauch";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Ausgaben";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Aufladungen";
-            this.ChT_Verbrauch.Series.Add(series1);
-            this.ChT_Verbrauch.Series.Add(series2);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Ausgaben";
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Aufladungen";
+            this.ChT_Verbrauch.Series.Add(series7);
+            this.ChT_Verbrauch.Series.Add(series8);
             this.ChT_Verbrauch.Size = new System.Drawing.Size(964, 613);
             this.ChT_Verbrauch.TabIndex = 0;
             this.ChT_Verbrauch.Text = "Verbrauch";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Übersicht Buchungen";
-            title1.Text = "Übersicht Buchungen";
-            this.ChT_Verbrauch.Titles.Add(title1);
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title4.Name = "Übersicht Buchungen";
+            title4.Text = "Übersicht Buchungen";
+            this.ChT_Verbrauch.Titles.Add(title4);
             // 
             // CmB_Name
             // 
@@ -100,11 +103,42 @@
             this.CmB_Name.TabIndex = 1;
             this.CmB_Name.SelectedIndexChanged += new System.EventHandler(this.CmB_Name_SelectedIndexChanged);
             // 
+            // DtP_DatumVon
+            // 
+            this.DtP_DatumVon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtP_DatumVon.Location = new System.Drawing.Point(398, 17);
+            this.DtP_DatumVon.Name = "DtP_DatumVon";
+            this.DtP_DatumVon.Size = new System.Drawing.Size(99, 20);
+            this.DtP_DatumVon.TabIndex = 2;
+            this.DtP_DatumVon.ValueChanged += new System.EventHandler(this.DtP_DatumVon_ValueChanged);
+            // 
+            // DtP_DatumBis
+            // 
+            this.DtP_DatumBis.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtP_DatumBis.Location = new System.Drawing.Point(517, 17);
+            this.DtP_DatumBis.Name = "DtP_DatumBis";
+            this.DtP_DatumBis.Size = new System.Drawing.Size(99, 20);
+            this.DtP_DatumBis.TabIndex = 2;
+            this.DtP_DatumBis.ValueChanged += new System.EventHandler(this.DtP_DatumBis_ValueChanged);
+            // 
+            // ChK_DatumsFilter
+            // 
+            this.ChK_DatumsFilter.AutoSize = true;
+            this.ChK_DatumsFilter.Location = new System.Drawing.Point(377, 21);
+            this.ChK_DatumsFilter.Name = "ChK_DatumsFilter";
+            this.ChK_DatumsFilter.Size = new System.Drawing.Size(15, 14);
+            this.ChK_DatumsFilter.TabIndex = 3;
+            this.ChK_DatumsFilter.UseVisualStyleBackColor = true;
+            this.ChK_DatumsFilter.CheckedChanged += new System.EventHandler(this.ChK_DatumsFilter_CheckedChanged);
+            // 
             // Frm_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 711);
+            this.Controls.Add(this.ChK_DatumsFilter);
+            this.Controls.Add(this.DtP_DatumBis);
+            this.Controls.Add(this.DtP_DatumVon);
             this.Controls.Add(this.CmB_Name);
             this.Controls.Add(this.tabControl1);
             this.Name = "Frm_Dashboard";
@@ -115,6 +149,7 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ChT_Verbrauch)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -124,5 +159,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ComboBox CmB_Name;
         private System.Windows.Forms.DataVisualization.Charting.Chart ChT_Verbrauch;
+        private System.Windows.Forms.DateTimePicker DtP_DatumVon;
+        private System.Windows.Forms.DateTimePicker DtP_DatumBis;
+        private System.Windows.Forms.CheckBox ChK_DatumsFilter;
     }
 }

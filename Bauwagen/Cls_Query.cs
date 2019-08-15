@@ -361,9 +361,12 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string GetUserDashboardHistory(string sName)
+        public static string GetUserDashboardHistory(string sName, bool bDateFilter, string sDatumVon, string sDatumBis)
         {
             string sQuery = "";
+
+            sDatumVon = sDatumVon.Substring(0, 10);
+            sDatumBis = sDatumBis.Substring(0, 10);
 
             sQuery = "SELECT sum(a.summe),\n";
             sQuery += "    trunc(a.datum_uhr),\n";
@@ -372,8 +375,10 @@ namespace Bauwagen
             sQuery += "FROM history a\n";
             sQuery += "JOIN personen b\n";
             sQuery += "    ON a.id_user = b.id\n";
+            sQuery += "WHERE 1=1\n";
 
-            if (sName != "") { sQuery += "WHERE b.vorname = '" + sName + "'\n"; }
+            if (sName != "") { sQuery += "    AND b.vorname = '" + sName + "'\n"; }
+            if (bDateFilter == true) { sQuery += "    AND a.datum_uhr BETWEEN to_date('" + sDatumVon + "','dd.mm.yyyy') AND to_date('" + sDatumBis + "','dd.mm.yyyy')\n"; }
 
             sQuery += "GROUP BY trunc(a.datum_uhr),\n";
             sQuery += "    b.vorname\n";
@@ -385,8 +390,10 @@ namespace Bauwagen
             sQuery += "FROM aufladung a\n";
             sQuery += "JOIN personen b\n";
             sQuery += "    ON a.id_user = b.id\n";
+            sQuery += "WHERE 1=1\n";
 
-            if (sName != "") { sQuery += "WHERE b.vorname = '" + sName + "'\n"; }
+            if (sName != "") { sQuery += "    AND b.vorname = '" + sName + "'\n"; }
+            if (bDateFilter == true) { sQuery += "    AND a.datum_uhr BETWEEN to_date('" + sDatumVon + "','dd.mm.yyyy') AND to_date('" + sDatumBis + "','dd.mm.yyyy')\n"; }
 
             sQuery += "GROUP BY trunc(a.datum_uhr),\n";
             sQuery += "    b.vorname\n";

@@ -22,6 +22,9 @@ namespace Bauwagen
 
         private void Frm_Dashboard_Load(object sender, EventArgs e)
         {
+            DtP_DatumBis.Enabled = false;
+            DtP_DatumVon.Enabled = false;
+
             ClearData();
             LoadUserKomplett();
             bLoad = false;
@@ -85,6 +88,10 @@ namespace Bauwagen
             OracleCommand oCommand = new OracleCommand();
             OracleDataReader drReader;
 
+            bool bDateFilter = false;
+
+            if (ChK_DatumsFilter.Checked == true) { bDateFilter = true; } else { bDateFilter = false; }
+
             try
             {
                 using (oConnection)
@@ -93,7 +100,7 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetUserDashboardHistory(CmB_Name.Text.Trim());
+                    oCommand.CommandText = Cls_Query.GetUserDashboardHistory(CmB_Name.Text.Trim(), bDateFilter, DtP_DatumVon.Value.ToString().Trim(), DtP_DatumBis.Value.ToString().Trim());
                     drReader = oCommand.ExecuteReader();
 
                     while (drReader.Read())
@@ -118,5 +125,38 @@ namespace Bauwagen
             }
         }
 
+        private void ChK_DatumsFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChK_DatumsFilter.Checked == true)
+            {
+                DtP_DatumVon.Enabled = true;
+                DtP_DatumBis.Enabled = true;
+            }
+            else
+            {
+                DtP_DatumVon.Enabled = false;
+                DtP_DatumBis.Enabled = false;
+            }
+        }
+
+        private void DtP_DatumVon_ValueChanged(object sender, EventArgs e)
+        {
+            if (bLoad == false)
+            {
+                ClearData();
+
+                LoadUser();
+            }
+        }
+
+        private void DtP_DatumBis_ValueChanged(object sender, EventArgs e)
+        {
+            if (bLoad == false)
+            {
+                ClearData();
+
+                LoadUser();
+            }
+        }
     }
 }
