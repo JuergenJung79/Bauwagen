@@ -99,6 +99,7 @@
             this.Controls.Add(this.CmD_Save);
             this.Controls.Add(this.CmB_Güter);
             this.Name = "Frm_GüterHinzufügen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Getränke bearbeiten";
             this.Load += new System.EventHandler(this.Frm_GüterHinzufügen_Load);
             this.ResumeLayout(false);

@@ -39,6 +39,10 @@
             this.FlW_Verbrauchsgüter = new System.Windows.Forms.FlowLayoutPanel();
             this.CmD_Logout = new System.Windows.Forms.Button();
             this.DgV_Warenkorb = new System.Windows.Forms.DataGridView();
+            this.Gütername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Anzahl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CmD_Buchen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LbL_Summe = new System.Windows.Forms.Label();
@@ -51,10 +55,6 @@
             this.LbL_User = new System.Windows.Forms.Label();
             this.TmR_Backup = new System.Windows.Forms.Timer(this.components);
             this.TmR_Refresh = new System.Windows.Forms.Timer(this.components);
-            this.Gütername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Anzahl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +120,41 @@
             this.DgV_Warenkorb.ReadOnly = true;
             this.DgV_Warenkorb.Size = new System.Drawing.Size(368, 360);
             this.DgV_Warenkorb.TabIndex = 6;
+            // 
+            // Gütername
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gütername.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Gütername.HeaderText = "Name";
+            this.Gütername.Name = "Gütername";
+            this.Gütername.ReadOnly = true;
+            // 
+            // Anzahl
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Anzahl.HeaderText = "Anzahl";
+            this.Anzahl.Name = "Anzahl";
+            this.Anzahl.ReadOnly = true;
+            this.Anzahl.Width = 60;
+            // 
+            // Preis
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Preis.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Preis.HeaderText = "Preis";
+            this.Preis.Name = "Preis";
+            this.Preis.ReadOnly = true;
+            this.Preis.Width = 80;
+            // 
+            // Summe
+            // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Summe.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Summe.HeaderText = "Summe";
+            this.Summe.Name = "Summe";
+            this.Summe.ReadOnly = true;
+            this.Summe.Width = 80;
             // 
             // CmD_Buchen
             // 
@@ -242,41 +277,6 @@
             this.TmR_Refresh.Interval = 60000;
             this.TmR_Refresh.Tick += new System.EventHandler(this.TmR_Refresh_Tick);
             // 
-            // Gütername
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gütername.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Gütername.HeaderText = "Name";
-            this.Gütername.Name = "Gütername";
-            this.Gütername.ReadOnly = true;
-            // 
-            // Anzahl
-            // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Anzahl.HeaderText = "Anzahl";
-            this.Anzahl.Name = "Anzahl";
-            this.Anzahl.ReadOnly = true;
-            this.Anzahl.Width = 60;
-            // 
-            // Preis
-            // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Preis.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Preis.HeaderText = "Preis";
-            this.Preis.Name = "Preis";
-            this.Preis.ReadOnly = true;
-            this.Preis.Width = 80;
-            // 
-            // Summe
-            // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Summe.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Summe.HeaderText = "Summe";
-            this.Summe.Name = "Summe";
-            this.Summe.ReadOnly = true;
-            this.Summe.Width = 80;
-            // 
             // Frm_Haupt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +301,7 @@
             this.Name = "Frm_Haupt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bauwagen";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_Haupt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).EndInit();
             this.ResumeLayout(false);

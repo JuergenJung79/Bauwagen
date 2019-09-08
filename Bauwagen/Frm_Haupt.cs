@@ -232,6 +232,8 @@ namespace Bauwagen
             {
                 EnableGüter();
 
+                CmD_Systemsteuerung.Enabled = false;
+
                 OracleConnection oConnection = new OracleConnection();
                 OracleCommand oCommandSelect = new OracleCommand();
                 OracleCommand oCommandUpdate = new OracleCommand();
@@ -274,6 +276,7 @@ namespace Bauwagen
             else
             {
                 DisableGüter();
+                CmD_Systemsteuerung.Enabled = true;
 
                 bBlockRefresh = false;
             }
@@ -397,6 +400,7 @@ namespace Bauwagen
             LbL_User.Text = "";
 
             DgV_Warenkorb.Rows.Clear();
+            CmD_Systemsteuerung.Enabled = true;
 
             bBlockRefresh = false;
         }
@@ -484,6 +488,7 @@ namespace Bauwagen
             LbL_Kredit.Text = "0,00 €";
             LbL_User.Text = "";
 
+            CmD_Systemsteuerung.Enabled = true;
             bBlockRefresh = false;
         }
 

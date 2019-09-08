@@ -37,7 +37,6 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.c
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Bauwagen.pdb
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\bin\Debug\Oracle.ManagedDataAccess.dll
-C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Login.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Admin.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Haupt.resources
@@ -82,3 +81,4 @@ H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Abou
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
