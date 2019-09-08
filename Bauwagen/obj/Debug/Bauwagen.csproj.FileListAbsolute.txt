@@ -80,3 +80,5 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_C
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources

@@ -42,6 +42,14 @@ namespace Bauwagen
             }
         }
 
+        private void CmD_FilterLöschen_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            CmB_Name.Text = "";
+            ChK_DatumsFilter.Checked = false;
+            LoadUser();
+        }
+
         private void ClearData()
         {
             ChT_Verbrauch.Series[0].Points.Clear();
@@ -158,5 +166,6 @@ namespace Bauwagen
                 LoadUser();
             }
         }
+
     }
 }
