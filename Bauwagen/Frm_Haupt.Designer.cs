@@ -55,13 +55,14 @@
             this.LbL_User = new System.Windows.Forms.Label();
             this.TmR_Backup = new System.Windows.Forms.Timer(this.components);
             this.TmR_Refresh = new System.Windows.Forms.Timer(this.components);
+            this.CmD_Automatenbuchung = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).BeginInit();
             this.SuspendLayout();
             // 
             // CmD_Systemsteuerung
             // 
             this.CmD_Systemsteuerung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Systemsteuerung.Location = new System.Drawing.Point(482, 580);
+            this.CmD_Systemsteuerung.Location = new System.Drawing.Point(653, 577);
             this.CmD_Systemsteuerung.Name = "CmD_Systemsteuerung";
             this.CmD_Systemsteuerung.Size = new System.Drawing.Size(164, 39);
             this.CmD_Systemsteuerung.TabIndex = 1;
@@ -74,13 +75,13 @@
             this.FlW_Anwender.AutoScroll = true;
             this.FlW_Anwender.Location = new System.Drawing.Point(12, 12);
             this.FlW_Anwender.Name = "FlW_Anwender";
-            this.FlW_Anwender.Size = new System.Drawing.Size(303, 607);
+            this.FlW_Anwender.Size = new System.Drawing.Size(443, 607);
             this.FlW_Anwender.TabIndex = 3;
             // 
             // FlW_Verbrauchsgüter
             // 
             this.FlW_Verbrauchsgüter.AutoScroll = true;
-            this.FlW_Verbrauchsgüter.Location = new System.Drawing.Point(695, 9);
+            this.FlW_Verbrauchsgüter.Location = new System.Drawing.Point(836, 9);
             this.FlW_Verbrauchsgüter.Name = "FlW_Verbrauchsgüter";
             this.FlW_Verbrauchsgüter.Size = new System.Drawing.Size(303, 607);
             this.FlW_Verbrauchsgüter.TabIndex = 4;
@@ -89,9 +90,9 @@
             // 
             this.CmD_Logout.Enabled = false;
             this.CmD_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Logout.Location = new System.Drawing.Point(321, 580);
+            this.CmD_Logout.Location = new System.Drawing.Point(483, 577);
             this.CmD_Logout.Name = "CmD_Logout";
-            this.CmD_Logout.Size = new System.Drawing.Size(116, 39);
+            this.CmD_Logout.Size = new System.Drawing.Size(164, 39);
             this.CmD_Logout.TabIndex = 5;
             this.CmD_Logout.Text = "Logout";
             this.CmD_Logout.UseVisualStyleBackColor = true;
@@ -115,10 +116,10 @@
             this.Anzahl,
             this.Preis,
             this.Summe});
-            this.DgV_Warenkorb.Location = new System.Drawing.Point(321, 12);
+            this.DgV_Warenkorb.Location = new System.Drawing.Point(462, 9);
             this.DgV_Warenkorb.Name = "DgV_Warenkorb";
             this.DgV_Warenkorb.ReadOnly = true;
-            this.DgV_Warenkorb.Size = new System.Drawing.Size(368, 360);
+            this.DgV_Warenkorb.Size = new System.Drawing.Size(368, 325);
             this.DgV_Warenkorb.TabIndex = 6;
             // 
             // Gütername
@@ -160,9 +161,9 @@
             // 
             this.CmD_Buchen.Enabled = false;
             this.CmD_Buchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Buchen.Location = new System.Drawing.Point(321, 535);
+            this.CmD_Buchen.Location = new System.Drawing.Point(653, 451);
             this.CmD_Buchen.Name = "CmD_Buchen";
-            this.CmD_Buchen.Size = new System.Drawing.Size(116, 39);
+            this.CmD_Buchen.Size = new System.Drawing.Size(164, 52);
             this.CmD_Buchen.TabIndex = 5;
             this.CmD_Buchen.Text = "Buchen";
             this.CmD_Buchen.UseVisualStyleBackColor = true;
@@ -172,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(407, 389);
+            this.label1.Location = new System.Drawing.Point(556, 341);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 16);
             this.label1.TabIndex = 7;
@@ -181,7 +182,7 @@
             // LbL_Summe
             // 
             this.LbL_Summe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbL_Summe.Location = new System.Drawing.Point(540, 385);
+            this.LbL_Summe.Location = new System.Drawing.Point(689, 337);
             this.LbL_Summe.Name = "LbL_Summe";
             this.LbL_Summe.Size = new System.Drawing.Size(141, 24);
             this.LbL_Summe.TabIndex = 7;
@@ -193,7 +194,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(388, 413);
+            this.label2.Location = new System.Drawing.Point(537, 365);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 16);
             this.label2.TabIndex = 7;
@@ -202,7 +203,7 @@
             // LbL_Budget
             // 
             this.LbL_Budget.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbL_Budget.Location = new System.Drawing.Point(540, 409);
+            this.LbL_Budget.Location = new System.Drawing.Point(689, 361);
             this.LbL_Budget.Name = "LbL_Budget";
             this.LbL_Budget.Size = new System.Drawing.Size(141, 24);
             this.LbL_Budget.TabIndex = 7;
@@ -213,7 +214,7 @@
             // LbL_Verfügbar
             // 
             this.LbL_Verfügbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbL_Verfügbar.Location = new System.Drawing.Point(540, 466);
+            this.LbL_Verfügbar.Location = new System.Drawing.Point(689, 418);
             this.LbL_Verfügbar.Name = "LbL_Verfügbar";
             this.LbL_Verfügbar.Size = new System.Drawing.Size(141, 24);
             this.LbL_Verfügbar.TabIndex = 7;
@@ -224,7 +225,7 @@
             // 
             this.CmD_LöschenWarenkorb.Enabled = false;
             this.CmD_LöschenWarenkorb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_LöschenWarenkorb.Location = new System.Drawing.Point(482, 535);
+            this.CmD_LöschenWarenkorb.Location = new System.Drawing.Point(653, 532);
             this.CmD_LöschenWarenkorb.Name = "CmD_LöschenWarenkorb";
             this.CmD_LöschenWarenkorb.Size = new System.Drawing.Size(164, 39);
             this.CmD_LöschenWarenkorb.TabIndex = 5;
@@ -236,7 +237,7 @@
             // 
             this.LbL_Kredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbL_Kredit.ForeColor = System.Drawing.Color.Gray;
-            this.LbL_Kredit.Location = new System.Drawing.Point(540, 433);
+            this.LbL_Kredit.Location = new System.Drawing.Point(689, 385);
             this.LbL_Kredit.Name = "LbL_Kredit";
             this.LbL_Kredit.Size = new System.Drawing.Size(141, 24);
             this.LbL_Kredit.TabIndex = 7;
@@ -249,7 +250,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(415, 437);
+            this.label3.Location = new System.Drawing.Point(564, 389);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 16);
             this.label3.TabIndex = 7;
@@ -258,7 +259,7 @@
             // LbL_User
             // 
             this.LbL_User.AutoSize = true;
-            this.LbL_User.Location = new System.Drawing.Point(636, 606);
+            this.LbL_User.Location = new System.Drawing.Point(777, 603);
             this.LbL_User.Name = "LbL_User";
             this.LbL_User.Size = new System.Drawing.Size(53, 13);
             this.LbL_User.TabIndex = 8;
@@ -277,12 +278,24 @@
             this.TmR_Refresh.Interval = 60000;
             this.TmR_Refresh.Tick += new System.EventHandler(this.TmR_Refresh_Tick);
             // 
+            // CmD_Automatenbuchung
+            // 
+            this.CmD_Automatenbuchung.Enabled = false;
+            this.CmD_Automatenbuchung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Automatenbuchung.Location = new System.Drawing.Point(483, 451);
+            this.CmD_Automatenbuchung.Name = "CmD_Automatenbuchung";
+            this.CmD_Automatenbuchung.Size = new System.Drawing.Size(164, 52);
+            this.CmD_Automatenbuchung.TabIndex = 9;
+            this.CmD_Automatenbuchung.Text = "Ausgabe Automat";
+            this.CmD_Automatenbuchung.UseVisualStyleBackColor = true;
+            // 
             // Frm_Haupt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1008, 628);
+            this.ClientSize = new System.Drawing.Size(1148, 628);
+            this.Controls.Add(this.CmD_Automatenbuchung);
             this.Controls.Add(this.CmD_LöschenWarenkorb);
             this.Controls.Add(this.LbL_User);
             this.Controls.Add(this.LbL_Verfügbar);
@@ -331,6 +344,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Anzahl;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summe;
+        private System.Windows.Forms.Button CmD_Automatenbuchung;
     }
 }
 
