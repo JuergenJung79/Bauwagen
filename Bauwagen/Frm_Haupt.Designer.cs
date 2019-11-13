@@ -288,6 +288,7 @@
             this.CmD_Automatenbuchung.TabIndex = 9;
             this.CmD_Automatenbuchung.Text = "Ausgabe Automat";
             this.CmD_Automatenbuchung.UseVisualStyleBackColor = true;
+            this.CmD_Automatenbuchung.Click += new System.EventHandler(this.CmD_Automatenbuchung_Click);
             // 
             // Frm_Haupt
             // 

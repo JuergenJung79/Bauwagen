@@ -31,5 +31,53 @@ namespace Bauwagen.Properties {
                 return ((int)(this["Key"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Relais1 {
+            get {
+                return ((double)(this["Relais1"]));
+            }
+            set {
+                this["Relais1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Relais2 {
+            get {
+                return ((double)(this["Relais2"]));
+            }
+            set {
+                this["Relais2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Relais3 {
+            get {
+                return ((double)(this["Relais3"]));
+            }
+            set {
+                this["Relais3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Relais4 {
+            get {
+                return ((double)(this["Relais4"]));
+            }
+            set {
+                this["Relais4"] = value;
+            }
+        }
     }
 }

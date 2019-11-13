@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using System.Data.OleDb;
 using System.Globalization;
+using Microsoft.VisualBasic;
 
 namespace Bauwagen
 {
@@ -607,6 +608,58 @@ namespace Bauwagen
         {
             Frm_Dashboard frm_dashboard = new Frm_Dashboard();
             frm_dashboard.ShowDialog();
+        }
+
+        private void CmD_Relais_1_Click(object sender, EventArgs e)
+        { 
+            double nRelaisWert = Bauwagen.Properties.Settings.Default.Relais1;
+            string input = Interaction.InputBox("Bitte den Betrag für Relaisplatz 1 eintragen", "Preis für Relais 1", nRelaisWert.ToString().Trim(), -1, -1);
+            input = input.Replace(".", ",");
+
+            if (input != "")
+            {
+                Properties.Settings.Default.Relais1 = Convert.ToDouble(input);
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void CmD_Relais_2_Click(object sender, EventArgs e)
+        {
+            double nRelaisWert = Bauwagen.Properties.Settings.Default.Relais2;
+            string input = Interaction.InputBox("Bitte den Betrag für Relaisplatz 2 eintragen", "Preis für Relais 2", nRelaisWert.ToString().Trim(), -1, -1);
+            input = input.Replace(".", ",");
+
+            if (input != "")
+            {
+                Properties.Settings.Default.Relais2 = Convert.ToDouble(input);
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void CmD_Relais_3_Click(object sender, EventArgs e)
+        {
+            double nRelaisWert = Bauwagen.Properties.Settings.Default.Relais3;
+            string input = Interaction.InputBox("Bitte den Betrag für Relaisplatz 3 eintragen", "Preis für Relais 3", nRelaisWert.ToString().Trim(), -1, -1);
+            input = input.Replace(".", ",");
+
+            if (input != "")
+            {
+                Properties.Settings.Default.Relais3 = Convert.ToDouble(input);
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void CmD_Relais_4_Click(object sender, EventArgs e)
+        {
+            double nRelaisWert = Bauwagen.Properties.Settings.Default.Relais4;
+            string input = Interaction.InputBox("Bitte den Betrag für Relaisplatz 4 eintragen", "Preis für Relais 4", nRelaisWert.ToString().Trim(), -1, -1);
+            input = input.Replace(".", ",");
+
+            if (input != "")
+            {
+                Properties.Settings.Default.Relais4 = Convert.ToDouble(input);
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

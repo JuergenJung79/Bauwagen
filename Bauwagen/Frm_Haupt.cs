@@ -539,6 +539,7 @@ namespace Bauwagen
             }
 
             CmD_Buchen.Enabled = true;
+            CmD_Automatenbuchung.Enabled = true;
             CmD_Logout.Enabled = true;
             CmD_LöschenWarenkorb.Enabled = true;
         }
@@ -559,6 +560,7 @@ namespace Bauwagen
             }
 
             CmD_Buchen.Enabled = false;
+            CmD_Automatenbuchung.Enabled = false;
             CmD_Logout.Enabled = false;
             CmD_LöschenWarenkorb.Enabled = false;
         }
@@ -630,6 +632,39 @@ namespace Bauwagen
             }
 
             TmR_Refresh.Enabled = true;
+        }
+
+        private void CmD_Automatenbuchung_Click(object sender, EventArgs e)
+        {
+            bool bCheck = false;
+
+            double nRelaisWert1 = Bauwagen.Properties.Settings.Default.Relais1;
+            double nRelaisWert2 = Bauwagen.Properties.Settings.Default.Relais2;
+            double nRelaisWert3 = Bauwagen.Properties.Settings.Default.Relais3;
+            double nRelaisWert4 = Bauwagen.Properties.Settings.Default.Relais4;
+
+            int nRowCount = DgV_Warenkorb.Rows.Count;
+
+            if (nRowCount == 1)
+            {
+                int nItemCount = Convert.ToInt32(DgV_Warenkorb.Rows[0].Cells[1].Value);
+                double nValue = Convert.ToDouble(DgV_Warenkorb.Rows[0].Cells[2].Value);
+
+                if (nItemCount == 1)
+                {
+                    if (nValue == nRelaisWert1) { MessageBox.Show("Relais 1 gedrückt"); bCheck = true; }
+                    else if (nValue == nRelaisWert2) { MessageBox.Show("Relais 2 gedrückt"); bCheck = true; }
+                    else if (nValue == nRelaisWert3) { MessageBox.Show("Relais 3 gedrückt"); bCheck = true; }
+                    else if (nValue == nRelaisWert4) { MessageBox.Show("Relais 4 gedrückt"); bCheck = true; }
+                }
+            }
+
+
+            
+            if (bCheck == false)
+            {
+                MessageBox.Show("Buchung über Relais nicht möglich", "Fehler");
+            }
         }
 
     }

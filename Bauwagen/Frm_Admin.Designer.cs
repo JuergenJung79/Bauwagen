@@ -50,6 +50,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.CmD_Info = new System.Windows.Forms.Button();
             this.CmD_Dashboard = new System.Windows.Forms.Button();
+            this.CmD_Relais_1 = new System.Windows.Forms.Button();
+            this.CmD_Relais_2 = new System.Windows.Forms.Button();
+            this.CmD_Relais_3 = new System.Windows.Forms.Button();
+            this.CmD_Relais_4 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
@@ -252,11 +258,79 @@
             this.CmD_Dashboard.UseVisualStyleBackColor = true;
             this.CmD_Dashboard.Click += new System.EventHandler(this.CmD_Dashboard_Click);
             // 
+            // CmD_Relais_1
+            // 
+            this.CmD_Relais_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Relais_1.Location = new System.Drawing.Point(210, 371);
+            this.CmD_Relais_1.Name = "CmD_Relais_1";
+            this.CmD_Relais_1.Size = new System.Drawing.Size(130, 68);
+            this.CmD_Relais_1.TabIndex = 10;
+            this.CmD_Relais_1.Text = "Relais Platz 1";
+            this.CmD_Relais_1.UseVisualStyleBackColor = true;
+            this.CmD_Relais_1.Click += new System.EventHandler(this.CmD_Relais_1_Click);
+            // 
+            // CmD_Relais_2
+            // 
+            this.CmD_Relais_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Relais_2.Location = new System.Drawing.Point(346, 371);
+            this.CmD_Relais_2.Name = "CmD_Relais_2";
+            this.CmD_Relais_2.Size = new System.Drawing.Size(130, 68);
+            this.CmD_Relais_2.TabIndex = 10;
+            this.CmD_Relais_2.Text = "Relais Platz 2";
+            this.CmD_Relais_2.UseVisualStyleBackColor = true;
+            this.CmD_Relais_2.Click += new System.EventHandler(this.CmD_Relais_2_Click);
+            // 
+            // CmD_Relais_3
+            // 
+            this.CmD_Relais_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Relais_3.Location = new System.Drawing.Point(482, 371);
+            this.CmD_Relais_3.Name = "CmD_Relais_3";
+            this.CmD_Relais_3.Size = new System.Drawing.Size(130, 68);
+            this.CmD_Relais_3.TabIndex = 10;
+            this.CmD_Relais_3.Text = "Relais Platz 3";
+            this.CmD_Relais_3.UseVisualStyleBackColor = true;
+            this.CmD_Relais_3.Click += new System.EventHandler(this.CmD_Relais_3_Click);
+            // 
+            // CmD_Relais_4
+            // 
+            this.CmD_Relais_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Relais_4.Location = new System.Drawing.Point(618, 371);
+            this.CmD_Relais_4.Name = "CmD_Relais_4";
+            this.CmD_Relais_4.Size = new System.Drawing.Size(130, 68);
+            this.CmD_Relais_4.TabIndex = 10;
+            this.CmD_Relais_4.Text = "Relais Platz 4";
+            this.CmD_Relais_4.UseVisualStyleBackColor = true;
+            this.CmD_Relais_4.Click += new System.EventHandler(this.CmD_Relais_4_Click);
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 317);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(938, 50);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Diese Daten werden nicht über die Datenbank gesteuert und müssen in jeder Anwendu" +
+    "ng \r\nseparat gepflegt werden";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(2, 301);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(957, 5);
+            this.label5.TabIndex = 11;
+            // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 290);
+            this.ClientSize = new System.Drawing.Size(962, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.CmD_Relais_4);
+            this.Controls.Add(this.CmD_Relais_3);
+            this.Controls.Add(this.CmD_Relais_2);
+            this.Controls.Add(this.CmD_Relais_1);
             this.Controls.Add(this.CmD_Dashboard);
             this.Controls.Add(this.CmD_Info);
             this.Controls.Add(this.label3);
@@ -272,6 +346,7 @@
             this.Controls.Add(this.TxT_Verschlüsselt);
             this.Controls.Add(this.TxT_Unverschlüsselt);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CmD_Restore);
             this.Controls.Add(this.CmD_Backup);
@@ -312,5 +387,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button CmD_Info;
         private System.Windows.Forms.Button CmD_Dashboard;
+        private System.Windows.Forms.Button CmD_Relais_1;
+        private System.Windows.Forms.Button CmD_Relais_2;
+        private System.Windows.Forms.Button CmD_Relais_3;
+        private System.Windows.Forms.Button CmD_Relais_4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
