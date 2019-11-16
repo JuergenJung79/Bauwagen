@@ -593,5 +593,40 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string GetUserHistory()
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT daten.vorname,\n";
+            sQuery += "    daten.beschreibung,\n";
+            sQuery += "    daten.anzahl,\n";
+            sQuery += "    daten.datum_uhr,\n";
+            sQuery += "    daten.einzel_preis,\n";
+            sQuery += "    daten.summe\n";
+            sQuery += "FROM (SELECT b.vorname,\n";
+            sQuery += "        a.beschreibung,\n";
+            sQuery += "        to_char(a.anzahl) AS anzahl,\n";
+            sQuery += "        a.datum_uhr,\n";
+            sQuery += "        to_char(a.einzel_preis) AS einzel_preis,\n";
+            sQuery += "        a.summe\n";
+            sQuery += "    FROM history a\n";
+            sQuery += "    JOIN personen b\n";
+            sQuery += "        ON a.id_user = b.id\n";
+            //sQuery += "ORDER BY a.datum_uhr DESC\n";
+            sQuery += "    UNION\n";
+            sQuery += "    SELECT b.vorname,\n";
+            sQuery += "        'Aufladung',\n";
+            sQuery += "        '',\n";
+            sQuery += "        a.datum_uhr,\n";
+            sQuery += "        '',\n";
+            sQuery += "        a.betrag\n";
+            sQuery += "    FROM aufladung a\n";
+            sQuery += "    JOIN personen b\n";
+            sQuery += "        ON a.id_user = b.id) daten\n";
+            sQuery += "ORDER BY datum_uhr DESC\n";
+
+            return sQuery;
+        }
+
     }
 }

@@ -12,6 +12,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Data.OleDb;
 using System.Globalization;
 using Microsoft.VisualBasic;
+using System.IO.Ports;
 
 namespace Bauwagen
 {
@@ -375,6 +376,16 @@ namespace Bauwagen
         private void Frm_Admin_Load(object sender, EventArgs e)
         {
             GetRestoreDaten();
+
+            string[] ports = SerialPort.GetPortNames();
+
+            CmB_ComPorts.Items.Clear();
+            CmB_ComPorts.Text = Properties.Settings.Default.ComRelais;
+
+            foreach (string port in ports)
+            {
+                CmB_ComPorts.Items.Add(port);
+            }
         }
 
         private void GetRestoreDaten()
@@ -660,6 +671,18 @@ namespace Bauwagen
                 Properties.Settings.Default.Relais4 = Convert.ToDouble(input);
                 Properties.Settings.Default.Save();
             }
+        }
+
+        private void CmD_UserHistory_Click(object sender, EventArgs e)
+        {
+            Frm_UserListe frm_userhistory = new Frm_UserListe();
+            frm_userhistory.ShowDialog();
+        }
+
+        private void CmB_ComPorts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ComRelais = CmB_ComPorts.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

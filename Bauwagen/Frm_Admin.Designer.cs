@@ -56,6 +56,9 @@
             this.CmD_Relais_4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.CmD_UserHistory = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CmB_ComPorts = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
@@ -261,7 +264,7 @@
             // CmD_Relais_1
             // 
             this.CmD_Relais_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_1.Location = new System.Drawing.Point(210, 371);
+            this.CmD_Relais_1.Location = new System.Drawing.Point(148, 370);
             this.CmD_Relais_1.Name = "CmD_Relais_1";
             this.CmD_Relais_1.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_1.TabIndex = 10;
@@ -272,7 +275,7 @@
             // CmD_Relais_2
             // 
             this.CmD_Relais_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_2.Location = new System.Drawing.Point(346, 371);
+            this.CmD_Relais_2.Location = new System.Drawing.Point(284, 370);
             this.CmD_Relais_2.Name = "CmD_Relais_2";
             this.CmD_Relais_2.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_2.TabIndex = 10;
@@ -283,7 +286,7 @@
             // CmD_Relais_3
             // 
             this.CmD_Relais_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_3.Location = new System.Drawing.Point(482, 371);
+            this.CmD_Relais_3.Location = new System.Drawing.Point(420, 370);
             this.CmD_Relais_3.Name = "CmD_Relais_3";
             this.CmD_Relais_3.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_3.TabIndex = 10;
@@ -294,7 +297,7 @@
             // CmD_Relais_4
             // 
             this.CmD_Relais_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_4.Location = new System.Drawing.Point(618, 371);
+            this.CmD_Relais_4.Location = new System.Drawing.Point(556, 370);
             this.CmD_Relais_4.Name = "CmD_Relais_4";
             this.CmD_Relais_4.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_4.TabIndex = 10;
@@ -321,16 +324,50 @@
             this.label5.Size = new System.Drawing.Size(957, 5);
             this.label5.TabIndex = 11;
             // 
+            // CmD_UserHistory
+            // 
+            this.CmD_UserHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_UserHistory.Location = new System.Drawing.Point(148, 78);
+            this.CmD_UserHistory.Name = "CmD_UserHistory";
+            this.CmD_UserHistory.Size = new System.Drawing.Size(130, 68);
+            this.CmD_UserHistory.TabIndex = 10;
+            this.CmD_UserHistory.Text = "User History";
+            this.CmD_UserHistory.UseVisualStyleBackColor = true;
+            this.CmD_UserHistory.Click += new System.EventHandler(this.CmD_UserHistory_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(751, 370);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "COM Port Relais";
+            // 
+            // CmB_ComPorts
+            // 
+            this.CmB_ComPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmB_ComPorts.FormattingEnabled = true;
+            this.CmB_ComPorts.Location = new System.Drawing.Point(754, 393);
+            this.CmB_ComPorts.Name = "CmB_ComPorts";
+            this.CmB_ComPorts.Size = new System.Drawing.Size(121, 32);
+            this.CmB_ComPorts.TabIndex = 13;
+            this.CmB_ComPorts.SelectedIndexChanged += new System.EventHandler(this.CmB_ComPorts_SelectedIndexChanged);
+            // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 450);
+            this.Controls.Add(this.CmB_ComPorts);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.CmD_Relais_4);
             this.Controls.Add(this.CmD_Relais_3);
             this.Controls.Add(this.CmD_Relais_2);
             this.Controls.Add(this.CmD_Relais_1);
+            this.Controls.Add(this.CmD_UserHistory);
             this.Controls.Add(this.CmD_Dashboard);
             this.Controls.Add(this.CmD_Info);
             this.Controls.Add(this.label3);
@@ -393,5 +430,8 @@
         private System.Windows.Forms.Button CmD_Relais_4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button CmD_UserHistory;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox CmB_ComPorts;
     }
 }

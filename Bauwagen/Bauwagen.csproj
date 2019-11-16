@@ -149,6 +149,12 @@
     <Compile Include="Frm_UserAnlegen.Designer.cs">
       <DependentUpon>Frm_UserAnlegen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_UserListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_UserListe.Designer.cs">
+      <DependentUpon>Frm_UserListe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Frm_AboutBox.resx">
@@ -178,6 +184,9 @@
     <EmbeddedResource Include="Frm_UserAnlegen.resx">
       <DependentUpon>Frm_UserAnlegen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_UserListe.resx">
+      <DependentUpon>Frm_UserListe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -188,6 +197,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="CDM v2.12.28 WHQL Certified.zip" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

@@ -5,8 +5,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -414,6 +416,11 @@ namespace Bauwagen
 
         private void CmD_Buchen_Click(object sender, EventArgs e)
         {
+            Buchen();
+        }
+
+        private void Buchen()
+        {
             OracleConnection oConnection = new OracleConnection();
             OracleCommand oCommandUpdate = new OracleCommand();
             OracleCommand oCommandSelect = new OracleCommand();
@@ -636,34 +643,80 @@ namespace Bauwagen
 
         private void CmD_Automatenbuchung_Click(object sender, EventArgs e)
         {
-            bool bCheck = false;
-
-            double nRelaisWert1 = Bauwagen.Properties.Settings.Default.Relais1;
-            double nRelaisWert2 = Bauwagen.Properties.Settings.Default.Relais2;
-            double nRelaisWert3 = Bauwagen.Properties.Settings.Default.Relais3;
-            double nRelaisWert4 = Bauwagen.Properties.Settings.Default.Relais4;
-
-            int nRowCount = DgV_Warenkorb.Rows.Count;
-
-            if (nRowCount == 1)
+            try
             {
-                int nItemCount = Convert.ToInt32(DgV_Warenkorb.Rows[0].Cells[1].Value);
-                double nValue = Convert.ToDouble(DgV_Warenkorb.Rows[0].Cells[2].Value);
+                SerialPort _serialPort;
 
-                if (nItemCount == 1)
+                _serialPort = new SerialPort();
+                _serialPort.PortName = Properties.Settings.Default.ComRelais;
+
+                // Set the read/write timeouts
+                _serialPort.ReadTimeout = 500;
+                _serialPort.WriteTimeout = 500;
+
+                bool bCheck = false;
+
+                double nRelaisWert1 = Bauwagen.Properties.Settings.Default.Relais1;
+                double nRelaisWert2 = Bauwagen.Properties.Settings.Default.Relais2;
+                double nRelaisWert3 = Bauwagen.Properties.Settings.Default.Relais3;
+                double nRelaisWert4 = Bauwagen.Properties.Settings.Default.Relais4;
+
+                int nRowCount = DgV_Warenkorb.Rows.Count;
+
+                if (nRowCount == 1)
                 {
-                    if (nValue == nRelaisWert1) { MessageBox.Show("Relais 1 gedrückt"); bCheck = true; }
-                    else if (nValue == nRelaisWert2) { MessageBox.Show("Relais 2 gedrückt"); bCheck = true; }
-                    else if (nValue == nRelaisWert3) { MessageBox.Show("Relais 3 gedrückt"); bCheck = true; }
-                    else if (nValue == nRelaisWert4) { MessageBox.Show("Relais 4 gedrückt"); bCheck = true; }
+                    int nItemCount = Convert.ToInt32(DgV_Warenkorb.Rows[0].Cells[1].Value);
+                    double nValue = Convert.ToDouble(DgV_Warenkorb.Rows[0].Cells[2].Value);
+
+                    if (nItemCount == 1)
+                    {
+                        _serialPort.Open();
+
+                        if (nValue == nRelaisWert1)
+                        {
+                            _serialPort.Write(new byte[] { 0xFF, 0x01, 0x01 }, 0, 3);
+                            Thread.Sleep(1000);
+                            _serialPort.Write(new byte[] { 0xFF, 0x01, 0x00 }, 0, 3);
+                            Buchen();
+                            bCheck = true;
+                        }
+                        else if (nValue == nRelaisWert2)
+                        {
+                            _serialPort.Write(new byte[] { 0xFF, 0x02, 0x01 }, 0, 3);
+                            Thread.Sleep(1000);
+                            _serialPort.Write(new byte[] { 0xFF, 0x02, 0x00 }, 0, 3);
+                            Buchen();
+                            bCheck = true;
+                        }
+                        else if (nValue == nRelaisWert3)
+                        {
+                            _serialPort.Write(new byte[] { 0xFF, 0x03, 0x01 }, 0, 3);
+                            Thread.Sleep(1000);
+                            _serialPort.Write(new byte[] { 0xFF, 0x03, 0x00 }, 0, 3);
+                            Buchen();
+                            bCheck = true;
+                        }
+                        else if (nValue == nRelaisWert4)
+                        {
+                            _serialPort.Write(new byte[] { 0xFF, 0x04, 0x01 }, 0, 3);
+                            Thread.Sleep(1000);
+                            _serialPort.Write(new byte[] { 0xFF, 0x04, 0x00 }, 0, 3);
+                            Buchen();
+                            bCheck = true;
+                        }
+
+                        _serialPort.Close();
+                    }
+                }
+
+                if (bCheck == false)
+                {
+                    MessageBox.Show("Buchung über Relais nicht möglich", "Fehler");
                 }
             }
-
-
-            
-            if (bCheck == false)
+            catch (Exception ex)
             {
-                MessageBox.Show("Buchung über Relais nicht möglich", "Fehler");
+                MessageBox.Show(ex.Message);
             }
         }
 
