@@ -227,6 +227,10 @@ namespace Bauwagen
                     sQuery += "    AND nvl(bad_logon,0) <= 5\n";
                 }
             }
+            else if (sName == "" && bAdmin == false)
+            {
+                sQuery += "WHERE nvl(bad_logon,0) <= 5\n";
+            }
 
             sQuery += "ORDER BY vorname\n";
 
