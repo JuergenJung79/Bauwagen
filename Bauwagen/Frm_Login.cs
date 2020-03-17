@@ -58,7 +58,7 @@ namespace Bauwagen
                     this.DialogResult = DialogResult.Abort;
                 }
 
-                if (System.Environment.MachineName == "EMARW001")
+                if (System.Environment.MachineName == "EMARW001" | System.Environment.MachineName == "EMARL001")
                 {
                     this.DialogResult = DialogResult.OK;
                 }

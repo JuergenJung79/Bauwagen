@@ -56,6 +56,12 @@ namespace Bauwagen
 
         private void Frm_Haupt_Load(object sender, EventArgs e)
         {
+            OracleConnection oConnection = new OracleConnection();
+
+            bool bRun = true;
+
+            int nCounter = 0;
+
             XmlDocument doc = new XmlDocument();
             doc.Load("Settings.xml");
 
@@ -82,6 +88,29 @@ namespace Bauwagen
             LbL_Budget.Text = "0,00 €";
             LbL_Verfügbar.Text = "0,00 €";
             LbL_Kredit.Text = "0,00 €";
+
+            while (bRun == true)
+            {
+                try
+                {
+                    oConnection.ConnectionString = sDSN;
+                    oConnection.Open();
+                    oConnection.Close();
+                    bRun = false;
+                }
+                catch
+                {
+                    bRun = true;
+                    Thread.Sleep(1000);
+                    nCounter += 1;
+                }
+
+                if (nCounter > 1000)
+                {
+                    MessageBox.Show("Datenbankfehler Anwendung wird geschlossen!");
+                    this.Close();
+                }
+            }
 
             CreateButtons();
 
