@@ -143,6 +143,12 @@ namespace Bauwagen
             frm_aufladen.ShowDialog();
         }
 
+        private void CmD_LongDrinkMixer_Click(object sender, EventArgs e)
+        {
+            Frm_LongDrinkMixer frm_longdrinkmixer = new Frm_LongDrinkMixer();
+            frm_longdrinkmixer.ShowDialog();
+        }
+
         private void CmD_GüterBearbeiten_Click(object sender, EventArgs e)
         {
             Frm_GüterHinzufügen frm_güterhinzufügen = new Frm_GüterHinzufügen();
@@ -684,5 +690,6 @@ namespace Bauwagen
             Properties.Settings.Default.ComRelais = CmB_ComPorts.Text;
             Properties.Settings.Default.Save();
         }
+
     }
 }

@@ -143,6 +143,12 @@
     <Compile Include="Frm_Haupt.Designer.cs">
       <DependentUpon>Frm_Haupt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_LongDrinkMixer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_LongDrinkMixer.Designer.cs">
+      <DependentUpon>Frm_LongDrinkMixer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_UserAnlegen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Haupt.resx">
       <DependentUpon>Frm_Haupt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_LongDrinkMixer.resx">
+      <DependentUpon>Frm_LongDrinkMixer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_UserAnlegen.resx">
       <DependentUpon>Frm_UserAnlegen.cs</DependentUpon>
