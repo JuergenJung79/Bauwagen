@@ -85,3 +85,31 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_U
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_LongDrinkMixer.resources
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Settings.xml
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.config
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.manifest
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.application
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.pdb
+C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Aufladen.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_ChangePassword.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Login.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Admin.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Haupt.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_LongDrinkMixer.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserAnlegen.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserListe.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Properties.Resources.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.GenerateResource.cache
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CoreCompileInputs.cache
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.TrustInfo.xml
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe.manifest
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
