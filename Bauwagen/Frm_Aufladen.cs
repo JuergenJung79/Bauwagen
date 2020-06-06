@@ -40,6 +40,11 @@ namespace Bauwagen
             CmD_Minus.BackColor = Color.Gray;
         }
 
+        private void CmD_NullKommaFünfzig_Click(object sender, EventArgs e)
+        {
+            CalculatAufladung(0.5);
+        }
+
         private void CmD_Eins_Click(object sender, EventArgs e)
         {
             CalculatAufladung(1);

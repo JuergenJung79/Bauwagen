@@ -40,6 +40,7 @@
             this.LbL_Aufladung = new System.Windows.Forms.Label();
             this.CmD_Plus = new System.Windows.Forms.Button();
             this.CmD_Minus = new System.Windows.Forms.Button();
+            this.CmD_NullKommaFünfzig = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmB_User
@@ -54,7 +55,7 @@
             // CmD_Eins
             // 
             this.CmD_Eins.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Eins.Location = new System.Drawing.Point(12, 78);
+            this.CmD_Eins.Location = new System.Drawing.Point(129, 78);
             this.CmD_Eins.Name = "CmD_Eins";
             this.CmD_Eins.Size = new System.Drawing.Size(111, 60);
             this.CmD_Eins.TabIndex = 2;
@@ -76,7 +77,7 @@
             // CmD_Zwei
             // 
             this.CmD_Zwei.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Zwei.Location = new System.Drawing.Point(129, 78);
+            this.CmD_Zwei.Location = new System.Drawing.Point(246, 78);
             this.CmD_Zwei.Name = "CmD_Zwei";
             this.CmD_Zwei.Size = new System.Drawing.Size(111, 60);
             this.CmD_Zwei.TabIndex = 2;
@@ -87,7 +88,7 @@
             // CmD_Fünf
             // 
             this.CmD_Fünf.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Fünf.Location = new System.Drawing.Point(246, 78);
+            this.CmD_Fünf.Location = new System.Drawing.Point(12, 144);
             this.CmD_Fünf.Name = "CmD_Fünf";
             this.CmD_Fünf.Size = new System.Drawing.Size(111, 60);
             this.CmD_Fünf.TabIndex = 2;
@@ -98,7 +99,7 @@
             // CmD_Zehn
             // 
             this.CmD_Zehn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Zehn.Location = new System.Drawing.Point(12, 144);
+            this.CmD_Zehn.Location = new System.Drawing.Point(129, 144);
             this.CmD_Zehn.Name = "CmD_Zehn";
             this.CmD_Zehn.Size = new System.Drawing.Size(111, 60);
             this.CmD_Zehn.TabIndex = 2;
@@ -109,7 +110,7 @@
             // CmD_Zwanzig
             // 
             this.CmD_Zwanzig.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Zwanzig.Location = new System.Drawing.Point(129, 144);
+            this.CmD_Zwanzig.Location = new System.Drawing.Point(246, 144);
             this.CmD_Zwanzig.Name = "CmD_Zwanzig";
             this.CmD_Zwanzig.Size = new System.Drawing.Size(111, 60);
             this.CmD_Zwanzig.TabIndex = 2;
@@ -120,7 +121,7 @@
             // CmD_Fünfzig
             // 
             this.CmD_Fünfzig.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Fünfzig.Location = new System.Drawing.Point(246, 144);
+            this.CmD_Fünfzig.Location = new System.Drawing.Point(65, 210);
             this.CmD_Fünfzig.Name = "CmD_Fünfzig";
             this.CmD_Fünfzig.Size = new System.Drawing.Size(111, 60);
             this.CmD_Fünfzig.TabIndex = 2;
@@ -131,7 +132,7 @@
             // CmD_Hundert
             // 
             this.CmD_Hundert.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Hundert.Location = new System.Drawing.Point(129, 210);
+            this.CmD_Hundert.Location = new System.Drawing.Point(182, 210);
             this.CmD_Hundert.Name = "CmD_Hundert";
             this.CmD_Hundert.Size = new System.Drawing.Size(111, 60);
             this.CmD_Hundert.TabIndex = 2;
@@ -171,11 +172,23 @@
             this.CmD_Minus.UseVisualStyleBackColor = true;
             this.CmD_Minus.Click += new System.EventHandler(this.CmD_Minus_Click);
             // 
+            // CmD_NullKommaFünfzig
+            // 
+            this.CmD_NullKommaFünfzig.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_NullKommaFünfzig.Location = new System.Drawing.Point(12, 78);
+            this.CmD_NullKommaFünfzig.Name = "CmD_NullKommaFünfzig";
+            this.CmD_NullKommaFünfzig.Size = new System.Drawing.Size(111, 60);
+            this.CmD_NullKommaFünfzig.TabIndex = 4;
+            this.CmD_NullKommaFünfzig.Text = "0,50 €";
+            this.CmD_NullKommaFünfzig.UseVisualStyleBackColor = true;
+            this.CmD_NullKommaFünfzig.Click += new System.EventHandler(this.CmD_NullKommaFünfzig_Click);
+            // 
             // Frm_Aufladen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 286);
+            this.Controls.Add(this.CmD_NullKommaFünfzig);
             this.Controls.Add(this.LbL_Aufladung);
             this.Controls.Add(this.CmD_Aufladen);
             this.Controls.Add(this.CmD_Hundert);
@@ -210,5 +223,6 @@
         private System.Windows.Forms.Label LbL_Aufladung;
         private System.Windows.Forms.Button CmD_Plus;
         private System.Windows.Forms.Button CmD_Minus;
+        private System.Windows.Forms.Button CmD_NullKommaFünfzig;
     }
 }
