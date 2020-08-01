@@ -113,3 +113,5 @@ C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
+C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources

@@ -113,6 +113,12 @@
     <Compile Include="Frm_ChangePassword.Designer.cs">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_CocktailAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_CocktailAdmin.Designer.cs">
+      <DependentUpon>Frm_CocktailAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,11 +149,11 @@
     <Compile Include="Frm_Haupt.Designer.cs">
       <DependentUpon>Frm_Haupt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_LongDrinkMixer.cs">
+    <Compile Include="Frm_CocktailMixer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_LongDrinkMixer.Designer.cs">
-      <DependentUpon>Frm_LongDrinkMixer.cs</DependentUpon>
+    <Compile Include="Frm_CocktailMixer.Designer.cs">
+      <DependentUpon>Frm_CocktailMixer.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_UserAnlegen.cs">
       <SubType>Form</SubType>
@@ -172,6 +178,9 @@
     <EmbeddedResource Include="Frm_ChangePassword.resx">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_CocktailAdmin.resx">
+      <DependentUpon>Frm_CocktailAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Dashboard.resx">
       <DependentUpon>Frm_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,8 +196,8 @@
     <EmbeddedResource Include="Frm_Haupt.resx">
       <DependentUpon>Frm_Haupt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_LongDrinkMixer.resx">
-      <DependentUpon>Frm_LongDrinkMixer.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_CocktailMixer.resx">
+      <DependentUpon>Frm_CocktailMixer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_UserAnlegen.resx">
       <DependentUpon>Frm_UserAnlegen.cs</DependentUpon>

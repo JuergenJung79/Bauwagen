@@ -91,5 +91,17 @@ namespace Bauwagen.Properties {
                 this["ComRelais"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM2")]
+        public string ComRelaisCocktail {
+            get {
+                return ((string)(this["ComRelaisCocktail"]));
+            }
+            set {
+                this["ComRelaisCocktail"] = value;
+            }
+        }
     }
 }

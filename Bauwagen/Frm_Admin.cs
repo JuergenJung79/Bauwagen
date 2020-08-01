@@ -28,6 +28,11 @@ namespace Bauwagen
             RecreateTables();
         }
 
+        private void CmD_CreateCocktail_Click(object sender, EventArgs e)
+        {
+            CreateTableCocktail();
+        }
+
         private void RecreateTables()
         {
             OracleConnection oConnection = new OracleConnection();
@@ -131,6 +136,41 @@ namespace Bauwagen
             }
         }
 
+        private void CreateTableCocktail()
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+
+            int nResult = 0;
+
+            if (MessageBox.Show("ACHTUNG!!\n\nTabellen für Cocktails wird neu erstellt und vorhande Daten gelöscht! Wirklich durchführen?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                using (oConnection)
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+
+                    //Tabelle Cocktails erstellen
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.DropTableCocktails();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.CreateTableCocktails();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+
+                    oConnection.Close();
+                }
+            }
+        }
+
         private void CmD_CreateUser_Click(object sender, EventArgs e)
         {
             Frm_UserAnlegen frm_useranlegen = new Frm_UserAnlegen();
@@ -145,7 +185,7 @@ namespace Bauwagen
 
         private void CmD_LongDrinkMixer_Click(object sender, EventArgs e)
         {
-            Frm_LongDrinkMixer frm_longdrinkmixer = new Frm_LongDrinkMixer();
+            Frm_CocktailMixer frm_longdrinkmixer = new Frm_CocktailMixer();
             frm_longdrinkmixer.ShowDialog();
         }
 
@@ -391,6 +431,14 @@ namespace Bauwagen
             foreach (string port in ports)
             {
                 CmB_ComPorts.Items.Add(port);
+            }
+
+            CmB_ComPortsCocktail.Items.Clear();
+            CmB_ComPortsCocktail.Text = Properties.Settings.Default.ComRelaisCocktail;
+
+            foreach (string port in ports)
+            {
+                CmB_ComPortsCocktail.Items.Add(port);
             }
         }
 

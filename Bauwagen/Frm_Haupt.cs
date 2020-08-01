@@ -77,6 +77,24 @@ namespace Bauwagen
             sBackupPfad = nodeBackupPfad.FirstChild.Value;
             XmlNode nodeRestorePfad = doc.SelectSingleNode("/Bauwagen/Database/RestorePfad");
             sRestorePfad = nodeRestorePfad.FirstChild.Value;
+            XmlNode nodeHostAutomat = doc.SelectSingleNode("/Bauwagen/Software/HostName_Automat");
+            XmlNode nodeHostCocktail = doc.SelectSingleNode("/Bauwagen/Software/HostName_CocktailMixer");
+
+            if (nodeHostAutomat.InnerText == System.Environment.MachineName.ToUpper().Trim())
+            {
+                CmD_Automatenbuchung.Visible = true;
+                CmD_Cocktailmixer.Visible = false;
+            }
+            else if (nodeHostCocktail.InnerText == System.Environment.MachineName.ToUpper().Trim())
+            {
+                CmD_Automatenbuchung.Visible = false;
+                CmD_Cocktailmixer.Visible = true;
+            }
+            else
+            {
+                CmD_Automatenbuchung.Visible = false;
+                CmD_Cocktailmixer.Visible = false;
+            }
 
             if (!Directory.Exists(sBackupPfad)) { Directory.CreateDirectory(sBackupPfad); }
             if (!Directory.Exists(sRestorePfad)) { Directory.CreateDirectory(sRestorePfad); }
@@ -578,6 +596,7 @@ namespace Bauwagen
             CmD_Automatenbuchung.Enabled = true;
             CmD_Logout.Enabled = true;
             CmD_LöschenWarenkorb.Enabled = true;
+            CmD_Cocktailmixer.Enabled = true;
         }
 
         private void DisableGüter()
@@ -599,6 +618,7 @@ namespace Bauwagen
             CmD_Automatenbuchung.Enabled = false;
             CmD_Logout.Enabled = false;
             CmD_LöschenWarenkorb.Enabled = false;
+            CmD_Cocktailmixer.Enabled = false;
         }
 
         Control GetAnwenderControlByName(string Name)
@@ -749,5 +769,23 @@ namespace Bauwagen
             }
         }
 
+        private void CmD_Cocktailmixer_Click(object sender, EventArgs e)
+        {
+            Frm_CocktailMixer frm_cocktailmixer = new Frm_CocktailMixer();
+            frm_cocktailmixer.ShowDialog();
+
+            DisableGüter();
+
+            LbL_Summe.Text = "0,00 €";
+            LbL_Budget.Text = "0,00 €";
+            LbL_Verfügbar.Text = "0,00 €";
+            LbL_Kredit.Text = "0,00 €";
+            LbL_User.Text = "";
+
+            DgV_Warenkorb.Rows.Clear();
+            CmD_Systemsteuerung.Enabled = true;
+
+            bBlockRefresh = false;
+        }
     }
 }

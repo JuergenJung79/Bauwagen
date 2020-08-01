@@ -60,13 +60,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.CmB_ComPorts = new System.Windows.Forms.ComboBox();
             this.CmD_LongDrinkMixer = new System.Windows.Forms.Button();
+            this.CmD_CreateCocktail = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CmB_ComPortsCocktail = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
             // 
             this.CmD_CreateTables.Location = new System.Drawing.Point(12, 255);
             this.CmD_CreateTables.Name = "CmD_CreateTables";
-            this.CmD_CreateTables.Size = new System.Drawing.Size(111, 25);
+            this.CmD_CreateTables.Size = new System.Drawing.Size(111, 43);
             this.CmD_CreateTables.TabIndex = 0;
             this.CmD_CreateTables.TabStop = false;
             this.CmD_CreateTables.Text = "Tabellen erstellen";
@@ -363,17 +367,58 @@
             this.CmD_LongDrinkMixer.Name = "CmD_LongDrinkMixer";
             this.CmD_LongDrinkMixer.Size = new System.Drawing.Size(130, 68);
             this.CmD_LongDrinkMixer.TabIndex = 1;
-            this.CmD_LongDrinkMixer.Text = "Longdrink Mixer";
+            this.CmD_LongDrinkMixer.Text = "Cocktails eintragen";
             this.CmD_LongDrinkMixer.UseVisualStyleBackColor = true;
             this.CmD_LongDrinkMixer.Click += new System.EventHandler(this.CmD_LongDrinkMixer_Click);
+            // 
+            // CmD_CreateCocktail
+            // 
+            this.CmD_CreateCocktail.Location = new System.Drawing.Point(129, 255);
+            this.CmD_CreateCocktail.Name = "CmD_CreateCocktail";
+            this.CmD_CreateCocktail.Size = new System.Drawing.Size(111, 43);
+            this.CmD_CreateCocktail.TabIndex = 0;
+            this.CmD_CreateCocktail.TabStop = false;
+            this.CmD_CreateCocktail.Text = "Tabelle Cocktail erstellen";
+            this.CmD_CreateCocktail.UseVisualStyleBackColor = true;
+            this.CmD_CreateCocktail.Click += new System.EventHandler(this.CmD_CreateCocktail_Click);
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(2, 451);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(957, 5);
+            this.label7.TabIndex = 11;
+            // 
+            // CmB_ComPortsCocktail
+            // 
+            this.CmB_ComPortsCocktail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmB_ComPortsCocktail.FormattingEnabled = true;
+            this.CmB_ComPortsCocktail.Location = new System.Drawing.Point(766, 486);
+            this.CmB_ComPortsCocktail.Name = "CmB_ComPortsCocktail";
+            this.CmB_ComPortsCocktail.Size = new System.Drawing.Size(121, 32);
+            this.CmB_ComPortsCocktail.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(708, 463);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(233, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "COM Port Relais (Cocktailmixer)";
             // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 450);
+            this.ClientSize = new System.Drawing.Size(962, 530);
+            this.Controls.Add(this.CmB_ComPortsCocktail);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.CmB_ComPorts);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.CmD_Relais_4);
             this.Controls.Add(this.CmD_Relais_3);
@@ -403,6 +448,7 @@
             this.Controls.Add(this.CmD_Geldaufladen);
             this.Controls.Add(this.CmD_GüterBearbeiten);
             this.Controls.Add(this.CmD_CreateUser);
+            this.Controls.Add(this.CmD_CreateCocktail);
             this.Controls.Add(this.CmD_CreateTables);
             this.Name = "Frm_Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -447,5 +493,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CmB_ComPorts;
         private System.Windows.Forms.Button CmD_LongDrinkMixer;
+        private System.Windows.Forms.Button CmD_CreateCocktail;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox CmB_ComPortsCocktail;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -189,6 +189,143 @@ namespace Bauwagen
 
             return sQuery;
         }
+
+        public static string DropTableCocktails()
+        {
+            string sQuery = "";
+
+            sQuery = "DROP TABLE COCKTAILS\n";
+
+            return sQuery;
+        }
+
+        public static string CreateTableCocktails()
+        {
+            string sQuery = "";
+
+            sQuery = "CREATE TABLE COCKTAILS\n";
+            sQuery += "(\n";
+            sQuery += "  NAME VARCHAR2(200)\n";
+            sQuery += ", ZUTAT_01 VARCHAR2(50)\n";
+            sQuery += ", DAUER_01_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_01_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_01_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_01_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_01_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_01_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_02 VARCHAR2(50)\n";
+            sQuery += ", DAUER_02_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_02_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_02_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_02_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_02_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_02_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_03 VARCHAR2(50)\n";
+            sQuery += ", DAUER_03_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_03_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_03_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_03_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_03_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_03_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_04 VARCHAR2(50)\n";
+            sQuery += ", DAUER_04_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_04_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_04_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_04_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_04_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_04_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_05 VARCHAR2(50)\n";
+            sQuery += ", DAUER_05_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_05_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_05_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_05_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_05_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_05_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_06 VARCHAR2(50)\n";
+            sQuery += ", DAUER_06_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_06_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_06_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_06_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_06_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_06_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_07 VARCHAR2(50)\n";
+            sQuery += ", DAUER_07_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_07_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_07_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_07_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_07_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_07_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_08 VARCHAR2(50)\n";
+            sQuery += ", DAUER_08_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_08_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_08_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_08_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_08_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_08_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_09 VARCHAR2(50)\n";
+            sQuery += ", DAUER_09_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_09_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_09_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_09_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_09_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_09_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_10 VARCHAR2(50)\n";
+            sQuery += ", DAUER_10_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_10_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_10_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_10_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_10_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_10_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_11 VARCHAR2(50)\n";
+            sQuery += ", DAUER_11_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_11_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_11_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_11_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_11_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_11_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_12 VARCHAR2(50)\n";
+            sQuery += ", DAUER_12_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_12_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_12_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_12_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_12_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_12_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_13 VARCHAR2(50)\n";
+            sQuery += ", DAUER_13_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_13_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_13_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_13_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_13_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_13_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_14 VARCHAR2(50)\n";
+            sQuery += ", DAUER_14_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_14_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_14_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_14_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_14_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_14_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_15 VARCHAR2(50)\n";
+            sQuery += ", DAUER_15_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_15_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_15_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_15_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_15_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_15_GROSS_STARK NUMBER\n";
+            sQuery += ", ZUTAT_16 VARCHAR2(50)\n";
+            sQuery += ", DAUER_16_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_16_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", DAUER_16_KLEIN_STARK NUMBER\n";
+            sQuery += ", DAUER_16_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", DAUER_16_GROSS_MITTEL NUMBER\n";
+            sQuery += ", DAUER_16_GROSS_STARK NUMBER,\n";
+            sQuery += "  CONSTRAINT PK_NAME PRIMARY KEY\n";
+            sQuery += "    (\n";
+            sQuery += "      NAME\n";
+            sQuery += "    )\n";
+            sQuery += "    ENABLE )\n";
+
+            return sQuery;
+        }
         #endregion
 
         public static string GetMaxAnderID()

@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Bauwagen>
   <Database>
-    <Adress>192.168.10.1</Adress>
+    <Adress>192.168.10.37</Adress>
     <Adress_Backup>192.168.2.158</Adress_Backup>
-    <ListenerPort>1522</ListenerPort>
+    <ListenerPort>1521</ListenerPort>
     <ListenerPort_Backup>1521</ListenerPort_Backup>
     <Schema>Bauwagen</Schema>
     <SchemaPassword>놩놊놞놜놊놌놎놅뇙뇛뇚뇒뇊</SchemaPassword>
     <BackupPfad>C:\Bauwagen\Backup\</BackupPfad>
     <RestorePfad>C:\Bauwagen\Backup\</RestorePfad>
   </Database>
+  <Software>
+    <HostName_Automat>EMARL002</HostName_Automat>
+    <HostName_CocktailMixer>EMARL001</HostName_CocktailMixer>
+  </Software>
 </Bauwagen>

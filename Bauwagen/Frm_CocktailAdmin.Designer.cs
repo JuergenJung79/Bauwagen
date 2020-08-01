@@ -1,6 +1,6 @@
 ﻿namespace Bauwagen
 {
-    partial class Frm_LongDrinkMixer
+    partial class Frm_CocktailAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Frm_LongDrinkMixer
+            // Frm_CocktailAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Frm_LongDrinkMixer";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Long Drink Mixer Admin";
+            this.ClientSize = new System.Drawing.Size(1148, 628);
+            this.Name = "Frm_CocktailAdmin";
+            this.Text = "Cocktail Admin";
             this.ResumeLayout(false);
 
         }

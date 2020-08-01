@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Bauwagen
 {
-    public partial class Frm_LongDrinkMixer : Form
+    public partial class Frm_CocktailAdmin : Form
     {
-        public Frm_LongDrinkMixer()
+        public Frm_CocktailAdmin()
         {
             InitializeComponent();
         }
