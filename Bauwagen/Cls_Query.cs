@@ -206,6 +206,8 @@ namespace Bauwagen
             sQuery = "CREATE TABLE COCKTAILS\n";
             sQuery += "(\n";
             sQuery += "  NAME VARCHAR2(200)\n";
+            sQuery += ", PREIS NUMBER\n";
+            sQuery += ", ACTIVE NUMBER\n";
             sQuery += ", ZUTAT_01 VARCHAR2(50)\n";
             sQuery += ", DAUER_01_KLEIN_SCHWACH NUMBER\n";
             sQuery += ", DAUER_01_KLEIN_MITTEL NUMBER\n";

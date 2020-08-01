@@ -20,7 +20,34 @@ namespace Bauwagen
 
         private void Frm_CocktailAdmin_Load(object sender, EventArgs e)
         {
+            ClearData();
+            LoadData();
+        }
+
+        private void CmD_Neu_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void CmD_Sichern_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DgV_Cocktails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ClearData()
+        {
+
+        }
+
+        private void LoadData()
+        {
+
+        }
+
     }
 }

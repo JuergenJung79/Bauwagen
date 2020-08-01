@@ -84,7 +84,6 @@ H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_User
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserListe.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
-H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_LongDrinkMixer.resources
 C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Settings.xml
 C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.config
 C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.manifest
@@ -115,3 +114,5 @@ C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
+H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
