@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace Bauwagen
 {
@@ -15,6 +16,11 @@ namespace Bauwagen
         public Frm_CocktailAdmin()
         {
             InitializeComponent();
+        }
+
+        private void Frm_CocktailAdmin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

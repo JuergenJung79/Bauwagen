@@ -185,8 +185,8 @@ namespace Bauwagen
 
         private void CmD_LongDrinkMixer_Click(object sender, EventArgs e)
         {
-            Frm_CocktailMixer frm_longdrinkmixer = new Frm_CocktailMixer();
-            frm_longdrinkmixer.ShowDialog();
+            Frm_CocktailAdmin frm_cocktailadmin = new Frm_CocktailAdmin();
+            frm_cocktailadmin.ShowDialog();
         }
 
         private void CmD_GüterBearbeiten_Click(object sender, EventArgs e)
