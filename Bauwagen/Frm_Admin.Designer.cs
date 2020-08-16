@@ -398,6 +398,7 @@
             this.CmB_ComPortsCocktail.Name = "CmB_ComPortsCocktail";
             this.CmB_ComPortsCocktail.Size = new System.Drawing.Size(121, 32);
             this.CmB_ComPortsCocktail.TabIndex = 15;
+            this.CmB_ComPortsCocktail.SelectedIndexChanged += new System.EventHandler(this.CmB_ComPortsCocktail_SelectedIndexChanged);
             // 
             // label8
             // 

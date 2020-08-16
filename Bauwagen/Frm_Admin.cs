@@ -739,5 +739,10 @@ namespace Bauwagen
             Properties.Settings.Default.Save();
         }
 
+        private void CmB_ComPortsCocktail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ComRelaisCocktail = CmB_ComPortsCocktail.Text;
+            Properties.Settings.Default.Save();
+        }
     }
 }

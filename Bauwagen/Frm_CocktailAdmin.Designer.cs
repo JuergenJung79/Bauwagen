@@ -158,6 +158,28 @@
             this.label21 = new System.Windows.Forms.Label();
             this.TxT_Preis = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CmD_TestRelais1 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais2 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais3 = new System.Windows.Forms.Button();
+            this.LbL_AktivierungR1 = new System.Windows.Forms.Label();
+            this.CmD_TestRelais4 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais5 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais6 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais7 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais8 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais9 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais10 = new System.Windows.Forms.Button();
+            this.CmD_TestRelais11 = new System.Windows.Forms.Button();
+            this.LbL_AktivierungR2 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR3 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR4 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR5 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR6 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR7 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR8 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR9 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR10 = new System.Windows.Forms.Label();
+            this.LbL_AktivierungR11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -1818,7 +1840,7 @@
             this.DgV_Cocktails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgV_Cocktails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cocktailname});
-            this.DgV_Cocktails.Location = new System.Drawing.Point(506, 26);
+            this.DgV_Cocktails.Location = new System.Drawing.Point(705, 19);
             this.DgV_Cocktails.Name = "DgV_Cocktails";
             this.DgV_Cocktails.Size = new System.Drawing.Size(379, 548);
             this.DgV_Cocktails.TabIndex = 6;
@@ -1832,7 +1854,7 @@
             // 
             // CmD_Neu
             // 
-            this.CmD_Neu.Location = new System.Drawing.Point(909, 26);
+            this.CmD_Neu.Location = new System.Drawing.Point(1108, 19);
             this.CmD_Neu.Name = "CmD_Neu";
             this.CmD_Neu.Size = new System.Drawing.Size(75, 23);
             this.CmD_Neu.TabIndex = 7;
@@ -1842,7 +1864,7 @@
             // 
             // CmD_Sichern
             // 
-            this.CmD_Sichern.Location = new System.Drawing.Point(909, 55);
+            this.CmD_Sichern.Location = new System.Drawing.Point(1108, 48);
             this.CmD_Sichern.Name = "CmD_Sichern";
             this.CmD_Sichern.Size = new System.Drawing.Size(75, 23);
             this.CmD_Sichern.TabIndex = 8;
@@ -1876,11 +1898,253 @@
             this.checkBox1.Text = "Aktiv";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // CmD_TestRelais1
+            // 
+            this.CmD_TestRelais1.Location = new System.Drawing.Point(466, 135);
+            this.CmD_TestRelais1.Name = "CmD_TestRelais1";
+            this.CmD_TestRelais1.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais1.TabIndex = 10;
+            this.CmD_TestRelais1.Text = "Test R1";
+            this.CmD_TestRelais1.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais1_MouseDown);
+            this.CmD_TestRelais1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais1_MouseUp);
+            // 
+            // CmD_TestRelais2
+            // 
+            this.CmD_TestRelais2.Location = new System.Drawing.Point(466, 161);
+            this.CmD_TestRelais2.Name = "CmD_TestRelais2";
+            this.CmD_TestRelais2.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais2.TabIndex = 10;
+            this.CmD_TestRelais2.Text = "Test R2";
+            this.CmD_TestRelais2.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais2_MouseDown);
+            this.CmD_TestRelais2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais2_MouseUp);
+            // 
+            // CmD_TestRelais3
+            // 
+            this.CmD_TestRelais3.Location = new System.Drawing.Point(466, 187);
+            this.CmD_TestRelais3.Name = "CmD_TestRelais3";
+            this.CmD_TestRelais3.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais3.TabIndex = 10;
+            this.CmD_TestRelais3.Text = "Test R3";
+            this.CmD_TestRelais3.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais3_MouseDown);
+            this.CmD_TestRelais3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais3_MouseUp);
+            // 
+            // LbL_AktivierungR1
+            // 
+            this.LbL_AktivierungR1.AutoSize = true;
+            this.LbL_AktivierungR1.Location = new System.Drawing.Point(557, 140);
+            this.LbL_AktivierungR1.Name = "LbL_AktivierungR1";
+            this.LbL_AktivierungR1.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR1.TabIndex = 11;
+            this.LbL_AktivierungR1.Text = "Aktivierungszeit:";
+            // 
+            // CmD_TestRelais4
+            // 
+            this.CmD_TestRelais4.Location = new System.Drawing.Point(466, 213);
+            this.CmD_TestRelais4.Name = "CmD_TestRelais4";
+            this.CmD_TestRelais4.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais4.TabIndex = 10;
+            this.CmD_TestRelais4.Text = "Test R4";
+            this.CmD_TestRelais4.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais4_MouseDown);
+            this.CmD_TestRelais4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais4_MouseUp);
+            // 
+            // CmD_TestRelais5
+            // 
+            this.CmD_TestRelais5.Location = new System.Drawing.Point(466, 239);
+            this.CmD_TestRelais5.Name = "CmD_TestRelais5";
+            this.CmD_TestRelais5.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais5.TabIndex = 10;
+            this.CmD_TestRelais5.Text = "Test R5";
+            this.CmD_TestRelais5.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais5_MouseDown);
+            this.CmD_TestRelais5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais5_MouseUp);
+            // 
+            // CmD_TestRelais6
+            // 
+            this.CmD_TestRelais6.Location = new System.Drawing.Point(466, 265);
+            this.CmD_TestRelais6.Name = "CmD_TestRelais6";
+            this.CmD_TestRelais6.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais6.TabIndex = 10;
+            this.CmD_TestRelais6.Text = "Test R6";
+            this.CmD_TestRelais6.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais6_MouseDown);
+            this.CmD_TestRelais6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais6_MouseUp);
+            // 
+            // CmD_TestRelais7
+            // 
+            this.CmD_TestRelais7.Location = new System.Drawing.Point(466, 291);
+            this.CmD_TestRelais7.Name = "CmD_TestRelais7";
+            this.CmD_TestRelais7.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais7.TabIndex = 10;
+            this.CmD_TestRelais7.Text = "Test R7";
+            this.CmD_TestRelais7.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais7_MouseDown);
+            this.CmD_TestRelais7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais7_MouseUp);
+            // 
+            // CmD_TestRelais8
+            // 
+            this.CmD_TestRelais8.Location = new System.Drawing.Point(466, 317);
+            this.CmD_TestRelais8.Name = "CmD_TestRelais8";
+            this.CmD_TestRelais8.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais8.TabIndex = 10;
+            this.CmD_TestRelais8.Text = "Test R8";
+            this.CmD_TestRelais8.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais8_MouseDown);
+            this.CmD_TestRelais8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais8_MouseUp);
+            // 
+            // CmD_TestRelais9
+            // 
+            this.CmD_TestRelais9.Location = new System.Drawing.Point(466, 343);
+            this.CmD_TestRelais9.Name = "CmD_TestRelais9";
+            this.CmD_TestRelais9.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais9.TabIndex = 10;
+            this.CmD_TestRelais9.Text = "Test R9";
+            this.CmD_TestRelais9.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais9_MouseDown);
+            this.CmD_TestRelais9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais9_MouseUp);
+            // 
+            // CmD_TestRelais10
+            // 
+            this.CmD_TestRelais10.Location = new System.Drawing.Point(466, 369);
+            this.CmD_TestRelais10.Name = "CmD_TestRelais10";
+            this.CmD_TestRelais10.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais10.TabIndex = 10;
+            this.CmD_TestRelais10.Text = "Test R10";
+            this.CmD_TestRelais10.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais10_MouseDown);
+            this.CmD_TestRelais10.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais10_MouseUp);
+            // 
+            // CmD_TestRelais11
+            // 
+            this.CmD_TestRelais11.Location = new System.Drawing.Point(466, 395);
+            this.CmD_TestRelais11.Name = "CmD_TestRelais11";
+            this.CmD_TestRelais11.Size = new System.Drawing.Size(75, 23);
+            this.CmD_TestRelais11.TabIndex = 10;
+            this.CmD_TestRelais11.Text = "Test R11";
+            this.CmD_TestRelais11.UseVisualStyleBackColor = true;
+            this.CmD_TestRelais11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais11_MouseDown);
+            this.CmD_TestRelais11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CmD_TestRelais11_MouseUp);
+            // 
+            // LbL_AktivierungR2
+            // 
+            this.LbL_AktivierungR2.AutoSize = true;
+            this.LbL_AktivierungR2.Location = new System.Drawing.Point(557, 166);
+            this.LbL_AktivierungR2.Name = "LbL_AktivierungR2";
+            this.LbL_AktivierungR2.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR2.TabIndex = 11;
+            this.LbL_AktivierungR2.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR3
+            // 
+            this.LbL_AktivierungR3.AutoSize = true;
+            this.LbL_AktivierungR3.Location = new System.Drawing.Point(557, 192);
+            this.LbL_AktivierungR3.Name = "LbL_AktivierungR3";
+            this.LbL_AktivierungR3.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR3.TabIndex = 11;
+            this.LbL_AktivierungR3.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR4
+            // 
+            this.LbL_AktivierungR4.AutoSize = true;
+            this.LbL_AktivierungR4.Location = new System.Drawing.Point(557, 218);
+            this.LbL_AktivierungR4.Name = "LbL_AktivierungR4";
+            this.LbL_AktivierungR4.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR4.TabIndex = 11;
+            this.LbL_AktivierungR4.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR5
+            // 
+            this.LbL_AktivierungR5.AutoSize = true;
+            this.LbL_AktivierungR5.Location = new System.Drawing.Point(557, 244);
+            this.LbL_AktivierungR5.Name = "LbL_AktivierungR5";
+            this.LbL_AktivierungR5.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR5.TabIndex = 11;
+            this.LbL_AktivierungR5.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR6
+            // 
+            this.LbL_AktivierungR6.AutoSize = true;
+            this.LbL_AktivierungR6.Location = new System.Drawing.Point(557, 270);
+            this.LbL_AktivierungR6.Name = "LbL_AktivierungR6";
+            this.LbL_AktivierungR6.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR6.TabIndex = 11;
+            this.LbL_AktivierungR6.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR7
+            // 
+            this.LbL_AktivierungR7.AutoSize = true;
+            this.LbL_AktivierungR7.Location = new System.Drawing.Point(557, 296);
+            this.LbL_AktivierungR7.Name = "LbL_AktivierungR7";
+            this.LbL_AktivierungR7.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR7.TabIndex = 11;
+            this.LbL_AktivierungR7.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR8
+            // 
+            this.LbL_AktivierungR8.AutoSize = true;
+            this.LbL_AktivierungR8.Location = new System.Drawing.Point(557, 322);
+            this.LbL_AktivierungR8.Name = "LbL_AktivierungR8";
+            this.LbL_AktivierungR8.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR8.TabIndex = 11;
+            this.LbL_AktivierungR8.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR9
+            // 
+            this.LbL_AktivierungR9.AutoSize = true;
+            this.LbL_AktivierungR9.Location = new System.Drawing.Point(557, 348);
+            this.LbL_AktivierungR9.Name = "LbL_AktivierungR9";
+            this.LbL_AktivierungR9.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR9.TabIndex = 11;
+            this.LbL_AktivierungR9.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR10
+            // 
+            this.LbL_AktivierungR10.AutoSize = true;
+            this.LbL_AktivierungR10.Location = new System.Drawing.Point(557, 374);
+            this.LbL_AktivierungR10.Name = "LbL_AktivierungR10";
+            this.LbL_AktivierungR10.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR10.TabIndex = 11;
+            this.LbL_AktivierungR10.Text = "Aktivierungszeit:";
+            // 
+            // LbL_AktivierungR11
+            // 
+            this.LbL_AktivierungR11.AutoSize = true;
+            this.LbL_AktivierungR11.Location = new System.Drawing.Point(557, 400);
+            this.LbL_AktivierungR11.Name = "LbL_AktivierungR11";
+            this.LbL_AktivierungR11.Size = new System.Drawing.Size(84, 13);
+            this.LbL_AktivierungR11.TabIndex = 11;
+            this.LbL_AktivierungR11.Text = "Aktivierungszeit:";
+            // 
             // Frm_CocktailAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 628);
+            this.ClientSize = new System.Drawing.Size(1195, 628);
+            this.Controls.Add(this.LbL_AktivierungR11);
+            this.Controls.Add(this.LbL_AktivierungR10);
+            this.Controls.Add(this.LbL_AktivierungR9);
+            this.Controls.Add(this.LbL_AktivierungR8);
+            this.Controls.Add(this.LbL_AktivierungR7);
+            this.Controls.Add(this.LbL_AktivierungR6);
+            this.Controls.Add(this.LbL_AktivierungR5);
+            this.Controls.Add(this.LbL_AktivierungR4);
+            this.Controls.Add(this.LbL_AktivierungR3);
+            this.Controls.Add(this.LbL_AktivierungR2);
+            this.Controls.Add(this.LbL_AktivierungR1);
+            this.Controls.Add(this.CmD_TestRelais11);
+            this.Controls.Add(this.CmD_TestRelais10);
+            this.Controls.Add(this.CmD_TestRelais9);
+            this.Controls.Add(this.CmD_TestRelais8);
+            this.Controls.Add(this.CmD_TestRelais7);
+            this.Controls.Add(this.CmD_TestRelais6);
+            this.Controls.Add(this.CmD_TestRelais5);
+            this.Controls.Add(this.CmD_TestRelais4);
+            this.Controls.Add(this.CmD_TestRelais3);
+            this.Controls.Add(this.CmD_TestRelais2);
+            this.Controls.Add(this.CmD_TestRelais1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.CmD_Sichern);
             this.Controls.Add(this.CmD_Neu);
@@ -2012,6 +2276,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Frm_CocktailAdmin";
             this.Text = "Cocktail Admin";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_CocktailAdmin_FormClosing);
             this.Load += new System.EventHandler(this.Frm_CocktailAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -2253,5 +2518,27 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox TxT_Preis;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button CmD_TestRelais1;
+        private System.Windows.Forms.Button CmD_TestRelais2;
+        private System.Windows.Forms.Button CmD_TestRelais3;
+        private System.Windows.Forms.Label LbL_AktivierungR1;
+        private System.Windows.Forms.Button CmD_TestRelais4;
+        private System.Windows.Forms.Button CmD_TestRelais5;
+        private System.Windows.Forms.Button CmD_TestRelais6;
+        private System.Windows.Forms.Button CmD_TestRelais7;
+        private System.Windows.Forms.Button CmD_TestRelais8;
+        private System.Windows.Forms.Button CmD_TestRelais9;
+        private System.Windows.Forms.Button CmD_TestRelais10;
+        private System.Windows.Forms.Button CmD_TestRelais11;
+        private System.Windows.Forms.Label LbL_AktivierungR2;
+        private System.Windows.Forms.Label LbL_AktivierungR3;
+        private System.Windows.Forms.Label LbL_AktivierungR4;
+        private System.Windows.Forms.Label LbL_AktivierungR5;
+        private System.Windows.Forms.Label LbL_AktivierungR6;
+        private System.Windows.Forms.Label LbL_AktivierungR7;
+        private System.Windows.Forms.Label LbL_AktivierungR8;
+        private System.Windows.Forms.Label LbL_AktivierungR9;
+        private System.Windows.Forms.Label LbL_AktivierungR10;
+        private System.Windows.Forms.Label LbL_AktivierungR11;
     }
 }

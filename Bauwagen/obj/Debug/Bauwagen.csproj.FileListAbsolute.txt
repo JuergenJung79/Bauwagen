@@ -116,3 +116,32 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_C
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Settings.xml
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.config
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.manifest
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.application
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.pdb
+H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Oracle.ManagedDataAccess.dll
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Aufladen.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_ChangePassword.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Login.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Admin.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Haupt.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserAnlegen.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserListe.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Properties.Resources.resources
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.GenerateResource.cache
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CoreCompileInputs.cache
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.TrustInfo.xml
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe.manifest
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
+H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb

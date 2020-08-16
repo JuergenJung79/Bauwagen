@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -116,7 +117,7 @@ namespace Bauwagen
                     oConnection.Close();
                     bRun = false;
                 }
-                catch
+                catch (Exception ex)
                 {
                     bRun = true;
                     Thread.Sleep(1000);
