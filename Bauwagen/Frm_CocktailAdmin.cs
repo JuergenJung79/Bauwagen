@@ -11,6 +11,7 @@ using System.Data.OleDb;
 using System.IO.Ports;
 using System.Threading;
 using System.Timers;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Bauwagen
 {
@@ -68,7 +69,42 @@ namespace Bauwagen
 
         private void LoadData()
         {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+            OracleDataReader drReader;
 
+            using (oConnection)
+            {
+                try
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte();
+                    drReader = oCommand.ExecuteReader();
+
+                    DgV_Cocktails.AllowUserToAddRows = true;
+                    DgV_Cocktails.Rows.Clear();
+                    while (drReader.Read())
+                    {
+                        if (Convert.ToDouble(drReader.GetValue(5)) <= 0)
+                        {
+                            DataGridViewRow row = (DataGridViewRow)DgV_Cocktails.Rows[0].Clone();
+                            row.Cells[0].Value = drReader.GetValue(0).ToString().Trim();
+                            DgV_Cocktails.Rows.Add(row);
+                        }
+                    }
+                    drReader.Close();
+                    DgV_Cocktails.AllowUserToAddRows = false;
+
+                    oConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "GetGüter");
+                }
+            }
         }
 
         #region Relaiszeitmessung

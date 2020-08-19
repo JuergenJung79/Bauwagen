@@ -771,5 +771,15 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string GetCocktailRezepte()
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT name\n";
+            sQuery += "FROM cocktails\n";
+
+            return sQuery;
+        }
+
     }
 }
