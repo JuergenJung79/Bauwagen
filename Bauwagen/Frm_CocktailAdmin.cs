@@ -40,6 +40,9 @@ namespace Bauwagen
 
             ClearData();
             LoadData();
+
+            CmD_Neu.Enabled = false;
+            CmD_Sichern.Enabled = false;
         }
 
         private void Frm_CocktailAdmin_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,24 +52,306 @@ namespace Bauwagen
 
         private void CmD_Neu_Click(object sender, EventArgs e)
         {
-
+            ClearData();
         }
 
         private void CmD_Sichern_Click(object sender, EventArgs e)
         {
+            SaveData();
 
+            DgV_Cocktails.Enabled = true;
+            LoadData();
+            DgV_Cocktails.Enabled = false;
+        }
+
+        private void TxT_Name_TextChanged(object sender, EventArgs e)
+        {
+            if (TxT_Name.Text.Trim() != "")
+            {
+                LoadDataEinzeln();
+
+                CmD_Neu.Enabled = true;
+                CmD_Sichern.Enabled = true;
+            }
         }
 
         private void DgV_Cocktails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            TxT_Name.Text = DgV_Cocktails.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
+            DgV_Cocktails.Enabled = false;
         }
 
+        #region ClearData
         private void ClearData()
         {
+            TxT_Name.Text = "";
+            DgV_Cocktails.Enabled = true;
 
+            TxT_Preis.Text = "";
+            ChK_Aktiv.Checked = false;
+
+            NuD_Klein_Schwach_01.Value = 0;
+            NuD_Klein_Mittel_01.Value = 0;
+            NuD_Klein_Stark_01.Value = 0;
+            NuD_Groß_Schwach_01.Value = 0;
+            NuD_Groß_Mittel_01.Value = 0;
+            NuD_Groß_Stark_01.Value = 0;
+            NuD_Klein_Schwach_02.Value = 0;
+            NuD_Klein_Mittel_02.Value = 0;
+            NuD_Klein_Stark_02.Value = 0;
+            NuD_Groß_Schwach_02.Value = 0;
+            NuD_Groß_Mittel_02.Value = 0;
+            NuD_Groß_Stark_02.Value = 0;
+            NuD_Klein_Schwach_03.Value = 0;
+            NuD_Klein_Mittel_03.Value = 0;
+            NuD_Klein_Stark_03.Value = 0;
+            NuD_Groß_Schwach_03.Value = 0;
+            NuD_Groß_Mittel_03.Value = 0;
+            NuD_Groß_Stark_03.Value = 0;
+            NuD_Klein_Schwach_04.Value = 0;
+            NuD_Klein_Mittel_04.Value = 0;
+            NuD_Klein_Stark_04.Value = 0;
+            NuD_Groß_Schwach_04.Value = 0;
+            NuD_Groß_Mittel_04.Value = 0;
+            NuD_Groß_Stark_04.Value = 0;
+            NuD_Klein_Schwach_05.Value = 0;
+            NuD_Klein_Mittel_05.Value = 0;
+            NuD_Klein_Stark_05.Value = 0;
+            NuD_Groß_Schwach_05.Value = 0;
+            NuD_Groß_Mittel_05.Value = 0;
+            NuD_Groß_Stark_05.Value = 0;
+            NuD_Klein_Schwach_06.Value = 0;
+            NuD_Klein_Mittel_06.Value = 0;
+            NuD_Klein_Stark_06.Value = 0;
+            NuD_Groß_Schwach_06.Value = 0;
+            NuD_Groß_Mittel_06.Value = 0;
+            NuD_Groß_Stark_06.Value = 0;
+            NuD_Klein_Schwach_07.Value = 0;
+            NuD_Klein_Mittel_07.Value = 0;
+            NuD_Klein_Stark_07.Value = 0;
+            NuD_Groß_Schwach_07.Value = 0;
+            NuD_Groß_Mittel_07.Value = 0;
+            NuD_Groß_Stark_07.Value = 0;
+            NuD_Klein_Schwach_08.Value = 0;
+            NuD_Klein_Mittel_08.Value = 0;
+            NuD_Klein_Stark_08.Value = 0;
+            NuD_Groß_Schwach_08.Value = 0;
+            NuD_Groß_Mittel_08.Value = 0;
+            NuD_Groß_Stark_08.Value = 0;
+            NuD_Klein_Schwach_09.Value = 0;
+            NuD_Klein_Mittel_09.Value = 0;
+            NuD_Klein_Stark_09.Value = 0;
+            NuD_Groß_Schwach_09.Value = 0;
+            NuD_Groß_Mittel_09.Value = 0;
+            NuD_Groß_Stark_09.Value = 0;
+            NuD_Klein_Schwach_10.Value = 0;
+            NuD_Klein_Mittel_10.Value = 0;
+            NuD_Klein_Stark_10.Value = 0;
+            NuD_Groß_Schwach_10.Value = 0;
+            NuD_Groß_Mittel_10.Value = 0;
+            NuD_Groß_Stark_10.Value = 0;
+            NuD_Klein_Schwach_11.Value = 0;
+            NuD_Klein_Mittel_11.Value = 0;
+            NuD_Klein_Stark_11.Value = 0;
+            NuD_Groß_Schwach_11.Value = 0;
+            NuD_Groß_Mittel_11.Value = 0;
+            NuD_Groß_Stark_11.Value = 0;
+            NuD_Klein_Schwach_12.Value = 0;
+            NuD_Klein_Mittel_12.Value = 0;
+            NuD_Klein_Stark_12.Value = 0;
+            NuD_Groß_Schwach_12.Value = 0;
+            NuD_Groß_Mittel_12.Value = 0;
+            NuD_Groß_Stark_12.Value = 0;
+            NuD_Klein_Schwach_13.Value = 0;
+            NuD_Klein_Mittel_13.Value = 0;
+            NuD_Klein_Stark_13.Value = 0;
+            NuD_Groß_Schwach_13.Value = 0;
+            NuD_Groß_Mittel_13.Value = 0;
+            NuD_Groß_Stark_13.Value = 0;
+            NuD_Klein_Schwach_14.Value = 0;
+            NuD_Klein_Mittel_14.Value = 0;
+            NuD_Klein_Stark_14.Value = 0;
+            NuD_Groß_Schwach_14.Value = 0;
+            NuD_Groß_Mittel_14.Value = 0;
+            NuD_Groß_Stark_14.Value = 0;
+            NuD_Klein_Schwach_15.Value = 0;
+            NuD_Klein_Mittel_15.Value = 0;
+            NuD_Klein_Stark_15.Value = 0;
+            NuD_Groß_Schwach_15.Value = 0;
+            NuD_Groß_Mittel_15.Value = 0;
+            NuD_Groß_Stark_15.Value = 0;
+            NuD_Klein_Schwach_16.Value = 0;
+            NuD_Klein_Mittel_16.Value = 0;
+            NuD_Klein_Stark_16.Value = 0;
+            NuD_Groß_Schwach_16.Value = 0;
+            NuD_Groß_Mittel_16.Value = 0;
+            NuD_Groß_Stark_16.Value = 0;
+
+            CmD_Neu.Enabled = false;
+            CmD_Sichern.Enabled = false;
         }
+        #endregion
 
+        #region LoadData
+        private void SaveData()
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommandSelect = new OracleCommand();
+            OracleCommand oCommandInsert = new OracleCommand();
+            OracleDataReader drReader;
+
+            bool bUpdate = false;
+            bool bInsert = false;
+
+            int nResult = 0;
+
+            string sAktiv = "";
+
+            if (ChK_Aktiv.Checked == true) { sAktiv = "1"; } else { sAktiv = "0"; }
+
+            using (oConnection)
+            {
+                try
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommandSelect.Connection = oConnection;
+                    oCommandInsert.Connection = oConnection;
+
+                    oCommandSelect.CommandText = Cls_Query.GetCocktailRezepte(TxT_Name.Text.Trim());
+                    drReader = oCommandSelect.ExecuteReader();
+                    if (drReader.HasRows) { bUpdate = true; bInsert = false; } else { bUpdate = false; bInsert = true; }
+                    drReader.Close();
+
+                    oCommandInsert.CommandText = Cls_Query.InsertNeuerCocktail(bUpdate, bInsert, TxT_Name.Text.Trim(),
+                        LbL_Zutat_01.Text.Trim(),
+                        NuD_Klein_Schwach_01.Value.ToString().Trim().Replace(",","."),
+                        NuD_Klein_Mittel_01.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_01.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_01.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_01.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_01.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_02.Text.Trim(),
+                        NuD_Klein_Schwach_02.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_02.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_02.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_02.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_02.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_02.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_03.Text.Trim(),
+                        NuD_Klein_Schwach_03.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_03.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_03.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_03.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_03.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_03.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_04.Text.Trim(),
+                        NuD_Klein_Schwach_04.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_04.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_04.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_04.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_04.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_04.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_05.Text.Trim(),
+                        NuD_Klein_Schwach_05.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_05.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_05.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_05.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_05.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_05.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_06.Text.Trim(),
+                        NuD_Klein_Schwach_06.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_06.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_06.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_06.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_06.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_06.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_07.Text.Trim(),
+                        NuD_Klein_Schwach_07.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_07.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_07.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_07.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_07.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_07.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_08.Text.Trim(),
+                        NuD_Klein_Schwach_08.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_08.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_08.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_08.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_08.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_08.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_09.Text.Trim(),
+                        NuD_Klein_Schwach_09.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_09.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_09.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_09.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_09.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_09.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_10.Text.Trim(),
+                        NuD_Klein_Schwach_10.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_10.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_10.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_10.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_10.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_10.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_11.Text.Trim(),
+                        NuD_Klein_Schwach_11.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_11.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_11.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_11.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_11.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_11.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_12.Text.Trim(),
+                        NuD_Klein_Schwach_12.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_12.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_12.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_12.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_12.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_12.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_13.Text.Trim(),
+                        NuD_Klein_Schwach_13.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_13.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_13.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_13.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_13.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_13.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_14.Text.Trim(),
+                        NuD_Klein_Schwach_14.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_14.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_14.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_14.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_14.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_14.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_15.Text.Trim(),
+                        NuD_Klein_Schwach_15.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_15.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_15.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_15.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_15.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_15.Value.ToString().Trim().Replace(",", "."),
+                        LbL_Zutat_16.Text.Trim(),
+                        NuD_Klein_Schwach_16.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Mittel_16.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Klein_Stark_16.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Schwach_16.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Mittel_16.Value.ToString().Trim().Replace(",", "."),
+                        NuD_Groß_Stark_16.Value.ToString().Trim().Replace(",", "."),
+                        TxT_Preis.Text.Trim().Replace(",", "."),
+                        sAktiv);
+                    nResult = oCommandInsert.ExecuteNonQuery();
+
+                    oConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "GetGüter");
+                }
+            }
+        }
+        #endregion
+
+        #region LoadData
         private void LoadData()
         {
             OracleConnection oConnection = new OracleConnection();
@@ -81,19 +366,16 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetCocktailRezepte();
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("");
                     drReader = oCommand.ExecuteReader();
 
                     DgV_Cocktails.AllowUserToAddRows = true;
                     DgV_Cocktails.Rows.Clear();
                     while (drReader.Read())
                     {
-                        if (Convert.ToDouble(drReader.GetValue(5)) <= 0)
-                        {
-                            DataGridViewRow row = (DataGridViewRow)DgV_Cocktails.Rows[0].Clone();
-                            row.Cells[0].Value = drReader.GetValue(0).ToString().Trim();
-                            DgV_Cocktails.Rows.Add(row);
-                        }
+                        DataGridViewRow row = (DataGridViewRow)DgV_Cocktails.Rows[0].Clone();
+                        row.Cells[0].Value = drReader.GetValue(0).ToString().Trim();
+                        DgV_Cocktails.Rows.Add(row);
                     }
                     drReader.Close();
                     DgV_Cocktails.AllowUserToAddRows = false;
@@ -106,6 +388,172 @@ namespace Bauwagen
                 }
             }
         }
+        #endregion
+
+        #region LoadDataEinzeln
+        private void LoadDataEinzeln()
+        {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+            OracleDataReader drReader;
+
+            int nZähler = 0;
+
+            using (oConnection)
+            {
+                try
+                {
+                    oConnection.ConnectionString = Frm_Haupt.sDSN;
+                    oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte(TxT_Name.Text.Trim());
+                    drReader = oCommand.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        TxT_Preis.Text = drReader.GetValue(1).ToString().Trim();
+                        if (drReader.GetValue(2).ToString().Trim() == "1") { ChK_Aktiv.Checked = true; } else { ChK_Aktiv.Checked = false; }
+
+                        NuD_Klein_Schwach_01.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_01.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_01.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_01.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_01.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_01.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_02.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_02.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_02.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_02.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_02.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_02.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_03.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_03.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_03.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_03.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_03.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_03.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_04.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_04.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_04.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_04.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_04.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_04.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_05.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_05.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_05.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_05.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_05.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_05.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_06.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_06.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_06.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_06.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_06.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_06.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_07.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_07.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_07.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_07.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_07.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_07.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_08.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_08.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_08.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_08.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_08.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_08.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_09.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_09.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_09.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_09.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_09.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_09.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_10.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_10.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_10.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_10.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_10.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_10.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_11.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_11.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_11.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_11.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_11.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_11.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_12.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_12.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_12.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_12.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_12.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_12.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_13.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_13.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_13.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_13.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_13.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_13.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_14.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_14.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_14.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_14.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_14.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_14.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_15.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_15.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_15.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_15.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_15.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_15.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+
+                        NuD_Klein_Schwach_16.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));
+                        NuD_Klein_Mittel_16.Value = Convert.ToDecimal(drReader.GetValue(4 + nZähler));
+                        NuD_Klein_Stark_16.Value = Convert.ToDecimal(drReader.GetValue(5 + nZähler));
+                        NuD_Groß_Schwach_16.Value = Convert.ToDecimal(drReader.GetValue(6 + nZähler));
+                        NuD_Groß_Mittel_16.Value = Convert.ToDecimal(drReader.GetValue(7 + nZähler));
+                        NuD_Groß_Stark_16.Value = Convert.ToDecimal(drReader.GetValue(8 + nZähler));
+                        nZähler = nZähler + 6;
+                    }
+                    drReader.Close();
+
+                    oConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "GetGüter");
+                }
+            }
+        }
+        #endregion
 
         #region Relaiszeitmessung
         private void CmD_TestRelais1_MouseDown(object sender, MouseEventArgs e)
