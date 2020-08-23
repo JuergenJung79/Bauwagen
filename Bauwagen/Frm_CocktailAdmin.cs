@@ -87,7 +87,13 @@ namespace Bauwagen
             TxT_Name.Text = "";
             DgV_Cocktails.Enabled = true;
 
-            TxT_Preis.Text = "";
+            TxT_Preis_Klein_Schwach.Text = "";
+            TxT_Preis_Klein_Mittel.Text = "";
+            TxT_Preis_Klein_Stark.Text = "";
+            TxT_Preis_Gross_Schwach.Text = "";
+            TxT_Preis_Gross_Mittel.Text = "";
+            TxT_Preis_Gross_Stark.Text = "";
+
             ChK_Aktiv.Checked = false;
 
             NuD_Klein_Schwach_01.Value = 0;
@@ -192,7 +198,7 @@ namespace Bauwagen
         }
         #endregion
 
-        #region LoadData
+        #region Save Data
         private void SaveData()
         {
             OracleConnection oConnection = new OracleConnection();
@@ -337,7 +343,12 @@ namespace Bauwagen
                         NuD_Groß_Schwach_16.Value.ToString().Trim().Replace(",", "."),
                         NuD_Groß_Mittel_16.Value.ToString().Trim().Replace(",", "."),
                         NuD_Groß_Stark_16.Value.ToString().Trim().Replace(",", "."),
-                        TxT_Preis.Text.Trim().Replace(",", "."),
+                        TxT_Preis_Klein_Schwach.Text.Trim().Replace(",", "."),
+                        TxT_Preis_Klein_Mittel.Text.Trim().Replace(",", "."),
+                        TxT_Preis_Klein_Stark.Text.Trim().Replace(",", "."),
+                        TxT_Preis_Gross_Schwach.Text.Trim().Replace(",", "."),
+                        TxT_Preis_Gross_Mittel.Text.Trim().Replace(",", "."),
+                        TxT_Preis_Gross_Stark.Text.Trim().Replace(",", "."),
                         sAktiv);
                     nResult = oCommandInsert.ExecuteNonQuery();
 
@@ -412,7 +423,12 @@ namespace Bauwagen
 
                     while (drReader.Read())
                     {
-                        TxT_Preis.Text = drReader.GetValue(1).ToString().Trim();
+                        TxT_Preis_Klein_Schwach.Text = drReader.GetValue(1).ToString().Trim();
+                        TxT_Preis_Klein_Mittel.Text = drReader.GetValue(99).ToString().Trim();
+                        TxT_Preis_Klein_Stark.Text = drReader.GetValue(100).ToString().Trim();
+                        TxT_Preis_Gross_Schwach.Text = drReader.GetValue(101).ToString().Trim();
+                        TxT_Preis_Gross_Mittel.Text = drReader.GetValue(102).ToString().Trim();
+                        TxT_Preis_Gross_Stark.Text = drReader.GetValue(103).ToString().Trim();
                         if (drReader.GetValue(2).ToString().Trim() == "1") { ChK_Aktiv.Checked = true; } else { ChK_Aktiv.Checked = false; }
 
                         NuD_Klein_Schwach_01.Value = Convert.ToDecimal(drReader.GetValue(3 + nZähler));

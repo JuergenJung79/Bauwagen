@@ -773,6 +773,8 @@ namespace Bauwagen
         private void CmD_Cocktailmixer_Click(object sender, EventArgs e)
         {
             Frm_CocktailMixer frm_cocktailmixer = new Frm_CocktailMixer();
+            frm_cocktailmixer.LbL_Budget.Text = LbL_Budget.Text;
+            frm_cocktailmixer.LbL_Kredit.Text = LbL_Kredit.Text;
             frm_cocktailmixer.ShowDialog();
 
             DisableGüter();

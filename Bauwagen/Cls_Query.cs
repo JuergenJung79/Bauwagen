@@ -206,7 +206,12 @@ namespace Bauwagen
             sQuery = "CREATE TABLE COCKTAILS\n";
             sQuery += "(\n";
             sQuery += "  NAME VARCHAR2(200)\n";
-            sQuery += ", PREIS NUMBER\n";
+            sQuery += ", PREIS_KLEIN_SCHWACH NUMBER\n";
+            sQuery += ", PREIS_KLEIN_MITTEL NUMBER\n";
+            sQuery += ", PREIS_KLEIN_STARK NUMBER\n";
+            sQuery += ", PREIS_GROSS_SCHWACH NUMBER\n";
+            sQuery += ", PREIS_GROSS_MITTEL NUMBER\n";
+            sQuery += ", PREIS_GROSS_STARK NUMBER\n";
             sQuery += ", ACTIVE NUMBER\n";
             sQuery += ", ZUTAT_01 VARCHAR2(50)\n";
             sQuery += ", DAUER_01_KLEIN_SCHWACH NUMBER\n";
@@ -776,7 +781,7 @@ namespace Bauwagen
             string sQuery = "";
 
             sQuery = "SELECT name\n";
-            sQuery += "    ,preis\n";
+            sQuery += "    ,PREIS_KLEIN_SCHWACH\n";
             sQuery += "    ,aktiv\n";
             sQuery += "    ,nvl(dauer_01_klein_schwach,0)\n";
             sQuery += "    ,nvl(dauer_01_klein_mittel,0)\n";
@@ -874,6 +879,11 @@ namespace Bauwagen
             sQuery += "    ,nvl(dauer_16_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_stark,0)\n";
+            sQuery += "    ,PREIS_KLEIN_MITTEL\n";
+            sQuery += "    ,PREIS_KLEIN_STARK\n";
+            sQuery += "    ,PREIS_GROSS_SCHWACH\n";
+            sQuery += "    ,PREIS_GROSS_MITTEL\n";
+            sQuery += "    ,PREIS_GROSS_STARK\n";
             sQuery += "FROM cocktails\n";
             sQuery += "WHERE 1=1\n";
 
@@ -903,7 +913,8 @@ namespace Bauwagen
             string sZutat14, string sKlein_Schwach_14, string sKlein_Mittel_14, string sKlein_Stark_14, string sGroß_Schwach_14, string sGroß_Mittel_14, string sGroßStark_14,
             string sZutat15, string sKlein_Schwach_15, string sKlein_Mittel_15, string sKlein_Stark_15, string sGroß_Schwach_15, string sGroß_Mittel_15, string sGroßStark_15,
             string sZutat16, string sKlein_Schwach_16, string sKlein_Mittel_16, string sKlein_Stark_16, string sGroß_Schwach_16, string sGroß_Mittel_16, string sGroßStark_16,
-            string sPreis, string sAktiv)
+            string sPreisKleinSchwach, string sPreisKleinMittel, string sPreisKleinStark, string sPreisGrossSchwach, string sPreisGrossMittel, string sPreisGrossStark,
+            string sAktiv)
         {
             string sQuery = "";
 
@@ -927,7 +938,7 @@ namespace Bauwagen
                 sQuery += " ZUTAT_14,DAUER_14_KLEIN_SCHWACH,DAUER_14_KLEIN_MITTEL,DAUER_14_KLEIN_STARK,DAUER_14_GROSS_SCHWACH,DAUER_14_GROSS_MITTEL,DAUER_14_GROSS_STARK,\n";
                 sQuery += " ZUTAT_15,DAUER_15_KLEIN_SCHWACH,DAUER_15_KLEIN_MITTEL,DAUER_15_KLEIN_STARK,DAUER_15_GROSS_SCHWACH,DAUER_15_GROSS_MITTEL,DAUER_15_GROSS_STARK,\n";
                 sQuery += " ZUTAT_16,DAUER_16_KLEIN_SCHWACH,DAUER_16_KLEIN_MITTEL,DAUER_16_KLEIN_STARK,DAUER_16_GROSS_SCHWACH,DAUER_16_GROSS_MITTEL,DAUER_16_GROSS_STARK,\n";
-                sQuery += " PREIS,AKTIV)\n";
+                sQuery += " PREIS_KLEIN_SCHWACH,PREIS_KLEIN_MITTEL,PREIS_KLEIN_STARK,PREIS_GROSS_SCHWACH,PREIS_GROSS_MITTEL,PREIS_GROSS_STARK,AKTIV)\n";
                 sQuery += "VALUES\n";
                 sQuery += "('" + sName + "',\n";
                 sQuery += " '" + sZutat01 + "'," + sKlein_Schwach_01 + "," + sKlein_Mittel_01 + "," + sKlein_Stark_01 + "," + sGroß_Schwach_01 + "," + sGroß_Mittel_01 + "," + sGroßStark_01 + ",\n";
@@ -946,7 +957,7 @@ namespace Bauwagen
                 sQuery += " '" + sZutat14 + "'," + sKlein_Schwach_14 + "," + sKlein_Mittel_14 + "," + sKlein_Stark_14 + "," + sGroß_Schwach_14 + "," + sGroß_Mittel_14 + "," + sGroßStark_14 + ",\n";
                 sQuery += " '" + sZutat15 + "'," + sKlein_Schwach_15 + "," + sKlein_Mittel_15 + "," + sKlein_Stark_15 + "," + sGroß_Schwach_15 + "," + sGroß_Mittel_15 + "," + sGroßStark_15 + ",\n";
                 sQuery += " '" + sZutat16 + "'," + sKlein_Schwach_16 + "," + sKlein_Mittel_16 + "," + sKlein_Stark_16 + "," + sGroß_Schwach_16 + "," + sGroß_Mittel_16 + "," + sGroßStark_16 + ",\n";
-                sQuery += " " + sPreis + "," + sAktiv + "\n";
+                sQuery += " " + sPreisKleinSchwach + "," + sPreisKleinMittel + "," + sPreisKleinStark + "," + sPreisGrossSchwach + "," + sPreisGrossMittel + "," + sPreisGrossStark + "," + sAktiv + "\n";
                 sQuery += ")\n";
             }
             else if (bUpdate == true && bInsert == false)
@@ -1049,10 +1060,24 @@ namespace Bauwagen
                 sQuery += "    DAUER_16_GROSS_SCHWACH = " + sGroß_Schwach_16 + ",\n";
                 sQuery += "    DAUER_16_GROSS_MITTEL = " + sGroß_Mittel_16 + ",\n";
                 sQuery += "    DAUER_16_GROSS_STARK = " + sGroßStark_16 + ",\n";
-                sQuery += "    preis = " + sPreis + ",\n";
+                sQuery += "    PREIS_KLEIN_SCHWACH = " + sPreisKleinSchwach + ",\n";
+                sQuery += "    PREIS_KLEIN_MITTEL = " + sPreisKleinMittel + ",\n";
+                sQuery += "    PREIS_KLEIN_STARK = " + sPreisKleinStark + ",\n";
+                sQuery += "    PREIS_GROSS_SCHWACH = " + sPreisGrossSchwach + ",\n";
+                sQuery += "    PREIS_GROSS_MITTEL = " + sPreisGrossMittel+ ",\n";
+                sQuery += "    PREIS_GROSS_STARK = " + sPreisGrossStark + ",\n";
                 sQuery += "    aktiv = " + sAktiv + "\n";
                 sQuery += "WHERE name = '" + sName + "'\n";
             }
+
+            return sQuery;
+        }
+
+        public static string GetNumberOfCocktails()
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT count(name) FROM " + Frm_Haupt.sSchema + ".cocktails\n";
 
             return sQuery;
         }
