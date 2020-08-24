@@ -781,7 +781,7 @@ namespace Bauwagen
             string sQuery = "";
 
             sQuery = "SELECT name\n";
-            sQuery += "    ,PREIS_KLEIN_SCHWACH\n";
+            sQuery += "    ,nvl(PREIS_KLEIN_SCHWACH,0)\n";
             sQuery += "    ,aktiv\n";
             sQuery += "    ,nvl(dauer_01_klein_schwach,0)\n";
             sQuery += "    ,nvl(dauer_01_klein_mittel,0)\n";
@@ -879,11 +879,11 @@ namespace Bauwagen
             sQuery += "    ,nvl(dauer_16_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_stark,0)\n";
-            sQuery += "    ,PREIS_KLEIN_MITTEL\n";
-            sQuery += "    ,PREIS_KLEIN_STARK\n";
-            sQuery += "    ,PREIS_GROSS_SCHWACH\n";
-            sQuery += "    ,PREIS_GROSS_MITTEL\n";
-            sQuery += "    ,PREIS_GROSS_STARK\n";
+            sQuery += "    ,nvl(PREIS_KLEIN_MITTEL,0)\n";
+            sQuery += "    ,nvl(PREIS_KLEIN_STARK,0)\n";
+            sQuery += "    ,nvl(PREIS_GROSS_SCHWACH,0)\n";
+            sQuery += "    ,nvl(PREIS_GROSS_MITTEL,0)\n";
+            sQuery += "    ,nvl(PREIS_GROSS_STARK,0)\n";
             sQuery += "FROM cocktails\n";
             sQuery += "WHERE 1=1\n";
 

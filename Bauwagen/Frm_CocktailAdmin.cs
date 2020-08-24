@@ -770,6 +770,5 @@ namespace Bauwagen
             LbL_AktivierungR11.Text = "Aktivierungszeit: " + Math.Round(dDiff.TotalSeconds, 2).ToString().Trim() + "s";
         }
         #endregion
-
     }
 }

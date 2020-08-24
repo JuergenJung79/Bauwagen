@@ -775,6 +775,8 @@ namespace Bauwagen
             Frm_CocktailMixer frm_cocktailmixer = new Frm_CocktailMixer();
             frm_cocktailmixer.LbL_Budget.Text = LbL_Budget.Text;
             frm_cocktailmixer.LbL_Kredit.Text = LbL_Kredit.Text;
+            frm_cocktailmixer.LbL_Summe.Text = "0,00 €";
+            //frm_cocktailmixer.LbL_Verfügbar.Text = "0,00 €";
             frm_cocktailmixer.ShowDialog();
 
             DisableGüter();
