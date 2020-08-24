@@ -963,7 +963,6 @@ namespace Bauwagen
             else if (bUpdate == true && bInsert == false)
             {
                 sQuery += "UPDATE cocktails SET\n";
-                sQuery += "    zutat_01 = '" + sZutat01 + "',\n";
                 sQuery += "    DAUER_01_KLEIN_SCHWACH = " + sKlein_Schwach_01 + ",\n";
                 sQuery += "    DAUER_01_KLEIN_MITTEL = " + sKlein_Mittel_01 + ",\n";
                 sQuery += "    DAUER_01_KLEIN_STARK = " + sKlein_Stark_01 + ",\n";
