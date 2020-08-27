@@ -39,6 +39,7 @@ namespace Bauwagen
             StreamWriter swGüter = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Güter.csv");
             StreamWriter swAufladung = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Aufladung.csv");
             StreamWriter swHistory = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_History.csv");
+            StreamWriter swCocktails = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Cocktails.csv");
 
             try
             {
@@ -188,6 +189,42 @@ namespace Bauwagen
                     drReader.Close();
                     swHistory.Write(sb.ToString());
                     swHistory.Close();
+                    sb.Clear();
+
+                    nCounter = 0;
+                    #endregion
+
+                    #region Backup Datenbank Cocktails
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("");
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        nCounter++;
+                    }
+                    drReader.Close();
+
+                    nCounter = 0;
+
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        for (int i = 0; i < drReader.FieldCount; i++)
+                        {
+                            string value = drReader[i].ToString();
+                            if (value.Contains(","))
+                                value = value.Replace(",", ".");
+
+                            sb.Append(value.Replace(Environment.NewLine, " ") + ";");
+                        }
+
+                        sb.Length--; // Remove the last comma
+                        sb.AppendLine();
+
+                        nCounter++;
+                    }
+                    drReader.Close();
+                    swCocktails.Write(sb.ToString());
+                    swCocktails.Close();
                     sb.Clear();
 
                     nCounter = 0;

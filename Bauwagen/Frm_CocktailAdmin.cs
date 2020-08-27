@@ -352,6 +352,9 @@ namespace Bauwagen
                         sAktiv);
                     nResult = oCommandInsert.ExecuteNonQuery();
 
+                    oCommandInsert.CommandText = Cls_Query.SaveGüterDaten(bInsert, bUpdate, TxT_Name.Text.Trim(), "0", "1");
+                    nResult = oCommandInsert.ExecuteNonQuery();
+
                     oConnection.Close();
                 }
                 catch (Exception ex)

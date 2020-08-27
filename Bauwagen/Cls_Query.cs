@@ -782,108 +782,108 @@ namespace Bauwagen
 
             sQuery = "SELECT name\n";
             sQuery += "    ,nvl(PREIS_KLEIN_SCHWACH,0)\n";
-            sQuery += "    ,aktiv\n";
-            sQuery += "    ,nvl(dauer_01_klein_schwach,0)\n";
+            sQuery += "    ,active\n";
+            sQuery += "    ,nvl(dauer_01_klein_schwach,0)\n";   //3
             sQuery += "    ,nvl(dauer_01_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_01_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_01_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_01_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_01_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_02_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_02_klein_schwach,0)\n";   //9
             sQuery += "    ,nvl(dauer_02_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_02_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_02_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_02_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_02_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_03_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_03_klein_schwach,0)\n";   //15
             sQuery += "    ,nvl(dauer_03_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_03_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_03_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_03_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_03_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_04_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_04_klein_schwach,0)\n";   //21
             sQuery += "    ,nvl(dauer_04_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_04_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_04_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_04_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_04_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_05_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_05_klein_schwach,0)\n";   //27
             sQuery += "    ,nvl(dauer_05_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_05_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_05_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_05_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_05_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_06_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_06_klein_schwach,0)\n";   //33
             sQuery += "    ,nvl(dauer_06_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_06_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_06_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_06_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_06_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_07_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_07_klein_schwach,0)\n";   //39
             sQuery += "    ,nvl(dauer_07_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_07_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_07_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_07_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_07_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_08_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_08_klein_schwach,0)\n";   //45
             sQuery += "    ,nvl(dauer_08_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_08_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_08_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_08_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_08_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_09_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_09_klein_schwach,0)\n";   //51
             sQuery += "    ,nvl(dauer_09_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_09_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_09_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_09_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_09_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_10_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_10_klein_schwach,0)\n";   //57
             sQuery += "    ,nvl(dauer_10_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_10_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_10_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_10_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_10_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_11_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_11_klein_schwach,0)\n";   //63
             sQuery += "    ,nvl(dauer_11_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_11_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_11_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_11_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_11_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_12_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_12_klein_schwach,0)\n";   //69
             sQuery += "    ,nvl(dauer_12_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_12_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_12_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_12_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_12_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_13_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_13_klein_schwach,0)\n";   //75
             sQuery += "    ,nvl(dauer_13_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_13_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_13_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_13_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_13_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_14_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_14_klein_schwach,0)\n";   //81
             sQuery += "    ,nvl(dauer_14_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_14_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_14_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_14_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_14_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_15_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_15_klein_schwach,0)\n";   //87
             sQuery += "    ,nvl(dauer_15_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_15_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_15_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_15_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_15_gross_stark,0)\n";
-            sQuery += "    ,nvl(dauer_16_klein_schwach,0)\n";
+            sQuery += "    ,nvl(dauer_16_klein_schwach,0)\n";   //93
             sQuery += "    ,nvl(dauer_16_klein_mittel,0)\n";
             sQuery += "    ,nvl(dauer_16_klein_stark,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_schwach,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_mittel,0)\n";
             sQuery += "    ,nvl(dauer_16_gross_stark,0)\n";
-            sQuery += "    ,nvl(PREIS_KLEIN_MITTEL,0)\n";
+            sQuery += "    ,nvl(PREIS_KLEIN_MITTEL,0)\n";       //99
             sQuery += "    ,nvl(PREIS_KLEIN_STARK,0)\n";
             sQuery += "    ,nvl(PREIS_GROSS_SCHWACH,0)\n";
             sQuery += "    ,nvl(PREIS_GROSS_MITTEL,0)\n";
-            sQuery += "    ,nvl(PREIS_GROSS_STARK,0)\n";
+            sQuery += "    ,nvl(PREIS_GROSS_STARK,0)\n";        //103
             sQuery += "FROM cocktails\n";
             sQuery += "WHERE 1=1\n";
 
@@ -938,7 +938,7 @@ namespace Bauwagen
                 sQuery += " ZUTAT_14,DAUER_14_KLEIN_SCHWACH,DAUER_14_KLEIN_MITTEL,DAUER_14_KLEIN_STARK,DAUER_14_GROSS_SCHWACH,DAUER_14_GROSS_MITTEL,DAUER_14_GROSS_STARK,\n";
                 sQuery += " ZUTAT_15,DAUER_15_KLEIN_SCHWACH,DAUER_15_KLEIN_MITTEL,DAUER_15_KLEIN_STARK,DAUER_15_GROSS_SCHWACH,DAUER_15_GROSS_MITTEL,DAUER_15_GROSS_STARK,\n";
                 sQuery += " ZUTAT_16,DAUER_16_KLEIN_SCHWACH,DAUER_16_KLEIN_MITTEL,DAUER_16_KLEIN_STARK,DAUER_16_GROSS_SCHWACH,DAUER_16_GROSS_MITTEL,DAUER_16_GROSS_STARK,\n";
-                sQuery += " PREIS_KLEIN_SCHWACH,PREIS_KLEIN_MITTEL,PREIS_KLEIN_STARK,PREIS_GROSS_SCHWACH,PREIS_GROSS_MITTEL,PREIS_GROSS_STARK,AKTIV)\n";
+                sQuery += " PREIS_KLEIN_SCHWACH,PREIS_KLEIN_MITTEL,PREIS_KLEIN_STARK,PREIS_GROSS_SCHWACH,PREIS_GROSS_MITTEL,PREIS_GROSS_STARK,ACTIVE)\n";
                 sQuery += "VALUES\n";
                 sQuery += "('" + sName + "',\n";
                 sQuery += " '" + sZutat01 + "'," + sKlein_Schwach_01 + "," + sKlein_Mittel_01 + "," + sKlein_Stark_01 + "," + sGroß_Schwach_01 + "," + sGroß_Mittel_01 + "," + sGroßStark_01 + ",\n";
@@ -1065,7 +1065,7 @@ namespace Bauwagen
                 sQuery += "    PREIS_GROSS_SCHWACH = " + sPreisGrossSchwach + ",\n";
                 sQuery += "    PREIS_GROSS_MITTEL = " + sPreisGrossMittel+ ",\n";
                 sQuery += "    PREIS_GROSS_STARK = " + sPreisGrossStark + ",\n";
-                sQuery += "    aktiv = " + sAktiv + "\n";
+                sQuery += "    ACTIVE = " + sAktiv + "\n";
                 sQuery += "WHERE name = '" + sName + "'\n";
             }
 

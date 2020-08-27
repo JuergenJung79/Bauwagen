@@ -64,11 +64,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.CmB_ComPortsCocktail = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.PgB_Backup_Cocktails = new System.Windows.Forms.ProgressBar();
+            this.PgB_Restore_Cocktails = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // CmD_CreateTables
             // 
-            this.CmD_CreateTables.Location = new System.Drawing.Point(12, 255);
+            this.CmD_CreateTables.Location = new System.Drawing.Point(12, 302);
             this.CmD_CreateTables.Name = "CmD_CreateTables";
             this.CmD_CreateTables.Size = new System.Drawing.Size(111, 43);
             this.CmD_CreateTables.TabIndex = 0;
@@ -189,7 +191,7 @@
             // CmD_Restore
             // 
             this.CmD_Restore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Restore.Location = new System.Drawing.Point(560, 168);
+            this.CmD_Restore.Location = new System.Drawing.Point(560, 187);
             this.CmD_Restore.Name = "CmD_Restore";
             this.CmD_Restore.Size = new System.Drawing.Size(130, 60);
             this.CmD_Restore.TabIndex = 1;
@@ -199,28 +201,28 @@
             // 
             // PgB_Restore_Personen
             // 
-            this.PgB_Restore_Personen.Location = new System.Drawing.Point(712, 168);
+            this.PgB_Restore_Personen.Location = new System.Drawing.Point(712, 187);
             this.PgB_Restore_Personen.Name = "PgB_Restore_Personen";
             this.PgB_Restore_Personen.Size = new System.Drawing.Size(238, 23);
             this.PgB_Restore_Personen.TabIndex = 5;
             // 
             // PgB_Restore_Güter
             // 
-            this.PgB_Restore_Güter.Location = new System.Drawing.Point(712, 197);
+            this.PgB_Restore_Güter.Location = new System.Drawing.Point(712, 216);
             this.PgB_Restore_Güter.Name = "PgB_Restore_Güter";
             this.PgB_Restore_Güter.Size = new System.Drawing.Size(238, 23);
             this.PgB_Restore_Güter.TabIndex = 5;
             // 
             // PgB_Restore_Aufladung
             // 
-            this.PgB_Restore_Aufladung.Location = new System.Drawing.Point(712, 226);
+            this.PgB_Restore_Aufladung.Location = new System.Drawing.Point(712, 245);
             this.PgB_Restore_Aufladung.Name = "PgB_Restore_Aufladung";
             this.PgB_Restore_Aufladung.Size = new System.Drawing.Size(238, 23);
             this.PgB_Restore_Aufladung.TabIndex = 5;
             // 
             // PgB_Restore_History
             // 
-            this.PgB_Restore_History.Location = new System.Drawing.Point(712, 255);
+            this.PgB_Restore_History.Location = new System.Drawing.Point(712, 274);
             this.PgB_Restore_History.Name = "PgB_Restore_History";
             this.PgB_Restore_History.Size = new System.Drawing.Size(238, 23);
             this.PgB_Restore_History.TabIndex = 5;
@@ -229,7 +231,7 @@
             // 
             this.CmB_DatumBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmB_DatumBackup.FormattingEnabled = true;
-            this.CmB_DatumBackup.Location = new System.Drawing.Point(560, 234);
+            this.CmB_DatumBackup.Location = new System.Drawing.Point(560, 253);
             this.CmB_DatumBackup.Name = "CmB_DatumBackup";
             this.CmB_DatumBackup.Size = new System.Drawing.Size(130, 33);
             this.CmB_DatumBackup.TabIndex = 6;
@@ -269,7 +271,7 @@
             // CmD_Relais_1
             // 
             this.CmD_Relais_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_1.Location = new System.Drawing.Point(148, 370);
+            this.CmD_Relais_1.Location = new System.Drawing.Point(148, 417);
             this.CmD_Relais_1.Name = "CmD_Relais_1";
             this.CmD_Relais_1.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_1.TabIndex = 10;
@@ -280,7 +282,7 @@
             // CmD_Relais_2
             // 
             this.CmD_Relais_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_2.Location = new System.Drawing.Point(284, 370);
+            this.CmD_Relais_2.Location = new System.Drawing.Point(284, 417);
             this.CmD_Relais_2.Name = "CmD_Relais_2";
             this.CmD_Relais_2.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_2.TabIndex = 10;
@@ -291,7 +293,7 @@
             // CmD_Relais_3
             // 
             this.CmD_Relais_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_3.Location = new System.Drawing.Point(420, 370);
+            this.CmD_Relais_3.Location = new System.Drawing.Point(420, 417);
             this.CmD_Relais_3.Name = "CmD_Relais_3";
             this.CmD_Relais_3.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_3.TabIndex = 10;
@@ -302,7 +304,7 @@
             // CmD_Relais_4
             // 
             this.CmD_Relais_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Relais_4.Location = new System.Drawing.Point(556, 370);
+            this.CmD_Relais_4.Location = new System.Drawing.Point(556, 417);
             this.CmD_Relais_4.Name = "CmD_Relais_4";
             this.CmD_Relais_4.Size = new System.Drawing.Size(130, 68);
             this.CmD_Relais_4.TabIndex = 10;
@@ -313,7 +315,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 317);
+            this.label4.Location = new System.Drawing.Point(12, 364);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(938, 50);
             this.label4.TabIndex = 2;
@@ -324,7 +326,7 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(2, 301);
+            this.label5.Location = new System.Drawing.Point(2, 348);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(957, 5);
             this.label5.TabIndex = 11;
@@ -344,7 +346,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(696, 370);
+            this.label6.Location = new System.Drawing.Point(696, 417);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(263, 20);
             this.label6.TabIndex = 12;
@@ -354,7 +356,7 @@
             // 
             this.CmB_ComPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmB_ComPorts.FormattingEnabled = true;
-            this.CmB_ComPorts.Location = new System.Drawing.Point(766, 393);
+            this.CmB_ComPorts.Location = new System.Drawing.Point(766, 440);
             this.CmB_ComPorts.Name = "CmB_ComPorts";
             this.CmB_ComPorts.Size = new System.Drawing.Size(121, 32);
             this.CmB_ComPorts.TabIndex = 13;
@@ -373,7 +375,7 @@
             // 
             // CmD_CreateCocktail
             // 
-            this.CmD_CreateCocktail.Location = new System.Drawing.Point(129, 255);
+            this.CmD_CreateCocktail.Location = new System.Drawing.Point(129, 302);
             this.CmD_CreateCocktail.Name = "CmD_CreateCocktail";
             this.CmD_CreateCocktail.Size = new System.Drawing.Size(111, 43);
             this.CmD_CreateCocktail.TabIndex = 0;
@@ -385,7 +387,7 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(2, 451);
+            this.label7.Location = new System.Drawing.Point(2, 498);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(957, 5);
             this.label7.TabIndex = 11;
@@ -394,7 +396,7 @@
             // 
             this.CmB_ComPortsCocktail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmB_ComPortsCocktail.FormattingEnabled = true;
-            this.CmB_ComPortsCocktail.Location = new System.Drawing.Point(766, 486);
+            this.CmB_ComPortsCocktail.Location = new System.Drawing.Point(766, 533);
             this.CmB_ComPortsCocktail.Name = "CmB_ComPortsCocktail";
             this.CmB_ComPortsCocktail.Size = new System.Drawing.Size(121, 32);
             this.CmB_ComPortsCocktail.TabIndex = 15;
@@ -404,17 +406,31 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(708, 463);
+            this.label8.Location = new System.Drawing.Point(708, 510);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(233, 20);
             this.label8.TabIndex = 14;
             this.label8.Text = "COM Port Relais (Cocktailmixer)";
             // 
+            // PgB_Backup_Cocktails
+            // 
+            this.PgB_Backup_Cocktails.Location = new System.Drawing.Point(712, 128);
+            this.PgB_Backup_Cocktails.Name = "PgB_Backup_Cocktails";
+            this.PgB_Backup_Cocktails.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Backup_Cocktails.TabIndex = 5;
+            // 
+            // PgB_Restore_Cocktails
+            // 
+            this.PgB_Restore_Cocktails.Location = new System.Drawing.Point(712, 303);
+            this.PgB_Restore_Cocktails.Name = "PgB_Restore_Cocktails";
+            this.PgB_Restore_Cocktails.Size = new System.Drawing.Size(238, 23);
+            this.PgB_Restore_Cocktails.TabIndex = 5;
+            // 
             // Frm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 530);
+            this.ClientSize = new System.Drawing.Size(962, 574);
             this.Controls.Add(this.CmB_ComPortsCocktail);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.CmB_ComPorts);
@@ -430,7 +446,9 @@
             this.Controls.Add(this.CmD_Info);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CmB_DatumBackup);
+            this.Controls.Add(this.PgB_Restore_Cocktails);
             this.Controls.Add(this.PgB_Restore_History);
+            this.Controls.Add(this.PgB_Backup_Cocktails);
             this.Controls.Add(this.PgB_Backup_History);
             this.Controls.Add(this.PgB_Restore_Aufladung);
             this.Controls.Add(this.PgB_Backup_Aufladung);
@@ -498,5 +516,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox CmB_ComPortsCocktail;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ProgressBar PgB_Backup_Cocktails;
+        private System.Windows.Forms.ProgressBar PgB_Restore_Cocktails;
     }
 }
