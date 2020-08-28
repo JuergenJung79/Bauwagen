@@ -123,7 +123,6 @@ H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.application
 H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe
 H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Bauwagen.pdb
 H:\Entwicklung\Github\Bauwagen\Bauwagen\bin\Debug\Oracle.ManagedDataAccess.dll
-H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_AboutBox.resources
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Aufladen.resources
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_ChangePassword.resources
