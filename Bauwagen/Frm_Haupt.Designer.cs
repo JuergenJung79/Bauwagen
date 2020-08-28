@@ -328,7 +328,7 @@
             this.Controls.Add(this.CmD_Systemsteuerung);
             this.Name = "Frm_Haupt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "e";
+            this.Text = "Bauwagen 2.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_Haupt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).EndInit();

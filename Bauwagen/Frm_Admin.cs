@@ -291,8 +291,8 @@ namespace Bauwagen
                     nCounter = 0;
                     #endregion
 
-                    #region Backup Datenbank Personen
-                    oCommand.CommandText = Cls_Query.GetGüterDaten("");
+                    #region Backup Datenbank Güter
+                    oCommand.CommandText = Cls_Query.GetGüterDatenBackup("");
                     drReader = oCommand.ExecuteReader();
                     while (drReader.Read())
                     {
@@ -424,7 +424,7 @@ namespace Bauwagen
                     #endregion
 
                     #region Backup Datenbank Cocktails
-                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("");
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("", "");
                     drReader = oCommand.ExecuteReader();
                     while (drReader.Read())
                     {
@@ -689,7 +689,7 @@ namespace Bauwagen
                             }
                         }
                     }
-                    catch { }
+                    catch (Exception ex) { }
                     #endregion
 
                     #region Restore der Tabelle Cocktails

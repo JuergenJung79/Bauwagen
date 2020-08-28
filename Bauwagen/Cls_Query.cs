@@ -582,6 +582,28 @@ namespace Bauwagen
             return sQuery;
         }
 
+        public static string GetGüterDatenBackup(string sBeschreibung)
+        {
+            string sQuery = "";
+
+            sQuery = "SELECT beschreibung,\n";
+            sQuery += "    preis,\n";
+            sQuery += "    gueltig_von,\n";
+            sQuery += "    gueltig_bis,\n";
+            sQuery += "    last_update,\n";
+            sQuery += "    locked,\n";
+            sQuery += "    lock_date\n";
+            sQuery += "FROM " + Frm_Haupt.sSchema + ".gueter\n";
+            sQuery += "WHERE 1 = 1\n";
+
+            if (sBeschreibung != "")
+            {
+                sQuery += "    AND beschreibung = '" + sBeschreibung + "'\n";
+            }
+
+            return sQuery;
+        }
+
         public static string SaveGüterDaten(bool bInsert, bool bUpdate, string sBeschreibung, string sPreis, string sLocked)
         {
             string sQuery = "";
@@ -776,7 +798,7 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string GetCocktailRezepte(string sCocktail)
+        public static string GetCocktailRezepte(string sCocktail, string sActive)
         {
             string sQuery = "";
 
@@ -892,6 +914,10 @@ namespace Bauwagen
             {
                 sQuery += "    AND name = '" + sCocktail + "'\n";
             }
+            if (sActive != "")
+            {
+                sQuery += "    AND ACTIVE = " + sActive + "\n";
+            }
 
             return sQuery;
         }
@@ -917,6 +943,13 @@ namespace Bauwagen
             string sAktiv)
         {
             string sQuery = "";
+
+            if (sPreisKleinSchwach == "") { sPreisKleinSchwach = "NULL"; }
+            if (sPreisKleinMittel == "") { sPreisKleinMittel = "NULL"; }
+            if (sPreisKleinStark == "") { sPreisKleinStark = "NULL"; }
+            if (sPreisGrossSchwach == "") { sPreisGrossSchwach = "NULL"; }
+            if (sPreisGrossMittel == "") { sPreisGrossMittel = "NULL"; }
+            if (sPreisGrossStark == "") { sPreisGrossStark = "NULL"; }
 
             if (bUpdate == false && bInsert == true)
             {
@@ -1076,7 +1109,7 @@ namespace Bauwagen
         {
             string sQuery = "";
 
-            sQuery = "SELECT count(name) FROM " + Frm_Haupt.sSchema + ".cocktails\n";
+            sQuery = "SELECT count(name) FROM " + Frm_Haupt.sSchema + ".cocktails WHERE ACTIVE = 1\n";
 
             return sQuery;
         }

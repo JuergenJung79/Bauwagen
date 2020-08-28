@@ -772,10 +772,18 @@ namespace Bauwagen
 
         private void CmD_Cocktailmixer_Click(object sender, EventArgs e)
         {
+            OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommandSelect = new OracleCommand();
+            OracleDataReader drReader;
+
+            string sUser = "";
+            sUser = LbL_User.Text.Trim();
+
             Frm_CocktailMixer frm_cocktailmixer = new Frm_CocktailMixer();
             frm_cocktailmixer.LbL_Budget.Text = LbL_Budget.Text;
             frm_cocktailmixer.LbL_Kredit.Text = LbL_Kredit.Text;
             frm_cocktailmixer.LbL_Summe.Text = "0,00 €";
+            frm_cocktailmixer.LbL_User.Text = LbL_User.Text.Trim();
             //frm_cocktailmixer.LbL_Verfügbar.Text = "0,00 €";
             frm_cocktailmixer.ShowDialog();
 
@@ -785,12 +793,46 @@ namespace Bauwagen
             LbL_Budget.Text = "0,00 €";
             LbL_Verfügbar.Text = "0,00 €";
             LbL_Kredit.Text = "0,00 €";
-            LbL_User.Text = "";
 
             DgV_Warenkorb.Rows.Clear();
             CmD_Systemsteuerung.Enabled = true;
 
             bBlockRefresh = false;
+
+            using (oConnection)
+            {
+                try
+                {
+                    oConnection.ConnectionString = sDSN;
+                    oConnection.Open();
+
+                    oCommandSelect.Connection = oConnection;
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                    drReader = oCommandSelect.ExecuteReader();
+
+                    while (drReader.Read())
+                    {
+                        LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                        LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
+                    }
+                    drReader.Close();
+
+                    GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+
+                    DgV_Warenkorb.Rows.Clear();
+
+                    LbL_Summe.Text = "0,00 €";
+                    LbL_Verfügbar.Text = "0,00 €";
+                    LbL_User.Text = "";
+
+                    oConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "CmD_Cocktailmixer_Click");
+                }
+            }
         }
+
     }
 }

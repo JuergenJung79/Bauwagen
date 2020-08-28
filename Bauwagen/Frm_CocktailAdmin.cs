@@ -225,7 +225,7 @@ namespace Bauwagen
                     oCommandSelect.Connection = oConnection;
                     oCommandInsert.Connection = oConnection;
 
-                    oCommandSelect.CommandText = Cls_Query.GetCocktailRezepte(TxT_Name.Text.Trim());
+                    oCommandSelect.CommandText = Cls_Query.GetCocktailRezepte(TxT_Name.Text.Trim(), "");
                     drReader = oCommandSelect.ExecuteReader();
                     if (drReader.HasRows) { bUpdate = true; bInsert = false; } else { bUpdate = false; bInsert = true; }
                     drReader.Close();
@@ -380,7 +380,7 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("");
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("", "");
                     drReader = oCommand.ExecuteReader();
 
                     DgV_Cocktails.AllowUserToAddRows = true;
@@ -421,7 +421,7 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetCocktailRezepte(TxT_Name.Text.Trim());
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte(TxT_Name.Text.Trim(), "");
                     drReader = oCommand.ExecuteReader();
 
                     while (drReader.Read())

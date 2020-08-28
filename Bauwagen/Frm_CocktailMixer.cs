@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -88,7 +89,7 @@ namespace Bauwagen
 
                     System.Windows.Forms.Button[] ButtonCocktails = new System.Windows.Forms.Button[nAnzahlButtonsCocktails];
 
-                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("");
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("", "1");
                     drReader = oCommand.ExecuteReader();
 
                     while (drReader.Read())
@@ -165,11 +166,18 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetCocktailRezepte(sButtonTag);
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte(sButtonTag, "1");
                     drReader = oCommand.ExecuteReader();
 
                     while (drReader.Read())
                     {
+                        if (drReader.GetValue(1).ToString().Trim() == "0") { CmD_Klein_Schwach.Visible = false; } else { CmD_Klein_Schwach.Visible = true; }
+                        if (drReader.GetValue(99).ToString().Trim() == "0") { CmD_klein_mittel.Visible = false; } else { CmD_klein_mittel.Visible = true; }
+                        if (drReader.GetValue(100).ToString().Trim() == "0") { CmD_Klein_Stark.Visible = false; } else { CmD_Klein_Stark.Visible = true; }
+                        if (drReader.GetValue(101).ToString().Trim() == "0") { CmD_Groß_schwach.Visible = false; } else { CmD_Groß_schwach.Visible = true; }
+                        if (drReader.GetValue(102).ToString().Trim() == "0") { CmD_Groß_mittel.Visible = false; } else { CmD_Groß_mittel.Visible = true; }
+                        if (drReader.GetValue(103).ToString().Trim() == "0") { CmD_Groß_stark.Visible = false; } else { CmD_Groß_stark.Visible = true; }
+
                         CmD_Klein_Schwach.Text = "schwach\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(1))) + " €";
                         CmD_klein_mittel.Text = "mittel\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(99))) + " €";
                         CmD_Klein_Stark.Text = "stark\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(100))) + " €";
@@ -226,7 +234,7 @@ namespace Bauwagen
                 CmD_Groß_stark.BackColor = Color.LightGray;
 
                 sCocktailGröße = "KLEIN_MITTEL";
-                sCocktailPreis = CmD_Klein_Schwach.Text.Trim().Substring(CmD_Klein_Schwach.Text.Trim().IndexOf("\n") + 1, CmD_Klein_Schwach.Text.Trim().Length - CmD_Klein_Schwach.Text.Trim().IndexOf("\n") - 3);
+                sCocktailPreis = CmD_klein_mittel.Text.Trim().Substring(CmD_klein_mittel.Text.Trim().IndexOf("\n") + 1, CmD_klein_mittel.Text.Trim().Length - CmD_klein_mittel.Text.Trim().IndexOf("\n") - 3);
             }
         }
 
@@ -242,7 +250,7 @@ namespace Bauwagen
                 CmD_Groß_stark.BackColor = Color.LightGray;
 
                 sCocktailGröße = "KLEIN_STARK";
-                sCocktailPreis = CmD_Klein_Schwach.Text.Trim().Substring(CmD_Klein_Schwach.Text.Trim().IndexOf("\n") + 1, CmD_Klein_Schwach.Text.Trim().Length - CmD_Klein_Schwach.Text.Trim().IndexOf("\n") - 3);
+                sCocktailPreis = CmD_Klein_Stark.Text.Trim().Substring(CmD_Klein_Stark.Text.Trim().IndexOf("\n") + 1, CmD_Klein_Stark.Text.Trim().Length - CmD_Klein_Stark.Text.Trim().IndexOf("\n") - 3);
             }
         }
 
@@ -258,7 +266,7 @@ namespace Bauwagen
                 CmD_Groß_stark.BackColor = Color.LightGray;
 
                 sCocktailGröße = "GROSS_SCHWACH";
-                sCocktailPreis = CmD_Klein_Schwach.Text.Trim().Substring(CmD_Klein_Schwach.Text.Trim().IndexOf("\n") + 1, CmD_Klein_Schwach.Text.Trim().Length - CmD_Klein_Schwach.Text.Trim().IndexOf("\n") - 3);
+                sCocktailPreis = CmD_Groß_schwach.Text.Trim().Substring(CmD_Groß_schwach.Text.Trim().IndexOf("\n") + 1, CmD_Groß_schwach.Text.Trim().Length - CmD_Groß_schwach.Text.Trim().IndexOf("\n") - 3);
             }
         }
 
@@ -274,7 +282,7 @@ namespace Bauwagen
                 CmD_Groß_stark.BackColor = Color.LightGray;
 
                 sCocktailGröße = "GROSS_MITTEL";
-                sCocktailPreis = CmD_Klein_Schwach.Text.Trim().Substring(CmD_Klein_Schwach.Text.Trim().IndexOf("\n") + 1, CmD_Klein_Schwach.Text.Trim().Length - CmD_Klein_Schwach.Text.Trim().IndexOf("\n") - 3);
+                sCocktailPreis = CmD_Groß_mittel.Text.Trim().Substring(CmD_Groß_mittel.Text.Trim().IndexOf("\n") + 1, CmD_Groß_mittel.Text.Trim().Length - CmD_Groß_mittel.Text.Trim().IndexOf("\n") - 3);
             }
         }
 
@@ -290,7 +298,7 @@ namespace Bauwagen
                 CmD_Groß_stark.BackColor = Color.Green;
 
                 sCocktailGröße = "GROSS_STARK";
-                sCocktailPreis = CmD_Klein_Schwach.Text.Trim().Substring(CmD_Klein_Schwach.Text.Trim().IndexOf("\n") + 1, CmD_Klein_Schwach.Text.Trim().Length - CmD_Klein_Schwach.Text.Trim().IndexOf("\n") - 3);
+                sCocktailPreis = CmD_Groß_stark.Text.Trim().Substring(CmD_Groß_stark.Text.Trim().IndexOf("\n") + 1, CmD_Groß_stark.Text.Trim().Length - CmD_Groß_stark.Text.Trim().IndexOf("\n") - 3);
             }
         }
         #endregion
@@ -323,6 +331,7 @@ namespace Bauwagen
         private void CmD_LöschenWarenkorb_Click(object sender, EventArgs e)
         {
             DgV_Warenkorb.Rows.Clear();
+            LbL_Summe.Text = "0,00 €";
         }
 
         private void CmD_Logout_Click(object sender, EventArgs e)
@@ -332,6 +341,9 @@ namespace Bauwagen
 
         private void CmD_InDenWarenkorb_Click(object sender, EventArgs e)
         {
+            double nPreis = 0;
+            double nSumme = 0;
+
             if (sCocktailName != "" && sCocktailGröße != "" && sCocktailPreis != "")
             {
                 DgV_Warenkorb.AllowUserToAddRows = true;
@@ -346,15 +358,31 @@ namespace Bauwagen
 
                 DgV_Warenkorb.AllowUserToAddRows = false;
             }
+
+            for (int i = 0; i < DgV_Warenkorb.Rows.Count; i++)
+            {
+                nPreis = Convert.ToDouble(DgV_Warenkorb.Rows[i].Cells[3].Value);
+                nSumme += nPreis;
+            }
+
+            LbL_Summe.Text = String.Format("{0:0.00}", nSumme) + " €";
         }
 
         private void CmD_Buchen_Click(object sender, EventArgs e)
         {
             OracleConnection oConnection = new OracleConnection();
             OracleCommand oCommand = new OracleCommand();
+            OracleCommand oCommandUpdate = new OracleCommand();
             OracleDataReader drReader;
 
             int nDauerRelais = 0;
+            int nResult = 0;
+
+            string sUser = "";
+            string sItem = "";
+            string sAnzahl = "";
+            string sEinzelpreis = "";
+            string sSumme = "";
 
             CmD_Buchen.Enabled = false;
             CmD_InDenWarenkorb.Enabled = false;
@@ -372,7 +400,7 @@ namespace Bauwagen
 
                     for (int i = 0; i < DgV_Warenkorb.Rows.Count; i++)
                     {
-                        oCommand.CommandText = Cls_Query.GetCocktailRezepte(DgV_Warenkorb.Rows[i].Cells[0].Value.ToString().Trim());
+                        oCommand.CommandText = Cls_Query.GetCocktailRezepte(DgV_Warenkorb.Rows[i].Cells[0].Value.ToString().Trim(), "1");
                         drReader = oCommand.ExecuteReader();
 
                         while (drReader.Read())
@@ -496,7 +524,7 @@ namespace Bauwagen
                             }
                             #endregion
                             #region Klein Stark
-                            if (DgV_Warenkorb.Rows[i].Cells[1].Value.ToString().Trim() == "MITTEL_STARK")
+                            if (DgV_Warenkorb.Rows[i].Cells[1].Value.ToString().Trim() == "KLEIN_STARK")
                             {
                                 nDauerRelais = Convert.ToInt32(Convert.ToDouble(drReader.GetValue(5)) * 1000);
                                 _serialPort.Write(new byte[] { 0xFF, 0x01, 0x01 }, 0, 3);
@@ -734,6 +762,23 @@ namespace Bauwagen
                         }
                         drReader.Close();
 
+                        sUser = LbL_User.Text.Trim();
+                        sItem = DgV_Warenkorb.Rows[i].Cells[0].Value.ToString().Trim();
+                        sAnzahl = "1";
+                        sEinzelpreis = DgV_Warenkorb.Rows[i].Cells[2].Value.ToString().Trim();
+                        sSumme = DgV_Warenkorb.Rows[i].Cells[3].Value.ToString().Trim();
+
+                        oCommandUpdate.Connection = oConnection;
+                        oCommandUpdate.CommandText = Cls_Query.InsertHistory(sUser, sItem, sAnzahl, sEinzelpreis, sSumme);
+                        nResult = oCommandUpdate.ExecuteNonQuery();
+
+                        if (nResult > 0)
+                        {
+                            nResult = 0;
+                            oCommandUpdate.CommandText = Cls_Query.UpdateUserBudget(sUser, sSumme);
+                            nResult = oCommandUpdate.ExecuteNonQuery();
+                        }
+
                         MessageBox.Show("Cocktail fertig bitte entnehmen!\nFalls gewählt wird nach Bestätigung der nächste\nCocktail gemixt.");
                     }
 
@@ -749,6 +794,8 @@ namespace Bauwagen
             CmD_InDenWarenkorb.Enabled = true;
             CmD_LöschenWarenkorb.Enabled = true;
             CmD_Logout.Enabled = true;
+
+            this.Close();
         }
 
     }
