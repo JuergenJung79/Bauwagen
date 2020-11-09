@@ -144,4 +144,3 @@ H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
-H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
