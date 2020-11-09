@@ -81,20 +81,16 @@ namespace Bauwagen
             XmlNode nodeHostAutomat = doc.SelectSingleNode("/Bauwagen/Software/HostName_Automat");
             XmlNode nodeHostCocktail = doc.SelectSingleNode("/Bauwagen/Software/HostName_CocktailMixer");
 
+            CmD_Automatenbuchung.Visible = false;
+            CmD_Cocktailmixer.Visible = false;
+
             if (nodeHostAutomat.InnerText == System.Environment.MachineName.ToUpper().Trim())
             {
                 CmD_Automatenbuchung.Visible = true;
-                CmD_Cocktailmixer.Visible = false;
             }
-            else if (nodeHostCocktail.InnerText == System.Environment.MachineName.ToUpper().Trim())
+            if (nodeHostCocktail.InnerText == System.Environment.MachineName.ToUpper().Trim())
             {
-                CmD_Automatenbuchung.Visible = false;
                 CmD_Cocktailmixer.Visible = true;
-            }
-            else
-            {
-                CmD_Automatenbuchung.Visible = false;
-                CmD_Cocktailmixer.Visible = false;
             }
 
             if (!Directory.Exists(sBackupPfad)) { Directory.CreateDirectory(sBackupPfad); }

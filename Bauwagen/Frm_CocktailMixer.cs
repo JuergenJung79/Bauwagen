@@ -36,22 +36,36 @@ namespace Bauwagen
 
         private void Frm_CocktailMixer_Load(object sender, EventArgs e)
         {
-            _serialPort = new SerialPort();
-            _serialPort.PortName = Properties.Settings.Default.ComRelaisCocktail;
+            try
+            {
+                _serialPort = new SerialPort();
+                _serialPort.PortName = Properties.Settings.Default.ComRelaisCocktail;
 
-            // Set the read/write timeouts
-            _serialPort.BaudRate = 9600;
-            _serialPort.ReadTimeout = 500;
-            _serialPort.WriteTimeout = 500;
+                // Set the read/write timeouts
+                _serialPort.BaudRate = 9600;
+                _serialPort.ReadTimeout = 500;
+                _serialPort.WriteTimeout = 500;
 
-            _serialPort.Open();
+                _serialPort.Open();
 
-            CreateButtons();
+                CreateButtons();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Frm_CocktailMixer_Load()");
+                this.Close();
+            }
         }
 
         private void Frm_CocktailMixer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _serialPort.Close();
+            try
+            {
+                _serialPort.Close();
+            }
+            catch
+            {
+            }
         }
 
         private void CreateButtons()
