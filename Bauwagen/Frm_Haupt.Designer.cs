@@ -295,7 +295,7 @@
             // 
             this.CmD_Cocktailmixer.Enabled = false;
             this.CmD_Cocktailmixer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Cocktailmixer.Location = new System.Drawing.Point(483, 451);
+            this.CmD_Cocktailmixer.Location = new System.Drawing.Point(483, 509);
             this.CmD_Cocktailmixer.Name = "CmD_Cocktailmixer";
             this.CmD_Cocktailmixer.Size = new System.Drawing.Size(164, 52);
             this.CmD_Cocktailmixer.TabIndex = 9;
