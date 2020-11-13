@@ -130,6 +130,18 @@ namespace Bauwagen
                         nResult = oCommand.ExecuteNonQuery();
                     }
                     catch { }
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.DropTableCocktails();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
+                    try
+                    {
+                        oCommand.CommandText = Cls_Query.CreateTableCocktails();
+                        nResult = oCommand.ExecuteNonQuery();
+                    }
+                    catch { }
 
                     oConnection.Close();
                 }
@@ -221,6 +233,7 @@ namespace Bauwagen
             StreamWriter swGüter = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Güter.csv");
             StreamWriter swAufladung = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Aufladung.csv");
             StreamWriter swHistory = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_History.csv");
+            StreamWriter swCocktails = new StreamWriter(Frm_Haupt.sBackupPfad + System.DateTime.Now.Year.ToString().Trim() + "_" + System.DateTime.Now.Month.ToString().Trim().PadLeft(2, '0') + "_" + System.DateTime.Now.Day.ToString().Trim().PadLeft(2, '0') + "_Cocktails.csv");
 
             if (bVisu == true) { PgB_Backup_Personen.Value = 0; }
 
@@ -278,8 +291,8 @@ namespace Bauwagen
                     nCounter = 0;
                     #endregion
 
-                    #region Backup Datenbank Personen
-                    oCommand.CommandText = Cls_Query.GetGüterDaten("");
+                    #region Backup Datenbank Güter
+                    oCommand.CommandText = Cls_Query.GetGüterDatenBackup("");
                     drReader = oCommand.ExecuteReader();
                     while (drReader.Read())
                     {
@@ -410,6 +423,50 @@ namespace Bauwagen
                     nCounter = 0;
                     #endregion
 
+                    #region Backup Datenbank Cocktails
+                    oCommand.CommandText = Cls_Query.GetCocktailRezepte("", "");
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        nCounter++;
+                    }
+                    drReader.Close();
+
+                    if (bVisu == true)
+                    {
+                        PgB_Backup_Cocktails.Maximum = nCounter;
+                    }
+                    nCounter = 0;
+
+                    drReader = oCommand.ExecuteReader();
+                    while (drReader.Read())
+                    {
+                        for (int i = 0; i < drReader.FieldCount; i++)
+                        {
+                            string value = drReader[i].ToString();
+                            if (value.Contains(","))
+                                value = value.Replace(",", ".");
+
+                            sb.Append(value.Replace(Environment.NewLine, " ") + ";");
+                        }
+
+                        sb.Length--; // Remove the last comma
+                        sb.AppendLine();
+
+                        if (bVisu == true)
+                        {
+                            PgB_Backup_Cocktails.Value = nCounter + 1;
+                        }
+                        nCounter++;
+                    }
+                    drReader.Close();
+                    swCocktails.Write(sb.ToString());
+                    swCocktails.Close();
+                    sb.Clear();
+
+                    nCounter = 0;
+                    #endregion
+
                     oConnection.Close();
                 }
             }
@@ -485,6 +542,7 @@ namespace Bauwagen
                 DataTable dtGueter = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Güter.csv", false);
                 DataTable dtAufadung = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Aufladung.csv", false);
                 DataTable dtHistory = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_History.csv", false);
+                DataTable dtCocktails = GetTableFromCSV(Frm_Haupt.sRestorePfad + sFileDatum + "_Cocktails.csv", false);
 
                 RecreateTables();
 
@@ -500,8 +558,12 @@ namespace Bauwagen
                     PgB_Restore_Güter.Value = 0;
                     PgB_Restore_Aufladung.Value = 0;
                     PgB_Restore_History.Value = 0;
+                    PgB_Restore_Cocktails.Value = 0;
 
-                    try { PgB_Restore_Personen.Maximum = dtPersonen.Rows.Count; } catch { }
+                    try { 
+                        PgB_Restore_Personen.Maximum = dtPersonen.Rows.Count; 
+                    } 
+                    catch { }
                     try
                     {
                         PgB_Restore_Güter.Maximum = dtGueter.Rows.Count;
@@ -515,6 +577,11 @@ namespace Bauwagen
                     try
                     {
                         PgB_Restore_History.Maximum = dtHistory.Rows.Count;
+                    }
+                    catch { }
+                    try
+                    {
+                        PgB_Restore_Cocktails.Maximum = dtCocktails.Rows.Count;
                     }
                     catch { }
 
@@ -622,7 +689,52 @@ namespace Bauwagen
                             }
                         }
                     }
-                    catch { }
+                    catch (Exception ex) { }
+                    #endregion
+
+                    #region Restore der Tabelle Cocktails
+                    nCounter = 1;
+                    try
+                    {
+                        if (dtCocktails.Rows.Count > 0)
+                        {
+                            if (File.Exists(Frm_Haupt.sRestorePfad + sFileDatum + "_Cocktails.csv"))
+                            {
+                                string[] lines = File.ReadAllLines(Frm_Haupt.sRestorePfad + sFileDatum + "_Cocktails.csv");
+                                string[][] parts = new string[lines.Length][];
+
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    parts[i] = lines[i].Split(';');
+                                    oCommandExecute.CommandText = Cls_Query.InsertNeuerCocktail(false, true,
+                                        parts[i][0],
+                                        "", parts[i][3], parts[i][4], parts[i][5], parts[i][6], parts[i][7], parts[i][8], 
+                                        "", parts[i][9], parts[i][10], parts[i][11], parts[i][12], parts[i][13], parts[i][14], 
+                                        "", parts[i][15], parts[i][16], parts[i][17], parts[i][18], parts[i][19], parts[i][20], 
+                                        "", parts[i][21], parts[i][22], parts[i][23], parts[i][24], parts[i][25], parts[i][26],
+                                        "", parts[i][27], parts[i][28], parts[i][29], parts[i][30], parts[i][31], parts[i][32],
+                                        "", parts[i][33], parts[i][34], parts[i][35], parts[i][36], parts[i][37], parts[i][38],
+                                        "", parts[i][39], parts[i][40], parts[i][41], parts[i][42], parts[i][43], parts[i][44],
+                                        "", parts[i][45], parts[i][46], parts[i][47], parts[i][48], parts[i][49], parts[i][50],
+                                        "", parts[i][51], parts[i][52], parts[i][53], parts[i][54], parts[i][55], parts[i][56],
+                                        "", parts[i][57], parts[i][58], parts[i][59], parts[i][60], parts[i][61], parts[i][62],
+                                        "", parts[i][63], parts[i][64], parts[i][65], parts[i][66], parts[i][67], parts[i][68],
+                                        "", parts[i][69], parts[i][70], parts[i][71], parts[i][72], parts[i][73], parts[i][74],
+                                        "", parts[i][75], parts[i][76], parts[i][77], parts[i][78], parts[i][79], parts[i][80],
+                                        "", parts[i][81], parts[i][82], parts[i][83], parts[i][84], parts[i][85], parts[i][86],
+                                        "", parts[i][87], parts[i][88], parts[i][89], parts[i][90], parts[i][91], parts[i][92],
+                                        "", parts[i][93], parts[i][94], parts[i][95], parts[i][96], parts[i][97], parts[i][98],
+                                        parts[i][1], parts[i][99], parts[i][100], parts[i][101], parts[i][102], parts[i][103],
+                                        parts[i][2]);
+                                    nResult = oCommandExecute.ExecuteNonQuery();
+
+                                    PgB_Restore_Cocktails.Value = nCounter;
+                                    nCounter++;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex) { }
                     #endregion
 
                     oConnection.Close();

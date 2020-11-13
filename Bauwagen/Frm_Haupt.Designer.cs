@@ -295,7 +295,7 @@
             // 
             this.CmD_Cocktailmixer.Enabled = false;
             this.CmD_Cocktailmixer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmD_Cocktailmixer.Location = new System.Drawing.Point(483, 451);
+            this.CmD_Cocktailmixer.Location = new System.Drawing.Point(483, 509);
             this.CmD_Cocktailmixer.Name = "CmD_Cocktailmixer";
             this.CmD_Cocktailmixer.Size = new System.Drawing.Size(164, 52);
             this.CmD_Cocktailmixer.TabIndex = 9;
@@ -328,7 +328,7 @@
             this.Controls.Add(this.CmD_Systemsteuerung);
             this.Name = "Frm_Haupt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "e";
+            this.Text = "Bauwagen 2.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_Haupt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).EndInit();

@@ -11,7 +11,7 @@
     <RestorePfad>C:\Bauwagen\Backup\</RestorePfad>
   </Database>
   <Software>
-    <HostName_Automat>EMARL001</HostName_Automat>
+    <HostName_Automat>EMARW001</HostName_Automat>
     <HostName_CocktailMixer>EMARW001</HostName_CocktailMixer>
   </Software>
 </Bauwagen>
