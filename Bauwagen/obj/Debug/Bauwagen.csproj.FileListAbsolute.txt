@@ -100,7 +100,6 @@ C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_GüterHinzufügen.res
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Login.resources
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Admin.resources
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Haupt.resources
-C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_LongDrinkMixer.resources
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserAnlegen.resources
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserListe.resources
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Properties.Resources.resources
@@ -145,3 +144,5 @@ H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
+C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
