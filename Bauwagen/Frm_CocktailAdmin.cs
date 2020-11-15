@@ -28,6 +28,8 @@ namespace Bauwagen
 
         private void Frm_CocktailAdmin_Load(object sender, EventArgs e)
         {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+
             _serialPort = new SerialPort();
             _serialPort.PortName = Properties.Settings.Default.ComRelaisCocktail;
 

@@ -31,6 +31,7 @@ namespace Bauwagen
 
         public static bool bLoad = true;
         public static bool bBlockRefresh = false;
+        public static bool bGeburtstagsModus = false;
 
         public string sButtonClicked = "";
 
@@ -277,6 +278,7 @@ namespace Bauwagen
             if (frm_login.ShowDialog() == DialogResult.OK)
             {
                 EnableGüter();
+                CmD_GebModus.Enabled = true;
 
                 CmD_Systemsteuerung.Enabled = false;
 
@@ -439,6 +441,9 @@ namespace Bauwagen
         {
             DisableGüter();
 
+            CmD_GebModus.BackColor = Color.LightGray;
+            bGeburtstagsModus = false;
+
             LbL_Summe.Text = "0,00 €";
             LbL_Budget.Text = "0,00 €";
             LbL_Verfügbar.Text = "0,00 €";
@@ -531,16 +536,19 @@ namespace Bauwagen
                 }
             }
 
-            DisableGüter();
+            if (bGeburtstagsModus == false)
+            {
+                DisableGüter();
 
-            LbL_Summe.Text = "0,00 €";
-            LbL_Budget.Text = "0,00 €";
-            LbL_Verfügbar.Text = "0,00 €";
-            LbL_Kredit.Text = "0,00 €";
-            LbL_User.Text = "";
+                LbL_Summe.Text = "0,00 €";
+                LbL_Budget.Text = "0,00 €";
+                LbL_Verfügbar.Text = "0,00 €";
+                LbL_Kredit.Text = "0,00 €";
+                LbL_User.Text = "";
 
-            CmD_Systemsteuerung.Enabled = true;
-            bBlockRefresh = false;
+                CmD_Systemsteuerung.Enabled = true;
+                bBlockRefresh = false;
+            }
         }
 
         private void CmD_Systemsteuerung_Click(object sender, EventArgs e)
@@ -598,6 +606,8 @@ namespace Bauwagen
 
         private void DisableGüter()
         {
+            CmD_GebModus.Enabled = false;
+
             for (int i = 0; i < nAnzahlAnwender; i++)
             {
                 if (Convert.ToInt32(GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Tag) <= 5)
@@ -783,50 +793,97 @@ namespace Bauwagen
             //frm_cocktailmixer.LbL_Verfügbar.Text = "0,00 €";
             frm_cocktailmixer.ShowDialog();
 
-            DisableGüter();
-
-            LbL_Summe.Text = "0,00 €";
-            LbL_Budget.Text = "0,00 €";
-            LbL_Verfügbar.Text = "0,00 €";
-            LbL_Kredit.Text = "0,00 €";
-
-            DgV_Warenkorb.Rows.Clear();
-            CmD_Systemsteuerung.Enabled = true;
-
-            bBlockRefresh = false;
-
-            using (oConnection)
+            if (bGeburtstagsModus == false)
             {
-                try
+                DisableGüter();
+
+                LbL_Summe.Text = "0,00 €";
+                LbL_Budget.Text = "0,00 €";
+                LbL_Verfügbar.Text = "0,00 €";
+                LbL_Kredit.Text = "0,00 €";
+
+                DgV_Warenkorb.Rows.Clear();
+                CmD_Systemsteuerung.Enabled = true;
+
+                bBlockRefresh = false;
+
+                using (oConnection)
                 {
-                    oConnection.ConnectionString = sDSN;
-                    oConnection.Open();
-
-                    oCommandSelect.Connection = oConnection;
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
-                    drReader = oCommandSelect.ExecuteReader();
-
-                    while (drReader.Read())
+                    try
                     {
-                        LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
-                        LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
+                        oConnection.ConnectionString = sDSN;
+                        oConnection.Open();
+
+                        oCommandSelect.Connection = oConnection;
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                        drReader = oCommandSelect.ExecuteReader();
+
+                        while (drReader.Read())
+                        {
+                            LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                            LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
+                        }
+                        drReader.Close();
+
+                        GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+
+                        DgV_Warenkorb.Rows.Clear();
+
+                        LbL_Summe.Text = "0,00 €";
+                        LbL_Verfügbar.Text = "0,00 €";
+                        LbL_User.Text = "";
+
+                        oConnection.Close();
                     }
-                    drReader.Close();
-
-                    GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
-
-                    DgV_Warenkorb.Rows.Clear();
-
-                    LbL_Summe.Text = "0,00 €";
-                    LbL_Verfügbar.Text = "0,00 €";
-                    LbL_User.Text = "";
-
-                    oConnection.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "CmD_Cocktailmixer_Click");
+                    }
                 }
-                catch (Exception ex)
+            }
+            else
+            {
+                using (oConnection)
                 {
-                    MessageBox.Show(ex.Message, "CmD_Cocktailmixer_Click");
+                    try
+                    {
+                        oConnection.ConnectionString = sDSN;
+                        oConnection.Open();
+
+                        oCommandSelect.Connection = oConnection;
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                        drReader = oCommandSelect.ExecuteReader();
+
+                        while (drReader.Read())
+                        {
+                            LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                            LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
+                        }
+                        drReader.Close();
+
+                        GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+
+                        oConnection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "CmD_Cocktailmixer_Click");
+                    }
                 }
+            }
+        }
+
+        private void CmD_GebModus_Click(object sender, EventArgs e)
+        {
+            if (bGeburtstagsModus == false)
+            {
+                bGeburtstagsModus = true;
+                CmD_GebModus.BackColor = Color.Green;
+            }
+            else
+            {
+                bGeburtstagsModus = false;
+                CmD_GebModus.BackColor = Color.Gray;
             }
         }
 
