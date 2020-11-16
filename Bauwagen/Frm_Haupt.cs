@@ -693,6 +693,44 @@ namespace Bauwagen
                 }
                 CreateButtons();
             }
+            else
+            {
+                OracleConnection oConnection = new OracleConnection();
+                OracleCommand oCommandSelect = new OracleCommand();
+                OracleDataReader drReader;
+
+                string sUser = "";
+
+                using (oConnection)
+                {
+                    try
+                    {
+                        oConnection.ConnectionString = sDSN;
+                        oConnection.Open();
+
+                        sUser = LbL_User.Text.Trim();
+
+                        oCommandSelect.Connection = oConnection;
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                        drReader = oCommandSelect.ExecuteReader();
+
+                        while (drReader.Read())
+                        {
+                            LbL_Budget.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                            LbL_Kredit.Text = String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(9))) + " €";
+                        }
+                        drReader.Close();
+
+                        GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+
+                        oConnection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "TmR_Refresh_Tick");
+                    }
+                }
+            }
 
             TmR_Refresh.Enabled = true;
         }
