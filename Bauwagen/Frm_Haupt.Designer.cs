@@ -29,16 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CmD_Systemsteuerung = new System.Windows.Forms.Button();
             this.FlW_Anwender = new System.Windows.Forms.FlowLayoutPanel();
             this.FlW_Verbrauchsgüter = new System.Windows.Forms.FlowLayoutPanel();
             this.CmD_Logout = new System.Windows.Forms.Button();
             this.DgV_Warenkorb = new System.Windows.Forms.DataGridView();
+            this.Gütername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Anzahl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CmD_Buchen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LbL_Summe = new System.Windows.Forms.Label();
@@ -54,10 +58,7 @@
             this.CmD_Automatenbuchung = new System.Windows.Forms.Button();
             this.CmD_Cocktailmixer = new System.Windows.Forms.Button();
             this.CmD_GebModus = new System.Windows.Forms.Button();
-            this.Gütername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Anzahl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmD_Gaesteliste = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgV_Warenkorb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,9 +76,9 @@
             // FlW_Anwender
             // 
             this.FlW_Anwender.AutoScroll = true;
-            this.FlW_Anwender.Location = new System.Drawing.Point(12, 12);
+            this.FlW_Anwender.Location = new System.Drawing.Point(12, 56);
             this.FlW_Anwender.Name = "FlW_Anwender";
-            this.FlW_Anwender.Size = new System.Drawing.Size(443, 663);
+            this.FlW_Anwender.Size = new System.Drawing.Size(443, 619);
             this.FlW_Anwender.TabIndex = 3;
             // 
             // FlW_Verbrauchsgüter
@@ -104,14 +105,14 @@
             // 
             this.DgV_Warenkorb.AllowUserToAddRows = false;
             this.DgV_Warenkorb.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgV_Warenkorb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgV_Warenkorb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgV_Warenkorb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgV_Warenkorb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Gütername,
@@ -123,6 +124,45 @@
             this.DgV_Warenkorb.ReadOnly = true;
             this.DgV_Warenkorb.Size = new System.Drawing.Size(368, 325);
             this.DgV_Warenkorb.TabIndex = 6;
+            // 
+            // Gütername
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gütername.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Gütername.HeaderText = "Name";
+            this.Gütername.MinimumWidth = 12;
+            this.Gütername.Name = "Gütername";
+            this.Gütername.ReadOnly = true;
+            // 
+            // Anzahl
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Anzahl.HeaderText = "Anzahl";
+            this.Anzahl.MinimumWidth = 12;
+            this.Anzahl.Name = "Anzahl";
+            this.Anzahl.ReadOnly = true;
+            this.Anzahl.Width = 60;
+            // 
+            // Preis
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Preis.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Preis.HeaderText = "Preis";
+            this.Preis.MinimumWidth = 12;
+            this.Preis.Name = "Preis";
+            this.Preis.ReadOnly = true;
+            this.Preis.Width = 80;
+            // 
+            // Summe
+            // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Summe.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Summe.HeaderText = "Summe";
+            this.Summe.MinimumWidth = 12;
+            this.Summe.Name = "Summe";
+            this.Summe.ReadOnly = true;
+            this.Summe.Width = 80;
             // 
             // CmD_Buchen
             // 
@@ -281,44 +321,16 @@
             this.CmD_GebModus.UseVisualStyleBackColor = true;
             this.CmD_GebModus.Click += new System.EventHandler(this.CmD_GebModus_Click);
             // 
-            // Gütername
+            // CmD_Gaesteliste
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gütername.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Gütername.HeaderText = "Name";
-            this.Gütername.MinimumWidth = 12;
-            this.Gütername.Name = "Gütername";
-            this.Gütername.ReadOnly = true;
-            // 
-            // Anzahl
-            // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Anzahl.HeaderText = "Anzahl";
-            this.Anzahl.MinimumWidth = 12;
-            this.Anzahl.Name = "Anzahl";
-            this.Anzahl.ReadOnly = true;
-            this.Anzahl.Width = 60;
-            // 
-            // Preis
-            // 
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Preis.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Preis.HeaderText = "Preis";
-            this.Preis.MinimumWidth = 12;
-            this.Preis.Name = "Preis";
-            this.Preis.ReadOnly = true;
-            this.Preis.Width = 80;
-            // 
-            // Summe
-            // 
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Summe.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Summe.HeaderText = "Summe";
-            this.Summe.MinimumWidth = 12;
-            this.Summe.Name = "Summe";
-            this.Summe.ReadOnly = true;
-            this.Summe.Width = 80;
+            this.CmD_Gaesteliste.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Gaesteliste.Location = new System.Drawing.Point(12, 9);
+            this.CmD_Gaesteliste.Name = "CmD_Gaesteliste";
+            this.CmD_Gaesteliste.Size = new System.Drawing.Size(443, 41);
+            this.CmD_Gaesteliste.TabIndex = 11;
+            this.CmD_Gaesteliste.Text = "Gästeliste";
+            this.CmD_Gaesteliste.UseVisualStyleBackColor = true;
+            this.CmD_Gaesteliste.Click += new System.EventHandler(this.CmD_Gaesteliste_Click);
             // 
             // Frm_Haupt
             // 
@@ -326,6 +338,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1148, 711);
+            this.Controls.Add(this.CmD_Gaesteliste);
             this.Controls.Add(this.CmD_GebModus);
             this.Controls.Add(this.CmD_Cocktailmixer);
             this.Controls.Add(this.CmD_Automatenbuchung);
@@ -380,6 +393,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Anzahl;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summe;
+        private System.Windows.Forms.Button CmD_Gaesteliste;
     }
 }
 

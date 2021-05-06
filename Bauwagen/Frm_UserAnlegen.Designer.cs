@@ -43,6 +43,9 @@
             this.ChK_ChangePW = new System.Windows.Forms.CheckBox();
             this.CmB_User = new System.Windows.Forms.ComboBox();
             this.ChK_Aktiv = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.NuD_Layer = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.NuD_Layer)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -196,18 +199,53 @@
             this.ChK_Aktiv.Text = "aktiv?";
             this.ChK_Aktiv.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(62, 324);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Layer";
+            // 
+            // NuD_Layer
+            // 
+            this.NuD_Layer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NuD_Layer.Location = new System.Drawing.Point(134, 322);
+            this.NuD_Layer.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.NuD_Layer.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NuD_Layer.Name = "NuD_Layer";
+            this.NuD_Layer.Size = new System.Drawing.Size(63, 31);
+            this.NuD_Layer.TabIndex = 1000;
+            this.NuD_Layer.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Frm_UserAnlegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(845, 323);
+            this.ClientSize = new System.Drawing.Size(845, 358);
+            this.Controls.Add(this.NuD_Layer);
             this.Controls.Add(this.CmB_User);
             this.Controls.Add(this.ChK_Aktiv);
             this.Controls.Add(this.ChK_ChangePW);
             this.Controls.Add(this.CmD_Close);
             this.Controls.Add(this.CmD_Create);
             this.Controls.Add(this.TxT_TokenID);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.TxT_Kredit);
             this.Controls.Add(this.label5);
@@ -221,6 +259,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Benutzer anlegen";
             this.Load += new System.EventHandler(this.Frm_UserAnlegen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.NuD_Layer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +281,7 @@
         private System.Windows.Forms.CheckBox ChK_ChangePW;
         private System.Windows.Forms.ComboBox CmB_User;
         private System.Windows.Forms.CheckBox ChK_Aktiv;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown NuD_Layer;
     }
 }

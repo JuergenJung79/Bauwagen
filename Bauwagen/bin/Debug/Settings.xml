@@ -15,4 +15,10 @@
     <HostName_Automat>EMARW001</HostName_Automat>
     <HostName_CocktailMixer>EMARW001</HostName_CocktailMixer>
   </Software>
+  <Anpassungen>
+    <ManuellDatenbank>
+      <AlterTable1>ALTER TABLE PERSONEN ADD (LAYER NUMBER DEFAULT 1 );</AlterTable1>
+      <UpdateTable1>UPDATE PERSONEN SET LAYER = 1</UpdateTable1>
+    </ManuellDatenbank>
+  </Anpassungen>
 </Bauwagen>

@@ -51,7 +51,7 @@ namespace Bauwagen
                     oCommand.Connection = oConnection;
 
                     #region Backup Datenbank Personen
-                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true);
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true, "");
                     drReader = oCommand.ExecuteReader();
                     while (drReader.Read())
                     {

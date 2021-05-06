@@ -90,7 +90,7 @@ namespace Bauwagen
                     oConnection.ConnectionString = Frm_Haupt.sDSN;
                     oConnection.Open();
 
-                    #region Buttons für User erstellen
+                    #region Buttons für Cocktails erstellen
                     oCommand.Connection = oConnection;
                     oCommand.CommandText = Cls_Query.GetNumberOfCocktails();
                     drReader = oCommand.ExecuteReader();

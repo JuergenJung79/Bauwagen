@@ -247,7 +247,7 @@ namespace Bauwagen
                     oCommand.Connection = oConnection;
 
                     #region Backup Datenbank Personen
-                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true);
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true, "");
                     drReader = oCommand.ExecuteReader();
                     while (drReader.Read())
                     {
@@ -600,7 +600,7 @@ namespace Bauwagen
                                 {
                                     parts[i] = lines[i].Split(';');
                                     oCommandExecute.CommandText = Cls_Query.InsertUserRestore(parts[i][1], parts[i][3], parts[i][4], parts[i][5],
-                                        parts[i][6], parts[i][7], parts[i][8], parts[i][9], parts[i][10], parts[i][11]);
+                                        parts[i][6], parts[i][7], parts[i][8], parts[i][9], parts[i][10], parts[i][11], parts[i][12]);
                                     nResult = oCommandExecute.ExecuteNonQuery();
 
                                     PgB_Restore_Personen.Value = nCounter;

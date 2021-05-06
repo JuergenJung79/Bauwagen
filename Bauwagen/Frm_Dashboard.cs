@@ -71,7 +71,7 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true);
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true, "");
                     drReader = oCommand.ExecuteReader();
 
                     CmB_Name.Items.Clear();

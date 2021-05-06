@@ -344,7 +344,7 @@ namespace Bauwagen
             return sQuery;
         }
 
-        public static string GetAnwenderDaten(string sName, bool bAdmin)
+        public static string GetAnwenderDaten(string sName, bool bAdmin, string sLayer)
         {
             string sQuery = "";
 
@@ -359,12 +359,19 @@ namespace Bauwagen
             sQuery += "    nvl(budget,0),\n";
             sQuery += "    nvl(kredit,0),\n";
             sQuery += "    nvl(change_pw,1),\n";
-            sQuery += "    token_id\n";
+            sQuery += "    token_id,\n";
+            sQuery += "    layer\n";
             sQuery += "FROM " + Frm_Haupt.sSchema + ".personen\n";
+            sQuery += "WHERE 1 = 1\n";
+
+            if (sLayer != "")
+            {
+                sQuery += "    AND LAYER = " + sLayer + "\n";
+            }
 
             if (sName != "")
             {
-                sQuery += "WHERE vorname = '" + sName + "'\n";
+                sQuery += "    AND vorname = '" + sName + "'\n";
 
                 if (bAdmin == false)
                 {
@@ -373,7 +380,7 @@ namespace Bauwagen
             }
             else if (sName == "" && bAdmin == false)
             {
-                sQuery += "WHERE nvl(bad_logon,0) <= 5\n";
+                sQuery += "    AND nvl(bad_logon,0) <= 5\n";
             }
 
             sQuery += "ORDER BY vorname\n";
@@ -421,7 +428,7 @@ namespace Bauwagen
         }
 
         public static string InsertUser(bool bUpdate, string sVorname, string sPassword, string sBudget, string sKredit, string sTokenID, 
-            string sChangePW, string sAktiv)
+            string sChangePW, string sAktiv, Int32 nLayer)
         {
             string sQuery = "";
 
@@ -430,7 +437,7 @@ namespace Bauwagen
             if (bUpdate == false)
             {
                 sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
-                sQuery += "(id, vorname, password, budget, kredit, token_id, change_pw, bad_logon)\n";
+                sQuery += "(id, vorname, password, budget, kredit, token_id, change_pw, bad_logon, layer)\n";
                 sQuery += "VALUES\n";
                 sQuery += "(seq_user_id.nextval,\n";
                 sQuery += "'" + sVorname + "',\n";
@@ -439,7 +446,8 @@ namespace Bauwagen
                 sQuery += sKredit.Replace(",", ".") + ",\n";
                 sQuery += "'" + sTokenID + "',\n";
                 sQuery += sChangePW + ",\n";
-                sQuery += sAktiv + ")\n";
+                sQuery += sAktiv + ",\n";
+                sQuery += nLayer.ToString().Trim() + ")\n";
             }
             else
             {
@@ -449,7 +457,8 @@ namespace Bauwagen
                 sQuery += "    kredit = " + sKredit.Replace(",", ".") + ",\n";
                 sQuery += "    change_pw = " + sChangePW + ",\n";
                 sQuery += "    token_id = '" + sTokenID + "',\n";
-                sQuery += "    bad_logon = " + sAktiv + "\n";
+                sQuery += "    bad_logon = " + sAktiv + ",\n";
+                sQuery += "    layer = " + nLayer.ToString().Trim() + "\n";
                 sQuery += "WHERE vorname = '" + sVorname + "'\n";
             }
 
@@ -457,12 +466,12 @@ namespace Bauwagen
         }
 
         public static string InsertUserRestore(string sVorname, string sPassword, string sLastlogon, string sLocked, string sBadLogon, string sLockDate, string sBudget,
-            string sKredit, string sChangePassword, string sTokenID)
+            string sKredit, string sChangePassword, string sTokenID, string sLayer)
         {
             string sQuery = "";
 
             sQuery = "INSERT INTO " + Frm_Haupt.sSchema + ".personen\n";
-            sQuery += "(id, vorname, password, last_logon, locked, bad_logon, lock_date, budget, kredit, change_pw, token_id)\n";
+            sQuery += "(id, vorname, password, last_logon, locked, bad_logon, lock_date, budget, kredit, change_pw, token_id, layer)\n";
             sQuery += "VALUES\n";
             sQuery += "(seq_user_id.nextval,\n";
             sQuery += "'" + sVorname + "',\n";
@@ -492,7 +501,8 @@ namespace Bauwagen
             sQuery += sBudget + ",\n";
             sQuery += sKredit + ",\n";
             sQuery += sChangePassword + ",\n";
-            sQuery += "'" + sTokenID + "'\n";
+            sQuery += "'" + sTokenID + "',\n";
+            sQuery += sLayer + "\n";
             sQuery += ")\n";
 
             return sQuery;

@@ -51,7 +51,7 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true);
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", true, "");
                     drReader = oCommand.ExecuteReader();
 
                     CmB_User.Items.Clear();
@@ -84,7 +84,7 @@ namespace Bauwagen
                     oConnection.Open();
 
                     oCommand.Connection = oConnection;
-                    oCommand.CommandText = Cls_Query.GetAnwenderDaten(CmB_User.Text.Trim(), true);
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten(CmB_User.Text.Trim(), true, "");
                     drReader = oCommand.ExecuteReader();
 
                     if (drReader.HasRows)
@@ -101,6 +101,8 @@ namespace Bauwagen
                             TxT_Kredit.Text = drReader.GetValue(9).ToString().Trim();
 
                             TxT_TokenID.Text = drReader.GetValue(11).ToString().Trim();
+
+                            NuD_Layer.Value = Convert.ToDecimal(drReader.GetValue(12));
 
                             if (drReader.GetValue(10).ToString().Trim() == "1") { ChK_ChangePW.Checked = true; } else { ChK_ChangePW.Checked = false; }
                             if (Convert.ToInt32(drReader.GetValue(6)) <= 5) { ChK_Aktiv.Checked = true; } else { ChK_Aktiv.Checked = false; }
@@ -128,6 +130,8 @@ namespace Bauwagen
 
             TxT_TokenID.Text = "";
 
+            NuD_Layer.Value = 1;
+
             ChK_Aktiv.Checked = true;
             ChK_ChangePW.Checked = true;
         }
@@ -149,6 +153,7 @@ namespace Bauwagen
 
             int nResult = 0;
 
+            bool bValid = false;
             bool bUpdate = false;
 
             string sPassword = Cls_Procedure.XorEncrypt(TxT_Password.Text.Trim(), Bauwagen.Properties.Settings.Default.Key);
@@ -158,36 +163,45 @@ namespace Bauwagen
             if (ChK_ChangePW.Checked) { sChangePW = "1"; } else { sChangePW = "0"; }
             if (ChK_Aktiv.Checked) { sAktiv = "1"; } else { sAktiv = "0"; }
 
-            using (oConnection)
+            if (NuD_Layer.Value > 0 && NuD_Layer.Value <= 2) { bValid = true; } else { bValid = false; }
+
+            if (bValid == true)
             {
-                try
+                using (oConnection)
                 {
-                    oConnection.ConnectionString = Frm_Haupt.sDSN;
-                    oConnection.Open();
-
-                    oCommandInsert.Connection = oConnection;
-                    oCommandSelect.Connection = oConnection;
-
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(TxT_Vorname.Text.Trim(), true);
-                    drReader = oCommandSelect.ExecuteReader();
-
-                    while (drReader.Read())
+                    try
                     {
-                        bUpdate = true;
+                        oConnection.ConnectionString = Frm_Haupt.sDSN;
+                        oConnection.Open();
+
+                        oCommandInsert.Connection = oConnection;
+                        oCommandSelect.Connection = oConnection;
+
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(TxT_Vorname.Text.Trim(), true, "");
+                        drReader = oCommandSelect.ExecuteReader();
+
+                        while (drReader.Read())
+                        {
+                            bUpdate = true;
+                        }
+                        drReader.Close();
+
+                        oCommandInsert.CommandText = Cls_Query.InsertUser(bUpdate, TxT_Vorname.Text.Trim(), sPassword,
+                            TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim(), TxT_TokenID.Text.Trim(), sChangePW, sAktiv, Convert.ToInt32(NuD_Layer.Value));
+                        nResult = oCommandInsert.ExecuteNonQuery();
+
+                        MessageBox.Show("Erfolgreich gespeichert", "Info");
+                        oConnection.Close();
                     }
-                    drReader.Close();
-
-                    oCommandInsert.CommandText = Cls_Query.InsertUser(bUpdate, TxT_Vorname.Text.Trim(), sPassword,
-                        TxT_Budget.Text.Trim(), TxT_Kredit.Text.Trim(), TxT_TokenID.Text.Trim(), sChangePW, sAktiv);
-                    nResult = oCommandInsert.ExecuteNonQuery();
-
-                    MessageBox.Show("Erfolgreich gespeichert", "Info");
-                    oConnection.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "CmD_Create_Click");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "CmD_Create_Click");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Eingaben üngültig bitte das Layer prüfen", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

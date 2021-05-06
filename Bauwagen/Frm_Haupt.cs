@@ -35,10 +35,39 @@ namespace Bauwagen
 
         public string sButtonClicked = "";
 
+        internal static string sLayer = "1";
+
         public Frm_Haupt()
         {
             Application.AddMessageFilter(this);
             InitializeComponent();
+        }
+
+        private void CmD_Gaesteliste_Click(object sender, EventArgs e)
+        {
+            for (int i = nAnzahlAnwender - 1; i >= 0; i--)
+            {
+                GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Dispose();
+            }
+            for (int i = nAnzahlGüter - 1; i >= 0; i--)
+            {
+                GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Visible = false;
+                GetGüterControlByName("CmD_Gueter_" + i.ToString().PadLeft(2, '0')).Dispose();
+            }
+
+            if (sLayer == "1")
+            {
+                sLayer = "2";
+                CmD_Gaesteliste.BackColor = Color.Yellow;
+                CreateButtons();
+            }
+            else
+            {
+                sLayer = "1";
+                CmD_Gaesteliste.BackColor = CmD_LöschenWarenkorb.BackColor;
+                CreateButtons();
+            }
         }
 
         public bool PreFilterMessage(ref Message m)
@@ -172,7 +201,7 @@ namespace Bauwagen
 
                     System.Windows.Forms.Button[] ButtonNamen = new System.Windows.Forms.Button[nAnzahlButtonsNamen];
 
-                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false);
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false, sLayer);
                     drReader = oCommand.ExecuteReader();
 
                     while (drReader.Read())
@@ -299,7 +328,7 @@ namespace Bauwagen
                         oCommandSelect.Connection = oConnection;
                         oCommandUpdate.Connection = oConnection;
 
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sName, false);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sName, false, "");
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -385,7 +414,7 @@ namespace Bauwagen
                     drReader.Close();
 
                     string sBudget = LbL_Budget.Text.Trim().Substring(0, LbL_Budget.Text.Trim().Length - 2);
-                    string sKredit = LbL_Kredit.Text.Trim().Substring(0, LbL_Budget.Text.Trim().Length - 2);
+                    string sKredit = LbL_Kredit.Text.Trim().Substring(0, LbL_Kredit.Text.Trim().Length - 2);
                     string sWarenkorb = LbL_Summe.Text.Trim().Substring(0, LbL_Summe.Text.Trim().Length - 2);
 
                     nVerfügbar = (Convert.ToDouble(sBudget) + Convert.ToDouble(sKredit)) - Convert.ToDouble(sWarenkorb) - nPreis;
@@ -511,7 +540,7 @@ namespace Bauwagen
                         }
                     }
 
-                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                    oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false, "");
                     drReader = oCommandSelect.ExecuteReader();
 
                     while (drReader.Read())
@@ -711,7 +740,7 @@ namespace Bauwagen
                         sUser = LbL_User.Text.Trim();
 
                         oCommandSelect.Connection = oConnection;
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false, "");
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -853,7 +882,7 @@ namespace Bauwagen
                         oConnection.Open();
 
                         oCommandSelect.Connection = oConnection;
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false, "");
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
@@ -889,7 +918,7 @@ namespace Bauwagen
                         oConnection.Open();
 
                         oCommandSelect.Connection = oConnection;
-                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false);
+                        oCommandSelect.CommandText = Cls_Query.GetAnwenderDaten(sUser, false, "");
                         drReader = oCommandSelect.ExecuteReader();
 
                         while (drReader.Read())
