@@ -45,6 +45,11 @@ namespace Bauwagen
 
         private void CmD_Gaesteliste_Click(object sender, EventArgs e)
         {
+            ChangeLayer();
+        }
+
+        private void ChangeLayer()
+        {
             for (int i = nAnzahlAnwender - 1; i >= 0; i--)
             {
                 GetAnwenderControlByName("CmD_Anwender_" + i.ToString().PadLeft(2, '0')).Visible = false;
@@ -655,6 +660,8 @@ namespace Bauwagen
             CmD_Logout.Enabled = false;
             CmD_LöschenWarenkorb.Enabled = false;
             CmD_Cocktailmixer.Enabled = false;
+
+            if (sLayer != "1") { ChangeLayer(); }
         }
 
         Control GetAnwenderControlByName(string Name)
