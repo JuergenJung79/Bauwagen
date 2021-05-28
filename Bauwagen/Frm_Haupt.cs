@@ -298,11 +298,24 @@ namespace Bauwagen
         {
             bBlockRefresh = true;
 
+            string sSammeluser = "";
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Settings.xml");
+
+            XmlNode nodeSammelUser = doc.SelectSingleNode("/Bauwagen/Software/Gemeinschaftsuser");
+            sSammeluser = nodeSammelUser.FirstChild.Value;
+
             Button angeklickterButton = (Button)sender;
 
             string sName = angeklickterButton.Text.Trim();
             int nPositionReturn = sName.IndexOf("\n", 0);
             sName = sName.Substring(0, nPositionReturn);
+
+            if (sName == "Bauwagen Gemeinschaft")
+            {
+                sName = sSammeluser;
+            }
 
             Frm_Login frm_login = new Frm_Login();
 
