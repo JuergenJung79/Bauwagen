@@ -93,10 +93,14 @@ namespace Bauwagen
         private void Frm_Haupt_Load(object sender, EventArgs e)
         {
             OracleConnection oConnection = new OracleConnection();
+            OracleCommand oCommand = new OracleCommand();
+            OracleDataReader dataReader;
 
             bool bRun = true;
 
             int nCounter = 0;
+
+            string sSammeluser = "";
 
             XmlDocument doc = new XmlDocument();
             doc.Load("Settings.xml");
@@ -115,6 +119,8 @@ namespace Bauwagen
             sRestorePfad = nodeRestorePfad.FirstChild.Value;
             XmlNode nodeHostAutomat = doc.SelectSingleNode("/Bauwagen/Software/HostName_Automat");
             XmlNode nodeHostCocktail = doc.SelectSingleNode("/Bauwagen/Software/HostName_CocktailMixer");
+            XmlNode nodeSammelUser = doc.SelectSingleNode("/Bauwagen/Software/Gemeinschaftsuser");
+            sSammeluser = nodeSammelUser.FirstChild.Value;
 
             CmD_Automatenbuchung.Visible = false;
             CmD_Cocktailmixer.Visible = false;
@@ -145,6 +151,16 @@ namespace Bauwagen
                 {
                     oConnection.ConnectionString = sDSN;
                     oConnection.Open();
+
+                    oCommand.Connection = oConnection;
+                    oCommand.CommandText = Cls_Query.GetAnwenderDaten(sSammeluser, false, "");
+                    dataReader = oCommand.ExecuteReader();
+
+                    if (!dataReader.HasRows)
+                    {
+                        MessageBox.Show("Fehler in der Konfiguration, der angegebene Sammeluser existiert nicht!\n" + sSammeluser);
+                    }
+
                     oConnection.Close();
                     bRun = false;
                 }
@@ -174,6 +190,14 @@ namespace Bauwagen
             OracleCommand oCommand = new OracleCommand();
             OracleDataReader drReader;
 
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Settings.xml");
+
+            string sSammeluserSichtbar = "";
+            string sSammeluser = "";
+
+            bool bExecute = false;
+
             int nLocationX = 0;
             int nLocationY = 0;
             int nOffset = 0;
@@ -194,6 +218,12 @@ namespace Bauwagen
                     oConnection.Open();
 
                     #region Buttons für User erstellen
+                    XmlNode nodeSammelUser = doc.SelectSingleNode("/Bauwagen/Software/Gemeinschaftsuser");
+                    sSammeluser = nodeSammelUser.FirstChild.Value;
+
+                    XmlNode nodeSammelUserSichtbar = doc.SelectSingleNode("/Bauwagen/Software/GemeinschaftsuserSichtbar");
+                    sSammeluserSichtbar = nodeSammelUserSichtbar.FirstChild.Value;
+
                     oCommand.Connection = oConnection;
                     oCommand.CommandText = Cls_Query.GetMaxAnderID();
                     drReader = oCommand.ExecuteReader();
@@ -204,6 +234,8 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
+                    if (sSammeluserSichtbar == "0") { nAnzahlButtonsNamen = nAnzahlButtonsNamen - 1; }
+
                     System.Windows.Forms.Button[] ButtonNamen = new System.Windows.Forms.Button[nAnzahlButtonsNamen];
 
                     oCommand.CommandText = Cls_Query.GetAnwenderDaten("", false, sLayer);
@@ -211,27 +243,39 @@ namespace Bauwagen
 
                     while (drReader.Read())
                     {
-                        ButtonNamen[a] = new Button();
+                        if (sSammeluserSichtbar == "0" && sSammeluser == drReader.GetValue(1).ToString().Trim()) 
+                        { 
+                            bExecute = false;
+                        } 
+                        else 
+                        { 
+                            bExecute = true; 
+                        }
 
-                        ButtonNamen[a].Height = 70;
-                        ButtonNamen[a].Width = 140;
+                        if (bExecute == true)
+                        {
+                            ButtonNamen[a] = new Button();
 
-                        nLocationY = (5 + ButtonNamen[a].Height) * (a - nOffset) + nOffsetY;
-                        nLocationX = (12 + ButtonNamen[a].Width) * nSpalte + nOffsetX;
+                            ButtonNamen[a].Height = 70;
+                            ButtonNamen[a].Width = 140;
 
-                        ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
-                        ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
-                        ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
-                        ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
-                        ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
-                        ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
+                            nLocationY = (5 + ButtonNamen[a].Height) * (a - nOffset) + nOffsetY;
+                            nLocationX = (12 + ButtonNamen[a].Width) * nSpalte + nOffsetX;
 
-                        FlW_Anwender.Controls.Add(ButtonNamen[a]);
+                            ButtonNamen[a].Location = new Point(nLocationX, nLocationY);
+                            ButtonNamen[a].Name = "CmD_Anwender_" + a.ToString().PadLeft(2, '0');
+                            ButtonNamen[a].Text = drReader.GetValue(1).ToString().Trim() + "\n" + String.Format("{0:0.00}", Convert.ToDouble(drReader.GetValue(8))) + " €";
+                            ButtonNamen[a].Tag = drReader.GetValue(6).ToString().Trim();
+                            ButtonNamen[a].Font = new Font("Microsoft Sans Serif", 14.25f);
+                            ButtonNamen[a].Click += new EventHandler(buttonNamen_Clicked);
 
-                        if (Convert.ToInt32(drReader.GetValue(5)) == 1 | Convert.ToInt32(drReader.GetValue(6)) > 5) { ButtonNamen[a].Enabled = false; }
+                            FlW_Anwender.Controls.Add(ButtonNamen[a]);
 
-                        if (nLocationY > 550) { nOffset = a + 1; nSpalte += 1; }
-                        a++;
+                            if (Convert.ToInt32(drReader.GetValue(5)) == 1 | Convert.ToInt32(drReader.GetValue(6)) > 5) { ButtonNamen[a].Enabled = false; }
+
+                            if (nLocationY > 550) { nOffset = a + 1; nSpalte += 1; }
+                            a++;
+                        }
                     }
 
                     nAnzahlAnwender = a;
@@ -310,9 +354,12 @@ namespace Bauwagen
 
             string sName = angeklickterButton.Text.Trim();
             int nPositionReturn = sName.IndexOf("\n", 0);
+
+            if (nPositionReturn < 0) { nPositionReturn = sName.Length; }
+
             sName = sName.Substring(0, nPositionReturn);
 
-            if (sName == "Bauwagen Gemeinschaft")
+            if (sName == "Bauwogn Gmeinschaft")
             {
                 sName = sSammeluser;
             }
