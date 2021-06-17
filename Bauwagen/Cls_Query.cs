@@ -34,6 +34,7 @@ namespace Bauwagen
             sQuery += "    kredit       NUMBER,\n";
             sQuery += "    change_pw    NUMBER DEFAULT 0,\n";
             sQuery += "    token_id     VARCHAR2(100),\n";
+            sQuery += "    layer        NUMBER,\n";
             sQuery += "  CONSTRAINT PK_VORNAME PRIMARY KEY\n";
             sQuery += "    (\n";
             sQuery += "      id\n";

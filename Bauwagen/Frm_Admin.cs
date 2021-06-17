@@ -33,7 +33,7 @@ namespace Bauwagen
             CreateTableCocktail();
         }
 
-        private void RecreateTables()
+        public static void RecreateTables()
         {
             OracleConnection oConnection = new OracleConnection();
             OracleCommand oCommand = new OracleCommand();

@@ -145,6 +145,8 @@ namespace Bauwagen
             LbL_Verfügbar.Text = "0,00 €";
             LbL_Kredit.Text = "0,00 €";
 
+            Thread.Sleep(1000);
+
             while (bRun == true)
             {
                 try
