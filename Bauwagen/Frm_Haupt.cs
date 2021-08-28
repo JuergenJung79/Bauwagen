@@ -64,13 +64,13 @@ namespace Bauwagen
             if (sLayer == "1")
             {
                 sLayer = "2";
-                CmD_Gaesteliste.BackColor = Color.Yellow;
+                //CmD_Gaesteliste.BackColor = Color.Yellow;
                 CreateButtons();
             }
             else
             {
                 sLayer = "1";
-                CmD_Gaesteliste.BackColor = CmD_LöschenWarenkorb.BackColor;
+                //CmD_Gaesteliste.BackColor = CmD_LöschenWarenkorb.BackColor;
                 CreateButtons();
             }
         }
@@ -125,11 +125,11 @@ namespace Bauwagen
             CmD_Automatenbuchung.Visible = false;
             CmD_Cocktailmixer.Visible = false;
 
-            if (nodeHostAutomat.InnerText == System.Environment.MachineName.ToUpper().Trim())
+            if (nodeHostAutomat.InnerText.ToUpper().Trim() == System.Environment.MachineName.ToUpper().Trim())
             {
                 CmD_Automatenbuchung.Visible = true;
             }
-            if (nodeHostCocktail.InnerText == System.Environment.MachineName.ToUpper().Trim())
+            if (nodeHostCocktail.InnerText.ToUpper().Trim() == System.Environment.MachineName.ToUpper().Trim())
             {
                 CmD_Cocktailmixer.Visible = true;
             }
@@ -144,6 +144,8 @@ namespace Bauwagen
             LbL_Budget.Text = "0,00 €";
             LbL_Verfügbar.Text = "0,00 €";
             LbL_Kredit.Text = "0,00 €";
+
+            Thread.Sleep(1000);
 
             while (bRun == true)
             {
@@ -359,7 +361,7 @@ namespace Bauwagen
 
             sName = sName.Substring(0, nPositionReturn);
 
-            if (sName == "Bauwogn Gmeinschaft")
+            if (sName == "Bauwong Gemeinschaft")
             {
                 sName = sSammeluser;
             }
@@ -615,6 +617,7 @@ namespace Bauwagen
                     }
                     drReader.Close();
 
+                    sLayer = "1";
                     GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
 
                     DgV_Warenkorb.Rows.Clear();

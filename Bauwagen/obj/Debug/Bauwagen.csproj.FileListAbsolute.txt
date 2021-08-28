@@ -82,7 +82,6 @@ C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_A
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_Dashboard.resources
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserListe.resources
 C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_UserListe.resources
-C:\Programmierung\Eigene Tools\GitHub\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 H:\Programmierung\Eigene Tools\Git\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
 C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Settings.xml
 C:\Programmierung\Bauwagen\Bauwagen\bin\Debug\Bauwagen.exe.config

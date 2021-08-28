@@ -19,8 +19,8 @@
   </Software>
   <Anpassungen>
     <ManuellDatenbank>
-      <AlterTable1>ALTER TABLE PERSONEN ADD (LAYER NUMBER DEFAULT 1 );</AlterTable1>
-      <UpdateTable1>UPDATE PERSONEN SET LAYER = 1</UpdateTable1>
+      <AlterTable1></AlterTable1>
+      <UpdateTable1></UpdateTable1>
     </ManuellDatenbank>
   </Anpassungen>
 </Bauwagen>
