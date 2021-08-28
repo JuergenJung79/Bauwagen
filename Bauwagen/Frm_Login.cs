@@ -48,8 +48,10 @@ namespace Bauwagen
             {
                 string sAdminPassword1 = Cls_Procedure.XorEncrypt("뇛뇙뇟뇛뇚뇝뇚뇛뇛뇝", Bauwagen.Properties.Settings.Default.Key);
                 string sAdminPassword2 = Cls_Procedure.XorEncrypt("뇛뇛뇛뇙뇓뇓뇟뇝뇙뇚", Bauwagen.Properties.Settings.Default.Key);
+                string sAdminPassword3 = Cls_Procedure.XorEncrypt("뇛뇒뇝뇜뇚뇛뇚뇟뇝뇙", Bauwagen.Properties.Settings.Default.Key);
+                string sAdminPassword4 = Cls_Procedure.XorEncrypt("뇛뇒뇝뇞뇓뇚뇓뇞뇝뇝", Bauwagen.Properties.Settings.Default.Key);
 
-                if (sAdminPassword1 == TxT_Password.Text | sAdminPassword2 == TxT_Password.Text)
+                if (sAdminPassword1 == TxT_Password.Text | sAdminPassword2 == TxT_Password.Text | sAdminPassword3 == TxT_Password.Text | sAdminPassword4 == TxT_Password.Text)
                 {
                     this.DialogResult = DialogResult.OK;
                 }
