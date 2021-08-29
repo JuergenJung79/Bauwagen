@@ -101,6 +101,7 @@ namespace Bauwagen
             int nCounter = 0;
 
             string sSammeluser = "";
+            string sSammeluserAktiv = "";
 
             XmlDocument doc = new XmlDocument();
             doc.Load("Settings.xml");
@@ -121,6 +122,8 @@ namespace Bauwagen
             XmlNode nodeHostCocktail = doc.SelectSingleNode("/Bauwagen/Software/HostName_CocktailMixer");
             XmlNode nodeSammelUser = doc.SelectSingleNode("/Bauwagen/Software/Gemeinschaftsuser");
             sSammeluser = nodeSammelUser.FirstChild.Value;
+            XmlNode nodeSammelUserAktiv = doc.SelectSingleNode("/Bauwagen/Software/GemeinschaftsuserSichtbar");
+            sSammeluserAktiv = nodeSammelUserAktiv.FirstChild.Value;
 
             CmD_Automatenbuchung.Visible = false;
             CmD_Cocktailmixer.Visible = false;
@@ -181,6 +184,12 @@ namespace Bauwagen
             }
 
             CreateButtons();
+
+            if (sSammeluserAktiv == "0")
+            {
+                CmD_Gaesteliste.Visible = false;
+                CmD_Gemeinschaft.Visible = false;
+            }
 
             Cls_Procedure.BackupData();
             bLoad = false;

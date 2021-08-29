@@ -144,4 +144,3 @@ H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailAdmin.resources
 C:\Programmierung\Bauwagen\Bauwagen\obj\Debug\Bauwagen.Frm_CocktailMixer.resources
-H:\Entwicklung\Github\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csprojAssemblyReference.cache
