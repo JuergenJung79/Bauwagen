@@ -32,6 +32,7 @@ namespace Bauwagen
         public static bool bLoad = true;
         public static bool bBlockRefresh = false;
         public static bool bGeburtstagsModus = false;
+        public static bool bSammelUserAktiv = false;
 
         public string sButtonClicked = "";
 
@@ -187,8 +188,8 @@ namespace Bauwagen
 
             if (sSammeluserAktiv == "0")
             {
-                CmD_Gaesteliste.Visible = false;
-                CmD_Gemeinschaft.Visible = false;
+                CmD_Gaesteliste.Visible = true;
+                CmD_Gemeinschaft.Visible = true;
             }
 
             Cls_Procedure.BackupData();
@@ -373,6 +374,7 @@ namespace Bauwagen
             if (sName == "Bauwong Gemeinschaft")
             {
                 sName = sSammeluser;
+                bSammelUserAktiv = true;
             }
 
             Frm_Login frm_login = new Frm_Login();
@@ -627,7 +629,11 @@ namespace Bauwagen
                     drReader.Close();
 
                     sLayer = "1";
-                    GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+
+                    if (bSammelUserAktiv != true)
+                    {
+                        GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+                    }
 
                     DgV_Warenkorb.Rows.Clear();
 
@@ -635,6 +641,11 @@ namespace Bauwagen
                     LbL_Verfügbar.Text = "0,00 €";
 
                     oConnection.Close();
+
+                    if (bGeburtstagsModus == false)
+                    {
+                        bSammelUserAktiv = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -829,7 +840,10 @@ namespace Bauwagen
                         }
                         drReader.Close();
 
-                        GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+                        if (bSammelUserAktiv != true)
+                        {
+                            GetAnwenderControlByName(sButtonClicked).Text = LbL_User.Text.Trim() + "\n" + LbL_Budget.Text.Trim();
+                        }
 
                         oConnection.Close();
                     }
