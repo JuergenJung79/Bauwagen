@@ -194,6 +194,9 @@ namespace Bauwagen
 
             Cls_Procedure.BackupData();
             bLoad = false;
+
+            TmR_Refresh.Enabled = true;
+            TmR_Backup.Enabled = true;
         }
 
         private void CreateButtons()

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CmD_Systemsteuerung = new System.Windows.Forms.Button();
             this.FlW_Anwender = new System.Windows.Forms.FlowLayoutPanel();
             this.FlW_Verbrauchsgüter = new System.Windows.Forms.FlowLayoutPanel();
@@ -106,14 +106,14 @@
             // 
             this.DgV_Warenkorb.AllowUserToAddRows = false;
             this.DgV_Warenkorb.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgV_Warenkorb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgV_Warenkorb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DgV_Warenkorb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgV_Warenkorb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Gütername,
@@ -128,8 +128,8 @@
             // 
             // Gütername
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gütername.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gütername.DefaultCellStyle = dataGridViewCellStyle7;
             this.Gütername.HeaderText = "Name";
             this.Gütername.MinimumWidth = 12;
             this.Gütername.Name = "Gütername";
@@ -137,8 +137,8 @@
             // 
             // Anzahl
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Anzahl.DefaultCellStyle = dataGridViewCellStyle8;
             this.Anzahl.HeaderText = "Anzahl";
             this.Anzahl.MinimumWidth = 12;
             this.Anzahl.Name = "Anzahl";
@@ -147,8 +147,8 @@
             // 
             // Preis
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Preis.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Preis.DefaultCellStyle = dataGridViewCellStyle9;
             this.Preis.HeaderText = "Preis";
             this.Preis.MinimumWidth = 12;
             this.Preis.Name = "Preis";
@@ -157,8 +157,8 @@
             // 
             // Summe
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Summe.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Summe.DefaultCellStyle = dataGridViewCellStyle10;
             this.Summe.HeaderText = "Summe";
             this.Summe.MinimumWidth = 12;
             this.Summe.Name = "Summe";
@@ -183,7 +183,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(556, 341);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.Size = new System.Drawing.Size(126, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Warenkorb Summe:";
             // 
@@ -204,7 +204,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(537, 365);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 16);
+            this.label2.Size = new System.Drawing.Size(145, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Verfügbares Guthaben:";
             // 
@@ -260,7 +260,7 @@
             this.label3.ForeColor = System.Drawing.Color.Gray;
             this.label3.Location = new System.Drawing.Point(564, 389);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 16);
+            this.label3.Size = new System.Drawing.Size(118, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Verfügbarer Kredit:";
             // 
@@ -276,13 +276,11 @@
             // 
             // TmR_Backup
             // 
-            this.TmR_Backup.Enabled = true;
             this.TmR_Backup.Interval = 86400000;
             this.TmR_Backup.Tick += new System.EventHandler(this.TmR_Backup_Tick);
             // 
             // TmR_Refresh
             // 
-            this.TmR_Refresh.Enabled = true;
             this.TmR_Refresh.Interval = 60000;
             this.TmR_Refresh.Tick += new System.EventHandler(this.TmR_Refresh_Tick);
             // 
