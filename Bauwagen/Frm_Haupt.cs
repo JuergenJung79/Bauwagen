@@ -158,8 +158,11 @@ namespace Bauwagen
                     oConnection.ConnectionString = sDSN;
                     oConnection.Open();
 
+                    Thread.Sleep(10000);
+
                     oCommand.Connection = oConnection;
                     oCommand.CommandText = Cls_Query.GetAnwenderDaten(sSammeluser, false, "");
+                    //oCommand.CommandText = "SELECT SYSDATE FROM dual";
                     dataReader = oCommand.ExecuteReader();
 
                     if (!dataReader.HasRows)
