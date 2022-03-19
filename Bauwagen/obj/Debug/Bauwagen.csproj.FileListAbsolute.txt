@@ -201,3 +201,4 @@ D:\Programmierung\C#\Bauwagen\Bauwagen\obj\Debug\Bauwagen.application
 D:\Programmierung\C#\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.CopyComplete
 D:\Programmierung\C#\Bauwagen\Bauwagen\obj\Debug\Bauwagen.exe
 D:\Programmierung\C#\Bauwagen\Bauwagen\obj\Debug\Bauwagen.pdb
+D:\Programmierung\C#\Bauwagen\Bauwagen\obj\Debug\Bauwagen.csproj.AssemblyReference.cache
