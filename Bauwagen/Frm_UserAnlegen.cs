@@ -144,6 +144,26 @@ namespace Bauwagen
             }
         }
 
+        private void CmD_Delete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Benutzer wirklich löschen?", "Frage", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (DeleteUser() == true)
+                {
+                    bLoad = true;
+                    CmB_User.Text = "";
+
+                    ClearData();
+                    LoadUserKomplett();
+                    bLoad = false;
+                }
+                else
+                {
+                    MessageBox.Show("Der User kann nicht gelöscht werden, bitte prüfen ob alle Transaktionsdaten bereinigt sind", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
         private void CmD_Create_Click(object sender, EventArgs e)
         {
             OracleConnection oConnection = new OracleConnection();
@@ -202,6 +222,52 @@ namespace Bauwagen
             else
             {
                 MessageBox.Show("Eingaben üngültig bitte das Layer prüfen", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool DeleteUser()
+        {
+            bool bReturn = false;
+
+
+            OracleConnection oConnection = new OracleConnection();
+            OracleTransaction transaction;
+            OracleCommand oCommandDelete = new OracleCommand();
+
+            using (oConnection)
+            {
+                oConnection.ConnectionString = Frm_Haupt.sDSN;
+                oConnection.Open();
+
+                transaction = oConnection.BeginTransaction(IsolationLevel.ReadCommitted);
+                oCommandDelete.Connection = oConnection;
+
+                int nResult = 0;
+
+                try
+                {
+                    //Löschen der Daten in Aufladungen
+                    oCommandDelete.CommandText = Cls_Query.DeleteUserTranskation_History(TxT_Vorname.Text.Trim());
+                    nResult = oCommandDelete.ExecuteNonQuery();
+                    
+                    //Löschen der Daten in History
+                    oCommandDelete.CommandText = Cls_Query.DeleteUserTranskation_Aufladungen(TxT_Vorname.Text.Trim());
+                    nResult = oCommandDelete.ExecuteNonQuery();
+
+                    //Löschen des Users
+                    oCommandDelete.CommandText = Cls_Query.DeleteUser(TxT_Vorname.Text.Trim());
+                    nResult = oCommandDelete.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    bReturn = true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    bReturn = false;
+                }
+
+                return bReturn;
             }
         }
 

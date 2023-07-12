@@ -1125,5 +1125,36 @@ namespace Bauwagen
             return sQuery;
         }
 
+
+        public static string DeleteUserTranskation_Aufladungen(string sName)
+        {
+            string sQuery = "";
+
+            sQuery = "DELETE FROM aufladung\n";
+            sQuery += "WHERE id_user = (SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "')\n";
+
+            return sQuery;
+        }
+
+        public static string DeleteUserTranskation_History(string sName)
+        {
+            string sQuery = "";
+
+            sQuery = "DELETE FROM history\n";
+            sQuery += "WHERE id_user = (SELECT id FROM " + Frm_Haupt.sSchema + ".personen WHERE vorname = '" + sName + "')\n";
+
+            return sQuery;
+        }
+
+        public static string DeleteUser(string sName)
+        {
+            string sQuery = "";
+
+            sQuery = "DELETE FROM personen\n";
+            sQuery += "WHERE vorname = '" + sName + "'\n";
+
+            return sQuery;
+        }
+
     }
 }

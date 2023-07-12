@@ -45,6 +45,7 @@
             this.ChK_Aktiv = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.NuD_Layer = new System.Windows.Forms.NumericUpDown();
+            this.CmD_Delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NuD_Layer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,12 +233,24 @@
             0,
             0});
             // 
+            // CmD_Delete
+            // 
+            this.CmD_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmD_Delete.Location = new System.Drawing.Point(710, 80);
+            this.CmD_Delete.Name = "CmD_Delete";
+            this.CmD_Delete.Size = new System.Drawing.Size(123, 53);
+            this.CmD_Delete.TabIndex = 1001;
+            this.CmD_Delete.Text = "Löschen";
+            this.CmD_Delete.UseVisualStyleBackColor = true;
+            this.CmD_Delete.Click += new System.EventHandler(this.CmD_Delete_Click);
+            // 
             // Frm_UserAnlegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(845, 358);
+            this.Controls.Add(this.CmD_Delete);
             this.Controls.Add(this.NuD_Layer);
             this.Controls.Add(this.CmB_User);
             this.Controls.Add(this.ChK_Aktiv);
@@ -283,5 +296,6 @@
         private System.Windows.Forms.CheckBox ChK_Aktiv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown NuD_Layer;
+        private System.Windows.Forms.Button CmD_Delete;
     }
 }
