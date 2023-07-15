@@ -227,7 +227,7 @@ namespace Bauwagen
 
         private bool DeleteUser()
         {
-            bool bReturn = false;
+            bool bReturn;
 
 
             OracleConnection oConnection = new OracleConnection();
