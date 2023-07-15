@@ -263,6 +263,7 @@ namespace Bauwagen
                 }
                 catch (Exception ex)
                 {
+                    DialogResult dialogResult = MessageBox.Show(ex.Message, "Fehler beim löschen der Daten");
                     transaction.Rollback();
                     bReturn = false;
                 }
