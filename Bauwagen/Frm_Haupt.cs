@@ -151,6 +151,8 @@ namespace Bauwagen
 
             Thread.Sleep(1000);
 
+            //bRun = false;
+
             while (bRun == true)
             {
                 try
